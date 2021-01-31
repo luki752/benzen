@@ -78,11 +78,13 @@ const Nav = () => {
         }}/></li> */}
           <li>
             {" "}
-            <AccountCircleIcon
-              onMouseEnter={() => setLoginDropdown(true)}
-              onMouseLeave={() => setLoginDropdown(false)}
-              className="nav-icon"
-            />{" "}
+            <Link to="/customer/account/login" className="link">
+              <AccountCircleIcon
+                onMouseEnter={() => setLoginDropdown(true)}
+                onMouseLeave={() => setLoginDropdown(false)}
+                className="nav-icon"
+              />
+            </Link>{" "}
           </li>
           <li>
             {" "}
@@ -348,7 +350,9 @@ const Nav = () => {
       >
         <div className="upper-login">
           <span>Do you have an account?</span>
-          <button>Log in</button>
+          <Link to="/customer/account/login">
+            <button>Log in</button>
+          </Link>
         </div>
 
         <div className="bottom-login">
@@ -356,7 +360,9 @@ const Nav = () => {
           <p>
             It'll take a short time and you'll gain access to multiple features
           </p>
-          <button>Register</button>
+          <Link to="/customer/account/register">
+            <button>Register</button>
+          </Link>
         </div>
       </LoginDropdown>
     </NavComponent>

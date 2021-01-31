@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import GlobalStyles from "./components/GlobalStyles";
 //pages
 import Home from "./pages/Home";
+import AccountPage from "./pages/AccountPage";
 //router
 import { Route } from "react-router-dom";
 
@@ -13,8 +14,14 @@ function App() {
     <div className="App">
       <GlobalStyles />
       <Nav />
-      <Route to="/" exact>
+      <Route path="/" exact>
         <Home />
+      </Route>
+      <Route path="/customer/account/login" exact>
+        <AccountPage />
+      </Route>
+      <Route path="/customer/account/register" exact>
+        <AccountPage />
       </Route>
       <Footer />
     </div>
