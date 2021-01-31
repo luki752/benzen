@@ -1,21 +1,22 @@
-import React from 'react'
+import React from "react";
 //components
-import Nav from './components/Nav'
-import GlobalStyles from './components/GlobalStyles'
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
+import GlobalStyles from "./components/GlobalStyles";
 //pages
-import Home from './pages/Home'
+import Home from "./pages/Home";
 //router
-import {Route} from 'react-router-dom';
-
+import { Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <GlobalStyles/>
-      <Nav/>
+      <GlobalStyles />
+      <Nav />
       <Route to="/" exact>
-        <Home/>
+        <Home />
       </Route>
+      <Footer />
     </div>
   );
 }

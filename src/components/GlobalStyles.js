@@ -1,4 +1,4 @@
-import {createGlobalStyle} from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
 *{
@@ -8,7 +8,14 @@ const GlobalStyles = createGlobalStyle`
 .App{
     font-family: 'Raleway', sans-serif;
 }
+.link{
+    color:black;
+    &:hover{
+        color: black;
+        text-decoration:none;
+    }
+}
 
-`
+`;
 
 export default GlobalStyles;
