@@ -53,7 +53,7 @@ const Nav = () => {
                 onMouseEnter={() => SetWomanDropdown(true)}
                 onMouseLeave={() => SetWomanDropdown(false)}
               >
-                woman
+                women
               </Button>
             </Link>
           </li>
@@ -67,7 +67,7 @@ const Nav = () => {
                 onMouseEnter={() => SetManDropdown(true)}
                 onMouseLeave={() => SetManDropdown(false)}
               >
-                man
+                men
               </Button>
             </Link>
           </li>
@@ -98,7 +98,9 @@ const Nav = () => {
           </li>
           <li>
             {" "}
-            <LocalMallIcon className="nav-icon" />{" "}
+            <Link to="/checkout/cart" className="link">
+              <LocalMallIcon className="nav-icon" />{" "}
+            </Link>
           </li>
         </ul>
       </div>

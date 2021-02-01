@@ -9,17 +9,43 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 //router
 import { BrowserRouter } from "react-router-dom";
+//bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
+//notistack
+import { SnackbarProvider } from "notistack";
+//icon
+import CloseIcon from "@material-ui/icons/Close";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(rootReducer, composeEnhancer(applyMiddleware(thunk)));
 
+const notistackRef = React.createRef();
+const onClickDismiss = (key) => () => {
+  notistackRef.current.closeSnackbar(key);
+};
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <SnackbarProvider
+          ref={notistackRef}
+          maxSnack={2}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "right",
+          }}
+          iconVariant={{
+            success: <FavoriteBorderIcon />,
+            error: <DeleteIcon />,
+          }}
+          action={(key) => <CloseIcon onClick={onClickDismiss(key)} />}
+        >
+          <App />
+        </SnackbarProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

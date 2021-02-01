@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import AccountPage from "./pages/AccountPage";
 import WomanMainPage from "./pages/WomanMainPage";
 import ManMainPage from "./pages/ManMainPage";
+import CartPage from "./pages/CartPage";
 //router
 import { Route } from "react-router-dom";
 
@@ -30,6 +31,9 @@ function App() {
       </Route>
       <Route path="/man" exact>
         <ManMainPage />
+      </Route>
+      <Route path="/checkout/cart" exact>
+        <CartPage />
       </Route>
       <Footer />
     </div>

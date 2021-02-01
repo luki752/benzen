@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 //styling
 import styled from "styled-components";
+//icons
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+//notistack
+import { useSnackbar } from "notistack";
 
 const Card = ({
   img,
@@ -10,6 +14,14 @@ const Card = ({
   hasDiscount,
   discountPrice,
 }) => {
+  const [favorite, setFavorite] = useState(false);
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+  //handlers
+  const snackbarHandler = (snackbarMessage, snackVariant) => {
+    enqueueSnackbar(snackbarMessage, { variant: snackVariant });
+  };
+
   return (
     <CardComponent>
       <img
@@ -17,6 +29,18 @@ const Card = ({
         alt={name}
         onMouseOver={(e) => (e.currentTarget.src = `${secondImage}`)}
         onMouseOut={(e) => (e.currentTarget.src = `${img}`)}
+      />
+      <FavoriteBorderIcon
+        className="favoriteIcon"
+        style={{ color: favorite ? "red" : "rgba(0, 0, 0, 0.2)" }}
+        onClick={() => {
+          setFavorite(!favorite);
+          if (favorite === false) {
+            snackbarHandler("Added to favorites", "success");
+          } else {
+            snackbarHandler("Removed from favorites", "error");
+          }
+        }}
       />
       <div className="price">
         {hasDiscount ? (
@@ -34,6 +58,7 @@ const Card = ({
 };
 
 const CardComponent = styled.div`
+  position: relative;
   height: 40rem;
   width: 20rem;
   display: flex;
@@ -75,6 +100,14 @@ const CardComponent = styled.div`
     @media screen and (max-width: 1000px) {
       font-size: 0.7rem;
     }
+  }
+  .favoriteIcon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    font-size: 3rem;
+    margin: 1rem;
   }
 `;
 
