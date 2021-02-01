@@ -58,14 +58,18 @@ const Nav = () => {
             </Link>
           </li>
           <li>
-            <Button
-              className="gender-button"
-              style={{ textDecoration: manDropdownOpen ? "underline" : "none" }}
-              onMouseEnter={() => SetManDropdown(true)}
-              onMouseLeave={() => SetManDropdown(false)}
-            >
-              man
-            </Button>
+            <Link to="/man" className="link">
+              <Button
+                className="gender-button"
+                style={{
+                  textDecoration: manDropdownOpen ? "underline" : "none",
+                }}
+                onMouseEnter={() => SetManDropdown(true)}
+                onMouseLeave={() => SetManDropdown(false)}
+              >
+                man
+              </Button>
+            </Link>
           </li>
         </ul>
       </div>
@@ -621,12 +625,8 @@ const LoginDropdown = styled.div`
       font-size: 0.8rem;
     }
     button {
-      padding: 1rem;
-      font-size: 1rem;
-      width: 7rem;
-      background-color: transparent;
       color: black;
-      transition: 0.3s ease-in all;
+      border: 1px solid black;
       &:hover {
         background-color: rgba(0, 0, 0, 1);
         cursor: pointer;

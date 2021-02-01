@@ -7,6 +7,7 @@ import GlobalStyles from "./components/GlobalStyles";
 import Home from "./pages/Home";
 import AccountPage from "./pages/AccountPage";
 import WomanMainPage from "./pages/WomanMainPage";
+import ManMainPage from "./pages/ManMainPage";
 //router
 import { Route } from "react-router-dom";
 
@@ -26,6 +27,9 @@ function App() {
       </Route>
       <Route path="/woman" exact>
         <WomanMainPage />
+      </Route>
+      <Route path="/man" exact>
+        <ManMainPage />
       </Route>
       <Footer />
     </div>
