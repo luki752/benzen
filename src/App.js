@@ -6,6 +6,7 @@ import GlobalStyles from "./components/GlobalStyles";
 //pages
 import Home from "./pages/Home";
 import AccountPage from "./pages/AccountPage";
+import WomanMainPage from "./pages/WomanMainPage";
 //router
 import { Route } from "react-router-dom";
 
@@ -22,6 +23,9 @@ function App() {
       </Route>
       <Route path="/customer/account/register" exact>
         <AccountPage />
+      </Route>
+      <Route path="/woman" exact>
+        <WomanMainPage />
       </Route>
       <Footer />
     </div>

@@ -266,18 +266,6 @@ const FooterComponent = styled.div`
     .accordion-details {
       display: flex;
       flex-direction: column;
-
-      button {
-        border: 1px solid black;
-        padding: 0.5rem;
-        background-color: White;
-        font-weight: bold;
-        transition: 0.3s ease-in all;
-        &:hover {
-          background-color: black;
-          color: white;
-        }
-      }
     }
     .icon {
       font-size: 3rem;

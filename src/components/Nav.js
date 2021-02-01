@@ -44,16 +44,18 @@ const Nav = () => {
       <div className="nav-middle-menu">
         <ul>
           <li>
-            <Button
-              className="gender-button"
-              style={{
-                textDecoration: womanDropdownOpen ? "underline" : "none",
-              }}
-              onMouseEnter={() => SetWomanDropdown(true)}
-              onMouseLeave={() => SetWomanDropdown(false)}
-            >
-              woman
-            </Button>
+            <Link to="/woman" className="link">
+              <Button
+                className="gender-button"
+                style={{
+                  textDecoration: womanDropdownOpen ? "underline" : "none",
+                }}
+                onMouseEnter={() => SetWomanDropdown(true)}
+                onMouseLeave={() => SetWomanDropdown(false)}
+              >
+                woman
+              </Button>
+            </Link>
           </li>
           <li>
             <Button
@@ -173,7 +175,9 @@ const Nav = () => {
           {/* Whole accordion */}
           <Accordion className="one-accordion">
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <h1>Woman</h1>
+              <Link to="/woman" className="link">
+                <h1>Woman</h1>
+              </Link>
             </AccordionSummary>
 
             {/* accordion within main accordion */}
