@@ -9,6 +9,7 @@ import AccountPage from "./pages/AccountPage";
 import WomanMainPage from "./pages/WomanMainPage";
 import ManMainPage from "./pages/ManMainPage";
 import CartPage from "./pages/CartPage";
+import ManClothesPage from "./pages/ManClothesPage";
 //router
 import { Route } from "react-router-dom";
 
@@ -34,6 +35,9 @@ function App() {
       </Route>
       <Route path="/checkout/cart" exact>
         <CartPage />
+      </Route>
+      <Route path={["/man/clothes/outerwear", "/man/clothes/sweaters","/man/clothes/shirts","/man/clothes/sweatshirts","/man/clothes/trousers","/man/clothes/polos","/man/clothes/t-shirts","/man/clothes/jeans","/man/clothes/blazers","/man/clothes/suits","/man/clothes/nightwear","/man/clothes/underwear","/man/accessories/shoes","/man/accessories/bags","/man/accessories/hats","/man/accessories/socks"]} exact>
+        <ManClothesPage />
       </Route>
       <Footer />
     </div>

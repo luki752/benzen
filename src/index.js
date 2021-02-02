@@ -28,7 +28,6 @@ const onClickDismiss = (key) => () => {
 };
 
 ReactDOM.render(
-  <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <SnackbarProvider
@@ -47,8 +46,7 @@ ReactDOM.render(
           <App />
         </SnackbarProvider>
       </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
   document.getElementById("root")
 );
 

@@ -1,496 +1,1060 @@
 {
-  "clothes": [
-    {
-      "male": [
+  "clothes": {
+    "male": {
+      "clothes": [
         {
-          "clothes": [
+          "id": 1,
+          "name": "Denim sherpa jacket",
+          "item": "jacket",
+          "amount": 1000,
+          "gender": "male",
+          "price": 39.99,
+          "desc": "high round neck",
+          "material": [
             {
-              "id": 1,
-              "name": "Denim sherpa jacket",
-              "item": "jacket",
-              "gender": "male",
-              "price": 39.99,
-              "images": [
-                {
-                  "first": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-001_11.jpg"
-                },
-                {
-                  "second": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-003_11.jpg"
-                },
-                {
-                  "third": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-004_11.jpg"
-                },
-                {
-                  "fourth": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-005_11.jpg"
-                },
-                {
-                  "fifth": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-006_11.jpg"
-                },
-                {
-                  "sixth": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-031_11.jpg"
-                }
-              ]
+              "fabric": "polyamide",
+              "percentage": "92"
             },
             {
-              "id": 2,
-              "name": "Classic turtleneck",
-              "item": "jumper",
-              "price": 19.99,
-              "images": [
-                {
-                  "first": "https://www.reserved.com/media/catalog/product/Y/Q/YQ304-80M-001_15.jpg"
-                },
-                {
-                  "second": "https://www.reserved.com/media/catalog/product/Y/Q/YQ304-80M-002_15.jpg"
-                },
-                {
-                  "third": "https://www.reserved.com/media/catalog/product/Y/Q/YQ304-80M-004_15.jpg"
-                },
-                {
-                  "fourth": "https://www.reserved.com/media/catalog/product/Y/Q/YQ304-80M-005_15.jpg"
-                },
-                {
-                  "fifth": "https://www.reserved.com/media/catalog/product/Y/Q/YQ304-80M-040_15.jpg"
-                }
-              ]
-            },
-            {
-              "id": 3,
-              "name": "Classic hoodie",
-              "item": "hoodie",
-              "price": 19.99,
-              "images": [
-                {
-                  "first": "https://www.reserved.com/media/catalog/product/Z/U/ZU278-00X-001_1.jpg"
-                },
-                {
-                  "second": "https://www.reserved.com/media/catalog/product/Z/U/ZU278-00X-002_1.jpg"
-                },
-                {
-                  "third": "https://www.reserved.com/media/catalog/product/Z/U/ZU278-00X-003_1.jpg"
-                },
-                {
-                  "fourth": "https://www.reserved.com/media/catalog/product/Z/U/ZU278-00X-004_1.jpg"
-                },
-                {
-                  "fifth": "https://www.reserved.com/media/catalog/product/Z/U/ZU278-00X-040_2.jpg"
-                },
-                {
-                  "sixth": "https://www.reserved.com/media/catalog/product/Z/U/ZU278-00X-041_2.jpg"
-                }
-              ]
-            },
-            {
-              "id": 4,
-              "name": "Shirt with mandarin collar",
-              "item": "shirt",
-              "price": 19.99,
-              "images": [
-                {
-                  "first": "https://www.reserved.com/media/catalog/product/X/L/XL099-59M-020_3.jpg"
-                },
-                {
-                  "second": "https://www.reserved.com/media/catalog/product/X/L/XL099-59M-021_3.jpg"
-                },
-                {
-                  "third": "https://www.reserved.com/media/catalog/product/X/L/XL099-59M-022_3.jpg"
-                },
-                {
-                  "fourth": "https://www.reserved.com/media/catalog/product/X/L/XL099-59M-023_3.jpg"
-                },
-                {
-                  "fifth": "https://www.reserved.com/media/catalog/product/X/L/XL099-59M-024_3.jpg"
-                },
-                {
-                  "sixth": "https://www.reserved.com/media/catalog/product/X/L/XL099-59M-025_3.jpg"
-                },
-                {
-                  "seventh": "https://www.reserved.com/media/catalog/product/X/L/XL099-59M-040_1.jpg"
-                }
-              ]
-            },
-            {
-              "id": 5,
-              "name": "Melange sweatpants",
-              "item": "trousers",
-              "price": 19.99,
-              "images": [
-                {
-                  "first": "https://www.reserved.com/media/catalog/product/2/6/2675C-09M-030_2.jpg"
-                },
-                {
-                  "second": "https://www.reserved.com/media/catalog/product/2/6/2675C-09M-001_5.jpg"
-                },
-                {
-                  "third": "https://www.reserved.com/media/catalog/product/2/6/2675C-09M-002_5.jpg"
-                },
-                {
-                  "fourth": "https://www.reserved.com/media/catalog/product/2/6/2675C-09M-003_5.jpg"
-                },
-                {
-                  "fifth": "https://www.reserved.com/media/catalog/product/2/6/2675C-09M-004_5.jpg"
-                },
-                {
-                  "sixth": "https://www.reserved.com/media/catalog/product/2/6/2675C-09M-005_5.jpg"
-                },
-                {
-                  "seventh": "https://www.reserved.com/media/catalog/product/2/6/2675C-09M-040_1.jpg"
-                }
-              ]
-            },
-            {
-              "id": 6,
-              "name": "Polo shirt with stand up collar",
-              "item": "poloShirt",
-              "price": 12.99,
-              "images": [
-                {
-                  "first": "https://www.reserved.com/media/catalog/product/X/X/XX560-59X-001_5.jpg"
-                },
-                {
-                  "second": "https://www.reserved.com/media/catalog/product/X/X/XX560-59X-002_5.jpg"
-                },
-                {
-                  "third": "https://www.reserved.com/media/catalog/product/X/X/XX560-59X-003_5.jpg"
-                },
-                {
-                  "fourth": "https://www.reserved.com/media/catalog/product/X/X/XX560-59X-004_5.jpg"
-                },
-
-                {
-                  "fifth": "https://www.reserved.com/media/catalog/product/X/X/XX560-59X-005_4.jpg"
-                },
-                {
-                  "sixth": "https://www.reserved.com/media/catalog/product/X/X/XX560-59X-006_4.jpg"
-                },
-                {
-                  "seventh": "https://www.reserved.com/media/catalog/product/X/X/XX560-59X-040_4.jpg"
-                }
-              ]
-            },
-            {
-              "id": 7,
-              "name": "Slim fit jeans",
-              "item": "jeans",
-              "price": 19.99,
-              "images": [
-                {
-                  "first": "https://www.reserved.com/media/catalog/product/Y/W/YW953-59J-001_6.jpg"
-                },
-                {
-                  "second": "https://www.reserved.com/media/catalog/product/Y/W/YW953-59J-002_6.jpg"
-                },
-                {
-                  "third": "https://www.reserved.com/media/catalog/product/Y/W/YW953-59J-003_6.jpg"
-                },
-                {
-                  "fourth": "https://www.reserved.com/media/catalog/product/Y/W/YW953-59J-004_6.jpg"
-                },
-                {
-                  "fifth": "https://www.reserved.com/media/catalog/product/Y/W/YW953-59J-005_6.jpg"
-                },
-                {
-                  "sixth": "https://www.reserved.com/media/catalog/product/Y/W/YW953-59J-040_7.jpg"
-                }
-              ]
-            },
-            {
-              "id": 8,
-              "name": "Sports style blazer",
-              "item": "blazer",
-              "price": 49.99,
-              "images": [
-                {
-                  "first": "https://www.reserved.com/media/catalog/product/Y/M/YM395-59M-001_11.jpg"
-                },
-                {
-                  "second": "https://www.reserved.com/media/catalog/product/Y/M/YM395-59M-002_11.jpg"
-                },
-                {
-                  "third": "https://www.reserved.com/media/catalog/product/Y/M/YM395-59M-003_11.jpg"
-                },
-                {
-                  "fourth": "https://www.reserved.com/media/catalog/product/Y/M/YM395-59M-004_11.jpg"
-                },
-                {
-                  "fifth": "https://www.reserved.com/media/catalog/product/Y/M/YM395-59M-005_11.jpg"
-                },
-                {
-                  "sixth": "https://www.reserved.com/media/catalog/product/Y/M/YM395-59M-006_11.jpg"
-                },
-                {
-                  "seventh": "https://www.reserved.com/media/catalog/product/Y/M/YM395-59M-040_11.jpg"
-                }
-              ]
-            },
-            {
-              "id": 9,
-              "name": "slim fit suit trousers",
-              "item": "suit",
-              "price": 39.99,
-              "discount": true,
-              "discountPrice": 22.99,
-              "images": [
-                {
-                  "first": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-001_9.jpg"
-                },
-                {
-                  "second": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-002_9.jpg"
-                },
-                {
-                  "third": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-003_9.jpg"
-                },
-                {
-                  "fourth": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-004_9.jpg"
-                },
-                {
-                  "fifth": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-005_2.jpg"
-                },
-                {
-                  "sixth": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-006_2.jpg"
-                },
-
-                {
-                  "seventh": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-040_2.jpg"
-                }
-              ]
-            },
-            {
-              "id": 11,
-              "name": "Super-Man pyjama set with shorts",
-              "item": "nightwear",
-              "price": 19.99,
-              "images": [
-                {
-                  "first": "https://www.reserved.com/media/catalog/product/3/1/3128D-59X-001_10.jpg"
-                },
-                {
-                  "second": "https://www.reserved.com/media/catalog/product/3/1/3128D-59X-020_1.jpg"
-                },
-                {
-                  "third": "https://www.reserved.com/media/catalog/product/3/1/3128D-59X-021_1.jpg"
-                },
-                {
-                  "fourth": "https://www.reserved.com/media/catalog/product/3/1/3128D-59X-022_1.jpg"
-                },
-
-                {
-                  "fifth": "https://www.reserved.com/media/catalog/product/3/1/3128D-59X-023_1.jpg"
-                }
-              ]
-            },
-            {
-              "id": 12,
-              "name": "Friends boxers 3 pack",
-              "item": "underwear",
-              "price": 17.99,
-              "images": [
-                {
-                  "first": "https://www.reserved.com/media/catalog/product/Z/O/ZO425-90X-001_2.jpg"
-                },
-                {
-                  "second": "https://www.reserved.com/media/catalog/product/Z/O/ZO425-90X-002_2.jpg"
-                }
-              ]
+              "fabric": "elastane",
+              "percentage": "8"
             }
           ],
-          "accessories": [
+          "images": [
             {
-              "id": 13,
-              "name": "Classic sneakers",
-              "item": "shoes",
-              "price": 25.99,
-              "images": [
-                {
-                  "first": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-040_2.jpg"
-                },
-                {
-                  "second": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-001_5.jpg"
-                },
-                {
-                  "third": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-002_5.jpg"
-                },
-                {
-                  "fourth": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-003_5.jpg"
-                },
-                {
-                  "fifth": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-004_5.jpg"
-                },
-                {
-                  "sixth": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-005_5.jpg"
-                },
+              "first": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-001_11.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-003_11.jpg"
+            },
+            {
+              "third": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-004_11.jpg"
+            },
+            {
+              "fourth": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-005_11.jpg"
+            },
+            {
+              "fifth": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-006_11.jpg"
+            },
+            {
+              "sixth": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-031_11.jpg"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Classic turtleneck",
+          "item": "sweaters",
+          "amount": 1000,
+          "price": 19.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastana",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/Y/Q/YQ304-80M-001_15.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/Y/Q/YQ304-80M-002_15.jpg"
+            },
+            {
+              "third": "https://www.reserved.com/media/catalog/product/Y/Q/YQ304-80M-004_15.jpg"
+            },
+            {
+              "fourth": "https://www.reserved.com/media/catalog/product/Y/Q/YQ304-80M-005_15.jpg"
+            },
+            {
+              "fifth": "https://www.reserved.com/media/catalog/product/Y/Q/YQ304-80M-040_15.jpg"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Classic hoodie",
+          "item": "sweatshirts",
+          "amount": 1000,
+          "price": 19.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/Z/U/ZU278-00X-001_1.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/Z/U/ZU278-00X-002_1.jpg"
+            },
+            {
+              "third": "https://www.reserved.com/media/catalog/product/Z/U/ZU278-00X-003_1.jpg"
+            },
+            {
+              "fourth": "https://www.reserved.com/media/catalog/product/Z/U/ZU278-00X-004_1.jpg"
+            },
+            {
+              "fifth": "https://www.reserved.com/media/catalog/product/Z/U/ZU278-00X-040_2.jpg"
+            },
+            {
+              "sixth": "https://www.reserved.com/media/catalog/product/Z/U/ZU278-00X-041_2.jpg"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Shirt with mandarin collar",
+          "item": "t-shirts",
+          "amount": 1000,
+          "price": 19.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/X/L/XL099-59M-020_3.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/X/L/XL099-59M-021_3.jpg"
+            },
+            {
+              "third": "https://www.reserved.com/media/catalog/product/X/L/XL099-59M-022_3.jpg"
+            },
+            {
+              "fourth": "https://www.reserved.com/media/catalog/product/X/L/XL099-59M-023_3.jpg"
+            },
+            {
+              "fifth": "https://www.reserved.com/media/catalog/product/X/L/XL099-59M-024_3.jpg"
+            },
+            {
+              "sixth": "https://www.reserved.com/media/catalog/product/X/L/XL099-59M-025_3.jpg"
+            },
+            {
+              "seventh": "https://www.reserved.com/media/catalog/product/X/L/XL099-59M-040_1.jpg"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Melange sweatpants",
+          "item": "trousers",
+          "amount": 1000,
+          "price": 19.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/2/6/2675C-09M-030_2.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/2/6/2675C-09M-001_5.jpg"
+            },
+            {
+              "third": "https://www.reserved.com/media/catalog/product/2/6/2675C-09M-002_5.jpg"
+            },
+            {
+              "fourth": "https://www.reserved.com/media/catalog/product/2/6/2675C-09M-003_5.jpg"
+            },
+            {
+              "fifth": "https://www.reserved.com/media/catalog/product/2/6/2675C-09M-004_5.jpg"
+            },
+            {
+              "sixth": "https://www.reserved.com/media/catalog/product/2/6/2675C-09M-005_5.jpg"
+            },
+            {
+              "seventh": "https://www.reserved.com/media/catalog/product/2/6/2675C-09M-040_1.jpg"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "Polo shirt with stand up collar",
+          "item": "polos",
+          "amount": 1000,
+          "price": 12.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/X/X/XX560-59X-001_5.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/X/X/XX560-59X-002_5.jpg"
+            },
+            {
+              "third": "https://www.reserved.com/media/catalog/product/X/X/XX560-59X-003_5.jpg"
+            },
+            {
+              "fourth": "https://www.reserved.com/media/catalog/product/X/X/XX560-59X-004_5.jpg"
+            },
 
-                {
-                  "seventh": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-006_5.jpg"
-                }
-              ]
+            {
+              "fifth": "https://www.reserved.com/media/catalog/product/X/X/XX560-59X-005_4.jpg"
             },
             {
-              "id": 14,
-              "name": "Bum bag",
-              "item": "bag",
-              "price": 12.99,
-              "images": [
-                {
-                  "first": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-001_4.jpg"
-                },
-                {
-                  "second": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-041_3.jpg"
-                },
-                {
-                  "third": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-002_4.jpg"
-                },
-                {
-                  "fourth": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-042_3.jpg"
-                },
-                {
-                  "fifth": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-003_4.jpg"
-                }
-              ]
+              "sixth": "https://www.reserved.com/media/catalog/product/X/X/XX560-59X-006_4.jpg"
             },
             {
-              "id": 15,
-              "name": "Flat cap",
-              "item": "bag",
-              "price": 12.99,
-              "images": [
-                {
-                  "first": "https://www.reserved.com/media/catalog/product/Z/H/ZH194-90M-001_4.jpg"
-                },
-                {
-                  "second": "https://www.reserved.com/media/catalog/product/Z/H/ZH194-90M-040_3.jpg"
-                },
+              "seventh": "https://www.reserved.com/media/catalog/product/X/X/XX560-59X-040_4.jpg"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "name": "Slim fit jeans",
+          "item": "jeans",
+          "amount": 1000,
+          "price": 19.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/Y/W/YW953-59J-001_6.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/Y/W/YW953-59J-002_6.jpg"
+            },
+            {
+              "third": "https://www.reserved.com/media/catalog/product/Y/W/YW953-59J-003_6.jpg"
+            },
+            {
+              "fourth": "https://www.reserved.com/media/catalog/product/Y/W/YW953-59J-004_6.jpg"
+            },
+            {
+              "fifth": "https://www.reserved.com/media/catalog/product/Y/W/YW953-59J-005_6.jpg"
+            },
+            {
+              "sixth": "https://www.reserved.com/media/catalog/product/Y/W/YW953-59J-040_7.jpg"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "name": "Sports style blazer",
+          "item": "blazers",
+          "amount": 1000,
+          "price": 49.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/Y/M/YM395-59M-001_11.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/Y/M/YM395-59M-002_11.jpg"
+            },
+            {
+              "third": "https://www.reserved.com/media/catalog/product/Y/M/YM395-59M-003_11.jpg"
+            },
+            {
+              "fourth": "https://www.reserved.com/media/catalog/product/Y/M/YM395-59M-004_11.jpg"
+            },
+            {
+              "fifth": "https://www.reserved.com/media/catalog/product/Y/M/YM395-59M-005_11.jpg"
+            },
+            {
+              "sixth": "https://www.reserved.com/media/catalog/product/Y/M/YM395-59M-006_11.jpg"
+            },
+            {
+              "seventh": "https://www.reserved.com/media/catalog/product/Y/M/YM395-59M-040_11.jpg"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "name": "slim fit suit trousers",
+          "item": "suits",
+          "amount": 1000,
+          "price": 39.99,
+          "discount": true,
+          "discountPrice": 22.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-001_9.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-002_9.jpg"
+            },
+            {
+              "third": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-003_9.jpg"
+            },
+            {
+              "fourth": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-004_9.jpg"
+            },
+            {
+              "fifth": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-005_2.jpg"
+            },
+            {
+              "sixth": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-006_2.jpg"
+            },
 
-                {
-                  "third": "https://www.reserved.com/media/catalog/product/Z/H/ZH194-90M-002_4.jpg"
-                }
-              ]
+            {
+              "seventh": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-040_2.jpg"
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "name": "Super-Man pyjama set with shorts",
+          "item": "nightwear",
+          "amount": 1000,
+          "price": 19.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
             },
             {
-              "id": 16,
-              "name": "Patterned cotton rich socks 5 pack",
-              "item": "socks",
-              "price": 9.99,
-              "images": [
-                {
-                  "first": "https://www.reserved.com/media/catalog/product/Z/X/ZX344-11X-001_2.jpg"
-                },
-                {
-                  "second": "https://www.reserved.com/media/catalog/product/Z/X/ZX344-11X-002_2.jpg"
-                }
-              ]
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/3/1/3128D-59X-001_10.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/3/1/3128D-59X-020_1.jpg"
+            },
+            {
+              "third": "https://www.reserved.com/media/catalog/product/3/1/3128D-59X-021_1.jpg"
+            },
+            {
+              "fourth": "https://www.reserved.com/media/catalog/product/3/1/3128D-59X-022_1.jpg"
+            },
+
+            {
+              "fifth": "https://www.reserved.com/media/catalog/product/3/1/3128D-59X-023_1.jpg"
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "name": "Friends boxers 3 pack",
+          "item": "underwear",
+          "amount": 1000,
+          "price": 17.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/Z/O/ZO425-90X-001_2.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/Z/O/ZO425-90X-002_2.jpg"
             }
           ]
         }
       ],
-      "female": [
+
+      "accessories": [
         {
-          "clothes": [
+          "id": 13,
+          "name": "Classic sneakers",
+          "item": "shoes",
+          "amount": 1000,
+          "price": 25.99,
+          "desc": "high round neck",
+          "material": [
             {
-              "id": 17,
-              "name": "Jacket with recycled-fabric down filling",
-              "item": "jacket",
-              "price": 44.99,
-              "images": [
-                {
-                  "first": "https://www.reserved.com/media/catalog/product/Y/R/YR056-05X-001_9.jpg"
-                },
-                {
-                  "second": "https://www.reserved.com/media/catalog/product/Y/R/YR056-05X-002_9.jpg"
-                },
-                {
-                  "third": "https://www.reserved.com/media/catalog/product/Y/R/YR056-05X-003_9.jpg"
-                },
-                {
-                  "fourth": "https://www.reserved.com/media/catalog/product/Y/R/YR056-05X-004_9.jpg"
-                },
-                {
-                  "fifth": "https://www.reserved.com/media/catalog/product/Y/R/YR056-05X-005_9.jpg"
-                },
-                {
-                  "sixth": "https://www.reserved.com/media/catalog/product/Y/R/YR056-05X-006_9.jpg"
-                },
-                {
-                  "seventh": "https://www.reserved.com/media/catalog/product/Y/R/YR056-05X-040_9.jpg"
-                }
-              ]
+              "fabric": "polyamide",
+              "percentage": "92"
             },
             {
-              "id": 18,
-              "name": "Patterned dress with stand up collar",
-              "item": "dress",
-              "price": 29.99,
-              "images": [
-                {
-                  "first": "https://www.reserved.com/media/catalog/product/5/6/5617B-99X-001_3.jpg"
-                },
-                {
-                  "second": "https://www.reserved.com/media/catalog/product/5/6/5617B-99X-002_3.jpg"
-                },
-                {
-                  "third": "https://www.reserved.com/media/catalog/product/5/6/5617B-99X-003_3.jpg"
-                },
-                {
-                  "fourth": "https://www.reserved.com/media/catalog/product/5/6/5617B-99X-040_1.jpg"
-                },
-                {
-                  "fifth": "https://www.reserved.com/media/catalog/product/5/6/5617B-99X-041_1.jpg"
-                }
-              ]
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-040_2.jpg"
             },
             {
-              "id": 19,
-              "name": "Cropped cardigan with V neck",
-              "item": "cardigan",
-              "price": 19.99,
-              "images": [
-                {
-                  "first": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-001_3.jpg"
-                },
-                {
-                  "second": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-002_3.jpg"
-                },
-                {
-                  "third": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-003_3.jpg"
-                },
-                {
-                  "fourth": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-040_1.jpg"
-                },
-                {
-                  "fifth": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-041_1.jpg"
-                }
-              ]
+              "second": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-001_5.jpg"
             },
             {
-              "id": 20,
-              "name": "Stripe organic cotton rich shirt",
-              "item": "shirt",
-              "price": 19.99,
-              "images": [
-                {
-                  "first": "https://www.reserved.com/media/catalog/product/Y/U/YU193-05X-002_1.jpg"
-                },
-                {
-                  "second": "https://www.reserved.com/media/catalog/product/Y/U/YU193-05X-003_1.jpg"
-                },
-                {
-                  "third": "https://www.reserved.com/media/catalog/product/Y/U/YU193-05X-004_1.jpg"
-                },
-                {
-                  "fourth": "https://www.reserved.com/media/catalog/product/Y/U/YU193-05X-040_4.jpg"
-                }
-              ]
+              "third": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-002_5.jpg"
+            },
+            {
+              "fourth": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-003_5.jpg"
+            },
+            {
+              "fifth": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-004_5.jpg"
+            },
+            {
+              "sixth": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-005_5.jpg"
+            },
+
+            {
+              "seventh": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-006_5.jpg"
             }
           ]
         },
         {
-          "accessories": []
+          "id": 14,
+          "name": "Bum bag",
+          "item": "bag",
+          "amount": 1000,
+          "price": 12.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-001_4.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-041_3.jpg"
+            },
+            {
+              "third": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-002_4.jpg"
+            },
+            {
+              "fourth": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-042_3.jpg"
+            },
+            {
+              "fifth": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-003_4.jpg"
+            }
+          ]
         },
         {
-          "shoes": []
+          "id": 15,
+          "name": "Flat cap",
+          "item": "bag",
+          "amount": 1000,
+          "price": 12.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/Z/H/ZH194-90M-001_4.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/Z/H/ZH194-90M-040_3.jpg"
+            },
+
+            {
+              "third": "https://www.reserved.com/media/catalog/product/Z/H/ZH194-90M-002_4.jpg"
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "name": "Patterned cotton rich socks 5 pack",
+          "item": "socks",
+          "amount": 1000,
+          "price": 9.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/Z/X/ZX344-11X-001_2.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/Z/X/ZX344-11X-002_2.jpg"
+            }
+          ]
         }
       ]
-    }
-  ],
+    },
+
+    "female": [
+      {
+        "clothes": [
+          {
+            "id": 17,
+            "name": "Jacket with recycled-fabric down filling",
+            "item": "jacket",
+            "amount": 1000,
+            "price": 44.99,
+            "desc": "high round neck",
+            "material": [
+              {
+                "fabric": "polyamide",
+                "percentage": "92"
+              },
+              {
+                "fabric": "elastane",
+                "percentage": "8"
+              }
+            ],
+            "images": [
+              {
+                "first": "https://www.reserved.com/media/catalog/product/Y/R/YR056-05X-001_9.jpg"
+              },
+              {
+                "second": "https://www.reserved.com/media/catalog/product/Y/R/YR056-05X-002_9.jpg"
+              },
+              {
+                "third": "https://www.reserved.com/media/catalog/product/Y/R/YR056-05X-003_9.jpg"
+              },
+              {
+                "fourth": "https://www.reserved.com/media/catalog/product/Y/R/YR056-05X-004_9.jpg"
+              },
+              {
+                "fifth": "https://www.reserved.com/media/catalog/product/Y/R/YR056-05X-005_9.jpg"
+              },
+              {
+                "sixth": "https://www.reserved.com/media/catalog/product/Y/R/YR056-05X-006_9.jpg"
+              },
+              {
+                "seventh": "https://www.reserved.com/media/catalog/product/Y/R/YR056-05X-040_9.jpg"
+              }
+            ]
+          },
+          {
+            "id": 18,
+            "name": "Patterned dress with stand up collar",
+            "item": "dress",
+            "amount": 1000,
+            "price": 29.99,
+            "desc": "high round neck",
+            "material": [
+              {
+                "fabric": "polyamide",
+                "percentage": "92"
+              },
+              {
+                "fabric": "elastane",
+                "percentage": "8"
+              }
+            ],
+            "images": [
+              {
+                "first": "https://www.reserved.com/media/catalog/product/5/6/5617B-99X-001_3.jpg"
+              },
+              {
+                "second": "https://www.reserved.com/media/catalog/product/5/6/5617B-99X-002_3.jpg"
+              },
+              {
+                "third": "https://www.reserved.com/media/catalog/product/5/6/5617B-99X-003_3.jpg"
+              },
+              {
+                "fourth": "https://www.reserved.com/media/catalog/product/5/6/5617B-99X-040_1.jpg"
+              },
+              {
+                "fifth": "https://www.reserved.com/media/catalog/product/5/6/5617B-99X-041_1.jpg"
+              }
+            ]
+          },
+          {
+            "id": 19,
+            "name": "Cropped cardigan with V neck",
+            "item": "sweaters",
+            "amount": 1000,
+            "price": 19.99,
+            "desc": "high round neck",
+            "material": [
+              {
+                "fabric": "polyamide",
+                "percentage": "92"
+              },
+              {
+                "fabric": "elastane",
+                "percentage": "8"
+              }
+            ],
+            "images": [
+              {
+                "first": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-001_3.jpg"
+              },
+              {
+                "second": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-002_3.jpg"
+              },
+              {
+                "third": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-003_3.jpg"
+              },
+              {
+                "fourth": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-040_1.jpg"
+              },
+              {
+                "fifth": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-041_1.jpg"
+              }
+            ]
+          },
+          {
+            "id": 20,
+            "name": "Stripe organic cotton rich shirt",
+            "item": "shirts",
+            "amount": 1000,
+            "price": 19.99,
+            "desc": "high round neck",
+            "material": [
+              {
+                "fabric": "polyamide",
+                "percentage": "92"
+              },
+              {
+                "fabric": "elastane",
+                "percentage": "8"
+              }
+            ],
+            "images": [
+              {
+                "first": "https://www.reserved.com/media/catalog/product/Y/U/YU193-05X-002_1.jpg"
+              },
+              {
+                "second": "https://www.reserved.com/media/catalog/product/Y/U/YU193-05X-003_1.jpg"
+              },
+              {
+                "third": "https://www.reserved.com/media/catalog/product/Y/U/YU193-05X-004_1.jpg"
+              },
+              {
+                "fourth": "https://www.reserved.com/media/catalog/product/Y/U/YU193-05X-040_4.jpg"
+              }
+            ]
+          },
+          {
+            "id": 21,
+            "name": "Elegant lace blouse",
+            "item": "blouse",
+            "amount": 1000,
+            "price": 19.99,
+            "desc": "high round neck",
+            "material": [
+              {
+                "fabric": "polyamide",
+                "percentage": "92"
+              },
+              {
+                "fabric": "elastane",
+                "percentage": "8"
+              }
+            ],
+            "images": [
+              {
+                "first": "https://www.reserved.com/media/catalog/product/7/2/7298B-00X-001_3.jpg"
+              },
+              {
+                "second": "https://www.reserved.com/media/catalog/product/7/2/7298B-00X-002_3.jpg"
+              },
+              {
+                "third": "https://www.reserved.com/media/catalog/product/7/2/7298B-00X-003_3.jpg"
+              },
+              {
+                "fourth": "https://www.reserved.com/media/catalog/product/7/2/7298B-00X-040_1.jpg"
+              },
+              {
+                "fifth": "https://www.reserved.com/media/catalog/product/7/2/7298B-00X-041_1.jpg"
+              }
+            ]
+          },
+          {
+            "id": 22,
+            "name": "Ladies` blouse body",
+            "item": "body",
+            "amount": 1000,
+            "price": 12.99,
+            "desc": "high round neck",
+            "material": [
+              {
+                "fabric": "polyamide",
+                "percentage": "92"
+              },
+              {
+                "fabric": "elastane",
+                "percentage": "8"
+              }
+            ],
+            "images": [
+              {
+                "first": "https://www.reserved.com/media/catalog/product/9/4/9499B-02X-001_1.jpg"
+              },
+              {
+                "second": "https://www.reserved.com/media/catalog/product/9/4/9499B-02X-002_1.jpg"
+              },
+              {
+                "third": "https://www.reserved.com/media/catalog/product/9/4/9499B-02X-003_1.jpg"
+              },
+              {
+                "fourth": "https://www.reserved.com/media/catalog/product/9/4/9499B-02X-040.jpg"
+              },
+              {
+                "fifth": "https://www.reserved.com/media/catalog/product/9/4/9499B-02X-041.jpg"
+              }
+            ]
+          },
+          {
+            "id": 22,
+            "name": "Ladies` blouse body",
+            "item": "body",
+            "amount": 1000,
+            "price": 12.99,
+            "desc": "high round neck",
+            "material": [
+              {
+                "fabric": "polyamide",
+                "percentage": "92"
+              },
+              {
+                "fabric": "elastane",
+                "percentage": "8"
+              }
+            ],
+            "images": [
+              {
+                "first": "https://www.reserved.com/media/catalog/product/9/4/9499B-02X-001_1.jpg"
+              },
+              {
+                "second": "https://www.reserved.com/media/catalog/product/9/4/9499B-02X-002_1.jpg"
+              },
+              {
+                "third": "https://www.reserved.com/media/catalog/product/9/4/9499B-02X-003_1.jpg"
+              },
+              {
+                "fourth": "https://www.reserved.com/media/catalog/product/9/4/9499B-02X-040.jpg"
+              },
+              {
+                "fifth": "https://www.reserved.com/media/catalog/product/9/4/9499B-02X-041.jpg"
+              }
+            ]
+          },
+          {
+            "id": 23,
+            "name": "Oversize hoodie",
+            "item": "sweatshirts",
+            "amount": 1000,
+            "price": 24.99,
+            "desc": "long sleeves with dropped shoulders, it creates a set with trousers in the same colour",
+
+            "material": [
+              {
+                "fabric": "cotton",
+                "percentage": "76"
+              },
+              {
+                "fabric": "polyester",
+                "percentage": "24"
+              }
+            ],
+            "images": [
+              {
+                "first": "https://www.reserved.com/media/catalog/product/0/5/0533C-04X-030_5.jpg"
+              },
+              {
+                "second": "https://www.reserved.com/media/catalog/product/0/5/0533C-04X-001_5.jpg"
+              },
+              {
+                "third": "https://www.reserved.com/media/catalog/product/0/5/0533C-04X-002_5.jpg"
+              },
+              {
+                "fourth": "https://www.reserved.com/media/catalog/product/0/5/0533C-04X-003_5.jpg"
+              },
+              {
+                "fifth": "https://www.reserved.com/media/catalog/product/0/5/0533C-04X-004_5.jpg"
+              }
+            ]
+          },
+          {
+            "id": 24,
+            "name": "Sweat jersey joggers",
+            "item": "trousers",
+            "amount": 1000,
+            "price": 19.99,
+            "desc": "high waist, two side pockets",
+
+            "material": [
+              {
+                "fabric": "cotton",
+                "percentage": "76"
+              },
+              {
+                "fabric": "polyester",
+                "percentage": "24"
+              }
+            ],
+            "images": [
+              {
+                "first": "https://www.reserved.com/media/catalog/product/1/0/1031C-01X-030_7.jpg"
+              },
+              {
+                "second": "https://www.reserved.com/media/catalog/product/1/0/1031C-01X-001_7.jpg"
+              },
+              {
+                "third": "https://www.reserved.com/media/catalog/product/1/0/1031C-01X-002_7.jpg"
+              },
+              {
+                "fourth": "https://www.reserved.com/media/catalog/product/1/0/1031C-01X-003_7.jpg"
+              },
+              {
+                "fifth": "https://www.reserved.com/media/catalog/product/1/0/1031C-01X-004_7.jpg"
+              },
+              {
+                "sixth": "https://www.reserved.com/media/catalog/product/1/0/1031C-01X-040.jpg"
+              },
+              {
+                "seventh": "https://www.reserved.com/media/catalog/product/1/0/1031C-01X-041.jpg"
+              }
+            ]
+          },
+          {
+            "id": 25,
+            "name": "Boyfriend slim jeans",
+            "item": "jeans",
+            "amount": 1000,
+            "price": 24.99,
+            "desc": "zip and button fastening, rolled up legs",
+
+            "material": [
+              {
+                "fabric": "cotton",
+                "percentage": "98"
+              },
+              {
+                "fabric": "elastane",
+                "percentage": "2"
+              }
+            ],
+            "images": [
+              {
+                "first": "https://www.reserved.com/media/catalog/product/Y/Q/YQ832-55J-001_3.jpg"
+              },
+              {
+                "second": "https://www.reserved.com/media/catalog/product/Y/Q/YQ832-55J-002_3.jpg"
+              },
+              {
+                "third": "https://www.reserved.com/media/catalog/product/Y/Q/YQ832-55J-003_3.jpg"
+              },
+              {
+                "fourth": "https://www.reserved.com/media/catalog/product/Y/Q/YQ832-55J-004_3.jpg"
+              }
+            ]
+          },
+          {
+            "id": 26,
+            "name": "Leather imitation pencil skirt",
+            "item": "skirt",
+            "amount": 1000,
+            "price": 19.99,
+            "desc": "concealed zip fastening to the back",
+
+            "material": [
+              {
+                "fabric": "polyester",
+                "percentage": "50"
+              },
+              {
+                "fabric": "polyurethane",
+                "percentage": "50"
+              }
+            ],
+            "images": [
+              {
+                "first": "https://www.reserved.com/media/catalog/product/0/2/0226C-99X-001_2.jpg"
+              },
+              {
+                "second": "https://www.reserved.com/media/catalog/product/0/2/0226C-99X-040_3.jpg"
+              },
+              {
+                "third": "https://www.reserved.com/media/catalog/product/0/2/0226C-99X-041_3.jpg"
+              },
+              {
+                "fourth": "https://www.reserved.com/media/catalog/product/0/2/0226C-99X-001_2.jpg"
+              },
+              {
+                "fifth": "https://www.reserved.com/media/catalog/product/0/2/0226C-99X-040_3.jpg"
+              },
+              {
+                "sixth": "https://www.reserved.com/media/catalog/product/0/2/0226C-99X-041_3.jpg"
+              }
+            ]
+          },
+
+          {
+            "id": 27,
+            "name": "Plain suit blazer",
+            "item": "blazers",
+            "amount": 1000,
+            "price": 34.99,
+            "desc": "two flap pockets, it creates a set with trousers in the same colour",
+
+            "material": [
+              {
+                "fabric": "polyester",
+                "percentage": "70"
+              },
+              {
+                "fabric": "viscose",
+                "percentage": "28"
+              },
+              {
+                "fabric": "elastane",
+                "percentage": "2"
+              }
+            ],
+            "images": [
+              {
+                "first": "https://www.reserved.com/media/catalog/product/1/0/1046C-MLC-001_3.jpg"
+              },
+              {
+                "second": "https://www.reserved.com/media/catalog/product/1/0/1046C-MLC-002_3.jpg"
+              },
+              {
+                "third": "https://www.reserved.com/media/catalog/product/1/0/1046C-MLC-003_3.jpg"
+              },
+              {
+                "fourth": "https://www.reserved.com/media/catalog/product/1/0/1046C-MLC-004_3.jpg"
+              },
+              {
+                "fifth": "https://www.reserved.com/media/catalog/product/1/0/1046C-MLC-040_1.jpg"
+              },
+              {
+                "sixth": "https://www.reserved.com/media/catalog/product/1/0/1046C-MLC-041_1.jpg"
+              }
+            ]
+          },
+          {
+            "id": 28,
+            "name": "Organic cotton rich nightdress",
+            "item": "nightwear",
+            "amount": 1000,
+            "price": 15.99,
+            "desc": "V neck, adjustable cami straps",
+
+            "material": [
+              {
+                "fabric": "cotton",
+                "percentage": "55"
+              },
+              {
+                "fabric": "viscose",
+                "percentage": "45"
+              }
+            ],
+            "images": [
+              {
+                "first": "https://www.reserved.com/media/catalog/product/0/5/0543A-99X-001_5.jpg"
+              },
+              {
+                "second": "https://www.reserved.com/media/catalog/product/0/5/0543A-99X-020_1.jpg"
+              },
+              {
+                "third": "https://www.reserved.com/media/catalog/product/0/5/0543A-99X-021_1.jpg"
+              },
+              {
+                "fourth": "https://www.reserved.com/media/catalog/product/0/5/0543A-99X-022_1.jpg"
+              },
+              {
+                "fifth": "https://www.reserved.com/media/catalog/product/0/5/0543A-99X-001_5.jpg"
+              },
+              {
+                "sixth": "https://www.reserved.com/media/catalog/product/0/5/0543A-99X-020_1.jpg"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "accessories": []
+      },
+      {
+        "shoes": []
+      }
+    ]
+  },
   "users": []
 }

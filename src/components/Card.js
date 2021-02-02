@@ -16,7 +16,6 @@ const Card = ({
 }) => {
   const [favorite, setFavorite] = useState(false);
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-
   //handlers
   const snackbarHandler = (snackbarMessage, snackVariant) => {
     enqueueSnackbar(snackbarMessage, { variant: snackVariant });

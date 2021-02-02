@@ -265,24 +265,47 @@ const Nav = () => {
           onMouseLeave={() => SetManDropdown(false)}
         >
           <ul>
-            <li>Clothes</li>
+            <li className="list-header">Clothes</li>
             <li>New in</li>
-            <li>Bestsellers</li>
-            <li>Coats, jackets, puffer jackets</li>
-            <li>Jumpers, Cardigans</li>
-            <li>Shirts</li>
-            <li>Hoodies, sweatshirts</li>
-            <li>Trousers</li>
-            <li>Polo shirts</li>
-            <li>T-shirts</li>
-            <li>Jeans</li>
-            <li>Blazers</li>
-            <li>Suits</li>
-            <li>Nightwear</li>
-            <li>Underwear</li>
+            <Link to="/man/clothes/outerwear" className="link">
+              <li>Coats, jackets, puffer jackets</li>
+            </Link>
+            <Link to="/man/clothes/sweaters" className="link">
+              <li>Jumpers, Cardigans</li>
+            </Link>
+            <Link to="/man/clothes/shirts" className="link">
+              <li>Shirts</li>
+            </Link>
+            <Link to="/man/clothes/sweatshirts" className="link">
+              <li>Hoodies, sweatshirts</li>
+            </Link>
+            <Link to="/man/clothes/trousers" className="link">
+              <li>Trousers</li>
+            </Link>
+            <Link to="/man/clothes/polos" className="link">
+              <li>Polo shirts</li>
+            </Link>
+            <Link to="/man/clothes/t-shirts" className="link">
+              <li>T-shirts</li>
+            </Link>
+            <Link to="/man/clothes/jeans" className="link">
+              <li>Jeans</li>
+            </Link>
+            <Link to="/man/clothes/blazers" className="link">
+              <li>Blazers</li>
+            </Link>
+            <Link to="/man/clothes/suits" className="link">
+              <li>Suits</li>
+            </Link>
+            <Link to="/man/clothes/nightwear" className="link">
+              <li>Nightwear</li>
+            </Link>
+            <Link to="/man/clothes/underwear" className="link">
+              <li>Underwear</li>
+            </Link>
           </ul>
           <ul>
-            <li>Accessories</li>
+            <li className="list-header">Accessories</li>
             <li>New In</li>
             <li>Shoes</li>
             <li>Bags, toiletry bags</li>
@@ -291,7 +314,7 @@ const Nav = () => {
             <li>See more</li>
           </ul>
           <ul>
-            <li>Collections</li>
+            <li className="list-header">Collections</li>
             <li>Athleisure</li>
             <li>Winter Accessories</li>
             <li>Premium quality</li>
@@ -504,12 +527,13 @@ const ManDropdown = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 4rem;
+  margin-top: 3rem;
   z-index: 50;
   .dropdown-menu {
     position: absolute;
     top: 0;
     left: 50%;
+    width: 70%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     display: flex;
@@ -523,13 +547,17 @@ const ManDropdown = styled.div`
       li {
         list-style: none;
         padding: 0.4rem 0rem;
+        font-size: 0.8rem;
         &:hover {
           text-decoration: underline;
           cursor: pointer;
         }
-        &:first-child {
-          padding-bottom: 2rem;
-          text-transform: upperCase;
+      }
+      .list-header {
+        font-size: 1rem;
+        padding-bottom: 1rem;
+        text-transform: upperCase;
+        &:hover {
           text-decoration: none;
           cursor: default;
         }
@@ -545,12 +573,13 @@ const WomanDropdown = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
-  margin-top: 4rem;
+  margin-top: 3rem;
   z-index: 50;
   .dropdown-menu {
     position: absolute;
     top: 0;
     left: 50%;
+    width: 70%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     display: flex;
@@ -565,6 +594,7 @@ const WomanDropdown = styled.div`
       li {
         list-style: none;
         padding: 0.4rem 0rem;
+        font-size: 0.8rem;
         &:hover {
           text-decoration: underline;
           cursor: pointer;
@@ -574,6 +604,7 @@ const WomanDropdown = styled.div`
           text-transform: upperCase;
           text-decoration: none;
           cursor: default;
+          font-size: 1rem;
         }
       }
     }

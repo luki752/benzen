@@ -9,7 +9,7 @@ export const loadClothes = () => async (dispatch) => {
   dispatch({
     type: "FETCH_CLOTHES",
     payload: {
-      jackets: clothesData,
+      clothes: clothesData.data,
     },
   });
 };

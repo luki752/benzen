@@ -1,14 +1,9 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { loadClothes } from "../actions/clothesAction";
+import React from "react";
 //styling
 import styled from "styled-components";
 
 const CartPage = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(loadClothes());
-  }, [dispatch]);
+
   return (
     <CartPageComponent>
       <div className="empty-cart">
