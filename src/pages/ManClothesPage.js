@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //actions
@@ -7,18 +7,42 @@ import { loadClothes } from "../actions/clothesAction";
 import styled from "styled-components";
 //router
 import { Link, useLocation } from "react-router-dom";
+//material ui
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+//icons
+import ViewComfyIcon from "@material-ui/icons/ViewComfy";
+import ViewColumnIcon from "@material-ui/icons/ViewColumn";
 //components
 import Card from "../components/Card";
 
 const ManClothesPage = () => {
   //state
-  const [activeList, setActiveList] = useState([]);
-  const [cardHeight, setCardHeight] = useState("70vh");
-  const [cardWidth, setCardWidth] = useState("33%");
+  const [smallView, setSmallView] = useState(true);
+  const [sort, setSort] = useState("");
+  const [size, setSize] = useState([0, 0]);
+  const [mv, setMV] = useState(false);
+  const [cardWidth, setCardWidth] = useState(mv ? "33%" : "50%");
+  const [cardHeight, setCardHeight] = useState(mv ? "70vh" : "50vh");
+
   const location = useLocation();
   const item = location.pathname.split("/")[3];
   const subItem = location.pathname.split("/")[4];
   const category = location.pathname.split("/")[2];
+  //useEffects
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+  useEffect(() => {
+    setMV(window.matchMedia("(min-width: 1000px)").matches);
+  }, [size]);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -26,7 +50,10 @@ const ManClothesPage = () => {
   }, [dispatch]);
 
   const { clothes, isLoading } = useSelector((state) => state.clothes);
-
+  //handlers
+  const handleSort = (event) => {
+    setSort(event.target.value);
+  };
   return (
     <>
       {!isLoading && (
@@ -206,13 +233,55 @@ const ManClothesPage = () => {
             </div>
             <div className="options-component">
               <div className="sort">
-                <select>
-                  <option value="">sort By</option>
-                  <option value="">price asc</option>
-                  <option value="">price desc</option>
-                </select>
+                <FormControl>
+                  <InputLabel className="sort-label">Sort price by</InputLabel>
+                  <Select
+                    value={sort}
+                    onChange={handleSort}
+                    className="sort-select"
+                  >
+                    <MenuItem value="asc">ASC</MenuItem>
+                    <MenuItem value="desc">DESC</MenuItem>
+                  </Select>
+                </FormControl>
               </div>
-              <div className="display-info"></div>
+              <div className="display-info">
+                {category === "clothes" ? (
+                  <span>
+                    {
+                      clothes.male.clothes.filter((cloth) =>
+                        subItem ? cloth.item === subItem : cloth.item === item
+                      ).length
+                    }{" "}
+                    Products
+                  </span>
+                ) : (
+                  <span>
+                    {
+                      clothes.male.accessories.filter((cloth) =>
+                        subItem ? cloth.item === subItem : cloth.item === item
+                      ).length
+                    }{" "}
+                    Products
+                  </span>
+                )}
+                <ViewComfyIcon
+                  className={smallView ? "view-icon" : "view-icon active-icon"}
+                  onClick={() => {
+                    setCardWidth(mv ? "33%" : "50%");
+                    setCardHeight(mv ? "70vh" : "50vh");
+                    setSmallView(!smallView);
+                  }}
+                />
+                <ViewColumnIcon
+                  className={smallView ? "view-icon active-icon" : "view-icon"}
+                  onClick={() => {
+                    setCardWidth(mv ? "50%" : "90%");
+                    setCardHeight(mv ? "90vh" : "70vh");
+                    setSmallView(!smallView);
+                  }}
+                />
+              </div>
             </div>
             <div className="items-display">
               {category === "clothes" ? (
@@ -221,6 +290,15 @@ const ManClothesPage = () => {
                     .filter((cloth) =>
                       subItem ? cloth.item === subItem : cloth.item === item
                     )
+                    .sort(function (a, b) {
+                      if (sort === "asc") {
+                        return a.price - b.price;
+                      } else if (sort === "desc") {
+                        return b.price - a.price;
+                      } else {
+                        return "";
+                      }
+                    })
                     .map((cloth) => (
                       <Card
                         key={cloth.id}
@@ -229,7 +307,7 @@ const ManClothesPage = () => {
                         name={cloth.name}
                         price={cloth.price}
                         hasDiscount={cloth.discount ? true : false}
-                        discountPrice={cloth.discountPrice}
+                        beforeDiscount={cloth.beforeDiscount}
                         height={cardHeight}
                         width={cardWidth}
                         margin="1.5rem 0"
@@ -242,6 +320,15 @@ const ManClothesPage = () => {
                     .filter((cloth) =>
                       subItem ? cloth.item === subItem : cloth.item === item
                     )
+                    .sort(function (a, b) {
+                      if (sort === "asc") {
+                        return a.price - b.price;
+                      } else if (sort === "desc") {
+                        return b.price - a.price;
+                      } else {
+                        return "";
+                      }
+                    })
                     .map((cloth) => (
                       <Card
                         key={cloth.id}
@@ -250,7 +337,10 @@ const ManClothesPage = () => {
                         name={cloth.name}
                         price={cloth.price}
                         hasDiscount={cloth.discount ? true : false}
-                        discountPrice={cloth.discountPrice}
+                        beforeDiscount={cloth.beforeDiscount}
+                        height={cardHeight}
+                        width={cardWidth}
+                        margin="1.5rem 0"
                       />
                     ))}
                 </>
@@ -302,17 +392,57 @@ const ManClothesPageComponent = styled.div`
     margin-left: 25rem;
     @media screen and (max-width: 1000px) {
       margin: 0;
+      width: 100%;
+    }
+    .items-name {
+      font-weight: Bold;
+      letter-spacing: 2px;
+      @media screen and (max-width: 1000px) {
+        text-align: Center;
+      }
     }
     .options-component {
       width: 100%;
       height: 4rem;
       display: flex;
-      justify-content: Center;
+      justify-content: space-between;
       align-items: Center;
+      .sort {
+        .sort-label {
+          text-transform: upperCase;
+          @media screen and (max-width: 1000px) {
+            font-size: 0.6rem;
+          }
+        }
+        .sort-select {
+          width: 10rem;
+          @media screen and (max-width: 1000px) {
+            width: 6rem;
+            margin-left: 10px;
+          }
+        }
+      }
+      .display-info {
+        padding: 0rem 2rem;
+        .view-icon {
+          margin: 0rem 1rem;
+          font-size: 1.5rem;
+          @media screen and (max-width: 1000px) {
+            margin: 0rem 0.5rem;
+          }
+        }
+        .active-icon {
+          background-color: rgba(0, 0, 0, 0.2);
+          border-radius: 1rem;
+        }
+      }
     }
     .items-display {
       display: flex;
       flex-wrap: wrap;
+      @media screen and (max-width: 1000px) {
+        justify-content: center;
+      }
     }
   }
 `;

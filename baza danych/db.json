@@ -322,9 +322,9 @@
           "name": "slim fit suit trousers",
           "item": "suits",
           "amount": 1000,
-          "price": 39.99,
+          "price": 22.99,
           "discount": true,
-          "discountPrice": 22.99,
+          "beforeDiscount": 39.99,
           "desc": "high round neck",
           "material": [
             {
@@ -428,9 +428,9 @@
           "name": "Elegant coat with wool",
           "item": "coats",
           "amount": 1000,
-          "price": 79.99,
+          "price": 39.99,
           "discount": true,
-          "discountPrice": 39.99,
+          "beforeDiscount": 79.99,
           "desc": "notch lapels, single-breasted button fastening, open front pockets, practical single vented back hem",
           "material": [
             {
@@ -694,9 +694,9 @@
           "name": "Quilted jacket with standing collar",
           "item": "puffer-jackets",
           "amount": 1000,
-          "price": 39.99,
+          "price": 25.99,
           "discount": true,
-          "discountPrice": 25.99,
+          "beforeDiscount": 39.99,
           "desc": "low stand up collar, front zip up fastening, side pockets with press studs, long sleeves with ribbed cuffs",
           "material": [
             {
@@ -903,9 +903,9 @@
           "name": "Long check scarf",
           "item": "scarves",
           "amount": 1000,
-          "price": 14.99,
+          "price": 5.99,
           "discount": true,
-          "discountPrice": 5.99,
+          "beforeDiscount": 14.99,
           "desc": "Product size: 200 x 45 cm",
           "material": [
             {
@@ -946,9 +946,9 @@
           "name": "Gloves with buckle fastening",
           "item": "gloves",
           "amount": 1000,
-          "price": 17.99,
+          "price": 7.99,
           "discount": true,
-          "discountPrice": 7.99,
+          "beforeDiscount": 17.99,
           "material": [
             {
               "fabric": "polyester",

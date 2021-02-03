@@ -12,7 +12,7 @@ const Card = ({
   name,
   price,
   hasDiscount,
-  discountPrice,
+  beforeDiscount,
   height,
   width,
   margin,
@@ -48,8 +48,10 @@ const Card = ({
       <div className="price">
         {hasDiscount ? (
           <p>
-            {discountPrice} GBP
-            <span style={{ textDecoration: "line-through" }}>{price} GBP</span>
+            {price} GBP
+            <span style={{ textDecoration: "line-through" }}>
+              {beforeDiscount} GBP
+            </span>
           </p>
         ) : (
           <span>{price} GBP</span>
@@ -67,11 +69,12 @@ const CardComponent = styled.div`
   flex-direction: column;
   padding: 4px;
   img {
-    height: 100%;
+    height: 93%;
     width: 100%;
     object-fit: cover;
   }
   .price {
+    height: 2%;
     font-size: 0.8rem;
     display: flex;
     @media screen and (max-width: 1000px) {
@@ -88,10 +91,11 @@ const CardComponent = styled.div`
     }
   }
   .name {
+    height: 5%;
     padding: 2px 0;
     color: rgba(0, 0, 0, 0.6);
     @media screen and (max-width: 1000px) {
-      font-size: 0.7rem;
+      font-size: 0.6rem;
     }
   }
   .favoriteIcon {
