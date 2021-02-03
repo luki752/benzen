@@ -1,6 +1,8 @@
 import React from "react";
 //styling
 import styled from "styled-components";
+//router
+import { Link } from "react-router-dom";
 
 const ImageComponent = ({
   width,
@@ -10,6 +12,8 @@ const ImageComponent = ({
   btnText,
   btns,
   secondBtn,
+  link,
+  secondLink,
 }) => {
   return (
     <ImageComponentStyles
@@ -21,11 +25,17 @@ const ImageComponent = ({
       <span style={{ color: `${textColor}` }}>{text}</span>
       {btns ? (
         <div className="buttons">
-          <button>{btnText}</button>
-          <button>{secondBtn}</button>
+          <Link to={link} className="link">
+            <button>{btnText}</button>
+          </Link>
+          <Link to={secondLink} className="link">
+            <button>{secondBtn}</button>
+          </Link>
         </div>
       ) : (
-        <button>{btnText}</button>
+        <Link to={link} className="link">
+          <button>{btnText}</button>
+        </Link>
       )}
     </ImageComponentStyles>
   );

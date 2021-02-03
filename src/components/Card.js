@@ -13,6 +13,9 @@ const Card = ({
   price,
   hasDiscount,
   discountPrice,
+  height,
+  width,
+  margin,
 }) => {
   const [favorite, setFavorite] = useState(false);
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
@@ -22,7 +25,7 @@ const Card = ({
   };
 
   return (
-    <CardComponent>
+    <CardComponent style={{ height: height, width: width, margin: margin }}>
       <img
         src={img}
         alt={name}
@@ -41,6 +44,7 @@ const Card = ({
           }
         }}
       />
+      <div className="name">{name}</div>
       <div className="price">
         {hasDiscount ? (
           <p>
@@ -51,32 +55,21 @@ const Card = ({
           <span>{price} GBP</span>
         )}
       </div>
-      <div className="name">{name}</div>
     </CardComponent>
   );
 };
 
 const CardComponent = styled.div`
   position: relative;
-  height: 40rem;
-  width: 20rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  @media screen and (max-width: 1000px) {
-    height: 20rem;
-    width: 10rem;
-    margin: 0.6rem;
-  }
+  padding: 4px;
   img {
-    height: 38rem;
-    width: 20rem;
+    height: 100%;
+    width: 100%;
     object-fit: cover;
-    @media screen and (max-width: 1000px) {
-      height: 18rem;
-      width: 10rem;
-    }
   }
   .price {
     font-size: 0.8rem;
@@ -95,7 +88,8 @@ const CardComponent = styled.div`
     }
   }
   .name {
-    color: rgba(119, 53, 53, 0.8);
+    padding: 2px 0;
+    color: rgba(0, 0, 0, 0.6);
     @media screen and (max-width: 1000px) {
       font-size: 0.7rem;
     }

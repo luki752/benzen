@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 //styling
 import styled from "styled-components";
+//router
+import { Link } from "react-router-dom";
+//redux
+import { useDispatch, useSelector } from "react-redux";
+//actions
+import { loadClothes } from "../actions/clothesAction";
 //components
 import Card from "../components/Card";
 import ImageComponent from "../components/ImageComponent";
@@ -8,6 +14,12 @@ import ImageComponent from "../components/ImageComponent";
 import Carousel from "react-bootstrap/Carousel";
 
 const ManMainPage = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadClothes());
+  }, [dispatch]);
+
+  const { clothes, isLoading } = useSelector((state) => state.clothes);
   return (
     <ManMainPageComponent>
       <div className="items">
@@ -34,57 +46,38 @@ const ManMainPage = () => {
                 alt="Third slide"
               />
               <Carousel.Caption>
-                <h3>new collection</h3>
-                <h3>athleisure</h3>
+                <h3>need warm clothes?</h3>
+                <p>see our offer</p>
                 <div className="buttons">
-                  <button>for him</button>
+                  <Link to="/man/clothes/outerwear/coats" className="link">
+                    <button>for him</button>
+                  </Link>
                 </div>
               </Carousel.Caption>
             </Carousel.Item>
           </Carousel>
         </CarouselStyles>
-        <div className="four-cards">
-          <Card
-            img={
-              "https://www.reserved.com/media/catalog/product/4/8/4845C-59X-030_1.jpg"
-            }
-            secondImage={
-              "https://www.reserved.com/media/catalog/product/4/8/4845C-59X-001_3.jpg"
-            }
-            name={"Quilted jacket"}
-            price={"24.99"}
-          />
-          <Card
-            img={
-              "https://www.reserved.com/media/catalog/product/Y/L/YL447-05X-030_2.jpg"
-            }
-            secondImage={
-              "https://www.reserved.com/media/catalog/product/Y/L/YL447-05X-001_3.jpg"
-            }
-            name={"Cotton rich sweatpants"}
-            price={"19.99"}
-          />
-          <Card
-            img={
-              "https://www.reserved.com/media/catalog/product/3/2/3209C-05X-030_1.jpg"
-            }
-            secondImage={
-              "https://www.reserved.com/media/catalog/product/3/2/3209C-05X-004_4.jpg"
-            }
-            name={"Hoodie"}
-            price={"29.99"}
-          />
-          <Card
-            img={
-              "https://www.reserved.com/media/catalog/product/2/6/2675C-09M-030_2.jpg"
-            }
-            secondImage={
-              "https://www.reserved.com/media/catalog/product/2/6/2675C-09M-002_5.jpg"
-            }
-            name={"Melange sweatpants"}
-            price={"19.99"}
-          />
-        </div>
+        {!isLoading && (
+          <div className="four-cards">
+            {clothes.male.clothes
+              .filter((cloth) => cloth.item === "puffer-jackets")
+              .slice(0, 4)
+              .map((cloth) => (
+                <Card
+                  key={cloth.id}
+                  img={cloth.images[0].first}
+                  secondImage={cloth.images[1].second}
+                  name={cloth.name}
+                  price={cloth.price}
+                  hasDiscount={cloth.discount ? true : false}
+                  discountPrice={cloth.discountPrice}
+                  height={"40rem"}
+                  width={"20rem"}
+                  margin="3rem 0"
+                />
+              ))}
+          </div>
+        )}
         <div className="four-components">
           <ImageComponent
             text={"trousers"}
@@ -94,6 +87,7 @@ const ManMainPage = () => {
             }
             btnText={"for him"}
             width={"47%"}
+            link={"man/clothes/trousers"}
           />
           <ImageComponent
             text={"jackets"}
@@ -103,6 +97,7 @@ const ManMainPage = () => {
             }
             btnText={"for him"}
             width={"47%"}
+            link={"/man/clothes/outerwear/jackets"}
           />
           <ImageComponent
             text={"sweatshirts"}
@@ -112,6 +107,7 @@ const ManMainPage = () => {
             }
             btnText={"for him"}
             width={"47%"}
+            link={"/man/clothes/sweatshirts"}
           />
           <ImageComponent
             text={"t-shirts"}
@@ -121,6 +117,7 @@ const ManMainPage = () => {
             }
             btnText={"for him"}
             width={"47%"}
+            link={"/man/clothes/t-shirts"}
           />
         </div>
 
@@ -134,6 +131,8 @@ const ManMainPage = () => {
           btns={true}
           secondBtn={"Hats,scarfs,gloves"}
           width={"100%"}
+          link={"/man/accessories/shoes"}
+          secondLink={"/man/accessories/hats"}
         />
       </div>
     </ManMainPageComponent>
@@ -155,7 +154,6 @@ const ManMainPageComponent = styled.div`
       justify-content: space-evenly;
       align-items: center;
       flex-wrap: wrap;
-      padding: 3rem 0rem;
     }
     .four-components {
       display: flex;

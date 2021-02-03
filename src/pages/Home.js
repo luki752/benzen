@@ -33,10 +33,12 @@ const Home = () => {
                 alt="Third slide"
               />
               <Carousel.Caption>
-                <h3>age of aquarius</h3>
-                <p>new collection</p>
+                <h3>It's cold outside</h3>
+                <p>get a jacket</p>
                 <div className="buttons">
-                  <button>for her</button>
+                  <Link to="/woman/clothes/jackets" className="link">
+                    <button>for her</button>
+                  </Link>
                 </div>
               </Carousel.Caption>
             </Carousel.Item>
@@ -47,10 +49,12 @@ const Home = () => {
                 alt="Third slide"
               />
               <Carousel.Caption>
-                <h3>new collection</h3>
-                <p>Athleisure</p>
+                <h3>need warm clothes?</h3>
+                <p>see our offer</p>
                 <div className="buttons">
-                  <button>for him</button>
+                  <Link to="/man/clothes/outerwear/coats" className="link">
+                    <button>for him</button>
+                  </Link>
                 </div>
               </Carousel.Caption>
             </Carousel.Item>

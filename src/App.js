@@ -36,7 +36,30 @@ function App() {
       <Route path="/checkout/cart" exact>
         <CartPage />
       </Route>
-      <Route path={["/man/clothes/outerwear", "/man/clothes/sweaters","/man/clothes/shirts","/man/clothes/sweatshirts","/man/clothes/trousers","/man/clothes/polos","/man/clothes/t-shirts","/man/clothes/jeans","/man/clothes/blazers","/man/clothes/suits","/man/clothes/nightwear","/man/clothes/underwear","/man/accessories/shoes","/man/accessories/bags","/man/accessories/hats","/man/accessories/socks"]} exact>
+      <Route
+        path={[
+          "/man/clothes/outerwear",
+          "/man/clothes/outerwear/:id",
+          "/man/clothes/sweaters",
+          "/man/clothes/shirts",
+          "/man/clothes/sweatshirts",
+          "/man/clothes/trousers",
+          "/man/clothes/polos",
+          "/man/clothes/t-shirts",
+          "/man/clothes/jeans",
+          "/man/clothes/blazers",
+          "/man/clothes/suits",
+          "/man/clothes/nightwear",
+          "/man/clothes/underwear",
+          "/man/accessories/shoes",
+          "/man/accessories/bags",
+          "/man/accessories/hats",
+          "/man/accessories/socks",
+          "/man/accessories/scarves",
+          "/man/accessories/gloves",
+        ]}
+        exact
+      >
         <ManClothesPage />
       </Route>
       <Footer />

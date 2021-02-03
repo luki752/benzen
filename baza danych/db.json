@@ -117,7 +117,7 @@
         {
           "id": 4,
           "name": "Shirt with mandarin collar",
-          "item": "t-shirts",
+          "item": "shirts",
           "amount": 1000,
           "price": 19.99,
           "desc": "high round neck",
@@ -422,12 +422,317 @@
               "second": "https://www.reserved.com/media/catalog/product/Z/O/ZO425-90X-002_2.jpg"
             }
           ]
+        },
+        {
+          "id": 13,
+          "name": "Elegant coat with wool",
+          "item": "coats",
+          "amount": 1000,
+          "price": 79.99,
+          "discount": true,
+          "discountPrice": 39.99,
+          "desc": "notch lapels, single-breasted button fastening, open front pockets, practical single vented back hem",
+          "material": [
+            {
+              "fabric": "wool",
+              "percentage": "50"
+            },
+            {
+              "fabric": "polyester",
+              "percentage": "42"
+            },
+            {
+              "fabric": "acrylic",
+              "percentage": "4"
+            },
+            {
+              "fabric": "polyamide",
+              "percentage": "2"
+            },
+            {
+              "fabric": "viscose",
+              "percentage": "2"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-001_16.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-002_16.jpg"
+            },
+            {
+              "third": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-003_16.jpg"
+            },
+            {
+              "fourth": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-004_16.jpg"
+            },
+            {
+              "fifth": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-005_16.jpg"
+            },
+            {
+              "sixth": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-040_17.jpg"
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "name": "Quilted jacket with hood",
+          "item": "puffer-jackets",
+          "amount": 1000,
+          "price": 39.99,
+          "desc": "high collar with hood, front zip up fastening, zipped chest pocket, side pocket, with press stud fastening, sleeve and hem narrow ribbing, quilted lining on the inside",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/X/K/XK344-99X-001_24.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/X/K/XK344-99X-002_24.jpg"
+            },
+            {
+              "third": "https://www.reserved.com/media/catalog/product/X/K/XK344-99X-003_24.jpg"
+            },
+            {
+              "fourth": "https://www.reserved.com/media/catalog/product/X/K/XK344-99X-004_24.jpg"
+            },
+            {
+              "fifth": "https://www.reserved.com/media/catalog/product/X/K/XK344-99X-005_24.jpg"
+            },
+            {
+              "sixth": "https://www.reserved.com/media/catalog/product/X/K/XK344-99X-006_24.jpg"
+            },
+            {
+              "seventh": "https://www.reserved.com/media/catalog/product/X/K/XK344-99X-040_24.jpg"
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "name": "Hooded jacket with pockets",
+          "item": "jackets",
+          "amount": 1000,
+          "price": 59.99,
+          "desc": "front flap pockets, smooth lining on the inside",
+          "material": [
+            {
+              "fabric": "polyester",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/Y/V/YV463-99X-001_6.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/Y/V/YV463-99X-002_6.jpg"
+            },
+            {
+              "third": "https://www.reserved.com/media/catalog/product/Y/V/YV463-99X-003_6.jpg"
+            },
+            {
+              "fourth": "https://www.reserved.com/media/catalog/product/Y/V/YV463-99X-004_6.jpg"
+            },
+            {
+              "fifth": "https://www.reserved.com/media/catalog/product/Y/V/YV463-99X-005_6.jpg"
+            },
+            {
+              "sixth": "https://www.reserved.com/media/catalog/product/Y/V/YV463-99X-006_6.jpg"
+            },
+            {
+              "seventh": "https://www.reserved.com/media/catalog/product/Y/V/YV463-99X-040_6.jpg"
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "name": "Quilted vest with a hood",
+          "item": "vests",
+          "amount": 1000,
+          "price": 39.99,
+          "desc": "zip fastening",
+          "material": [
+            {
+              "fabric": "polyester",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/Y/M/YM394-59X-001_9.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/Y/M/YM394-59X-002_9.jpg"
+            },
+            {
+              "third": "https://www.reserved.com/media/catalog/product/Y/M/YM394-59X-004_9.jpg"
+            },
+            {
+              "fourth": "https://www.reserved.com/media/catalog/product/Y/M/YM394-59X-006_9.jpg"
+            },
+            {
+              "fifth": "https://www.reserved.com/media/catalog/product/Y/M/YM394-59X-040_9.jpg"
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "name": "Basic T-shirt",
+          "item": "t-shirts",
+          "amount": 1000,
+          "price": 5.99,
+          "desc": "round neck, short sleeves",
+          "material": [
+            {
+              "fabric": "cotton",
+              "percentage": "60"
+            },
+            {
+              "fabric": "polyester",
+              "percentage": "40"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/Y/U/YU930-88M-020_5.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/Y/U/YU930-88M-021_5.jpg"
+            },
+            {
+              "third": "https://www.reserved.com/media/catalog/product/Y/U/YU930-88M-022_5.jpg"
+            },
+            {
+              "fourth": "https://www.reserved.com/media/catalog/product/Y/U/YU930-88M-023_5.jpg"
+            },
+            {
+              "fifth": "https://www.reserved.com/media/catalog/product/Y/U/YU930-88M-024_5.jpg"
+            },
+            {
+              "sixth": "https://www.reserved.com/media/catalog/product/Y/U/YU930-88M-025_5.jpg"
+            },
+            {
+              "seventh": "https://www.reserved.com/media/catalog/product/Y/U/YU930-88M-001_5.jpg"
+            }
+          ]
+        },
+        {
+          "id": 17,
+          "name": "Quilted jacket",
+          "item": "puffer-jackets",
+          "amount": 1000,
+          "price": 39.99,
+          "desc": "high collar with hood, long sleeves with ribbed trim,smooth lining",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/4/8/4845C-59X-030_1.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/4/8/4845C-59X-001_3.jpg"
+            },
+            {
+              "third": "https://www.reserved.com/media/catalog/product/4/8/4845C-59X-002_3.jpg"
+            },
+            {
+              "fourth": "https://www.reserved.com/media/catalog/product/4/8/4845C-59X-003_3.jpg"
+            },
+            {
+              "fifth": "https://www.reserved.com/media/catalog/product/4/8/4845C-59X-005_3.jpg"
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "name": "Quilted jacket with high neck",
+          "item": "puffer-jackets",
+          "amount": 1000,
+          "price": 29.99,
+          "desc": "low stand up collar with press stud fastening, zip fastening, side pockets with press studs, long sleeves",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-001_12.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-002_12.jpg"
+            },
+            {
+              "third": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-003_12.jpg"
+            },
+            {
+              "fourth": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-004_12.jpg"
+            },
+            {
+              "fifth": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-005_12.jpg"
+            },
+            {
+              "sixth": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-006_12.jpg"
+            },
+            {
+              "seventh": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-040_12.jpg"
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "name": "Quilted jacket with standing collar",
+          "item": "puffer-jackets",
+          "amount": 1000,
+          "price": 39.99,
+          "discount": true,
+          "discountPrice": 25.99,
+          "desc": "low stand up collar, front zip up fastening, side pockets with press studs, long sleeves with ribbed cuffs",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/Y/M/YM393-59X-001_13.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/Y/M/YM393-59X-002_13.jpg"
+            },
+            {
+              "third": "https://www.reserved.com/media/catalog/product/Y/M/YM393-59X-003_13.jpg"
+            },
+            {
+              "fourth": "https://www.reserved.com/media/catalog/product/Y/M/YM393-59X-004_13.jpg"
+            },
+            {
+              "fifth": "https://www.reserved.com/media/catalog/product/Y/M/YM393-59X-005_13.jpg"
+            },
+            {
+              "sixth": "https://www.reserved.com/media/catalog/product/Y/M/YM393-59X-006_13.jpg"
+            },
+            {
+              "seventh": "https://www.reserved.com/media/catalog/product/Y/M/YM393-59X-040_13.jpg"
+            }
+          ]
         }
       ],
 
       "accessories": [
         {
-          "id": 13,
+          "id": 1,
           "name": "Classic sneakers",
           "item": "shoes",
           "amount": 1000,
@@ -469,9 +774,9 @@
           ]
         },
         {
-          "id": 14,
+          "id": 2,
           "name": "Bum bag",
-          "item": "bag",
+          "item": "bags",
           "amount": 1000,
           "price": 12.99,
           "desc": "high round neck",
@@ -504,9 +809,9 @@
           ]
         },
         {
-          "id": 15,
+          "id": 3,
           "name": "Flat cap",
-          "item": "bag",
+          "item": "hats",
           "amount": 1000,
           "price": 12.99,
           "desc": "high round neck",
@@ -534,7 +839,7 @@
           ]
         },
         {
-          "id": 16,
+          "id": 4,
           "name": "Patterned cotton rich socks 5 pack",
           "item": "socks",
           "amount": 1000,
@@ -558,6 +863,110 @@
               "second": "https://www.reserved.com/media/catalog/product/Z/X/ZX344-11X-002_2.jpg"
             }
           ]
+        },
+        {
+          "id": 5,
+          "name": "Cap",
+          "item": "hats",
+          "amount": 1000,
+          "price": 15.99,
+          "desc": "Product size: M - 58 cm, L - 60 cm",
+          "material": [
+            {
+              "fabric": "polyester",
+              "percentage": "60"
+            },
+            {
+              "fabric": "lyocell",
+              "percentage": "24"
+            },
+            {
+              "fabric": "polyamide",
+              "percentage": "6"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "4"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/9/0/9084D-90M-001_3.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/9/0/9084D-90M-002_3.jpg"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "Long check scarf",
+          "item": "scarves",
+          "amount": 1000,
+          "price": 14.99,
+          "discount": true,
+          "discountPrice": 5.99,
+          "desc": "Product size: 200 x 45 cm",
+          "material": [
+            {
+              "fabric": "wool",
+              "percentage": "30"
+            },
+            {
+              "fabric": "polyester",
+              "percentage": "23"
+            },
+            {
+              "fabric": "viscose",
+              "percentage": "23"
+            },
+            {
+              "fabric": "acrylic",
+              "percentage": "18"
+            },
+            {
+              "fabric": "polyamide",
+              "percentage": "6"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/Z/H/ZH286-99X-001_6.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/Z/H/ZH286-99X-040_2.jpg"
+            },
+            {
+              "third": "https://www.reserved.com/media/catalog/product/Z/H/ZH286-99X-002_6.jpg"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "Gloves with buckle fastening",
+          "item": "gloves",
+          "amount": 1000,
+          "price": 17.99,
+          "discount": true,
+          "discountPrice": 7.99,
+          "material": [
+            {
+              "fabric": "polyester",
+              "percentage": "97"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "3"
+            }
+          ],
+          "images": [
+            {
+              "first": "https://www.reserved.com/media/catalog/product/Z/Z/ZZ556-90M-001_1.jpg"
+            },
+            {
+              "second": "https://www.reserved.com/media/catalog/product/Z/Z/ZZ556-90M-002_1.jpg"
+            }
+          ]
         }
       ]
     },
@@ -566,7 +975,7 @@
       {
         "clothes": [
           {
-            "id": 17,
+            "id": 1,
             "name": "Jacket with recycled-fabric down filling",
             "item": "jacket",
             "amount": 1000,
@@ -607,7 +1016,7 @@
             ]
           },
           {
-            "id": 18,
+            "id": 2,
             "name": "Patterned dress with stand up collar",
             "item": "dress",
             "amount": 1000,
@@ -642,7 +1051,7 @@
             ]
           },
           {
-            "id": 19,
+            "id": 3,
             "name": "Cropped cardigan with V neck",
             "item": "sweaters",
             "amount": 1000,
@@ -677,7 +1086,7 @@
             ]
           },
           {
-            "id": 20,
+            "id": 4,
             "name": "Stripe organic cotton rich shirt",
             "item": "shirts",
             "amount": 1000,
@@ -709,7 +1118,7 @@
             ]
           },
           {
-            "id": 21,
+            "id": 5,
             "name": "Elegant lace blouse",
             "item": "blouse",
             "amount": 1000,
@@ -744,7 +1153,7 @@
             ]
           },
           {
-            "id": 22,
+            "id": 6,
             "name": "Ladies` blouse body",
             "item": "body",
             "amount": 1000,
@@ -779,7 +1188,7 @@
             ]
           },
           {
-            "id": 22,
+            "id": 7,
             "name": "Ladies` blouse body",
             "item": "body",
             "amount": 1000,
@@ -814,7 +1223,7 @@
             ]
           },
           {
-            "id": 23,
+            "id": 8,
             "name": "Oversize hoodie",
             "item": "sweatshirts",
             "amount": 1000,
@@ -850,7 +1259,7 @@
             ]
           },
           {
-            "id": 24,
+            "id": 9,
             "name": "Sweat jersey joggers",
             "item": "trousers",
             "amount": 1000,
@@ -892,7 +1301,7 @@
             ]
           },
           {
-            "id": 25,
+            "id": 10,
             "name": "Boyfriend slim jeans",
             "item": "jeans",
             "amount": 1000,
@@ -925,7 +1334,7 @@
             ]
           },
           {
-            "id": 26,
+            "id": 11,
             "name": "Leather imitation pencil skirt",
             "item": "skirt",
             "amount": 1000,
@@ -965,7 +1374,7 @@
           },
 
           {
-            "id": 27,
+            "id": 12,
             "name": "Plain suit blazer",
             "item": "blazers",
             "amount": 1000,
@@ -1008,7 +1417,7 @@
             ]
           },
           {
-            "id": 28,
+            "id": 13,
             "name": "Organic cotton rich nightdress",
             "item": "nightwear",
             "amount": 1000,

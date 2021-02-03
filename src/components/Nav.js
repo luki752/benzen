@@ -27,6 +27,11 @@ const Nav = () => {
   const [loginDropdownOpen, setLoginDropdown] = useState(false);
   const mv = window.matchMedia("(min-width: 1000px)");
 
+  //handlers
+  const linkHandler = () => {
+    window.scrollTo(0, 0);
+    setNavOpen(!navOpen);
+  };
   return (
     <NavComponent>
       <div className="nav-left-menu">
@@ -126,22 +131,66 @@ const Nav = () => {
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                   <h1>Clothes</h1>
                 </AccordionSummary>
-                <AccordionDetails>New in</AccordionDetails>
-                <AccordionDetails>Bestsellers</AccordionDetails>
-                <AccordionDetails>
-                  Coats, jackets, puffer jackets
-                </AccordionDetails>
-                <AccordionDetails>Jumpers, Cardigans</AccordionDetails>
-                <AccordionDetails>Shirts</AccordionDetails>
-                <AccordionDetails>Hoodies, sweatshirts</AccordionDetails>
-                <AccordionDetails>Trousers</AccordionDetails>
-                <AccordionDetails>Polo shirts</AccordionDetails>
-                <AccordionDetails>T-shirts</AccordionDetails>
-                <AccordionDetails>Jeans</AccordionDetails>
-                <AccordionDetails>Blazers</AccordionDetails>
-                <AccordionDetails>Suits</AccordionDetails>
-                <AccordionDetails>Nightwear</AccordionDetails>
-                <AccordionDetails>Underwear</AccordionDetails>
+                <Link to="/man/clothes/outerwear/coats" className="link">
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    Coats, jackets, puffer jackets
+                  </AccordionDetails>
+                </Link>
+                <Link to="/man/clothes/sweaters" className="link">
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    Jumpers, Cardigans
+                  </AccordionDetails>
+                </Link>
+                <Link to="/man/clothes/shirts" className="link">
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    Shirts
+                  </AccordionDetails>
+                </Link>
+                <Link to="/man/clothes/sweatshirts" className="link">
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    Hoodies, sweatshirts
+                  </AccordionDetails>
+                </Link>
+                <Link to="/man/clothes/trousers" className="link">
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    Trousers
+                  </AccordionDetails>
+                </Link>
+                <Link to="/man/clothes/polos" className="link">
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    Polo shirts
+                  </AccordionDetails>
+                </Link>
+                <Link to="/man/clothes/t-shirts" className="link">
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    T-shirts
+                  </AccordionDetails>
+                </Link>
+                <Link to="/man/clothes/jeans" className="link">
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    Jeans
+                  </AccordionDetails>
+                </Link>
+                <Link to="/man/clothes/blazers" className="link">
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    Blazers
+                  </AccordionDetails>
+                </Link>
+                <Link to="/man/clothes/suits" className="link">
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    Suits
+                  </AccordionDetails>
+                </Link>
+                <Link to="/man/clothes/nightwear" className="link">
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    Nightwear
+                  </AccordionDetails>
+                </Link>
+                <Link to="/man/clothes/underwear" className="link">
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    Underwear
+                  </AccordionDetails>
+                </Link>
               </Accordion>
             </AccordionDetails>
 
@@ -149,31 +198,38 @@ const Nav = () => {
             <AccordionDetails>
               <Accordion className="accordion-within">
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                  <h1>Shoes</h1>
+                  <h1>Accessories</h1>
                 </AccordionSummary>
-                <AccordionDetails>Accessories</AccordionDetails>
-                <AccordionDetails>New In</AccordionDetails>
-                <AccordionDetails>Shoes</AccordionDetails>
-                <AccordionDetails>Bags, toiletry bags</AccordionDetails>
-                <AccordionDetails>Hats, scarves, gloves</AccordionDetails>
-                <AccordionDetails>Socks</AccordionDetails>
-                <AccordionDetails>See more</AccordionDetails>
-              </Accordion>
-            </AccordionDetails>
-
-            {/* accordion within main accordion */}
-            <AccordionDetails>
-              <Accordion className="accordion-within">
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                  <h1>Collection</h1>
-                </AccordionSummary>
-                <AccordionDetails>Collections</AccordionDetails>
-                <AccordionDetails>Athleisure</AccordionDetails>
-                <AccordionDetails>Winter Accessories</AccordionDetails>
-                <AccordionDetails>Premium quality</AccordionDetails>
-                <AccordionDetails>Unisex collection</AccordionDetails>
-                <AccordionDetails>Limited license</AccordionDetails>
-                <AccordionDetails>Eco aware</AccordionDetails>
+                <Link to="/man/accessories/shoes" className="link">
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    Shoes
+                  </AccordionDetails>
+                </Link>
+                <Link to="/man/accessories/bags" className="link">
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    Bags, toiletry bags
+                  </AccordionDetails>
+                </Link>
+                <Link to="/man/accessories/hats" className="link">
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    Hats
+                  </AccordionDetails>
+                </Link>
+                <Link to="/man/accessories/scarves" className="link">
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    scarves
+                  </AccordionDetails>
+                </Link>
+                <Link to="/man/accessories/gloves" className="link">
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    gloves
+                  </AccordionDetails>
+                </Link>
+                <Link to="/man/accessories/socks" className="link">
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    Socks
+                  </AccordionDetails>
+                </Link>
               </Accordion>
             </AccordionDetails>
           </Accordion>
@@ -217,7 +273,6 @@ const Nav = () => {
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                   <h1>Shoes</h1>
                 </AccordionSummary>
-                <AccordionDetails>New in</AccordionDetails>
                 <AccordionDetails>All</AccordionDetails>
                 <AccordionDetails>Boots</AccordionDetails>
                 <AccordionDetails>Heels</AccordionDetails>
@@ -233,26 +288,10 @@ const Nav = () => {
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                   <h1>Accessories</h1>
                 </AccordionSummary>
-                <AccordionDetails>New in</AccordionDetails>
                 <AccordionDetails>Bags, backpacks</AccordionDetails>
                 <AccordionDetails>Hats, scarves, gloves</AccordionDetails>
                 <AccordionDetails>Socks, tights</AccordionDetails>
                 <AccordionDetails>See more</AccordionDetails>
-              </Accordion>
-            </AccordionDetails>
-
-            {/* accordion within main accordion */}
-            <AccordionDetails>
-              <Accordion className="accordion-within">
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                  <h1>Collection</h1>
-                </AccordionSummary>
-                <AccordionDetails>Age of Aquarius Collection</AccordionDetails>
-                <AccordionDetails>Home hub</AccordionDetails>
-                <AccordionDetails>Unisex collection</AccordionDetails>
-                <AccordionDetails>Premium quality</AccordionDetails>
-                <AccordionDetails>#BenzenForMum</AccordionDetails>
-                <AccordionDetails>Eco aware</AccordionDetails>
               </Accordion>
             </AccordionDetails>
           </Accordion>
@@ -266,8 +305,7 @@ const Nav = () => {
         >
           <ul>
             <li className="list-header">Clothes</li>
-            <li>New in</li>
-            <Link to="/man/clothes/outerwear" className="link">
+            <Link to="/man/clothes/outerwear/coats" className="link">
               <li>Coats, jackets, puffer jackets</li>
             </Link>
             <Link to="/man/clothes/sweaters" className="link">
@@ -306,21 +344,24 @@ const Nav = () => {
           </ul>
           <ul>
             <li className="list-header">Accessories</li>
-            <li>New In</li>
-            <li>Shoes</li>
-            <li>Bags, toiletry bags</li>
-            <li>Hats, scarves, gloves</li>
-            <li>Socks</li>
-            <li>See more</li>
-          </ul>
-          <ul>
-            <li className="list-header">Collections</li>
-            <li>Athleisure</li>
-            <li>Winter Accessories</li>
-            <li>Premium quality</li>
-            <li>Unisex collection</li>
-            <li>Limited license</li>
-            <li>Eco aware</li>
+            <Link to="/man/accessories/shoes" className="link">
+              <li>Shoes</li>
+            </Link>
+            <Link to="/man/accessories/bags" className="link">
+              <li>Bags, toiletry bags</li>
+            </Link>
+            <Link to="/man/accessories/hats" className="link">
+              <li>Hats</li>
+            </Link>
+            <Link to="/man/accessories/scarves" className="link">
+              <li>scarves</li>
+            </Link>
+            <Link to="/man/accessories/gloves" className="link">
+              <li>gloves</li>
+            </Link>
+            <Link to="/man/accessories/socks" className="link">
+              <li>Socks</li>
+            </Link>
           </ul>
         </div>
       </ManDropdown>
@@ -364,15 +405,6 @@ const Nav = () => {
             <li>Hats, scarves, gloves</li>
             <li>Socks, tights</li>
             <li>See more</li>
-          </ul>
-          <ul>
-            <li>Collection</li>
-            <li>Age of Aquarius Collection</li>
-            <li>Home hub</li>
-            <li>Unisex collection</li>
-            <li>Premium quality</li>
-            <li>#BenzenForMum</li>
-            <li>Eco aware</li>
           </ul>
         </div>
       </WomanDropdown>
@@ -540,6 +572,7 @@ const ManDropdown = styled.div`
     background-color: white;
     padding: 0 5rem;
     border: none;
+    justify-content: Center;
     ul {
       padding: 3rem;
       font-size: 1rem;
@@ -585,7 +618,7 @@ const WomanDropdown = styled.div`
     display: flex;
     background-color: white;
     padding: 0 5rem;
-
+    justify-content: Center;
     border: none;
     ul {
       padding: 3rem;
