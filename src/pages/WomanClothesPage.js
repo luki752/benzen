@@ -384,6 +384,9 @@ const WomanClothesPage = () => {
                         height={cardHeight}
                         width={cardWidth}
                         margin="1.5rem 0"
+                        id={cloth.id}
+                        gender={"female"}
+                        category={"clothes"}
                       />
                     ))}
                 </>
@@ -417,6 +420,9 @@ const WomanClothesPage = () => {
                         height={cardHeight}
                         width={cardWidth}
                         margin="1.5rem 0"
+                        id={cloth.id}
+                        gender={"female"}
+                        category={"accessories"}
                       />
                     ))}
                 </>
@@ -450,6 +456,9 @@ const WomanClothesPage = () => {
                         height={cardHeight}
                         width={cardWidth}
                         margin="1.5rem 0"
+                        id={cloth.id}
+                        gender={"female"}
+                        category={"shoes"}
                       />
                     ))}
                 </>

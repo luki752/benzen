@@ -581,7 +581,7 @@
           ]
         },
         {
-          "id": 16,
+          "id": 17,
           "name": "Basic T-shirt",
           "item": "t-shirts",
           "amount": 1000,
@@ -622,7 +622,7 @@
           ]
         },
         {
-          "id": 17,
+          "id": 18,
           "name": "Quilted jacket",
           "item": "puffer-jackets",
           "amount": 1000,
@@ -653,7 +653,7 @@
           ]
         },
         {
-          "id": 18,
+          "id": 19,
           "name": "Quilted jacket with high neck",
           "item": "puffer-jackets",
           "amount": 1000,
@@ -690,7 +690,7 @@
           ]
         },
         {
-          "id": 19,
+          "id": 20,
           "name": "Quilted jacket with standing collar",
           "item": "puffer-jackets",
           "amount": 1000,

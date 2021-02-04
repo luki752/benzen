@@ -90,6 +90,9 @@ const ManMainPage = () => {
                   height={mv ? "40rem" : "20rem"}
                   width={mv ? "25%" : "50%"}
                   margin={mv ? "3rem 0" : "1rem 0"}
+                  id={cloth.id}
+                  gender={"male"}
+                  category={"clothes"}
                 />
               ))}
           </div>

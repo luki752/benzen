@@ -66,6 +66,9 @@ const WomanMainPage = () => {
                   height={mv ? "40rem" : "20rem"}
                   width={mv ? "25%" : "50%"}
                   margin={mv ? "3rem 0" : "0.5rem 0"}
+                  id={cloth.id}
+                  gender={"female"}
+                  category={"clothes"}
                 />
               ))}
           </div>
@@ -100,6 +103,9 @@ const WomanMainPage = () => {
                   height={mv ? "40rem" : "20rem"}
                   width={mv ? "25%" : "50%"}
                   margin={mv ? "3rem 0" : "0.5rem 0"}
+                  id={cloth.id}
+                  gender={"female"}
+                  category={"clothes"}
                 />
               ))}
           </div>

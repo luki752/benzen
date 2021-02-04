@@ -327,6 +327,9 @@ const ManClothesPage = () => {
                         height={cardHeight}
                         width={cardWidth}
                         margin="1.5rem 0"
+                        id={cloth.id}
+                        gender={"male"}
+                        category={"clothes"}
                       />
                     ))}
                 </>
@@ -357,6 +360,9 @@ const ManClothesPage = () => {
                         height={cardHeight}
                         width={cardWidth}
                         margin="1.5rem 0"
+                        id={cloth.id}
+                        gender={"male"}
+                        category={"accessories"}
                       />
                     ))}
                 </>

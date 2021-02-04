@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 //icons
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+//link
+import { Link } from "react-router-dom";
 //notistack
 import { useSnackbar } from "notistack";
 
@@ -16,6 +18,9 @@ const Card = ({
   height,
   width,
   margin,
+  id,
+  gender,
+  category,
 }) => {
   const [favorite, setFavorite] = useState(false);
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
@@ -27,25 +32,27 @@ const Card = ({
 
   return (
     <CardComponent style={{ height: height, width: width, margin: margin }}>
-      <img
-        src={img}
-        alt={name}
-        onMouseOver={(e) => (e.currentTarget.src = `${secondImage}`)}
-        onMouseOut={(e) => (e.currentTarget.src = `${img}`)}
-      />
-      <FavoriteBorderIcon
-        className="favoriteIcon"
-        style={{ color: favorite ? "red" : "rgba(0, 0, 0, 0.2)" }}
-        onClick={() => {
-          setFavorite(!favorite);
-          if (favorite === false) {
-            snackbarHandler("Added to favorites", "success");
-          } else {
-            snackbarHandler("Removed from favorites", "error");
-          }
-        }}
-      />
-      <div className="name">{name}</div>
+      <Link to={`/${gender}/${category}/${id}`} className="link">
+        <img
+          src={img}
+          alt={name}
+          onMouseOver={(e) => (e.currentTarget.src = `${secondImage}`)}
+          onMouseOut={(e) => (e.currentTarget.src = `${img}`)}
+        />
+        <FavoriteBorderIcon
+          className="favoriteIcon"
+          style={{ color: favorite ? "red" : "rgba(0, 0, 0, 0.2)" }}
+          onClick={() => {
+            setFavorite(!favorite);
+            if (favorite === false) {
+              snackbarHandler("Added to favorites", "success");
+            } else {
+              snackbarHandler("Removed from favorites", "error");
+            }
+          }}
+        />
+        <div className="name">{name}</div>
+      </Link>
       <div className="price">
         {hasDiscount ? (
           <p>
@@ -69,6 +76,9 @@ const CardComponent = styled.div`
   justify-content: center;
   flex-direction: column;
   padding: 4px;
+  .link {
+    text-align: center;
+  }
   img {
     height: 93%;
     width: 100%;

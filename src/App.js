@@ -11,6 +11,7 @@ import ManMainPage from "./pages/ManMainPage";
 import CartPage from "./pages/CartPage";
 import ManClothesPage from "./pages/ManClothesPage";
 import WomanClothesPage from "./pages/WomanClothesPage";
+import ItemDetailsPage from "./pages/ItemDetailsPage";
 //router
 import { Route } from "react-router-dom";
 
@@ -57,6 +58,18 @@ function App() {
         exact
       >
         <WomanClothesPage />
+      </Route>
+      <Route
+        path={[
+          "/male/clothes/:id",
+          "/male/accessories/:id",
+          "/female/clothes/:id",
+          "/female/accessories/:id",
+          "/female/shoes/:id",
+        ]}
+        exact
+      >
+        <ItemDetailsPage />
       </Route>
       <Footer />
     </div>
