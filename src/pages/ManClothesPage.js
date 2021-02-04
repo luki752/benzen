@@ -318,8 +318,8 @@ const ManClothesPage = () => {
                     .map((cloth) => (
                       <Card
                         key={cloth.id}
-                        img={cloth.images[0].first}
-                        secondImage={cloth.images[1].second}
+                        img={cloth.images[0].img}
+                        secondImage={cloth.images[1].img}
                         name={cloth.name}
                         price={cloth.price}
                         hasDiscount={cloth.discount ? true : false}
@@ -351,8 +351,8 @@ const ManClothesPage = () => {
                     .map((cloth) => (
                       <Card
                         key={cloth.id}
-                        img={cloth.images[0].first}
-                        secondImage={cloth.images[1].second}
+                        img={cloth.images[0].img}
+                        secondImage={cloth.images[1].img}
                         name={cloth.name}
                         price={cloth.price}
                         hasDiscount={cloth.discount ? true : false}

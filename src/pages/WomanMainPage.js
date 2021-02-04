@@ -57,8 +57,8 @@ const WomanMainPage = () => {
               .map((cloth) => (
                 <Card
                   key={cloth.id}
-                  img={cloth.images[0].first}
-                  secondImage={cloth.images[1].second}
+                  img={cloth.images[0].img}
+                  secondImage={cloth.images[1].img}
                   name={cloth.name}
                   price={cloth.price}
                   hasDiscount={cloth.discount ? true : false}
@@ -94,13 +94,13 @@ const WomanMainPage = () => {
               .map((cloth) => (
                 <Card
                   key={cloth.id}
-                  img={cloth.images[0].first}
-                  secondImage={cloth.images[1].second}
+                  img={cloth.images[0].img}
+                  secondImage={cloth.images[1].img}
                   name={cloth.name}
                   price={cloth.price}
                   hasDiscount={cloth.discount ? true : false}
                   beforeDiscount={cloth.beforeDiscount}
-                  height={mv ? "40rem" : "20rem"}
+                  height={mv ? "60rem" : "20rem"}
                   width={mv ? "25%" : "50%"}
                   margin={mv ? "3rem 0" : "0.5rem 0"}
                   id={cloth.id}
