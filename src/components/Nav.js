@@ -248,22 +248,99 @@ const Nav = () => {
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                   <h1>Clothes</h1>
                 </AccordionSummary>
-                <AccordionDetails>Bestsellers</AccordionDetails>
-                <AccordionDetails>
-                  Coats, jackets,puffer jackets
-                </AccordionDetails>
-                <AccordionDetails>Dresses, jumpsuits</AccordionDetails>
-                <AccordionDetails>Jumpers, Cardigans</AccordionDetails>
-                <AccordionDetails>Shirts</AccordionDetails>
-                <AccordionDetails>Blouses</AccordionDetails>
-                <AccordionDetails>T-shirts, tops</AccordionDetails>
-                <AccordionDetails>Hoodies, sweatshirts</AccordionDetails>
-                <AccordionDetails>Trousers</AccordionDetails>
-                <AccordionDetails>Jeans</AccordionDetails>
-                <AccordionDetails>Skirts</AccordionDetails>
-                <AccordionDetails>Blazers</AccordionDetails>
-                <AccordionDetails>Nightwear</AccordionDetails>
-                <AccordionDetails>Lingerie</AccordionDetails>
+                <Link
+                  to="/woman/clothes/outerwear/coats"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>
+                    Coats, jackets, puffer jackets
+                  </AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/clothes/dresses"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>dresses, jumpsuits</AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/clothes/sweaters"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>Jumpers, Cardigans</AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/clothes/shirts"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>Shirts</AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/clothes/blouses"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>Blouses</AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/clothes/sweatshirts"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>Hoodies, sweatshirts</AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/clothes/trousers"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>Trousers</AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/clothes/skirts"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>Skirts</AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/clothes/t-shirts"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>T-shirts, tops</AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/clothes/jeans"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>Jeans</AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/clothes/blazers"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>Blazers</AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/clothes/nightwear"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>Nightwear</AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/clothes/lingerie"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>lingerie</AccordionDetails>
+                </Link>
               </Accordion>
             </AccordionDetails>
 
@@ -273,12 +350,41 @@ const Nav = () => {
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                   <h1>Shoes</h1>
                 </AccordionSummary>
-                <AccordionDetails>All</AccordionDetails>
-                <AccordionDetails>Boots</AccordionDetails>
-                <AccordionDetails>Heels</AccordionDetails>
-                <AccordionDetails>Flats</AccordionDetails>
-                <AccordionDetails>Leather</AccordionDetails>
-                <AccordionDetails>Sneakers</AccordionDetails>
+                <Link
+                  to="/woman/shoes/boots"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>Boots</AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/shoes/heels"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>Heels</AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/shoes/flats"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>Flats</AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/shoes/leather"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>Leather</AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/shoes/sneakers"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>Sneakers</AccordionDetails>
+                </Link>
               </Accordion>
             </AccordionDetails>
 
@@ -288,10 +394,34 @@ const Nav = () => {
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                   <h1>Accessories</h1>
                 </AccordionSummary>
-                <AccordionDetails>Bags, backpacks</AccordionDetails>
-                <AccordionDetails>Hats, scarves, gloves</AccordionDetails>
-                <AccordionDetails>Socks, tights</AccordionDetails>
-                <AccordionDetails>See more</AccordionDetails>
+                <Link
+                  to="/woman/accessories/bags"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>Bags, toiletry bags</AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/accessories/hats"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>Hats</AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/accessories/scarves"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>scarves</AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/accessories/gloves"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>gloves</AccordionDetails>
+                </Link>
               </Accordion>
             </AccordionDetails>
           </Accordion>
@@ -372,39 +502,76 @@ const Nav = () => {
           onMouseLeave={() => SetWomanDropdown(false)}
         >
           <ul>
-            <li>Clothes</li>
-            <li>Bestsellers</li>
-            <li>Coats, jackets, puffer jackets</li>
-            <li>Dresses, jumpsuits</li>
-            <li>Jumpers, Cardigans</li>
-            <li>Shirts</li>
-            <li>Blouses</li>
-            <li>T-shirts, tops</li>
-            <li>Hoodies, sweatshirts</li>
-            <li>Trousers</li>
-            <li>Jeans</li>
-            <li>Skirts</li>
-            <li>Blazers</li>
-            <li>Nightwear</li>
-            <li>Lingerie</li>
+            <li className="list-header">Clothes</li>
+            <Link to="/woman/clothes/dresses" className="link">
+              <li>dresses, jumpsuits</li>
+            </Link>
+            <Link to="/woman/clothes/sweaters" className="link">
+              <li>Jumpers, Cardigans</li>
+            </Link>
+            <Link to="/woman/clothes/shirts" className="link">
+              <li>Shirts</li>
+            </Link>
+            <Link to="/woman/clothes/blouses" className="link">
+              <li>Blouses</li>
+            </Link>
+            <Link to="/woman/clothes/sweatshirts" className="link">
+              <li>Hoodies, sweatshirts</li>
+            </Link>
+            <Link to="/woman/clothes/trousers" className="link">
+              <li>Trousers</li>
+            </Link>
+            <Link to="/woman/clothes/skirts" className="link">
+              <li>Skirts</li>
+            </Link>
+            <Link to="/woman/clothes/t-shirts" className="link">
+              <li>T-shirts, tops</li>
+            </Link>
+            <Link to="/woman/clothes/jeans" className="link">
+              <li>Jeans</li>
+            </Link>
+            <Link to="/woman/clothes/blazers" className="link">
+              <li>Blazers</li>
+            </Link>
+            <Link to="/woman/clothes/nightwear" className="link">
+              <li>Nightwear</li>
+            </Link>
+            <Link to="/woman/clothes/lingerie" className="link">
+              <li>lingerie</li>
+            </Link>
           </ul>
           <ul>
-            <li>Shoes</li>
-            <li>New In</li>
-            <li>All</li>
-            <li>Boots</li>
-            <li>Heels</li>
-            <li>Flats</li>
-            <li>Leather</li>
-            <li>Sneakers</li>
+            <li className="list-header">Shoes</li>
+            <Link to="/woman/shoes/boots" className="link">
+              <li>Boots</li>
+            </Link>
+            <Link to="/woman/shoes/heels" className="link">
+              <li>Heels</li>
+            </Link>
+            <Link to="/woman/shoes/flats" className="link">
+              <li>Flats</li>
+            </Link>
+            <Link to="/woman/shoes/leather" className="link">
+              <li>Leather</li>
+            </Link>
+            <Link to="/woman/shoes/sneakers" className="link">
+              <li>Sneakers</li>
+            </Link>
           </ul>
           <ul>
-            <li>Accessories</li>
-            <li>New in</li>
-            <li>Bags, backpacks</li>
-            <li>Hats, scarves, gloves</li>
-            <li>Socks, tights</li>
-            <li>See more</li>
+            <li className="list-header">Accessories</li>
+            <Link to="/woman/accessories/bags" className="link">
+              <li>Bags, toiletry bags</li>
+            </Link>
+            <Link to="/woman/accessories/hats" className="link">
+              <li>Hats</li>
+            </Link>
+            <Link to="/woman/accessories/scarves" className="link">
+              <li>scarves</li>
+            </Link>
+            <Link to="/woman/accessories/gloves" className="link">
+              <li>gloves</li>
+            </Link>
           </ul>
         </div>
       </WomanDropdown>
@@ -606,6 +773,7 @@ const WomanDropdown = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 3rem;
   z-index: 50;
   .dropdown-menu {
@@ -618,8 +786,8 @@ const WomanDropdown = styled.div`
     display: flex;
     background-color: white;
     padding: 0 5rem;
-    justify-content: Center;
     border: none;
+    justify-content: Center;
     ul {
       padding: 3rem;
       font-size: 1rem;
@@ -632,12 +800,14 @@ const WomanDropdown = styled.div`
           text-decoration: underline;
           cursor: pointer;
         }
-        &:first-child {
-          padding-bottom: 2rem;
-          text-transform: upperCase;
+      }
+      .list-header {
+        font-size: 1rem;
+        padding-bottom: 1rem;
+        text-transform: upperCase;
+        &:hover {
           text-decoration: none;
           cursor: default;
-          font-size: 1rem;
         }
       }
     }

@@ -22,6 +22,7 @@ const Card = ({
   //handlers
   const snackbarHandler = (snackbarMessage, snackVariant) => {
     enqueueSnackbar(snackbarMessage, { variant: snackVariant });
+    closeSnackbar(500);
   };
 
   return (
@@ -72,6 +73,7 @@ const CardComponent = styled.div`
     height: 93%;
     width: 100%;
     object-fit: cover;
+    object-position: center;
   }
   .price {
     height: 2%;

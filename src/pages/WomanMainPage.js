@@ -1,13 +1,41 @@
-import React from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 //styling
 import styled from "styled-components";
+//redux
+import { useDispatch, useSelector } from "react-redux";
+//actions
+import { loadClothes } from "../actions/clothesAction";
 //components
 import Card from "../components/Card";
 import ImageComponent from "../components/ImageComponent";
 //bootstrap
 import Carousel from "react-bootstrap/Carousel";
+//router
+import { Link } from "react-router-dom";
 
 const WomanMainPage = () => {
+  //state
+  const [size, setSize] = useState([0, 0]);
+  const [mv, setMV] = useState(false);
+  //dispatch
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadClothes());
+  }, [dispatch]);
+  //get width
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+  useEffect(() => {
+    setMV(window.matchMedia("(min-width: 1000px)").matches);
+  }, [size, mv]);
+  //get data back
+  const { clothes, isLoading } = useSelector((state) => state.clothes);
   return (
     <WomanMainPageComponent>
       <div className="items">
@@ -19,59 +47,31 @@ const WomanMainPage = () => {
           }
           btnText={"Woman"}
           width={"100%"}
+          link={"/woman/sale"}
         />
-        <div className="four-cards">
-          <Card
-            img={
-              "https://www.reserved.com/media/catalog/product/Y/S/YS164-MLC-001_1.jpg"
-            }
-            secondImage={
-              "https://www.reserved.com/media/catalog/product/Y/S/YS164-MLC-002_1.jpg"
-            }
-            name={"Floral skirt"}
-            price={"24.99"}
-            hasDiscount={true}
-            discountPrice={"15.99"}
-          />
-          <Card
-            img={
-              "https://www.reserved.com/media/catalog/product/Z/Q/ZQ881-55J-001_4.jpg"
-            }
-            secondImage={
-              "https://www.reserved.com/media/catalog/product/Z/Q/ZQ881-55J-002_4.jpg"
-            }
-            name={"Denim dress"}
-            price={"39.99"}
-            hasDiscount={true}
-            discountPrice={"19.99"}
-          />
-          <Card
-            img={
-              "https://www.reserved.com/media/catalog/product/Z/R/ZR884-MLC-001_8.jpg"
-            }
-            secondImage={
-              "https://www.reserved.com/media/catalog/product/Z/R/ZR884-MLC-002_8.jpg"
-            }
-            name={"Floral dress"}
-            price={"29.99"}
-            hasDiscount={true}
-            discountPrice={"12.99"}
-          />
-          <Card
-            img={
-              "https://www.reserved.com/media/catalog/product/Y/S/YS165-MLC-001.jpg"
-            }
-            secondImage={
-              "https://www.reserved.com/media/catalog/product/Y/S/YS165-MLC-002.jpg"
-            }
-            name={"Ladies` skirt"}
-            price={"24.99"}
-            hasDiscount={true}
-            discountPrice={"15.99"}
-          />
-        </div>
+        {!isLoading && (
+          <div className="four-cards">
+            {clothes.female.clothes
+              .filter((cloth) => cloth.item === "sweatshirts")
+              .slice(0, 4)
+              .map((cloth) => (
+                <Card
+                  key={cloth.id}
+                  img={cloth.images[0].first}
+                  secondImage={cloth.images[1].second}
+                  name={cloth.name}
+                  price={cloth.price}
+                  hasDiscount={cloth.discount ? true : false}
+                  beforeDiscount={cloth.beforeDiscount}
+                  height={mv ? "40rem" : "20rem"}
+                  width={mv ? "25%" : "50%"}
+                  margin={mv ? "3rem 0" : "0.5rem 0"}
+                />
+              ))}
+          </div>
+        )}
         <ImageComponent
-          text={"home hub"}
+          text={"cozy clothes"}
           textColor={"white"}
           img={
             "https://www.reserved.com/media/SHARED/stronywizerunkowe/reserved/home/content/img/sliders/desktop/baner-full-mix&match-ona-1900x950px-200121.jpg"
@@ -81,49 +81,29 @@ const WomanMainPage = () => {
           }
           btnText={"For Her"}
           width={"100%"}
+          link={"/woman/clothes/sweatshirts"}
         />
-        <div className="four-cards">
-          <Card
-            img={
-              "https://www.reserved.com/media/catalog/product/1/6/1664C-01X-030_2.jpg"
-            }
-            secondImage={
-              "https://www.reserved.com/media/catalog/product/1/6/1664C-01X-040_2.jpg"
-            }
-            name={"Quilted jacket with collar"}
-            price={"59.99"}
-          />
-          <Card
-            img={
-              "https://www.reserved.com/media/catalog/product/1/9/1905C-04X-030_7.jpg"
-            }
-            secondImage={
-              "https://www.reserved.com/media/catalog/product/1/9/1905C-04X-040_5.jpg"
-            }
-            name={"Ribbed jersey body"}
-            price={"14.99"}
-          />
-          <Card
-            img={
-              "https://www.reserved.com/media/catalog/product/0/5/0533C-01X-030_7.jpg"
-            }
-            secondImage={
-              "https://www.reserved.com/media/catalog/product/0/5/0533C-01X-040_4.jpg"
-            }
-            name={"Oversize hoodie"}
-            price={"24.99"}
-          />
-          <Card
-            img={
-              "https://www.reserved.com/media/catalog/product/0/5/0533C-04X-030_5.jpg"
-            }
-            secondImage={
-              "https://www.reserved.com/media/catalog/product/0/5/0533C-04X-002_5.jpg"
-            }
-            name={"Oversize hoodie2"}
-            price={"24.99"}
-          />
-        </div>
+        {!isLoading && (
+          <div className="four-cards">
+            {clothes.female.clothes
+              .filter((cloth) => cloth.item === "sweaters")
+              .slice(0, 4)
+              .map((cloth) => (
+                <Card
+                  key={cloth.id}
+                  img={cloth.images[0].first}
+                  secondImage={cloth.images[1].second}
+                  name={cloth.name}
+                  price={cloth.price}
+                  hasDiscount={cloth.discount ? true : false}
+                  beforeDiscount={cloth.beforeDiscount}
+                  height={mv ? "40rem" : "20rem"}
+                  width={mv ? "25%" : "50%"}
+                  margin={mv ? "3rem 0" : "0.5rem 0"}
+                />
+              ))}
+          </div>
+        )}
         <CarouselStyles>
           <Carousel interval={5000}>
             <Carousel.Item>
@@ -135,7 +115,9 @@ const WomanMainPage = () => {
               <Carousel.Caption>
                 <h3>puffer jackets</h3>
                 <div className="buttons">
-                  <button>for her</button>
+                  <Link to="/woman/clothes/outerwear/puffer-jackets">
+                    <button>for her</button>
+                  </Link>
                 </div>
               </Carousel.Caption>
             </Carousel.Item>
@@ -149,55 +131,18 @@ const WomanMainPage = () => {
                 <h3>winter</h3>
                 <h3>accessories</h3>
                 <div className="buttons">
-                  <button>Shoes</button>
-                  <button>Hats, scarfs, gloves</button>
+                  <Link to="/woman/shoes/boots">
+                    <button>Shoes</button>
+                  </Link>
+                  <Link to="/woman/accessories/hats">
+                    <button>Hats, scarfs, gloves</button>
+                  </Link>
                 </div>
               </Carousel.Caption>
             </Carousel.Item>
           </Carousel>
         </CarouselStyles>
-        <div className="four-cards">
-          <Card
-            img={
-              "https://www.reserved.com/media/catalog/product/0/5/0516C-04X-030_3.jpg"
-            }
-            secondImage={
-              "https://www.reserved.com/media/catalog/product/0/5/0516C-04X-001_3.jpg"
-            }
-            name={"Quilted jacket with collar2"}
-            price={"29.99"}
-          />
-          <Card
-            img={
-              "https://www.reserved.com/media/catalog/product/9/1/9170D-MLC-002_2.jpg"
-            }
-            secondImage={
-              "https://www.reserved.com/media/catalog/product/9/1/9170D-MLC-001_2.jpg"
-            }
-            name={"Thick-soled shoes"}
-            price={"39.99"}
-          />
-          <Card
-            img={
-              "https://www.reserved.com/media/catalog/product/0/5/0516C-12X-030_3.jpg"
-            }
-            secondImage={
-              "https://www.reserved.com/media/catalog/product/0/5/0516C-12X-031_3.jpg"
-            }
-            name={"Quilted jacket with collar3"}
-            price={"29.99"}
-          />
-          <Card
-            img={
-              "https://www.reserved.com/media/catalog/product/2/9/2915E-02X-040_2.jpg"
-            }
-            secondImage={
-              "https://www.reserved.com/media/catalog/product/2/9/2915E-02X-001_3.jpg"
-            }
-            name={"Bucket hat"}
-            price={"15.99"}
-          />
-        </div>
+        <div className="four-cards"></div>
       </div>
     </WomanMainPageComponent>
   );
@@ -218,7 +163,7 @@ const WomanMainPageComponent = styled.div`
       justify-content: space-evenly;
       align-items: center;
       flex-wrap: wrap;
-      padding: 3rem 0rem;
+      padding: 1rem 0rem;
     }
   }
 `;

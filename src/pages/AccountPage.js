@@ -11,12 +11,15 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import DraftsIcon from "@material-ui/icons/Drafts";
 import SearchIcon from "@material-ui/icons/Search";
+//history
 import HistoryIcon from "@material-ui/icons/History";
 
 const AccountPage = () => {
   //state
   const [size, setSize] = useState([0, 0]);
   const [mv, setMV] = useState(false);
+  const [registerPassword, setRegisterPassword] = useState(true);
+  const [loginPassword, setLoginPassword] = useState(true);
   //useEffects
   useLayoutEffect(() => {
     function updateSize() {
@@ -54,11 +57,13 @@ const AccountPage = () => {
             <TextField
               className="input"
               label="Password"
-              type="password"
+              type={loginPassword ? "password" : ""}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <VisibilityIcon />
+                    <VisibilityIcon
+                      onClick={() => setLoginPassword(!loginPassword)}
+                    />
                   </InputAdornment>
                 ),
               }}
@@ -85,26 +90,20 @@ const AccountPage = () => {
               <TextField label="Email" type="email" className="input" />
             </div>
             <div className="name">
-              <TextField
-                className="input"
-                label="Name"
-                className="name-input"
-              />
-              <TextField
-                className="input"
-                label="Surname"
-                className="name-input"
-              />
+              <TextField className="input name-input" label="Name" />
+              <TextField className="input name-input" label="Surname" />
             </div>
             <div className="password">
               <TextField
                 className="input"
                 label="Password"
-                type="password"
+                type={registerPassword ? "password" : ""}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <VisibilityIcon />
+                      <VisibilityIcon
+                        onClick={() => setRegisterPassword(!registerPassword)}
+                      />
                     </InputAdornment>
                   ),
                 }}

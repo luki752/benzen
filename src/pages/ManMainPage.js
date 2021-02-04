@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 //styling
 import styled from "styled-components";
 //router
@@ -14,11 +14,27 @@ import ImageComponent from "../components/ImageComponent";
 import Carousel from "react-bootstrap/Carousel";
 
 const ManMainPage = () => {
+  //state
+  const [size, setSize] = useState([0, 0]);
+  const [mv, setMV] = useState(false);
+  //dispatch
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadClothes());
   }, [dispatch]);
-
+  //get width
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+  useEffect(() => {
+    setMV(window.matchMedia("(min-width: 1000px)").matches);
+  }, [size, mv]);
+  //get data back
   const { clothes, isLoading } = useSelector((state) => state.clothes);
   return (
     <ManMainPageComponent>
@@ -70,10 +86,10 @@ const ManMainPage = () => {
                   name={cloth.name}
                   price={cloth.price}
                   hasDiscount={cloth.discount ? true : false}
-                  discountPrice={cloth.discountPrice}
-                  height={"40rem"}
-                  width={"20rem"}
-                  margin="3rem 0"
+                  beforeDiscount={cloth.beforeDiscount}
+                  height={mv ? "40rem" : "20rem"}
+                  width={mv ? "25%" : "50%"}
+                  margin={mv ? "3rem 0" : "1rem 0"}
                 />
               ))}
           </div>

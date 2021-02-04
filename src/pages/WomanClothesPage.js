@@ -18,7 +18,7 @@ import ViewColumnIcon from "@material-ui/icons/ViewColumn";
 //components
 import Card from "../components/Card";
 
-const ManClothesPage = () => {
+const WomanClothesPage = () => {
   //state
   const [smallView, setSmallView] = useState(false);
   const [sort, setSort] = useState("");
@@ -45,12 +45,11 @@ const ManClothesPage = () => {
     setCardHeight(mv ? "60vh" : "60vh");
   }, [size, mv]);
 
-  //dispatch data
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadClothes());
   }, [dispatch]);
-  //get data back
+
   const { clothes, isLoading } = useSelector((state) => state.clothes);
   //handlers
   const handleSort = (event) => {
@@ -59,10 +58,10 @@ const ManClothesPage = () => {
   return (
     <>
       {!isLoading && (
-        <ManClothesPageComponent>
+        <WomanClothesPageComponent>
           <div className="left-side">
             <ul>
-              <Link to="/man/clothes/outerwear/coats" className="link">
+              <Link to="/woman/clothes/outerwear/coats" className="link">
                 <li
                   className={
                     category === "clothes" ? "category active-list" : "category"
@@ -73,14 +72,17 @@ const ManClothesPage = () => {
               </Link>
               {category === "clothes" ? (
                 <ul>
-                  <Link to="/man/clothes/outerwear/coats" className="link">
+                  <Link to="/woman/clothes/outerwear/coats" className="link">
                     <li className={item === "outerwear" ? "active-list" : ""}>
                       Coats, jackets, puffer jackets
                     </li>
                   </Link>
                   {item === "outerwear" ? (
                     <ul>
-                      <Link to="/man/clothes/outerwear/coats" className="link">
+                      <Link
+                        to="/woman/clothes/outerwear/coats"
+                        className="link"
+                      >
                         <li
                           className={
                             subItem === "coats"
@@ -92,7 +94,7 @@ const ManClothesPage = () => {
                         </li>
                       </Link>
                       <Link
-                        to="/man/clothes/outerwear/jackets"
+                        to="/woman/clothes/outerwear/jackets"
                         className="link"
                       >
                         <li
@@ -102,11 +104,11 @@ const ManClothesPage = () => {
                               : "list-in-list"
                           }
                         >
-                          jackets
+                          Jackets
                         </li>
                       </Link>
                       <Link
-                        to="/man/clothes/outerwear/puffer-jackets"
+                        to="/woman/clothes/outerwear/puffer-jackets"
                         className="link"
                       >
                         <li
@@ -116,85 +118,92 @@ const ManClothesPage = () => {
                               : "list-in-list"
                           }
                         >
-                          puffer jackets
+                          Puffer jackets
                         </li>
                       </Link>
-                      <Link to="/man/clothes/outerwear/vests" className="link">
+                      <Link
+                        to="/woman/clothes/outerwear/biker-jackets"
+                        className="link"
+                      >
                         <li
                           className={
-                            subItem === "vests"
+                            subItem === "biker-jackets"
                               ? "list-in-list active-list"
                               : "list-in-list"
                           }
                         >
-                          vests
+                          Biker jackets
                         </li>
                       </Link>
                     </ul>
                   ) : (
                     ""
                   )}
-
-                  <Link to="/man/clothes/sweaters" className="link">
+                  <Link to="/woman/clothes/dresses" className="link">
+                    <li className={item === "dresses" ? "active-list" : ""}>
+                      dresses, jumpsuits
+                    </li>
+                  </Link>
+                  <Link to="/woman/clothes/sweaters" className="link">
                     <li className={item === "sweaters" ? "active-list" : ""}>
                       Jumpers, Cardigans
                     </li>
                   </Link>
-                  <Link to="/man/clothes/shirts" className="link">
+                  <Link to="/woman/clothes/shirts" className="link">
                     <li className={item === "shirts" ? "active-list" : ""}>
                       Shirts
                     </li>
                   </Link>
-                  <Link to="/man/clothes/sweatshirts" className="link">
+                  <Link to="/woman/clothes/blouses" className="link">
+                    <li className={item === "blouses" ? "active-list" : ""}>
+                      Blouses
+                    </li>
+                  </Link>
+                  <Link to="/woman/clothes/sweatshirts" className="link">
                     <li className={item === "sweatshirts" ? "active-list" : ""}>
                       Hoodies, sweatshirts
                     </li>
                   </Link>
-                  <Link to="/man/clothes/trousers" className="link">
+                  <Link to="/woman/clothes/trousers" className="link">
                     <li className={item === "trousers" ? "active-list" : ""}>
                       Trousers
                     </li>
                   </Link>
-                  <Link to="/man/clothes/polos" className="link">
-                    <li className={item === "polos" ? "active-list" : ""}>
-                      Polo shirts
+                  <Link to="/woman/clothes/skirts" className="link">
+                    <li className={item === "skirts" ? "active-list" : ""}>
+                      Skirts
                     </li>
                   </Link>
-                  <Link to="/man/clothes/t-shirts" className="link">
+                  <Link to="/woman/clothes/t-shirts" className="link">
                     <li className={item === "t-shirts" ? "active-list" : ""}>
-                      T-shirts
+                      T-shirts, tops
                     </li>
                   </Link>
-                  <Link to="/man/clothes/jeans" className="link">
+                  <Link to="/woman/clothes/jeans" className="link">
                     <li className={item === "jeans" ? "active-list" : ""}>
                       Jeans
                     </li>
                   </Link>
-                  <Link to="/man/clothes/blazers" className="link">
+                  <Link to="/woman/clothes/blazers" className="link">
                     <li className={item === "blazers" ? "active-list" : ""}>
                       Blazers
                     </li>
                   </Link>
-                  <Link to="/man/clothes/suits" className="link">
-                    <li className={item === "suits" ? "active-list" : ""}>
-                      Suits
-                    </li>
-                  </Link>
-                  <Link to="/man/clothes/nightwear" className="link">
+                  <Link to="/woman/clothes/nightwear" className="link">
                     <li className={item === "nightwear" ? "active-list" : ""}>
                       Nightwear
                     </li>
                   </Link>
-                  <Link to="/man/clothes/underwear" className="link">
-                    <li className={item === "underwear" ? "active-list" : ""}>
-                      Underwear
+                  <Link to="/woman/clothes/lingerie" className="link">
+                    <li className={item === "lingerie" ? "active-list" : ""}>
+                      lingerie
                     </li>
                   </Link>
                 </ul>
               ) : (
                 ""
               )}
-              <Link to="/man/accessories/shoes" className="link">
+              <Link to="/woman/accessories/bags" className="link">
                 <li
                   className={
                     category === "accessories"
@@ -207,34 +216,64 @@ const ManClothesPage = () => {
               </Link>
               {category === "accessories" ? (
                 <ul>
-                  <Link to="/man/accessories/shoes" className="link">
-                    <li className={item === "shoes" ? "active-list" : ""}>
-                      Shoes
-                    </li>
-                  </Link>
-                  <Link to="/man/accessories/bags" className="link">
+                  <Link to="/woman/accessories/bags" className="link">
                     <li className={item === "bags" ? "active-list" : ""}>
                       Bags, toiletry bags
                     </li>
                   </Link>
-                  <Link to="/man/accessories/hats" className="link">
+                  <Link to="/woman/accessories/hats" className="link">
                     <li className={item === "hats" ? "active-list" : ""}>
                       Hats
                     </li>
                   </Link>
-                  <Link to="/man/accessories/scarves" className="link">
+                  <Link to="/woman/accessories/scarves" className="link">
                     <li className={item === "scarves" ? "active-list" : ""}>
                       scarves
                     </li>
                   </Link>
-                  <Link to="/man/accessories/gloves" className="link">
+                  <Link to="/woman/accessories/gloves" className="link">
                     <li className={item === "gloves" ? "active-list" : ""}>
                       gloves
                     </li>
                   </Link>
-                  <Link to="/man/accessories/socks" className="link">
-                    <li className={item === "socks" ? "active-list" : ""}>
-                      Socks
+                </ul>
+              ) : (
+                ""
+              )}
+              <Link to="/woman/shoes/boots" className="link">
+                <li
+                  className={
+                    category === "shoes" ? "category active-list" : "category"
+                  }
+                >
+                  Shoes
+                </li>
+              </Link>
+              {category === "shoes" ? (
+                <ul>
+                  <Link to="/woman/shoes/boots" className="link">
+                    <li className={item === "boots" ? "active-list" : ""}>
+                      Boots
+                    </li>
+                  </Link>
+                  <Link to="/woman/shoes/heels" className="link">
+                    <li className={item === "heels" ? "active-list" : ""}>
+                      Heels
+                    </li>
+                  </Link>
+                  <Link to="/woman/shoes/flats" className="link">
+                    <li className={item === "flats" ? "active-list" : ""}>
+                      Flats
+                    </li>
+                  </Link>
+                  <Link to="/woman/shoes/leather" className="link">
+                    <li className={item === "leather" ? "active-list" : ""}>
+                      Leather
+                    </li>
+                  </Link>
+                  <Link to="/woman/shoes/sneakers" className="link">
+                    <li className={item === "sneakers" ? "active-list" : ""}>
+                      Sneakers
                     </li>
                   </Link>
                 </ul>
@@ -265,22 +304,40 @@ const ManClothesPage = () => {
                 {category === "clothes" ? (
                   <span>
                     {
-                      clothes.male.clothes.filter((cloth) =>
+                      clothes.female.clothes.filter((cloth) =>
                         subItem ? cloth.item === subItem : cloth.item === item
                       ).length
                     }{" "}
                     Products
                   </span>
                 ) : (
+                  ""
+                )}
+                {category === "accessories" ? (
                   <span>
                     {
-                      clothes.male.accessories.filter((cloth) =>
+                      clothes.female.accessories.filter((cloth) =>
                         subItem ? cloth.item === subItem : cloth.item === item
                       ).length
                     }{" "}
                     Products
                   </span>
+                ) : (
+                  ""
                 )}
+                {category === "shoes" ? (
+                  <span>
+                    {
+                      clothes.female.shoes.filter((cloth) =>
+                        subItem ? cloth.item === subItem : cloth.item === item
+                      ).length
+                    }{" "}
+                    Products
+                  </span>
+                ) : (
+                  ""
+                )}
+
                 <ViewComfyIcon
                   className={smallView ? "view-icon" : "view-icon active-icon"}
                   onClick={() => {
@@ -302,7 +359,7 @@ const ManClothesPage = () => {
             <div className="items-display">
               {category === "clothes" ? (
                 <>
-                  {clothes.male.clothes
+                  {clothes.female.clothes
                     .filter((cloth) =>
                       subItem ? cloth.item === subItem : cloth.item === item
                     )
@@ -331,8 +388,11 @@ const ManClothesPage = () => {
                     ))}
                 </>
               ) : (
+                ""
+              )}
+              {category === "accessories" ? (
                 <>
-                  {clothes.male.accessories
+                  {clothes.female.accessories
                     .filter((cloth) =>
                       subItem ? cloth.item === subItem : cloth.item === item
                     )
@@ -360,16 +420,51 @@ const ManClothesPage = () => {
                       />
                     ))}
                 </>
+              ) : (
+                ""
+              )}
+              {category === "shoes" ? (
+                <>
+                  {clothes.female.shoes
+                    .filter((cloth) =>
+                      subItem ? cloth.item === subItem : cloth.item === item
+                    )
+                    .sort(function (a, b) {
+                      if (sort === "asc") {
+                        return a.price - b.price;
+                      } else if (sort === "desc") {
+                        return b.price - a.price;
+                      } else {
+                        return "";
+                      }
+                    })
+                    .map((cloth) => (
+                      <Card
+                        key={cloth.id}
+                        img={cloth.images[0].first}
+                        secondImage={cloth.images[1].second}
+                        name={cloth.name}
+                        price={cloth.price}
+                        hasDiscount={cloth.discount ? true : false}
+                        beforeDiscount={cloth.beforeDiscount}
+                        height={cardHeight}
+                        width={cardWidth}
+                        margin="1.5rem 0"
+                      />
+                    ))}
+                </>
+              ) : (
+                ""
               )}
             </div>
           </div>
-        </ManClothesPageComponent>
+        </WomanClothesPageComponent>
       )}
     </>
   );
 };
 
-const ManClothesPageComponent = styled.div`
+const WomanClothesPageComponent = styled.div`
   width: 100%;
   min-height: 90vw;
   display: flex;
@@ -464,4 +559,4 @@ const ManClothesPageComponent = styled.div`
   }
 `;
 
-export default ManClothesPage;
+export default WomanClothesPage;

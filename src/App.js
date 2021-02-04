@@ -10,6 +10,7 @@ import WomanMainPage from "./pages/WomanMainPage";
 import ManMainPage from "./pages/ManMainPage";
 import CartPage from "./pages/CartPage";
 import ManClothesPage from "./pages/ManClothesPage";
+import WomanClothesPage from "./pages/WomanClothesPage";
 //router
 import { Route } from "react-router-dom";
 
@@ -38,29 +39,24 @@ function App() {
       </Route>
       <Route
         path={[
-          "/man/clothes/outerwear",
+          "/man/clothes/:id",
           "/man/clothes/outerwear/:id",
-          "/man/clothes/sweaters",
-          "/man/clothes/shirts",
-          "/man/clothes/sweatshirts",
-          "/man/clothes/trousers",
-          "/man/clothes/polos",
-          "/man/clothes/t-shirts",
-          "/man/clothes/jeans",
-          "/man/clothes/blazers",
-          "/man/clothes/suits",
-          "/man/clothes/nightwear",
-          "/man/clothes/underwear",
-          "/man/accessories/shoes",
-          "/man/accessories/bags",
-          "/man/accessories/hats",
-          "/man/accessories/socks",
-          "/man/accessories/scarves",
-          "/man/accessories/gloves",
+          "/man/accessories/:id",
         ]}
         exact
       >
         <ManClothesPage />
+      </Route>
+      <Route
+        path={[
+          "/woman/clothes/:id",
+          "/woman/clothes/outerwear/:id",
+          "/woman/accessories/:id",
+          "/woman/shoes/:id",
+        ]}
+        exact
+      >
+        <WomanClothesPage />
       </Route>
       <Footer />
     </div>
