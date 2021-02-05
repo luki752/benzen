@@ -19,7 +19,6 @@ button {
         background-color: white;
         padding: 1rem;
         width: 7rem;
-        margin: 1rem;
         border: none;
         transition: 0.3s ease-in all;
         &:hover {

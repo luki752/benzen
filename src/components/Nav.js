@@ -606,6 +606,7 @@ const NavComponent = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-top: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   .nav-left-menu {
     ul {
       display: flex;
@@ -740,6 +741,9 @@ const ManDropdown = styled.div`
     padding: 0 5rem;
     border: none;
     justify-content: Center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
     ul {
       padding: 3rem;
       font-size: 1rem;
@@ -776,6 +780,7 @@ const WomanDropdown = styled.div`
   align-items: center;
   margin-top: 3rem;
   z-index: 50;
+
   .dropdown-menu {
     position: absolute;
     top: 0;
@@ -788,6 +793,9 @@ const WomanDropdown = styled.div`
     padding: 0 5rem;
     border: none;
     justify-content: Center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
     ul {
       padding: 3rem;
       font-size: 1rem;
