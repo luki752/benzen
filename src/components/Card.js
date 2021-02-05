@@ -32,6 +32,18 @@ const Card = ({
 
   return (
     <CardComponent style={{ height: height, width: width, margin: margin }}>
+      <FavoriteBorderIcon
+        className="favoriteIcon"
+        style={{ color: favorite ? "red" : "rgba(0, 0, 0, 0.2)" }}
+        onClick={() => {
+          setFavorite(!favorite);
+          if (favorite === false) {
+            snackbarHandler("Added to favorites", "success");
+          } else {
+            snackbarHandler("Removed from favorites", "error");
+          }
+        }}
+      />
       <Link to={`/${gender}/${category}/${id}`} className="link">
         <img
           src={img}
@@ -39,18 +51,7 @@ const Card = ({
           onMouseOver={(e) => (e.currentTarget.src = `${secondImage}`)}
           onMouseOut={(e) => (e.currentTarget.src = `${img}`)}
         />
-        <FavoriteBorderIcon
-          className="favoriteIcon"
-          style={{ color: favorite ? "red" : "rgba(0, 0, 0, 0.2)" }}
-          onClick={() => {
-            setFavorite(!favorite);
-            if (favorite === false) {
-              snackbarHandler("Added to favorites", "success");
-            } else {
-              snackbarHandler("Removed from favorites", "error");
-            }
-          }}
-        />
+
         <div className="name">{name}</div>
       </Link>
       <div className="price">

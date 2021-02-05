@@ -25,7 +25,7 @@ const ManClothesPage = () => {
   const [size, setSize] = useState([0, 0]);
   const [mv, setMV] = useState(false);
   const [cardWidth, setCardWidth] = useState();
-  const [cardHeight, setCardHeight] = useState(mv ? "60vh" : "60vh");
+  const [cardHeight, setCardHeight] = useState();
   const location = useLocation();
   const item = location.pathname.split("/")[3];
   const subItem = location.pathname.split("/")[4];
@@ -42,7 +42,7 @@ const ManClothesPage = () => {
   useEffect(() => {
     setMV(window.matchMedia("(min-width: 1000px)").matches);
     setCardWidth(mv ? "25%" : "50%");
-    setCardHeight(mv ? "60vh" : "60vh");
+    setCardHeight(mv ? "50vh" : "60vh");
   }, [size, mv]);
 
   //dispatch data
@@ -285,7 +285,7 @@ const ManClothesPage = () => {
                   className={smallView ? "view-icon" : "view-icon active-icon"}
                   onClick={() => {
                     setCardWidth(mv ? "25%" : "50%");
-                    setCardHeight(mv ? "60vh" : "50vh");
+                    setCardHeight(mv ? "50vh" : "50vh");
                     setSmallView(false);
                   }}
                 />
@@ -381,10 +381,11 @@ const ManClothesPageComponent = styled.div`
   display: flex;
 
   .left-side {
-    width: 20%;
+    width: 30%;
     position: fixed;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     @media screen and (max-width: 1000px) {
       display: none;

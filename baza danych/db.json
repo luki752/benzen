@@ -750,26 +750,26 @@
           ],
           "images": [
             {
-              "first": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-040_2.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-040_2.jpg"
             },
             {
-              "second": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-001_5.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-001_5.jpg"
             },
             {
-              "third": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-002_5.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-002_5.jpg"
             },
             {
-              "fourth": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-003_5.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-003_5.jpg"
             },
             {
-              "fifth": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-004_5.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-004_5.jpg"
             },
             {
-              "sixth": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-005_5.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-005_5.jpg"
             },
 
             {
-              "seventh": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-006_5.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-006_5.jpg"
             }
           ]
         },
@@ -792,19 +792,19 @@
           ],
           "images": [
             {
-              "first": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-001_4.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-001_4.jpg"
             },
             {
-              "second": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-041_3.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-041_3.jpg"
             },
             {
-              "third": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-002_4.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-002_4.jpg"
             },
             {
-              "fourth": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-042_3.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-042_3.jpg"
             },
             {
-              "fifth": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-003_4.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-003_4.jpg"
             }
           ]
         },
@@ -827,14 +827,14 @@
           ],
           "images": [
             {
-              "first": "https://www.reserved.com/media/catalog/product/Z/H/ZH194-90M-001_4.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH194-90M-001_4.jpg"
             },
             {
-              "second": "https://www.reserved.com/media/catalog/product/Z/H/ZH194-90M-040_3.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH194-90M-040_3.jpg"
             },
 
             {
-              "third": "https://www.reserved.com/media/catalog/product/Z/H/ZH194-90M-002_4.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH194-90M-002_4.jpg"
             }
           ]
         },
@@ -857,10 +857,10 @@
           ],
           "images": [
             {
-              "first": "https://www.reserved.com/media/catalog/product/Z/X/ZX344-11X-001_2.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Z/X/ZX344-11X-001_2.jpg"
             },
             {
-              "second": "https://www.reserved.com/media/catalog/product/Z/X/ZX344-11X-002_2.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Z/X/ZX344-11X-002_2.jpg"
             }
           ]
         },
@@ -891,10 +891,10 @@
           ],
           "images": [
             {
-              "first": "https://www.reserved.com/media/catalog/product/9/0/9084D-90M-001_3.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/9/0/9084D-90M-001_3.jpg"
             },
             {
-              "second": "https://www.reserved.com/media/catalog/product/9/0/9084D-90M-002_3.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/9/0/9084D-90M-002_3.jpg"
             }
           ]
         },
@@ -931,13 +931,13 @@
           ],
           "images": [
             {
-              "first": "https://www.reserved.com/media/catalog/product/Z/H/ZH286-99X-001_6.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH286-99X-001_6.jpg"
             },
             {
-              "second": "https://www.reserved.com/media/catalog/product/Z/H/ZH286-99X-040_2.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH286-99X-040_2.jpg"
             },
             {
-              "third": "https://www.reserved.com/media/catalog/product/Z/H/ZH286-99X-002_6.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH286-99X-002_6.jpg"
             }
           ]
         },
@@ -961,10 +961,10 @@
           ],
           "images": [
             {
-              "first": "https://www.reserved.com/media/catalog/product/Z/Z/ZZ556-90M-001_1.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Z/Z/ZZ556-90M-001_1.jpg"
             },
             {
-              "second": "https://www.reserved.com/media/catalog/product/Z/Z/ZZ556-90M-002_1.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Z/Z/ZZ556-90M-002_1.jpg"
             }
           ]
         }
