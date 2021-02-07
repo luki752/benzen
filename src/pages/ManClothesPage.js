@@ -2,7 +2,7 @@ import React, { useEffect, useState, useLayoutEffect } from "react";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //actions
-import { loadClothes } from "../actions/clothesAction";
+import { loadItems } from "../actions/itemsAction";
 //styling
 import styled from "styled-components";
 //router
@@ -48,10 +48,10 @@ const ManClothesPage = () => {
   //dispatch data
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loadClothes());
+    dispatch(loadItems("male"));
   }, [dispatch]);
   //get data back
-  const { clothes, isLoading } = useSelector((state) => state.clothes);
+  const { items, isLoading } = useSelector((state) => state.items);
   //handlers
   const handleSort = (event) => {
     setSort(event.target.value);
@@ -265,7 +265,7 @@ const ManClothesPage = () => {
                 {category === "clothes" ? (
                   <span>
                     {
-                      clothes.male.clothes.filter((cloth) =>
+                      items.clothes.filter((cloth) =>
                         subItem ? cloth.item === subItem : cloth.item === item
                       ).length
                     }{" "}
@@ -274,7 +274,7 @@ const ManClothesPage = () => {
                 ) : (
                   <span>
                     {
-                      clothes.male.accessories.filter((cloth) =>
+                      items.accessories.filter((cloth) =>
                         subItem ? cloth.item === subItem : cloth.item === item
                       ).length
                     }{" "}
@@ -302,7 +302,7 @@ const ManClothesPage = () => {
             <div className="items-display">
               {category === "clothes" ? (
                 <>
-                  {clothes.male.clothes
+                  {items.clothes
                     .filter((cloth) =>
                       subItem ? cloth.item === subItem : cloth.item === item
                     )
@@ -336,7 +336,7 @@ const ManClothesPage = () => {
                 </>
               ) : (
                 <>
-                  {clothes.male.accessories
+                  {items.accessories
                     .filter((cloth) =>
                       subItem ? cloth.item === subItem : cloth.item === item
                     )

@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 //router
 import { Link } from "react-router-dom";
+//redux
+import { useDispatch, useSelector } from "react-redux";
 //material ui
 import Button from "@material-ui/core/Button";
 import Accordion from "@material-ui/core/Accordion";
@@ -26,12 +28,14 @@ const Nav = () => {
   const [womanDropdownOpen, SetWomanDropdown] = useState(false);
   const [loginDropdownOpen, setLoginDropdown] = useState(false);
   const mv = window.matchMedia("(min-width: 1000px)");
-
+  const { isLogged, user } = useSelector((state) => state.login);
+  const dispatch = useDispatch();
   //handlers
   const linkHandler = () => {
     window.scrollTo(0, 0);
     setNavOpen(!navOpen);
   };
+  console.log(user);
   return (
     <NavComponent>
       <div className="nav-left-menu">
@@ -582,22 +586,61 @@ const Nav = () => {
         onMouseEnter={() => setLoginDropdown(true)}
         onMouseLeave={() => setLoginDropdown(false)}
       >
-        <div className="upper-login">
-          <span>Do you have an account?</span>
-          <Link to="/customer/account/login">
-            <button>Log in</button>
-          </Link>
-        </div>
+        {isLogged ? (
+          <>
+            <div className="upper-login">
+              <span style={{ fontWeight: "bold" }}>
+                {user.name},
+                <div className="greetings">
+                  <div>its nice to have you</div>
+                  <div
+                    className="log-out"
+                    onClick={() =>
+                      dispatch({
+                        type: "LOG_OUT",
+                        payload: {
+                          login: false,
+                          user: [],
+                        },
+                      })
+                    }
+                  >
+                    log out
+                  </div>
+                </div>
+              </span>
+            </div>
 
-        <div className="bottom-login">
-          <span>Is this your first visit?</span>
-          <p>
-            It'll take a short time and you'll gain access to multiple features
-          </p>
-          <Link to="/customer/account/register">
-            <button>Register</button>
-          </Link>
-        </div>
+            <div className="bottom-login">
+              <Link to="/customer/account/orders" className="link">
+                <span>orders</span>
+              </Link>
+              <Link to="/customer/account/info" className="link">
+                <span>account info</span>
+              </Link>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="upper-login">
+              <span>Do you have an account?</span>
+              <Link to="/customer/account/login">
+                <button>Log in</button>
+              </Link>
+            </div>
+
+            <div className="bottom-login">
+              <span>Is this your first visit?</span>
+              <p>
+                It'll take a short time and you'll gain access to multiple
+                features
+              </p>
+              <Link to="/customer/account/register">
+                <button>Register</button>
+              </Link>
+            </div>
+          </>
+        )}
       </LoginDropdown>
     </NavComponent>
   );
@@ -833,10 +876,25 @@ const LoginDropdown = styled.div`
     flex-direction: column;
     justify-content: center;
     background-color: white;
+    .greetings {
+      display: flex;
+      justify-content: space-between;
+      color: rgba(0, 0, 0, 0.6);
+      .log-out {
+        color: black;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
     span {
       padding: 1rem 0rem;
       font-weight: bold;
+      &:first-letter {
+        text-transform: upperCase;
+      }
     }
+
     button {
       padding: 1rem;
       width: 7rem;

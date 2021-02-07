@@ -1,18 +1,18 @@
 import axios from "axios";
-import { clothesUrl } from "../api";
+import { itemsUrl } from "../api";
 
 //action creator
 
-export const loadClothes = () => async (dispatch) => {
+export const loadItems = (gender) => async (dispatch) => {
   dispatch({
     type: "LOADING_DETAIL",
   });
   //fetch axios
-  const clothesData = await axios.get(clothesUrl());
+  const itemsData = await axios.get(itemsUrl(gender));
   dispatch({
     type: "FETCH_CLOTHES",
     payload: {
-      clothes: clothesData.data,
+      items: itemsData.data,
     },
   });
 };

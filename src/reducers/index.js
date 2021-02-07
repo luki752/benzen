@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
-import clothesReducer from "./clothesReducer";
+import itemsReducer from "./itemsReducer";
 import favoritesReducer from "./favoritesReducer";
+import loginReducer from "./loginReducer";
 
 const rootReducer = combineReducers({
-  clothes: clothesReducer,
+  items: itemsReducer,
   favorites: favoritesReducer,
+  login: loginReducer,
 });
 
 export default rootReducer;

@@ -1,12 +1,12 @@
 const initState = {
-  clothes: [],
+  items: [],
   isLoading: true,
 };
 
-const clothesReducer = (state = initState, action) => {
+const itemsReducer = (state = initState, action) => {
   switch (action.type) {
     case "FETCH_CLOTHES":
-      return { ...state, clothes: action.payload.clothes, isLoading: false };
+      return { ...state, items: action.payload.items, isLoading: false };
     case "LOADING_DETAIL":
       return {
         ...state,
@@ -17,4 +17,4 @@ const clothesReducer = (state = initState, action) => {
   }
 };
 
-export default clothesReducer;
+export default itemsReducer;

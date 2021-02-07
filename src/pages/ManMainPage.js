@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //actions
-import { loadClothes } from "../actions/clothesAction";
+import { loadItems } from "../actions/itemsAction";
 //components
 import Card from "../components/Card";
 import ImageComponent from "../components/ImageComponent";
@@ -20,7 +20,7 @@ const ManMainPage = () => {
   //dispatch
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loadClothes());
+    dispatch(loadItems("male"));
   }, [dispatch]);
   //get width
   useLayoutEffect(() => {
@@ -35,7 +35,7 @@ const ManMainPage = () => {
     setMV(window.matchMedia("(min-width: 1000px)").matches);
   }, [size, mv]);
   //get data back
-  const { clothes, isLoading } = useSelector((state) => state.clothes);
+  const { items, isLoading } = useSelector((state) => state.items);
   return (
     <ManMainPageComponent>
       <div className="items">
@@ -75,7 +75,7 @@ const ManMainPage = () => {
         </CarouselStyles>
         {!isLoading && (
           <div className="four-cards">
-            {clothes.male.clothes
+            {items.clothes
               .filter((cloth) => cloth.item === "puffer-jackets")
               .slice(0, 4)
               .map((cloth) => (

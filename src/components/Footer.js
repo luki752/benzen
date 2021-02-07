@@ -21,7 +21,7 @@ const Footer = () => {
     <FooterComponent>
       <div className="footer-computer">
         <ul>
-          <li>reserved e-shop</li>
+          <li>benzen e-shop</li>
           <li>Help and Contact</li>
           <li>Delivery</li>
           <li>Returns {`&`} exchanges</li>
@@ -33,7 +33,7 @@ const Footer = () => {
           <li>Privacy Policy</li>
         </ul>
         <ul>
-          <li>reserved store</li>
+          <li>benzen store</li>
           <li>Pricing Information</li>
           <li>Store returns policy</li>
           <li>Changes associated with Covid 19</li>

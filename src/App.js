@@ -24,10 +24,15 @@ function App() {
       <Route path="/" exact>
         <Home />
       </Route>
-      <Route path="/customer/account/login" exact>
-        <AccountPage />
-      </Route>
-      <Route path="/customer/account/register" exact>
+      <Route
+        path={[
+          "/customer/account/login",
+          "/customer/account/register",
+          "/customer/account/info",
+          "/customer/account/orders",
+        ]}
+        exact
+      >
         <AccountPage />
       </Route>
       <Route path="/woman" exact>

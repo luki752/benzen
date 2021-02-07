@@ -4,7 +4,7 @@ import styled from "styled-components";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //actions
-import { loadClothes } from "../actions/clothesAction";
+import { loadItems } from "../actions/itemsAction";
 //components
 import Card from "../components/Card";
 import ImageComponent from "../components/ImageComponent";
@@ -20,7 +20,7 @@ const WomanMainPage = () => {
   //dispatch
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loadClothes());
+    dispatch(loadItems("female"));
   }, [dispatch]);
   //get width
   useLayoutEffect(() => {
@@ -35,7 +35,7 @@ const WomanMainPage = () => {
     setMV(window.matchMedia("(min-width: 1000px)").matches);
   }, [size, mv]);
   //get data back
-  const { clothes, isLoading } = useSelector((state) => state.clothes);
+  const { items, isLoading } = useSelector((state) => state.items);
   return (
     <WomanMainPageComponent>
       <div className="items">
@@ -51,7 +51,7 @@ const WomanMainPage = () => {
         />
         {!isLoading && (
           <div className="four-cards">
-            {clothes.female.clothes
+            {items.clothes
               .filter((cloth) => cloth.item === "sweatshirts")
               .slice(0, 4)
               .map((cloth) => (
@@ -88,7 +88,7 @@ const WomanMainPage = () => {
         />
         {!isLoading && (
           <div className="four-cards">
-            {clothes.female.clothes
+            {items.clothes
               .filter((cloth) => cloth.item === "sweaters")
               .slice(0, 4)
               .map((cloth) => (
@@ -100,7 +100,7 @@ const WomanMainPage = () => {
                   price={cloth.price}
                   hasDiscount={cloth.discount ? true : false}
                   beforeDiscount={cloth.beforeDiscount}
-                  height={mv ? "60rem" : "20rem"}
+                  height={mv ? "40rem" : "20rem"}
                   width={mv ? "25%" : "50%"}
                   margin={mv ? "3rem 0" : "0.5rem 0"}
                   id={cloth.id}

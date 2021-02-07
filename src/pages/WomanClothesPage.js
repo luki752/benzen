@@ -2,7 +2,7 @@ import React, { useEffect, useState, useLayoutEffect } from "react";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //actions
-import { loadClothes } from "../actions/clothesAction";
+import { loadItems } from "../actions/itemsAction";
 //styling
 import styled from "styled-components";
 //router
@@ -47,14 +47,15 @@ const WomanClothesPage = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loadClothes());
+    dispatch(loadItems("female"));
   }, [dispatch]);
 
-  const { clothes, isLoading } = useSelector((state) => state.clothes);
+  const { items, isLoading } = useSelector((state) => state.items);
   //handlers
   const handleSort = (event) => {
     setSort(event.target.value);
   };
+  console.log(items);
   return (
     <>
       {!isLoading && (
@@ -304,7 +305,7 @@ const WomanClothesPage = () => {
                 {category === "clothes" ? (
                   <span>
                     {
-                      clothes.female.clothes.filter((cloth) =>
+                      items.clothes.filter((cloth) =>
                         subItem ? cloth.item === subItem : cloth.item === item
                       ).length
                     }{" "}
@@ -316,7 +317,7 @@ const WomanClothesPage = () => {
                 {category === "accessories" ? (
                   <span>
                     {
-                      clothes.female.accessories.filter((cloth) =>
+                      items.accessories.filter((cloth) =>
                         subItem ? cloth.item === subItem : cloth.item === item
                       ).length
                     }{" "}
@@ -328,7 +329,7 @@ const WomanClothesPage = () => {
                 {category === "shoes" ? (
                   <span>
                     {
-                      clothes.female.shoes.filter((cloth) =>
+                      items.shoes.filter((cloth) =>
                         subItem ? cloth.item === subItem : cloth.item === item
                       ).length
                     }{" "}
@@ -359,7 +360,7 @@ const WomanClothesPage = () => {
             <div className="items-display">
               {category === "clothes" ? (
                 <>
-                  {clothes.female.clothes
+                  {items.clothes
                     .filter((cloth) =>
                       subItem ? cloth.item === subItem : cloth.item === item
                     )
@@ -394,9 +395,9 @@ const WomanClothesPage = () => {
               ) : (
                 ""
               )}
-              {category === "accessories" ? (
+              {items.category === "accessories" ? (
                 <>
-                  {clothes.female.accessories
+                  {items.accessories
                     .filter((cloth) =>
                       subItem ? cloth.item === subItem : cloth.item === item
                     )
@@ -433,7 +434,7 @@ const WomanClothesPage = () => {
               )}
               {category === "shoes" ? (
                 <>
-                  {clothes.female.shoes
+                  {items.shoes
                     .filter((cloth) =>
                       subItem ? cloth.item === subItem : cloth.item === item
                     )

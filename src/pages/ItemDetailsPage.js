@@ -8,7 +8,7 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //actions
-import { loadClothes } from "../actions/clothesAction";
+import { loadItems } from "../actions/itemsAction";
 //router
 import { useLocation } from "react-router-dom";
 //icons
@@ -33,32 +33,18 @@ const ItemDetailsPage = () => {
   //dispatch data
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loadClothes());
-  }, [dispatch]);
+    dispatch(loadItems(gender));
+  }, [dispatch, gender]);
   //get data back
-  const { clothes, isLoading } = useSelector((state) => state.clothes);
+  const { items, isLoading } = useSelector((state) => state.items);
   useEffect(() => {
     if (!isLoading) {
-      if (gender === "male") {
-        if (category === "clothes") {
-          setItem(clothes.male.clothes.filter((cloth) => cloth.id === pathId));
-        } else if (category === "accessories") {
-          setItem(
-            clothes.male.accessories.filter((cloth) => cloth.id === pathId)
-          );
-        }
-      } else if (gender === "female") {
-        if (category === "clothes") {
-          setItem(
-            clothes.female.clothes.filter((cloth) => cloth.id === pathId)
-          );
-        } else if (category === "accessories") {
-          setItem(
-            clothes.female.accessories.filter((cloth) => cloth.id === pathId)
-          );
-        } else if (category === "shoes") {
-          setItem(clothes.female.shoes.filter((cloth) => cloth.id === pathId));
-        }
+      if (category === "clothes") {
+        setItem(items.clothes.filter((cloth) => cloth.id === pathId));
+      } else if (category === "accessories") {
+        setItem(items.accessories.filter((cloth) => cloth.id === pathId));
+      } else if (category === "shoes") {
+        setItem(items.shoes.filter((cloth) => cloth.id === pathId));
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
