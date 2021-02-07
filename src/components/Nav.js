@@ -99,7 +99,9 @@ const Nav = () => {
           </li>
           <li>
             {" "}
-            <FavoriteIcon className="nav-icon" />{" "}
+            <Link to="/favorites" className="link">
+              <FavoriteIcon className="nav-icon" />{" "}
+            </Link>
           </li>
           <li>
             {" "}
@@ -741,9 +743,6 @@ const ManDropdown = styled.div`
     padding: 0 5rem;
     border: none;
     justify-content: Center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
     ul {
       padding: 3rem;
       font-size: 1rem;
@@ -793,9 +792,6 @@ const WomanDropdown = styled.div`
     padding: 0 5rem;
     border: none;
     justify-content: Center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
     ul {
       padding: 3rem;
       font-size: 1rem;

@@ -17,6 +17,8 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import CloseIcon from "@material-ui/icons/Close";
+//notistack
+import { useSnackbar } from "notistack";
 
 const ItemDetailsPage = () => {
   //state
@@ -61,6 +63,13 @@ const ItemDetailsPage = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
+  //snack bar
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  //handlers
+  const snackbarHandler = (snackbarMessage, snackVariant) => {
+    enqueueSnackbar(snackbarMessage, { variant: snackVariant });
+    closeSnackbar(500);
+  };
   return (
     <>
       {item && (
@@ -88,26 +97,28 @@ const ItemDetailsPage = () => {
                 <ArrowBackIosIcon
                   className="arrows"
                   onClick={(e) => {
+                    e.stopPropagation();
                     currentIndex - 1 === -1
                       ? setCurrentIndex(item[0].images.length - 1)
                       : setCurrentIndex(
                           (currentIndex - 1) % item[0].images.length
                         );
-                    e.stopPropagation();
                   }}
                 />
                 <ArrowForwardIosIcon
                   className="arrows"
                   onClick={(e) => {
-                    setCurrentIndex((currentIndex + 1) % item[0].images.length);
                     e.stopPropagation();
+                    setCurrentIndex((currentIndex + 1) % item[0].images.length);
                   }}
                 />
+                <div className="image-count">
+                  {currentIndex + 1}/{item[0].images.length}
+                </div>
               </div>
             </div>
 
             <div className="right-side">
-              {console.log(item[0])}
               <div className="info">
                 <span className="name">{item[0].name}</span>
                 <span className="price">{item[0].price} GBP</span>
@@ -132,7 +143,9 @@ const ItemDetailsPage = () => {
                     </option>
                   </select>
                 </div>
-                <button>
+                <button
+                  onClick={() => snackbarHandler("Added to card", "success")}
+                >
                   <LocalMallIcon style={{ color: "white" }} />
                   Add to bag
                 </button>
@@ -259,6 +272,7 @@ const ItemDetailsPageComponent = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: relative;
         @media screen and (max-width: 1000px) {
           pointer-events: none;
         }
@@ -273,6 +287,21 @@ const ItemDetailsPageComponent = styled.div`
           }
           &:hover {
             cursor: pointer;
+          }
+        }
+        .image-count {
+          position: absolute;
+          color: black;
+          bottom: 0;
+          left: 58%;
+          margin-left: -50px;
+          background-color: rgba(255, 255, 255, 0.6);
+          border-radius: 2rem;
+          font-size: 1.5rem;
+          z-index: 10;
+          display: none;
+          @media screen and (max-width: 1000px) {
+            display: block;
           }
         }
       }

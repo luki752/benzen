@@ -42,7 +42,7 @@ const WomanClothesPage = () => {
   useEffect(() => {
     setMV(window.matchMedia("(min-width: 1000px)").matches);
     setCardWidth(mv ? "25%" : "50%");
-    setCardHeight(mv ? "60vh" : "60vh");
+    setCardHeight(mv ? "30rem" : "20rem");
   }, [size, mv]);
 
   const dispatch = useDispatch();
@@ -342,7 +342,7 @@ const WomanClothesPage = () => {
                   className={smallView ? "view-icon" : "view-icon active-icon"}
                   onClick={() => {
                     setCardWidth(mv ? "25%" : "50%");
-                    setCardHeight(mv ? "60vh" : "50vh");
+                    setCardHeight(mv ? "30rem" : "20rem");
                     setSmallView(false);
                   }}
                 />
@@ -350,7 +350,7 @@ const WomanClothesPage = () => {
                   className={smallView ? "view-icon active-icon" : "view-icon"}
                   onClick={() => {
                     setCardWidth(mv ? "33%" : "90%");
-                    setCardHeight(mv ? "70vh" : "70vh");
+                    setCardHeight(mv ? "40rem" : "24rem");
                     setSmallView(true);
                   }}
                 />
@@ -387,6 +387,7 @@ const WomanClothesPage = () => {
                         id={cloth.id}
                         gender={"female"}
                         category={"clothes"}
+                        item={cloth}
                       />
                     ))}
                 </>
@@ -423,6 +424,7 @@ const WomanClothesPage = () => {
                         id={cloth.id}
                         gender={"female"}
                         category={"accessories"}
+                        item={cloth}
                       />
                     ))}
                 </>
@@ -459,6 +461,7 @@ const WomanClothesPage = () => {
                         id={cloth.id}
                         gender={"female"}
                         category={"shoes"}
+                        item={cloth}
                       />
                     ))}
                 </>
@@ -477,19 +480,22 @@ const WomanClothesPageComponent = styled.div`
   width: 100%;
   min-height: 90vw;
   display: flex;
-
+  margin-top: 2rem;
   .left-side {
-    width: 20%;
     position: fixed;
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-left: 2rem;
     @media screen and (max-width: 1000px) {
       display: none;
     }
     ul {
       list-style: none;
       li {
+        .link {
+          font-size: 0.9rem;
+        }
         text-indent: 10px;
         letter-spacing: 2px;
         &:hover {

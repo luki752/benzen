@@ -5,8 +5,8 @@ import styled from "styled-components";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 //link
 import { Link } from "react-router-dom";
-//notistack
-import { useSnackbar } from "notistack";
+//redux
+import { connect } from "react-redux";
 
 const Card = ({
   img,
@@ -21,33 +21,32 @@ const Card = ({
   id,
   gender,
   category,
+  item,
+  addToFavorties,
 }) => {
+  //state
   const [favorite, setFavorite] = useState(false);
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   //handlers
-  const snackbarHandler = (snackbarMessage, snackVariant) => {
-    enqueueSnackbar(snackbarMessage, { variant: snackVariant });
-    closeSnackbar(500);
+  const favoritesHandler = () => {
+    setFavorite(!favorite);
+    addToFavorties();
   };
-
   return (
-    <CardComponent style={{ height: height, width: width, margin: margin }}>
+    <CardComponent style={{ width: width, margin: margin }}>
       <FavoriteBorderIcon
         className="favoriteIcon"
         style={{ color: favorite ? "red" : "rgba(0, 0, 0, 0.2)" }}
-        onClick={() => {
-          setFavorite(!favorite);
-          if (favorite === false) {
-            snackbarHandler("Added to favorites", "success");
-          } else {
-            snackbarHandler("Removed from favorites", "error");
-          }
-        }}
+        onClick={() => favoritesHandler()}
       />
-      <Link to={`/${gender}/${category}/${id}`} className="link">
+      <Link
+        to={`/${gender}/${category}/${id}`}
+        className="link"
+        onClick={() => window.scrollTo(0, 0)}
+      >
         <img
           src={img}
           alt={name}
+          style={{ height: height }}
           onMouseOver={(e) => (e.currentTarget.src = `${secondImage}`)}
           onMouseOut={(e) => (e.currentTarget.src = `${img}`)}
         />
@@ -81,7 +80,6 @@ const CardComponent = styled.div`
     text-align: center;
   }
   img {
-    height: 93%;
     width: 100%;
     object-fit: cover;
     object-position: center;
@@ -117,8 +115,21 @@ const CardComponent = styled.div`
     right: 0;
     z-index: 2;
     font-size: 3rem;
-    margin: 1rem;
+    margin: 2rem 1rem;
+    &:hover {
+      cursor: pointer;
+    }
+    @media screen and (max-width: 1000px) {
+      margin: 0.5rem;
+      font-size: 2rem;
+    }
   }
 `;
-
-export default Card;
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const { item } = ownProps;
+  return {
+    addToFavorties: () =>
+      dispatch({ type: "ADD_TO_FAVORITES", payload: { item: { item } } }),
+  };
+};
+export default connect(null, mapDispatchToProps)(Card);

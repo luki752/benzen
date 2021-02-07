@@ -42,7 +42,7 @@ const ManClothesPage = () => {
   useEffect(() => {
     setMV(window.matchMedia("(min-width: 1000px)").matches);
     setCardWidth(mv ? "25%" : "50%");
-    setCardHeight(mv ? "50vh" : "60vh");
+    setCardHeight(mv ? "30rem" : "20rem");
   }, [size, mv]);
 
   //dispatch data
@@ -285,7 +285,7 @@ const ManClothesPage = () => {
                   className={smallView ? "view-icon" : "view-icon active-icon"}
                   onClick={() => {
                     setCardWidth(mv ? "25%" : "50%");
-                    setCardHeight(mv ? "50vh" : "50vh");
+                    setCardHeight(mv ? "30rem" : "20rem");
                     setSmallView(false);
                   }}
                 />
@@ -293,7 +293,7 @@ const ManClothesPage = () => {
                   className={smallView ? "view-icon active-icon" : "view-icon"}
                   onClick={() => {
                     setCardWidth(mv ? "33%" : "90%");
-                    setCardHeight(mv ? "70vh" : "70vh");
+                    setCardHeight(mv ? "40rem" : "24rem");
                     setSmallView(true);
                   }}
                 />
@@ -330,6 +330,7 @@ const ManClothesPage = () => {
                         id={cloth.id}
                         gender={"male"}
                         category={"clothes"}
+                        item={cloth}
                       />
                     ))}
                 </>
@@ -363,6 +364,7 @@ const ManClothesPage = () => {
                         id={cloth.id}
                         gender={"male"}
                         category={"accessories"}
+                        item={cloth}
                       />
                     ))}
                 </>
@@ -379,19 +381,21 @@ const ManClothesPageComponent = styled.div`
   width: 100%;
   min-height: 90vw;
   display: flex;
-
+  margin-top: 2rem;
   .left-side {
-    width: 30%;
     position: fixed;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
+    margin-left: 2rem;
     @media screen and (max-width: 1000px) {
       display: none;
     }
     ul {
       list-style: none;
+      .link {
+        font-size: 0.9rem;
+      }
       li {
         text-indent: 10px;
         letter-spacing: 2px;
@@ -413,7 +417,7 @@ const ManClothesPageComponent = styled.div`
   }
   .right-side {
     width: 80%;
-    margin-left: 25rem;
+    margin-left: 20rem;
     @media screen and (max-width: 1000px) {
       margin: 0;
       width: 100%;

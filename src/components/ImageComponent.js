@@ -65,6 +65,10 @@ const ImageComponentStyles = styled.div`
   }
   button {
     width: fit-content;
+    margin: 0rem 1rem;
+    @media screen and (max-width: 1000px) {
+      margin: 0rem 0.5rem;
+    }
   }
 `;
 

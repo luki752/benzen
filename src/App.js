@@ -12,6 +12,7 @@ import CartPage from "./pages/CartPage";
 import ManClothesPage from "./pages/ManClothesPage";
 import WomanClothesPage from "./pages/WomanClothesPage";
 import ItemDetailsPage from "./pages/ItemDetailsPage";
+import FavoritesPage from "./pages/FavoritesPage";
 //router
 import { Route } from "react-router-dom";
 
@@ -70,6 +71,9 @@ function App() {
         exact
       >
         <ItemDetailsPage />
+      </Route>
+      <Route path="/favorites">
+        <FavoritesPage />
       </Route>
       <Footer />
     </div>

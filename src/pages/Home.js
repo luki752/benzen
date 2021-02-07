@@ -101,6 +101,12 @@ const CarouselStyles = styled.div`
     flex-direction: column;
     height: 100%;
     z-index: 2;
+    button {
+      margin: 0rem 1rem;
+      @media screen and (max-width: 1000px) {
+        margin: 0rem 0.5rem;
+      }
+    }
 
     h3,
     p {

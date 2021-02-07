@@ -15,8 +15,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { SnackbarProvider } from "notistack";
 //icon
 import CloseIcon from "@material-ui/icons/Close";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import DeleteIcon from "@material-ui/icons/Delete";
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -28,25 +26,22 @@ const onClickDismiss = (key) => () => {
 };
 
 ReactDOM.render(
-    <Provider store={store}>
-      <BrowserRouter>
-        <SnackbarProvider
-          ref={notistackRef}
-          maxSnack={2}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "right",
-          }}
-          iconVariant={{
-            success: <FavoriteBorderIcon />,
-            error: <DeleteIcon />,
-          }}
-          action={(key) => <CloseIcon onClick={onClickDismiss(key)} />}
-        >
-          <App />
-        </SnackbarProvider>
-      </BrowserRouter>
-    </Provider>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <SnackbarProvider
+        ref={notistackRef}
+        maxSnack={2}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "right",
+        }}
+        hideIconVariant
+        action={(key) => <CloseIcon onClick={onClickDismiss(key)} />}
+      >
+        <App />
+      </SnackbarProvider>
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );
 
