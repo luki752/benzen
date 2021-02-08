@@ -2079,7 +2079,181 @@
       "surname": "Programista",
       "email": "admin@admin.com",
       "password": "x61Ey612Kl2gpFL56FT9weDnpSo4AV8j8+qx2AuTHdRyY036xxzTTrw10Wq3+4qQyB+XURPWx1ONxp3Y3pB37A==",
-      "favorites": [],
+      "favorites": [
+        {
+          "id": 20,
+          "name": "Box coat with added wool",
+          "item": "coats",
+          "amount": 1000,
+          "price": 49.99,
+          "desc": "classic collar, press stud fastening, smooth lining on the inside",
+          "material": [
+            {
+              "fabric": "polyester",
+              "percentage": "50"
+            },
+            {
+              "fabric": "acrylic",
+              "percentage": "45"
+            },
+            {
+              "fabric": "wool",
+              "percentage": "5"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/6/1660C-80X-030_4.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/6/1660C-80X-001_4.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/6/1660C-80X-002_4.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/6/1660C-80X-003_4.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/6/1660C-80X-004_4.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/6/1660C-80X-005_4.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/6/1660C-80X-040_1.jpg"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "name": "Sweat jersey joggers",
+          "item": "trousers",
+          "amount": 1000,
+          "price": 19.99,
+          "desc": "high waist, two side pockets",
+          "material": [
+            {
+              "fabric": "cotton",
+              "percentage": "76"
+            },
+            {
+              "fabric": "polyester",
+              "percentage": "24"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/0/1031C-01X-030_7.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/0/1031C-01X-001_7.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/0/1031C-01X-002_7.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/0/1031C-01X-003_7.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/0/1031C-01X-004_7.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/0/1031C-01X-040.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/0/1031C-01X-041.jpg"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Elegant lace blouse",
+          "item": "blouses",
+          "amount": 1000,
+          "price": 19.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/7/2/7298B-00X-001_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/7/2/7298B-00X-002_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/7/2/7298B-00X-003_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/7/2/7298B-00X-040_1.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/7/2/7298B-00X-041_1.jpg"
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "name": "Elegant coat with wool",
+          "item": "coats",
+          "amount": 1000,
+          "price": 39.99,
+          "discount": true,
+          "beforeDiscount": 79.99,
+          "desc": "notch lapels, single-breasted button fastening, open front pockets, practical single vented back hem",
+          "material": [
+            {
+              "fabric": "wool",
+              "percentage": "50"
+            },
+            {
+              "fabric": "polyester",
+              "percentage": "42"
+            },
+            {
+              "fabric": "acrylic",
+              "percentage": "4"
+            },
+            {
+              "fabric": "polyamide",
+              "percentage": "2"
+            },
+            {
+              "fabric": "viscose",
+              "percentage": "2"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-001_16.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-002_16.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-003_16.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-004_16.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-005_16.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-040_17.jpg"
+            }
+          ]
+        }
+      ],
       "orders": [],
       "id": 1
     }

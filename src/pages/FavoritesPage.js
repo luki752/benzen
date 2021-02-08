@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 //styling
 import styled from "styled-components";
 //components
@@ -7,20 +7,37 @@ import Card from "../components/Card";
 import { useSelector } from "react-redux";
 
 const FavoritesPage = () => {
+  //state
+  const [size, setSize] = useState([0, 0]);
+  const [mv, setMV] = useState(false);
+  //useEffects
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+  useEffect(() => {
+    setMV(window.matchMedia("(min-width: 1000px)").matches);
+  }, [size, mv]);
   //get data back
-  const { favorites } = useSelector((state) => state.favorites);
-  console.log(favorites);
+  const { user, isLogged } = useSelector((state) => state.login);
   return (
     <FavoritesPageComponent>
       <div className="header">
         <h2>Favorites</h2>
-        <span className="products-amount">
-          {favorites.length} {favorites.length === 1 ? "item" : "items"}
-        </span>
+        {isLogged && (
+          <span className="products-amount">
+            {user.favorites.length}{" "}
+            {user.favorites.length === 1 ? "item" : "items"}
+          </span>
+        )}
       </div>
       <div className="items-display">
-        {favorites.length > 0
-          ? favorites.map((item) => (
+        {user.favorites.length > 0
+          ? user.favorites.map((item) => (
               <Card
                 key={item.id}
                 img={item.images[0].img}
@@ -29,9 +46,9 @@ const FavoritesPage = () => {
                 price={item.price}
                 hasDiscount={item.discount ? true : false}
                 beforeDiscount={item.beforeDiscount}
-                height={"30rem"}
-                width={"25%"}
-                margin="1.5rem 0"
+                height={mv ? "30rem" : "20rem"}
+                width={mv ? "25%" : "50%"}
+                margin={mv ? "1.5rem 0" : "0.5rem 0"}
                 id={item.id}
                 gender={"male"}
                 category={"clothes"}
@@ -76,6 +93,10 @@ const FavoritesPageComponent = styled.div`
     width: 70%;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    @media screen and (max-width: 1000px) {
+      width: 100%;
+    }
   }
 `;
 

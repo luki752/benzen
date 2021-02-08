@@ -55,7 +55,6 @@ const WomanClothesPage = () => {
   const handleSort = (event) => {
     setSort(event.target.value);
   };
-  console.log(items);
   return (
     <>
       {!isLoading && (

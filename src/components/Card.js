@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //styling
 import styled from "styled-components";
 //icons
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 //link
 import { Link } from "react-router-dom";
+//axios
+import axios from "axios";
 //redux
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+//actions
+import { loginAction } from "../actions/loginAction";
 
 const Card = ({
   img,
@@ -22,22 +26,60 @@ const Card = ({
   gender,
   category,
   item,
-  addToFavorties,
 }) => {
+  const dispatch = useDispatch();
   //state
+  const { user, isLogged } = useSelector((state) => state.login);
   const [favorite, setFavorite] = useState(false);
+  useEffect(() => {
+    user.favorites.filter((item) => (item.id === id ? setFavorite(true) : ""));
+  }, [user, favorite, id]);
   //handlers
   const favoritesHandler = () => {
-    setFavorite(!favorite);
-    addToFavorties();
+    if (favorite === false) {
+      setFavorite(!favorite);
+      axios
+        .put(`http://localhost:3000/users/${user.id}/`, {
+          name: user.name,
+          surname: user.surname,
+          email: user.email,
+          password: user.password,
+          favorites: [...user.favorites, item],
+          orders: user.orders,
+        })
+        .then((resp) => {
+          dispatch(loginAction(resp.data));
+        })
+        .catch((error) => {});
+    } else {
+      if (user.favorites) {
+        setFavorite(!favorite);
+        axios
+          .put(`http://localhost:3000/users/${user.id}/`, {
+            name: user.name,
+            surname: user.surname,
+            email: user.email,
+            password: user.password,
+            favorites: user.favorites.filter((item) => item.id !== id),
+            orders: user.orders,
+          })
+          .then((resp) => {
+            dispatch(loginAction(resp.data));
+          })
+          .catch((error) => {});
+      }
+    }
   };
+
   return (
     <CardComponent style={{ width: width, margin: margin }}>
-      <FavoriteBorderIcon
-        className="favoriteIcon"
-        style={{ color: favorite ? "red" : "rgba(0, 0, 0, 0.2)" }}
-        onClick={() => favoritesHandler()}
-      />
+      {isLogged && (
+        <FavoriteBorderIcon
+          className="favoriteIcon"
+          style={{ color: favorite ? "red" : "rgba(0, 0, 0, 0.2)" }}
+          onClick={() => favoritesHandler()}
+        />
+      )}
       <Link
         to={`/${gender}/${category}/${id}`}
         className="link"
@@ -125,11 +167,5 @@ const CardComponent = styled.div`
     }
   }
 `;
-const mapDispatchToProps = (dispatch, ownProps) => {
-  const { item } = ownProps;
-  return {
-    addToFavorties: () =>
-      dispatch({ type: "ADD_TO_FAVORITES", payload: { item: { item } } }),
-  };
-};
-export default connect(null, mapDispatchToProps)(Card);
+
+export default Card;

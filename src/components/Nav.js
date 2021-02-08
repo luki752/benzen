@@ -103,7 +103,11 @@ const Nav = () => {
           </li>
           <li>
             {" "}
-            <Link to="/favorites" className="link">
+            <Link
+              to="/favorites"
+              className="link"
+              style={{ display: isLogged ? "block" : "none" }}
+            >
               <FavoriteIcon className="nav-icon" />{" "}
             </Link>
           </li>

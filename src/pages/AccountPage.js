@@ -14,8 +14,8 @@ import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 //icons
 import VisibilityIcon from "@material-ui/icons/Visibility";
-import DraftsIcon from "@material-ui/icons/Drafts";
 import SearchIcon from "@material-ui/icons/Search";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 //history
 import HistoryIcon from "@material-ui/icons/History";
 import axios from "axios";
@@ -98,7 +98,6 @@ const AccountPage = () => {
   const registerHandler = (e) => {
     e.preventDefault();
     axios.get(registerUrl(registerEmailInput)).then((res) => {
-      console.log(res.data[0]);
       if (res.data[0]) {
         setRegisterSuccess(false);
         setRegisterError(true);
@@ -128,9 +127,7 @@ const AccountPage = () => {
               setRegisterPassword("");
               setRegisterEmail("");
             })
-            .catch((error) => {
-              console.log(error);
-            });
+            .catch((error) => {});
         } else {
           setRegisterSuccess(false);
           setRegisterError(true);
@@ -158,9 +155,7 @@ const AccountPage = () => {
         .then((resp) => {
           setPasswordErrorMsg("Password changed successfully");
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch((error) => {});
     } else {
       setAccountErrorMsg("Inputs cant be empty");
     }
@@ -181,9 +176,7 @@ const AccountPage = () => {
             .then((resp) => {
               setPasswordErrorMsg("Password changed successfully");
             })
-            .catch((error) => {
-              console.log(error);
-            });
+            .catch((error) => {});
         } else {
           setPasswordErrorMsg("passwords dont match");
         }
@@ -206,9 +199,7 @@ const AccountPage = () => {
           },
         });
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   };
   return (
     <>
@@ -504,8 +495,8 @@ const AccountPage = () => {
               </div>
               <div className="info-gains">
                 <h3>
-                  <DraftsIcon className="icons" />
-                  10% discount for newsletter sing up
+                  <FavoriteIcon className="icons" />
+                  Favorite clothes
                 </h3>
                 <h3>
                   <SearchIcon className="icons" />
