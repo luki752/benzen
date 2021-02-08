@@ -13,6 +13,7 @@ import ManClothesPage from "./pages/ManClothesPage";
 import WomanClothesPage from "./pages/WomanClothesPage";
 import ItemDetailsPage from "./pages/ItemDetailsPage";
 import FavoritesPage from "./pages/FavoritesPage";
+import AddItemPage from "./pages/addItemPage";
 //router
 import { Route } from "react-router-dom";
 
@@ -79,6 +80,9 @@ function App() {
       </Route>
       <Route path="/favorites">
         <FavoritesPage />
+      </Route>
+      <Route path="/add-item">
+        <AddItemPage />
       </Route>
       <Footer />
     </div>

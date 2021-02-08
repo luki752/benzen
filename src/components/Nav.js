@@ -35,7 +35,6 @@ const Nav = () => {
     window.scrollTo(0, 0);
     setNavOpen(!navOpen);
   };
-  console.log(user);
   return (
     <NavComponent>
       <div className="nav-left-menu">
@@ -93,16 +92,6 @@ const Nav = () => {
         }}/></li> */}
           <li>
             {" "}
-            <Link to="/customer/account/login" className="link">
-              <AccountCircleIcon
-                onMouseEnter={() => setLoginDropdown(true)}
-                onMouseLeave={() => setLoginDropdown(false)}
-                className="nav-icon"
-              />
-            </Link>{" "}
-          </li>
-          <li>
-            {" "}
             <Link
               to="/favorites"
               className="link"
@@ -110,6 +99,16 @@ const Nav = () => {
             >
               <FavoriteIcon className="nav-icon" />{" "}
             </Link>
+          </li>
+          <li>
+            {" "}
+            <Link to="/customer/account/login" className="link">
+              <AccountCircleIcon
+                onMouseEnter={() => setLoginDropdown(true)}
+                onMouseLeave={() => setLoginDropdown(false)}
+                className="nav-icon"
+              />
+            </Link>{" "}
           </li>
           <li>
             {" "}

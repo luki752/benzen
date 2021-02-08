@@ -15,6 +15,7 @@ import Select from "@material-ui/core/Select";
 //icons
 import ViewComfyIcon from "@material-ui/icons/ViewComfy";
 import ViewColumnIcon from "@material-ui/icons/ViewColumn";
+import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 //components
 import Card from "../components/Card";
 
@@ -51,6 +52,7 @@ const WomanClothesPage = () => {
   }, [dispatch]);
 
   const { items, isLoading } = useSelector((state) => state.items);
+  const { user } = useSelector((state) => state.login);
   //handlers
   const handleSort = (event) => {
     setSort(event.target.value);
@@ -357,6 +359,21 @@ const WomanClothesPage = () => {
               </div>
             </div>
             <div className="items-display">
+              {user.email === "admin@admin.com" && (
+                <Link to="/add-item" className="link">
+                  <div
+                    className="add-item"
+                    style={{
+                      height: "30rem",
+                      width: "15rem",
+                      margin: mv ? "1.5rem" : "1rem",
+                    }}
+                  >
+                    <AddCircleOutlineIcon className="icon" />
+                    Add Item
+                  </div>
+                </Link>
+              )}
               {category === "clothes" ? (
                 <>
                   {items.clothes
@@ -394,7 +411,7 @@ const WomanClothesPage = () => {
               ) : (
                 ""
               )}
-              {items.category === "accessories" ? (
+              {category === "accessories" ? (
                 <>
                   {items.accessories
                     .filter((cloth) =>
@@ -422,7 +439,7 @@ const WomanClothesPage = () => {
                         width={cardWidth}
                         margin="1.5rem 0"
                         id={cloth.id}
-                        gender={"female"}
+                        gender={"male"}
                         category={"accessories"}
                         item={cloth}
                       />
@@ -434,8 +451,8 @@ const WomanClothesPage = () => {
               {category === "shoes" ? (
                 <>
                   {items.shoes
-                    .filter((cloth) =>
-                      subItem ? cloth.item === subItem : cloth.item === item
+                    .filter((shoe) =>
+                      subItem ? shoe.item === subItem : shoe.item === item
                     )
                     .sort(function (a, b) {
                       if (sort === "asc") {
@@ -446,22 +463,22 @@ const WomanClothesPage = () => {
                         return "";
                       }
                     })
-                    .map((cloth) => (
+                    .map((shoe) => (
                       <Card
-                        key={cloth.id}
-                        img={cloth.images[0].img}
-                        secondImage={cloth.images[1].img}
-                        name={cloth.name}
-                        price={cloth.price}
-                        hasDiscount={cloth.discount ? true : false}
-                        beforeDiscount={cloth.beforeDiscount}
+                        key={shoe.id}
+                        img={shoe.images[0].img}
+                        secondImage={shoe.images[1].img}
+                        name={shoe.name}
+                        price={shoe.price}
+                        hasDiscount={shoe.discount ? true : false}
+                        beforeDiscount={shoe.beforeDiscount}
                         height={cardHeight}
                         width={cardWidth}
                         margin="1.5rem 0"
-                        id={cloth.id}
+                        id={shoe.id}
                         gender={"female"}
                         category={"shoes"}
-                        item={cloth}
+                        item={shoe}
                       />
                     ))}
                 </>
@@ -569,6 +586,22 @@ const WomanClothesPageComponent = styled.div`
       flex-wrap: wrap;
       @media screen and (max-width: 1000px) {
         justify-content: center;
+      }
+      .add-item {
+        display: flex;
+        align-items: Center;
+        justify-content: center;
+        border: 1px solid black;
+        font-size: 2rem;
+        transition: 0.3s ease-in all;
+        .icon {
+          font-size: 2rem;
+        }
+        &:hover {
+          cursor: pointer;
+          background-color: rgba(3, 1, 1, 0.8);
+          color: White;
+        }
       }
     }
   }

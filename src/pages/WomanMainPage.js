@@ -69,6 +69,7 @@ const WomanMainPage = () => {
                   id={cloth.id}
                   gender={"female"}
                   category={"clothes"}
+                  item={cloth}
                 />
               ))}
           </div>
@@ -106,6 +107,7 @@ const WomanMainPage = () => {
                   id={cloth.id}
                   gender={"female"}
                   category={"clothes"}
+                  item={cloth}
                 />
               ))}
           </div>

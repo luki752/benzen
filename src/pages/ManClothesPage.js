@@ -15,6 +15,7 @@ import Select from "@material-ui/core/Select";
 //icons
 import ViewComfyIcon from "@material-ui/icons/ViewComfy";
 import ViewColumnIcon from "@material-ui/icons/ViewColumn";
+import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 //components
 import Card from "../components/Card";
 
@@ -52,6 +53,7 @@ const ManClothesPage = () => {
   }, [dispatch]);
   //get data back
   const { items, isLoading } = useSelector((state) => state.items);
+  const { user } = useSelector((state) => state.login);
   //handlers
   const handleSort = (event) => {
     setSort(event.target.value);
@@ -300,6 +302,21 @@ const ManClothesPage = () => {
               </div>
             </div>
             <div className="items-display">
+              {user.email === "admin@admin.com" && (
+                <Link to="/add-item" className="link">
+                  <div
+                    className="add-item"
+                    style={{
+                      height: "30rem",
+                      width: "15rem",
+                      margin: mv ? "1.5rem" : "1rem",
+                    }}
+                  >
+                    <AddCircleOutlineIcon className="icon" />
+                    Add Item
+                  </div>
+                </Link>
+              )}
               {category === "clothes" ? (
                 <>
                   {items.clothes
@@ -326,7 +343,7 @@ const ManClothesPage = () => {
                         beforeDiscount={cloth.beforeDiscount}
                         height={cardHeight}
                         width={cardWidth}
-                        margin="1.5rem 0"
+                        margin={mv ? "1.5rem" : "1rem"}
                         id={cloth.id}
                         gender={"male"}
                         category={"clothes"}
@@ -360,7 +377,7 @@ const ManClothesPage = () => {
                         beforeDiscount={cloth.beforeDiscount}
                         height={cardHeight}
                         width={cardWidth}
-                        margin="1.5rem 0"
+                        margin={mv ? "1.5rem" : "1rem"}
                         id={cloth.id}
                         gender={"male"}
                         category={"accessories"}
@@ -452,6 +469,7 @@ const ManClothesPageComponent = styled.div`
       }
       .display-info {
         padding: 0rem 2rem;
+
         .view-icon {
           margin: 0rem 1rem;
           font-size: 1.5rem;
@@ -470,6 +488,22 @@ const ManClothesPageComponent = styled.div`
       flex-wrap: wrap;
       @media screen and (max-width: 1000px) {
         justify-content: center;
+      }
+      .add-item {
+        display: flex;
+        align-items: Center;
+        justify-content: center;
+        border: 1px solid black;
+        font-size: 2rem;
+        transition: 0.3s ease-in all;
+        .icon {
+          font-size: 2rem;
+        }
+        &:hover {
+          cursor: pointer;
+          background-color: rgba(3, 1, 1, 0.8);
+          color: White;
+        }
       }
     }
   }

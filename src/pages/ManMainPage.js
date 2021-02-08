@@ -93,6 +93,7 @@ const ManMainPage = () => {
                   id={cloth.id}
                   gender={"male"}
                   category={"clothes"}
+                  item={cloth}
                 />
               ))}
           </div>
