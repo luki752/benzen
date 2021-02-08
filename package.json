@@ -11,6 +11,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "components": "^0.1.0",
+    "crypto-js": "^4.0.0",
     "framer-motion": "^3.2.2-rc.1",
     "notistack": "^1.0.3",
     "react": "^17.0.1",

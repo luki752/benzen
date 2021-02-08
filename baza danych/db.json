@@ -225,7 +225,6 @@
           {
             "img": "https://www.reserved.com/media/catalog/product/X/X/XX560-59X-004_5.jpg"
           },
-
           {
             "img": "https://www.reserved.com/media/catalog/product/X/X/XX560-59X-005_4.jpg"
           },
@@ -354,7 +353,6 @@
           {
             "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-006_2.jpg"
           },
-
           {
             "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-040_2.jpg"
           }
@@ -390,7 +388,6 @@
           {
             "img": "https://www.reserved.com/media/catalog/product/3/1/3128D-59X-022_1.jpg"
           },
-
           {
             "img": "https://www.reserved.com/media/catalog/product/3/1/3128D-59X-023_1.jpg"
           }
@@ -728,7 +725,6 @@
         ]
       }
     ],
-
     "accessories": [
       {
         "id": 1,
@@ -766,7 +762,6 @@
           {
             "img": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-005_5.jpg"
           },
-
           {
             "img": "https://www.reserved.com/media/catalog/product/Z/K/ZK037-00X-006_5.jpg"
           }
@@ -831,7 +826,6 @@
           {
             "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH194-90M-040_3.jpg"
           },
-
           {
             "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH194-90M-002_4.jpg"
           }
@@ -969,7 +963,6 @@
       }
     ]
   },
-
   "female": {
     "clothes": [
       {
@@ -1223,7 +1216,6 @@
         "amount": 1000,
         "price": 24.99,
         "desc": "long sleeves with dropped shoulders, it creates a set with trousers in the same colour",
-
         "material": [
           {
             "fabric": "cotton",
@@ -1259,7 +1251,6 @@
         "amount": 1000,
         "price": 19.99,
         "desc": "high waist, two side pockets",
-
         "material": [
           {
             "fabric": "cotton",
@@ -1301,7 +1292,6 @@
         "amount": 1000,
         "price": 24.99,
         "desc": "zip and button fastening, rolled up legs",
-
         "material": [
           {
             "fabric": "cotton",
@@ -1334,7 +1324,6 @@
         "amount": 1000,
         "price": 19.99,
         "desc": "concealed zip fastening to the back",
-
         "material": [
           {
             "fabric": "polyester",
@@ -1366,7 +1355,6 @@
           }
         ]
       },
-
       {
         "id": 12,
         "name": "Plain suit blazer",
@@ -1374,7 +1362,6 @@
         "amount": 1000,
         "price": 34.99,
         "desc": "two flap pockets, it creates a set with trousers in the same colour",
-
         "material": [
           {
             "fabric": "polyester",
@@ -1417,7 +1404,6 @@
         "amount": 1000,
         "price": 15.99,
         "desc": "V neck, adjustable cami straps",
-
         "material": [
           {
             "fabric": "cotton",
@@ -1812,7 +1798,6 @@
         ]
       }
     ],
-
     "accessories": [
       {
         "id": 1,
@@ -1918,7 +1903,6 @@
         ]
       }
     ],
-
     "shoes": [
       {
         "id": 1,
@@ -2091,31 +2075,13 @@
   },
   "users": [
     {
-      "id": 1,
+      "name": "Łukasz",
+      "surname": "Programista",
       "email": "admin@admin.com",
-      "name": "admin",
-      "surname": "admin",
-      "password": "admin",
+      "password": "x61Ey612Kl2gpFL56FT9weDnpSo4AV8j8+qx2AuTHdRyY036xxzTTrw10Wq3+4qQyB+XURPWx1ONxp3Y3pB37A==",
       "favorites": [],
-      "orders": []
-    },
-    {
-      "id": 2,
-      "email": "luki7522@gmail.com",
-      "name": "lukasz",
-      "surname": "scigaj",
-      "password": "lukasz",
-      "favorites": [],
-      "orders": []
-    },
-    {
-      "id": 3,
-      "email": "luki7522@gmail.com",
-      "name": "lukasz",
-      "surname": "scigaj",
-      "password": "admin",
-      "favorites": [],
-      "orders": []
+      "orders": [],
+      "id": 1
     }
   ]
 }

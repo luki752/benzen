@@ -68,7 +68,7 @@ const ItemDetailsPage = () => {
                     src={img.img}
                     alt={index}
                     key={index}
-                    onClick={() => setCurrentIndex(index)}
+                    onClick={(e) => setCurrentIndex(index)}
                     className={index === currentIndex ? "active-image" : ""}
                   />
                 ))}

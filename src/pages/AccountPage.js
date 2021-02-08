@@ -3,7 +3,7 @@ import React, { useState, useLayoutEffect, useEffect } from "react";
 import { useLocation } from "react-router";
 import { Link, useHistory } from "react-router-dom";
 //api
-import { loginUrl } from "../api";
+import { loginUrl, registerUrl } from "../api";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../actions/loginAction";
@@ -19,21 +19,39 @@ import SearchIcon from "@material-ui/icons/Search";
 //history
 import HistoryIcon from "@material-ui/icons/History";
 import axios from "axios";
+//encrypting password
+import sha512 from "crypto-js/sha512";
+import Base64 from "crypto-js/enc-base64";
 
 const AccountPage = () => {
   //state
   const [size, setSize] = useState([0, 0]);
   const [mv, setMV] = useState(false);
-  const [registerPassword, setRegisterPassword] = useState(true);
-  const [loginPassword, setLoginPassword] = useState(true);
-  const [emailInput, setEmail] = useState("");
-  const [passwordInput, setPassword] = useState("");
+  //login state
+  const [loginPasswordView, setLoginPasswordView] = useState(true);
+  const [loginEmailInput, setLoginEmail] = useState("");
+  const [loginPasswordInput, setLoginPassword] = useState("");
   const [falseLogin, setFalseLogin] = useState(false);
+  const [loginErrorMsg, setLoginErrorMsg] = useState(false);
+  //register state
+  const [registerPasswordView, setRegisterPasswordView] = useState(true);
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [registerEmailInput, setRegisterEmail] = useState("");
+  const [registerName, setRegisterName] = useState("");
+  const [registerSurname, setRegisterSurname] = useState("");
+  const [registerError, setRegisterError] = useState(false);
+  const [registerErrorMsg, setRegisterErrorMsg] = useState("");
+  const [registerSuccess, setRegisterSuccess] = useState(false);
+  //users State
+  const [usersName, setUsersName] = useState("");
+  const [usersSurname, setUsersSurname] = useState("");
+  const [usersEmail, setUsersEmail] = useState("");
   //location
   const location = useLocation();
   const pathName = location.pathname.split("/")[3];
   //history
   const history = useHistory();
+
   //getting width
   useLayoutEffect(() => {
     function updateSize() {
@@ -49,17 +67,71 @@ const AccountPage = () => {
   const { isLogged, user } = useSelector((state) => state.login);
   const dispatch = useDispatch();
   //handlers
-  const successfulLogin = (x) => {
-    dispatch(loginAction(x));
-    history.push("/customer/account/orders");
-  };
   const loginHandler = (e) => {
     e.preventDefault();
-    axios
-      .get(loginUrl(emailInput, passwordInput))
-      .then((res) =>
-        res.data[0] ? successfulLogin(res.data[0]) : setFalseLogin(true)
-      );
+    axios.get(loginUrl(loginEmailInput)).then((res) => {
+      if (res.data[0]) {
+        if (
+          res.data[0].password === sha512(loginPasswordInput).toString(Base64)
+        ) {
+          dispatch(loginAction(res.data[0]));
+          setUsersName(res.data[0].name);
+          setUsersSurname(res.data[0].surname);
+          setUsersEmail(res.data[0].email);
+          history.push("/customer/account/orders");
+        } else {
+          setLoginErrorMsg("incorrect password");
+          setFalseLogin(true);
+        }
+      } else {
+        setFalseLogin(true);
+        setLoginErrorMsg("incorrect email");
+      }
+    });
+  };
+  const registerHandler = (e) => {
+    e.preventDefault();
+    axios.get(registerUrl(registerEmailInput)).then((res) => {
+      console.log(res.data[0]);
+      if (res.data[0]) {
+        setRegisterSuccess(false);
+        setRegisterError(true);
+        setRegisterErrorMsg("Theres already an account with that email");
+      } else {
+        if (
+          registerEmailInput !== "" &&
+          registerEmailInput.includes("@") &&
+          registerPassword !== "" &&
+          registerName !== "" &&
+          registerSurname !== ""
+        ) {
+          axios
+            .post("http://localhost:3000/users", {
+              name: registerName,
+              surname: registerSurname,
+              email: registerEmailInput,
+              password: sha512(registerPassword).toString(Base64),
+              favorites: [],
+              orders: [],
+            })
+            .then((resp) => {
+              setRegisterSuccess(true);
+              setRegisterError(false);
+              setRegisterEmail("");
+              setRegisterName("");
+              setRegisterPassword("");
+              setRegisterEmail("");
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        } else {
+          setRegisterSuccess(false);
+          setRegisterError(true);
+          setRegisterErrorMsg("Inputs cant be empty");
+        }
+      }
+    });
   };
   return (
     <>
@@ -98,18 +170,63 @@ const AccountPage = () => {
               {pathName === "info" ? (
                 <div className="infoComponent">
                   <div className="info">
+                    <span>Your account</span>
+                    <div className="line"></div>
                     <span>
-                      <b>Name:</b> {user.name}
+                      <TextField
+                        label="Name"
+                        value={usersName}
+                        className="input"
+                        onChange={(e) => setUsersName(e.target.value)}
+                      />
                     </span>
                     <span>
-                      <b>Surname:</b> {user.surname}
+                      <TextField
+                        label="Surname"
+                        value={usersSurname}
+                        className="input"
+                        onChange={(e) => setUsersName(e.target.value)}
+                      />
                     </span>
                     <span>
-                      <b>Email:</b> {user.email}
+                      <TextField
+                        label="Email"
+                        type="email"
+                        value={usersEmail}
+                        className="input"
+                        onChange={(e) => setUsersEmail(e.target.value)}
+                      />
                     </span>
-                    <span>
-                      <b>Password:</b> {user.password}
-                    </span>
+                    <div className="line"></div>
+                    <div className="password-change">
+                      <span>Password change</span>
+                      <TextField
+                        label="Your Password"
+                        type="password"
+                        className="input"
+                        onChange={(e) => setUsersEmail(e.target.value)}
+                      />
+                      <TextField
+                        label="New password"
+                        type="password"
+                        className="input"
+                        onChange={(e) => setUsersEmail(e.target.value)}
+                      />
+                      <TextField
+                        label="Confirm password"
+                        type="email"
+                        className="input"
+                        onChange={(e) => setUsersEmail(e.target.value)}
+                      />
+                    </div>
+                    <div className="line"></div>
+                    <div className="delete-acc">
+                      <span>Delete account</span>
+                    </div>
+                    <div className="line"></div>
+                    <div className="save-button">
+                      <button>Save Changes</button>
+                    </div>
                   </div>
                 </div>
               ) : (
@@ -153,10 +270,10 @@ const AccountPage = () => {
             <span
               style={{
                 color: "rgba(245, 66, 66,0.7)",
-                display: pathName === "login" ? "block" : "none",
+                display: pathName === "login" && falseLogin ? "block" : "none",
               }}
             >
-              {falseLogin ? "Invalid login or password." : ""}
+              {loginErrorMsg}
             </span>
             <form>
               <div
@@ -168,28 +285,28 @@ const AccountPage = () => {
                     label="Email"
                     type="email"
                     className="input"
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => setLoginEmail(e.target.value)}
                   />
                 </div>
                 <div className="password">
                   <TextField
                     className="input"
                     label="Password"
-                    type={loginPassword ? "password" : ""}
-                    onChange={(e) => setPassword(e.target.value)}
+                    type={loginPasswordView ? "password" : ""}
+                    onChange={(e) => setLoginPassword(e.target.value)}
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position="end">
                           <VisibilityIcon
-                            onClick={() => setLoginPassword(!loginPassword)}
+                            onClick={() =>
+                              setLoginPasswordView(!loginPasswordView)
+                            }
                           />
                         </InputAdornment>
                       ),
                     }}
                   />
                 </div>
-
-                <p>I forgot my password</p>
               </div>
 
               <Link to="/customer/account/login">
@@ -208,29 +325,59 @@ const AccountPage = () => {
           >
             <div className="register">
               <h2>Is this your first visit?</h2>
+              <span
+                style={{
+                  display: registerError ? "block" : "none",
+                  color: "red",
+                }}
+              >
+                {registerErrorMsg}
+              </span>
+              <span
+                style={{
+                  display: registerSuccess ? "block" : "none",
+                  color: "green",
+                }}
+              >
+                Registration was successful
+              </span>
               <form>
                 <div
                   className="register-form"
                   style={{ display: pathName === "register" ? "flex" : "none" }}
                 >
                   <div className="email">
-                    <TextField label="Email" type="email" className="input" />
+                    <TextField
+                      label="Email"
+                      type="email"
+                      className="input"
+                      onChange={(e) => setRegisterEmail(e.target.value)}
+                    />
                   </div>
                   <div className="name">
-                    <TextField className="input name-input" label="Name" />
-                    <TextField className="input name-input" label="Surname" />
+                    <TextField
+                      className="input name-input"
+                      label="Name"
+                      onChange={(e) => setRegisterName(e.target.value)}
+                    />
+                    <TextField
+                      className="input name-input"
+                      label="Surname"
+                      onChange={(e) => setRegisterSurname(e.target.value)}
+                    />
                   </div>
                   <div className="password">
                     <TextField
                       className="input"
                       label="Password"
-                      type={registerPassword ? "password" : ""}
+                      type={registerPasswordView ? "password" : ""}
+                      onChange={(e) => setRegisterPassword(e.target.value)}
                       InputProps={{
                         endAdornment: (
                           <InputAdornment position="end">
                             <VisibilityIcon
                               onClick={() =>
-                                setRegisterPassword(!registerPassword)
+                                setRegisterPasswordView(!registerPasswordView)
                               }
                             />
                           </InputAdornment>
@@ -240,7 +387,14 @@ const AccountPage = () => {
                   </div>
                 </div>
                 <Link to="/customer/account/register">
-                  <button type="submit">Create account</button>
+                  <button
+                    type="submit"
+                    onClick={(e) =>
+                      pathName === "register" ? registerHandler(e) : ""
+                    }
+                  >
+                    Create account
+                  </button>
                 </Link>
               </form>
               <div className="info">
@@ -411,6 +565,7 @@ const LoggedInComponent = styled.div`
     width: 60%;
     justify-content: center;
     align-items: Center;
+
     @media screen and (max-width: 1000px) {
       width: 100%;
       margin: 0rem 1rem;
@@ -418,11 +573,44 @@ const LoggedInComponent = styled.div`
     .infoComponent {
       display: flex;
       flex-direction: column;
-      align-items: Center;
+      margin-left: 2rem;
+      @media screen and (max-width: 1000px) {
+        margin: 0rem;
+      }
       .info {
         display: flex;
         flex-direction: column;
         text-align: left;
+        .input {
+          width: 15rem;
+        }
+        .password-change {
+          display: flex;
+          flex-direction: column;
+        }
+        button {
+          width: fit-content;
+          background-color: black;
+          color: White;
+          border: 1px solid black;
+          &:hover {
+            background-color: white;
+            color: black;
+          }
+          @media screen and (max-width: 1000px) {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+
+    .line {
+      width: 100%;
+      height: 1px;
+      background-color: black;
+      margin: 2rem 0rem;
+      @media screen and (max-width: 1000px) {
+        margin: 1rem 0;
       }
     }
     .no-orders {
@@ -438,7 +626,7 @@ const LoggedInComponent = styled.div`
           width: 8rem;
           background-color: black;
           color: White;
-          margin: 0rem 1rem;
+          margin: 1rem;
           &:hover {
             background-color: rgba(0, 0, 0, 0.8);
           }

@@ -139,7 +139,25 @@ const Nav = () => {
                 </AccordionSummary>
                 <Link to="/man/clothes/outerwear/coats" className="link">
                   <AccordionDetails onClick={() => linkHandler()}>
-                    Coats, jackets, puffer jackets
+                    Coats
+                  </AccordionDetails>
+                </Link>
+                <Link to="/man/clothes/outerwear/jackets" className="link">
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    jackets
+                  </AccordionDetails>
+                </Link>
+                <Link
+                  to="/man/clothes/outerwear/puffer-jackets"
+                  className="link"
+                >
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    puffer jackets
+                  </AccordionDetails>
+                </Link>
+                <Link to="/man/clothes/outerwear/vests" className="link">
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    vests
                   </AccordionDetails>
                 </Link>
                 <Link to="/man/clothes/sweaters" className="link">
@@ -254,6 +272,34 @@ const Nav = () => {
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                   <h1>Clothes</h1>
                 </AccordionSummary>
+                <Link
+                  to="/woman/clothes/outerwear/coats"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>Coats</AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/clothes/outerwear/jackets"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>jackets</AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/clothes/outerwear/puffer-jackets"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>puffer jackets</AccordionDetails>
+                </Link>
+                <Link
+                  to="/woman/clothes/outerwear/biker-jackets"
+                  className="link"
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>biker jackets</AccordionDetails>
+                </Link>
                 <Link
                   to="/woman/clothes/outerwear/coats"
                   className="link"
@@ -490,10 +536,10 @@ const Nav = () => {
               <li>Hats</li>
             </Link>
             <Link to="/man/accessories/scarves" className="link">
-              <li>scarves</li>
+              <li>Scarves</li>
             </Link>
             <Link to="/man/accessories/gloves" className="link">
-              <li>gloves</li>
+              <li>Gloves</li>
             </Link>
             <Link to="/man/accessories/socks" className="link">
               <li>Socks</li>
@@ -509,8 +555,11 @@ const Nav = () => {
         >
           <ul>
             <li className="list-header">Clothes</li>
+            <Link to="/woman/clothes/outerwear/coats" className="link">
+              <li>Coats, jackets, puffer jackets</li>
+            </Link>
             <Link to="/woman/clothes/dresses" className="link">
-              <li>dresses, jumpsuits</li>
+              <li>Dresses, jumpsuits</li>
             </Link>
             <Link to="/woman/clothes/sweaters" className="link">
               <li>Jumpers, Cardigans</li>
@@ -543,7 +592,7 @@ const Nav = () => {
               <li>Nightwear</li>
             </Link>
             <Link to="/woman/clothes/lingerie" className="link">
-              <li>lingerie</li>
+              <li>Lingerie</li>
             </Link>
           </ul>
           <ul>
@@ -573,10 +622,10 @@ const Nav = () => {
               <li>Hats</li>
             </Link>
             <Link to="/woman/accessories/scarves" className="link">
-              <li>scarves</li>
+              <li>Scarves</li>
             </Link>
             <Link to="/woman/accessories/gloves" className="link">
-              <li>gloves</li>
+              <li>Gloves</li>
             </Link>
           </ul>
         </div>
@@ -592,7 +641,9 @@ const Nav = () => {
               <span style={{ fontWeight: "bold" }}>
                 {user.name},
                 <div className="greetings">
-                  <div>its nice to have you</div>
+                  <div style={{ color: "rgba(0, 0, 0, 0.6)" }}>
+                    nice to have you with us
+                  </div>
                   <div
                     className="log-out"
                     onClick={() =>
@@ -725,14 +776,14 @@ const NavComponent = styled.div`
 
 const HamburgerMenu = styled.div`
   width: 100%;
-  height: 100%;
+  height: 200vh;
   position: absolute;
   top: 0;
   left: 0;
   background-color: white;
   display: flex;
   flex-direction: column;
-  z-index: 3;
+  z-index: 15;
   .component-close-icon {
     width: 100%;
     height: 3rem;
@@ -879,17 +930,18 @@ const LoginDropdown = styled.div`
     .greetings {
       display: flex;
       justify-content: space-between;
-      color: rgba(0, 0, 0, 0.6);
       .log-out {
         color: black;
         &:hover {
           cursor: pointer;
+          color: rgba(0, 0, 0, 0.6);
         }
       }
     }
     span {
       padding: 1rem 0rem;
       font-weight: bold;
+
       &:first-letter {
         text-transform: upperCase;
       }
@@ -918,6 +970,9 @@ const LoginDropdown = styled.div`
     span {
       padding: 1rem 0rem;
       font-weight: bold;
+      &:hover {
+        color: rgba(0, 0, 0, 0.6);
+      }
     }
     p {
       font-size: 0.8rem;
