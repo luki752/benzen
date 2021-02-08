@@ -21,8 +21,8 @@ const Home = () => {
                 <h3>sale</h3>
                 <h3>up to 50% off</h3>
                 <div className="buttons">
-                  <button>Woman</button>
-                  <button>Men</button>
+                  <button className="button-white">Woman</button>
+                  <button className="button-white">Men</button>
                 </div>
               </Carousel.Caption>
             </Carousel.Item>
@@ -37,7 +37,7 @@ const Home = () => {
                 <p>get a jacket</p>
                 <div className="buttons">
                   <Link to="/woman/clothes/jackets" className="link">
-                    <button>for her</button>
+                    <button className="button-white">for her</button>
                   </Link>
                 </div>
               </Carousel.Caption>
@@ -53,7 +53,7 @@ const Home = () => {
                 <p>see our offer</p>
                 <div className="buttons">
                   <Link to="/man/clothes/outerwear/coats" className="link">
-                    <button>for him</button>
+                    <button className="button-white">for him</button>
                   </Link>
                 </div>
               </Carousel.Caption>

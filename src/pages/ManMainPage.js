@@ -51,7 +51,7 @@ const ManMainPage = () => {
                 <h3 style={{ color: "red" }}>sale</h3>
                 <h3 style={{ color: "red" }}>up to 50% off</h3>
                 <div className="buttons">
-                  <button>for him</button>
+                  <button className="button-white">for him</button>
                 </div>
               </Carousel.Caption>
             </Carousel.Item>
@@ -66,7 +66,7 @@ const ManMainPage = () => {
                 <p>see our offer</p>
                 <div className="buttons">
                   <Link to="/man/clothes/outerwear/coats" className="link">
-                    <button>for him</button>
+                    <button className="button-white">for him</button>
                   </Link>
                 </div>
               </Carousel.Caption>
@@ -150,7 +150,7 @@ const ManMainPage = () => {
           btnText={"Shoes"}
           btns={true}
           secondBtn={"Hats,scarfs,gloves"}
-          width={"100%"}
+          width={"99%"}
           link={"/man/accessories/shoes"}
           secondLink={"/man/accessories/hats"}
         />

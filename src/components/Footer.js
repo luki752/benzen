@@ -74,7 +74,7 @@ const Footer = () => {
             label="I accept newsletter terms"
           />
 
-          <button>send</button>
+          <button className="button-white">send</button>
           <div className="footer-contact">
             Get more Benzen on:
             <p>

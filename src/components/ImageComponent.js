@@ -26,15 +26,15 @@ const ImageComponent = ({
       {btns ? (
         <div className="buttons">
           <Link to={link} className="link">
-            <button>{btnText}</button>
+            <button className="button-white">{btnText}</button>
           </Link>
           <Link to={secondLink} className="link">
-            <button>{secondBtn}</button>
+            <button className="button-white">{secondBtn}</button>
           </Link>
         </div>
       ) : (
         <Link to={link} className="link">
-          <button>{btnText}</button>
+          <button className="button-white">{btnText}</button>
         </Link>
       )}
     </ImageComponentStyles>

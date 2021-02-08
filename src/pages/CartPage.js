@@ -11,10 +11,10 @@ const CartPage = () => {
         <p>continue shopping</p>
         <div className="buttons">
           <Link to="/woman">
-            <button>Women</button>
+            <button className="button-white">Women</button>
           </Link>
           <Link to="/man">
-            <button>Men</button>
+            <button className="button-white">Men</button>
           </Link>
         </div>
       </div>

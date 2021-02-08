@@ -130,6 +130,7 @@ const ItemDetailsPage = () => {
                   </select>
                 </div>
                 <button
+                  className="button-white"
                   onClick={() => snackbarHandler("Added to card", "success")}
                 >
                   <LocalMallIcon style={{ color: "white" }} />

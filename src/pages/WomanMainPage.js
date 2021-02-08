@@ -46,7 +46,7 @@ const WomanMainPage = () => {
             "https://www.reserved.com/media/SHARED/stronywizerunkowe/reserved/home/content/img/sliders/desktop/baner-full-SALE-ona-1900x950px-231220.jpg"
           }
           btnText={"Woman"}
-          width={"100%"}
+          width={"99%"}
           link={"/woman/sale"}
         />
         {!isLoading && (
@@ -84,7 +84,7 @@ const WomanMainPage = () => {
             "https://www.reserved.com/media/catalog/product/Y/S/YS164-MLC-002_1.jpg"
           }
           btnText={"For Her"}
-          width={"100%"}
+          width={"99%"}
           link={"/woman/clothes/sweatshirts"}
         />
         {!isLoading && (
@@ -124,7 +124,7 @@ const WomanMainPage = () => {
                 <h3>puffer jackets</h3>
                 <div className="buttons">
                   <Link to="/woman/clothes/outerwear/puffer-jackets">
-                    <button>for her</button>
+                    <button className="button-white">for her</button>
                   </Link>
                 </div>
               </Carousel.Caption>
@@ -140,10 +140,12 @@ const WomanMainPage = () => {
                 <h3>accessories</h3>
                 <div className="buttons">
                   <Link to="/woman/shoes/boots">
-                    <button>Shoes</button>
+                    <button className="button-white">Shoes</button>
                   </Link>
                   <Link to="/woman/accessories/hats">
-                    <button>Hats, scarfs, gloves</button>
+                    <button className="button-white">
+                      Hats, scarfs, gloves
+                    </button>
                   </Link>
                 </div>
               </Carousel.Caption>

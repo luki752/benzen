@@ -15,10 +15,10 @@ const GlobalStyles = createGlobalStyle`
         text-decoration:none;
     }
 }
-button {
+.button-white {
         background-color: white;
         padding: 1rem;
-        width: 7rem;
+        width: fit-content;
         border: none;
         transition: 0.3s ease-in all;
         &:hover {
@@ -31,6 +31,19 @@ button {
           font-size: 0.5rem;
           margin: 0rem 0.5rem;
         }
+.button-black{
+          width: fit-content;
+          background-color: black;
+          color: white;
+          margin: 1rem 0;
+          @media screen and (max-width: 1000px) {
+            font-size: 1rem;
+          }
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+          }
+        }
+}
 `;
 
 export default GlobalStyles;
