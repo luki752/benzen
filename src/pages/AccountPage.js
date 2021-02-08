@@ -27,6 +27,7 @@ const AccountPage = () => {
   //state
   const [size, setSize] = useState([0, 0]);
   const [mv, setMV] = useState(false);
+  const [deleteInfo, setDeleteInfo] = useState(false);
   //login state
   const [loginPasswordView, setLoginPasswordView] = useState(true);
   const [loginEmailInput, setLoginEmail] = useState("");
@@ -46,6 +47,11 @@ const AccountPage = () => {
   const [usersName, setUsersName] = useState("");
   const [usersSurname, setUsersSurname] = useState("");
   const [usersEmail, setUsersEmail] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
+  const [accountErrorMsg, setAccountErrorMsg] = useState("");
   //location
   const location = useLocation();
   const pathName = location.pathname.split("/")[3];
@@ -133,6 +139,77 @@ const AccountPage = () => {
       }
     });
   };
+  const userAccountHandler = () => {
+    if (
+      usersName !== "" &&
+      usersSurname !== "" &&
+      usersEmail !== "" &&
+      usersEmail.includes("@")
+    ) {
+      axios
+        .put(`http://localhost:3000/users/${user.id}/`, {
+          name: usersName,
+          surname: usersSurname,
+          email: usersEmail,
+          password: user.password,
+          favorites: user.favorites,
+          orders: user.orders,
+        })
+        .then((resp) => {
+          setPasswordErrorMsg("Password changed successfully");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      setAccountErrorMsg("Inputs cant be empty");
+    }
+  };
+  const passwordChangeHandler = () => {
+    if (oldPassword !== "" && newPassword !== "" && confirmNewPassword !== "") {
+      if (sha512(oldPassword).toString(Base64) === user.password) {
+        if (newPassword === confirmNewPassword) {
+          axios
+            .put(`http://localhost:3000/users/${user.id}/`, {
+              name: user.name,
+              surname: user.surname,
+              email: user.email,
+              password: sha512(newPassword).toString(Base64),
+              favorites: user.favorites,
+              orders: user.orders,
+            })
+            .then((resp) => {
+              setPasswordErrorMsg("Password changed successfully");
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        } else {
+          setPasswordErrorMsg("passwords dont match");
+        }
+      } else {
+        setPasswordErrorMsg("wrong password");
+      }
+    } else {
+      setPasswordErrorMsg("Inputs cant be empty");
+    }
+  };
+  const deleteAccountHandler = () => {
+    axios
+      .delete(`http://localhost:3000/users/${user.id}/`)
+      .then((resp) => {
+        dispatch({
+          type: "LOG_OUT",
+          payload: {
+            login: false,
+            user: [],
+          },
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <>
       {isLogged ? (
@@ -172,6 +249,8 @@ const AccountPage = () => {
                   <div className="info">
                     <span>Your account</span>
                     <div className="line"></div>
+                    <span>{accountErrorMsg}</span>
+
                     <span>
                       <TextField
                         label="Name"
@@ -185,7 +264,7 @@ const AccountPage = () => {
                         label="Surname"
                         value={usersSurname}
                         className="input"
-                        onChange={(e) => setUsersName(e.target.value)}
+                        onChange={(e) => setUsersSurname(e.target.value)}
                       />
                     </span>
                     <span>
@@ -197,36 +276,59 @@ const AccountPage = () => {
                         onChange={(e) => setUsersEmail(e.target.value)}
                       />
                     </span>
+                    <button onClick={() => userAccountHandler()}>
+                      Save Changes
+                    </button>
                     <div className="line"></div>
                     <div className="password-change">
                       <span>Password change</span>
+                      <span>{passwordErrorMsg}</span>
                       <TextField
                         label="Your Password"
                         type="password"
+                        value={oldPassword}
                         className="input"
-                        onChange={(e) => setUsersEmail(e.target.value)}
+                        onChange={(e) => setOldPassword(e.target.value)}
                       />
                       <TextField
                         label="New password"
                         type="password"
+                        value={newPassword}
                         className="input"
-                        onChange={(e) => setUsersEmail(e.target.value)}
+                        onChange={(e) => setNewPassword(e.target.value)}
                       />
                       <TextField
                         label="Confirm password"
                         type="email"
+                        value={confirmNewPassword}
                         className="input"
-                        onChange={(e) => setUsersEmail(e.target.value)}
+                        onChange={(e) => setConfirmNewPassword(e.target.value)}
                       />
+                      <button onClick={() => passwordChangeHandler()}>
+                        Change
+                      </button>
                     </div>
                     <div className="line"></div>
                     <div className="delete-acc">
-                      <span>Delete account</span>
+                      <span onClick={() => setDeleteInfo(true)}>
+                        Delete account
+                      </span>
+                      <div
+                        style={{ display: deleteInfo ? "block" : "none" }}
+                        className="delete-confirmation"
+                      >
+                        <span>Are you sure you want to delete account?</span>
+                        <div className="buttons">
+                          <button onClick={() => deleteAccountHandler()}>
+                            Yes
+                          </button>
+                          <button onClick={() => setDeleteInfo(false)}>
+                            No
+                          </button>
+                        </div>
+                      </div>
                     </div>
                     <div className="line"></div>
-                    <div className="save-button">
-                      <button>Save Changes</button>
-                    </div>
                   </div>
                 </div>
               ) : (
@@ -581,24 +683,40 @@ const LoggedInComponent = styled.div`
         display: flex;
         flex-direction: column;
         text-align: left;
+        button {
+          margin: 1rem 0rem;
+        }
         .input {
           width: 15rem;
         }
         .password-change {
           display: flex;
           flex-direction: column;
+          button {
+            margin: 1rem 0rem;
+          }
         }
         button {
           width: fit-content;
           background-color: black;
           color: White;
           border: 1px solid black;
+          font-size: 1.5rem;
           &:hover {
             background-color: white;
             color: black;
           }
-          @media screen and (max-width: 1000px) {
-            font-size: 2rem;
+        }
+        .delete-acc {
+          .delete-confirmation {
+            display: flex;
+            flex-direction: column;
+            margin: 1rem 0rem;
+            .buttons {
+              button {
+                margin: 0.5rem 1rem;
+              }
+            }
           }
         }
       }
