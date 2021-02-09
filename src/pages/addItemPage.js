@@ -70,7 +70,7 @@ const AddItemPage = () => {
       images.length !== 0
     ) {
       axios
-        .post(`http://localhost:3000/${gender}/${category}`, {
+        .post(`http://localhost:3000/${gender}`, {
           name: name,
           item: item,
           amount: amount,
@@ -103,8 +103,8 @@ const AddItemPage = () => {
                 onChange={(e) => setGender(e.target.value)}
                 className="select"
               >
-                <MenuItem value="male">male</MenuItem>
-                <MenuItem value="female">female</MenuItem>
+                <MenuItem value="man">man</MenuItem>
+                <MenuItem value="woman">woman</MenuItem>
               </Select>
             </FormControl>
           </div>

@@ -1,4 +1,9 @@
-export const itemsUrl = (gender) => `http://localhost:3000/${gender} `;
+export const itemsUrl = (gender, category, item, sortOrder) =>
+  `http://localhost:3000/${gender}?category=${category}&item=${item}&_sort=price&_order=${sortOrder} `;
+
+export const specificItemUrl = (gender, id) =>
+  `http://localhost:3000/${gender}/${id}`;
+export const allItemsUrl = (gender) => `http://localhost:3000/${gender}`;
 
 export const loginUrl = (email) => `http://localhost:3000/users?email=${email}`;
 

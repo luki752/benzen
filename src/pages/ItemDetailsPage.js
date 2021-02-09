@@ -8,7 +8,7 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //actions
-import { loadItems } from "../actions/itemsAction";
+import { loadSpecificItem } from "../actions/itemsAction";
 //router
 import { useLocation } from "react-router-dom";
 //icons
@@ -22,33 +22,19 @@ import { useSnackbar } from "notistack";
 
 const ItemDetailsPage = () => {
   //state
-  const [item, setItem] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [modal, setModal] = useState(false);
   //location, id
   const location = useLocation();
-  const category = location.pathname.split("/")[2];
   const gender = location.pathname.split("/")[1];
-  const pathId = parseInt(location.pathname.split("/")[3], 10);
+  const pathId = parseInt(location.pathname.split("/")[2], 10);
   //dispatch data
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loadItems(gender));
-  }, [dispatch, gender]);
+    dispatch(loadSpecificItem(gender, pathId));
+  }, [dispatch, gender, pathId]);
   //get data back
-  const { items, isLoading } = useSelector((state) => state.items);
-  useEffect(() => {
-    if (!isLoading) {
-      if (category === "clothes") {
-        setItem(items.clothes.filter((cloth) => cloth.id === pathId));
-      } else if (category === "accessories") {
-        setItem(items.accessories.filter((cloth) => cloth.id === pathId));
-      } else if (category === "shoes") {
-        setItem(items.shoes.filter((cloth) => cloth.id === pathId));
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading]);
+  const { item, isLoading } = useSelector((state) => state.item);
   //snack bar
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   //handlers
@@ -56,14 +42,15 @@ const ItemDetailsPage = () => {
     enqueueSnackbar(snackbarMessage, { variant: snackVariant });
     closeSnackbar(500);
   };
+
   return (
     <>
-      {item && (
+      {!isLoading && (
         <ItemDetailsPageComponent>
           <div className="top-side">
             <div className="left-side">
               <div className="images-show">
-                {item[0].images.map((img, index) => (
+                {item.images.map((img, index) => (
                   <img
                     src={img.img}
                     alt={index}
@@ -76,7 +63,7 @@ const ItemDetailsPage = () => {
               <div
                 className="main-image"
                 style={{
-                  backgroundImage: `url(${item[0].images[currentIndex].img})`,
+                  backgroundImage: `url(${item.images[currentIndex].img})`,
                 }}
                 onClick={() => setModal(!modal)}
               >
@@ -85,9 +72,9 @@ const ItemDetailsPage = () => {
                   onClick={(e) => {
                     e.stopPropagation();
                     currentIndex - 1 === -1
-                      ? setCurrentIndex(item[0].images.length - 1)
+                      ? setCurrentIndex(item.images.length - 1)
                       : setCurrentIndex(
-                          (currentIndex - 1) % item[0].images.length
+                          (currentIndex - 1) % item.images.length
                         );
                   }}
                 />
@@ -95,19 +82,19 @@ const ItemDetailsPage = () => {
                   className="arrows"
                   onClick={(e) => {
                     e.stopPropagation();
-                    setCurrentIndex((currentIndex + 1) % item[0].images.length);
+                    setCurrentIndex((currentIndex + 1) % item.images.length);
                   }}
                 />
                 <div className="image-count">
-                  {currentIndex + 1}/{item[0].images.length}
+                  {currentIndex + 1}/{item.images.length}
                 </div>
               </div>
             </div>
 
             <div className="right-side">
               <div className="info">
-                <span className="name">{item[0].name}</span>
-                <span className="price">{item[0].price} GBP</span>
+                <span className="name">{item.name}</span>
+                <span className="price">{item.price} GBP</span>
 
                 <div className="size">
                   <span>Size</span>
@@ -148,7 +135,7 @@ const ItemDetailsPage = () => {
                 >
                   Description
                 </AccordionSummary>
-                <AccordionDetails> - {item[0].desc}.</AccordionDetails>
+                <AccordionDetails> - {item.desc}.</AccordionDetails>
               </Accordion>
               {/* second accordion */}
               <Accordion className="accordion">
@@ -159,7 +146,7 @@ const ItemDetailsPage = () => {
                   Material and care
                 </AccordionSummary>
                 <AccordionDetails>Fabric:</AccordionDetails>
-                {item[0].material.map((material) => (
+                {item.material.map((material) => (
                   <AccordionDetails key={material.fabric}>
                     <span>
                       {" "}
@@ -213,16 +200,16 @@ const ItemDetailsPage = () => {
               className="arrows left-arrow"
               onClick={() =>
                 currentIndex - 1 === -1
-                  ? setCurrentIndex(item[0].images.length - 1)
-                  : setCurrentIndex((currentIndex - 1) % item[0].images.length)
+                  ? setCurrentIndex(item.images.length - 1)
+                  : setCurrentIndex((currentIndex - 1) % item.images.length)
               }
             />
-            <img src={item[0].images[currentIndex].img} alt={item[0].name} />
+            <img src={item.images[currentIndex].img} alt={item.name} />
 
             <ArrowForwardIosIcon
               className="arrows right-arrow"
               onClick={() =>
-                setCurrentIndex((currentIndex + 1) % item[0].images.length)
+                setCurrentIndex((currentIndex + 1) % item.images.length)
               }
             />
           </FullImageModal>

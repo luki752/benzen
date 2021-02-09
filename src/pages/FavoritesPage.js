@@ -50,8 +50,8 @@ const FavoritesPage = () => {
                 width={mv ? "25%" : "50%"}
                 margin={mv ? "1.5rem 0" : "0.5rem 0"}
                 id={item.id}
-                gender={"male"}
-                category={"clothes"}
+                gender={item.gender}
+                category={item.category}
                 item={item}
               />
             ))
