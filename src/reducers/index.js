@@ -4,6 +4,8 @@ import loginReducer from "./loginReducer";
 
 const rootReducer = combineReducers({
   items: itemsReducer,
+  item: itemsReducer,
+  category: itemsReducer,
   login: loginReducer,
 });
 

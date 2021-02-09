@@ -12,21 +12,7 @@ import { useSelector, useDispatch } from "react-redux";
 //actions
 import { loginAction } from "../actions/loginAction";
 
-const Card = ({
-  img,
-  secondImage,
-  name,
-  price,
-  hasDiscount,
-  beforeDiscount,
-  height,
-  width,
-  margin,
-  id,
-  gender,
-  category,
-  item,
-}) => {
+const Card = ({ item, height, width, margin, gender, id }) => {
   const dispatch = useDispatch();
   //state
   const { user, isLogged } = useSelector((state) => state.login);
@@ -44,7 +30,20 @@ const Card = ({
           surname: user.surname,
           email: user.email,
           password: user.password,
-          favorites: [...user.favorites, item],
+          favorites: [
+            ...user.favorites,
+            {
+              id: id,
+              name: item.name,
+              item: item.item,
+              amount: item.amount,
+              price: item.price,
+              desc: item.desc,
+              material: item.material,
+              images: item.images,
+              gender: gender,
+            },
+          ],
           orders: user.orders,
         })
         .then((resp) => {
@@ -81,30 +80,30 @@ const Card = ({
         />
       )}
       <Link
-        to={`/${gender}/${category}/${id}`}
+        to={`/${gender}/${item.id}`}
         className="link"
         onClick={() => window.scrollTo(0, 0)}
       >
         <img
-          src={img}
-          alt={name}
+          src={item.images[0].img}
+          alt={item.name}
           style={{ height: height }}
-          onMouseOver={(e) => (e.currentTarget.src = `${secondImage}`)}
-          onMouseOut={(e) => (e.currentTarget.src = `${img}`)}
+          onMouseOver={(e) => (e.currentTarget.src = `${item.images[1].img}`)}
+          onMouseOut={(e) => (e.currentTarget.src = `${item.images[0].img}`)}
         />
 
-        <div className="name">{name}</div>
+        <div className="name">{item.name}</div>
       </Link>
       <div className="price">
-        {hasDiscount ? (
+        {item.discount ? (
           <p>
-            {price} GBP
+            {item.price} GBP
             <span style={{ textDecoration: "line-through" }}>
-              {beforeDiscount} GBP
+              {item.beforeDiscount} GBP
             </span>
           </p>
         ) : (
-          <span>{price} GBP</span>
+          <span>{item.price} GBP</span>
         )}
       </div>
     </CardComponent>

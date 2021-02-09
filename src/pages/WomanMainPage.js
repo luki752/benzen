@@ -4,7 +4,7 @@ import styled from "styled-components";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //actions
-import { loadItems } from "../actions/itemsAction";
+import { loadAllItems } from "../actions/itemsAction";
 //components
 import Card from "../components/Card";
 import ImageComponent from "../components/ImageComponent";
@@ -20,7 +20,7 @@ const WomanMainPage = () => {
   //dispatch
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loadItems("female"));
+    dispatch(loadAllItems("woman"));
   }, [dispatch]);
   //get width
   useLayoutEffect(() => {
@@ -35,7 +35,7 @@ const WomanMainPage = () => {
     setMV(window.matchMedia("(min-width: 1000px)").matches);
   }, [size, mv]);
   //get data back
-  const { items, isLoading } = useSelector((state) => state.items);
+  const { AllItems, isLoading } = useSelector((state) => state.items);
   return (
     <WomanMainPageComponent>
       <div className="items">
@@ -51,25 +51,17 @@ const WomanMainPage = () => {
         />
         {!isLoading && (
           <div className="four-cards">
-            {items.clothes
-              .filter((cloth) => cloth.item === "sweatshirts")
+            {AllItems.filter((cloth) => cloth.item === "sweatshirts")
               .slice(0, 4)
               .map((cloth) => (
                 <Card
                   key={cloth.id}
-                  img={cloth.images[0].img}
-                  secondImage={cloth.images[1].img}
-                  name={cloth.name}
-                  price={cloth.price}
-                  hasDiscount={cloth.discount ? true : false}
-                  beforeDiscount={cloth.beforeDiscount}
+                  id={cloth.id}
+                  item={cloth}
                   height={mv ? "40rem" : "20rem"}
                   width={mv ? "25%" : "50%"}
                   margin={mv ? "3rem 0" : "0.5rem 0"}
-                  id={cloth.id}
-                  gender={"female"}
-                  category={"clothes"}
-                  item={cloth}
+                  gender={"woman"}
                 />
               ))}
           </div>
@@ -89,25 +81,17 @@ const WomanMainPage = () => {
         />
         {!isLoading && (
           <div className="four-cards">
-            {items.clothes
-              .filter((cloth) => cloth.item === "sweaters")
+            {AllItems.filter((cloth) => cloth.item === "sweaters")
               .slice(0, 4)
               .map((cloth) => (
                 <Card
                   key={cloth.id}
-                  img={cloth.images[0].img}
-                  secondImage={cloth.images[1].img}
-                  name={cloth.name}
-                  price={cloth.price}
-                  hasDiscount={cloth.discount ? true : false}
-                  beforeDiscount={cloth.beforeDiscount}
+                  id={cloth.id}
+                  item={cloth}
                   height={mv ? "40rem" : "20rem"}
                   width={mv ? "25%" : "50%"}
                   margin={mv ? "3rem 0" : "0.5rem 0"}
-                  id={cloth.id}
-                  gender={"female"}
-                  category={"clothes"}
-                  item={cloth}
+                  gender={"woman"}
                 />
               ))}
           </div>

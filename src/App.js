@@ -66,16 +66,7 @@ function App() {
       >
         <WomanClothesPage />
       </Route>
-      <Route
-        path={[
-          "/male/clothes/:id",
-          "/male/accessories/:id",
-          "/female/clothes/:id",
-          "/female/accessories/:id",
-          "/female/shoes/:id",
-        ]}
-        exact
-      >
+      <Route path={["/man/:id", "/woman/:id"]} exact>
         <ItemDetailsPage />
       </Route>
       <Route path="/favorites">

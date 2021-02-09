@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //actions
-import { loadItems } from "../actions/itemsAction";
+import { loadAllItems } from "../actions/itemsAction";
 //components
 import Card from "../components/Card";
 import ImageComponent from "../components/ImageComponent";
@@ -20,7 +20,7 @@ const ManMainPage = () => {
   //dispatch
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loadItems("male"));
+    dispatch(loadAllItems("man"));
   }, [dispatch]);
   //get width
   useLayoutEffect(() => {
@@ -35,7 +35,7 @@ const ManMainPage = () => {
     setMV(window.matchMedia("(min-width: 1000px)").matches);
   }, [size, mv]);
   //get data back
-  const { items, isLoading } = useSelector((state) => state.items);
+  const { AllItems, isLoading } = useSelector((state) => state.items);
   return (
     <ManMainPageComponent>
       <div className="items">
@@ -75,25 +75,17 @@ const ManMainPage = () => {
         </CarouselStyles>
         {!isLoading && (
           <div className="four-cards">
-            {items.clothes
-              .filter((cloth) => cloth.item === "puffer-jackets")
+            {AllItems.filter((cloth) => cloth.item === "puffer-jackets")
               .slice(0, 4)
               .map((cloth) => (
                 <Card
                   key={cloth.id}
-                  img={cloth.images[0].img}
-                  secondImage={cloth.images[1].img}
-                  name={cloth.name}
-                  price={cloth.price}
-                  hasDiscount={cloth.discount ? true : false}
-                  beforeDiscount={cloth.beforeDiscount}
+                  item={cloth}
+                  id={cloth.id}
                   height={mv ? "40rem" : "20rem"}
                   width={mv ? "25%" : "50%"}
                   margin={mv ? "3rem 0" : "1rem 0"}
-                  id={cloth.id}
-                  gender={"male"}
-                  category={"clothes"}
-                  item={cloth}
+                  gender={"man"}
                 />
               ))}
           </div>
