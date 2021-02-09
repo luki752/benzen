@@ -6,6 +6,7 @@ const rootReducer = combineReducers({
   items: itemsReducer,
   item: itemsReducer,
   category: itemsReducer,
+  answer: itemsReducer,
   login: loginReducer,
 });
 

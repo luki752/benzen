@@ -40,12 +40,6 @@ const FavoritesPage = () => {
           ? user.favorites.map((item) => (
               <Card
                 key={item.id}
-                img={item.images[0].img}
-                secondImage={item.images[1].img}
-                name={item.name}
-                price={item.price}
-                hasDiscount={item.discount ? true : false}
-                beforeDiscount={item.beforeDiscount}
                 height={mv ? "30rem" : "20rem"}
                 width={mv ? "25%" : "50%"}
                 margin={mv ? "1.5rem 0" : "0.5rem 0"}

@@ -33,6 +33,7 @@ const AccountPage = () => {
   const [loginEmailInput, setLoginEmail] = useState("");
   const [loginPasswordInput, setLoginPassword] = useState("");
   const [falseLogin, setFalseLogin] = useState(false);
+  const [falseEmail, setFalseEmail] = useState(false);
   const [loginErrorMsg, setLoginErrorMsg] = useState(false);
   //register state
   const [registerPasswordView, setRegisterPasswordView] = useState(true);
@@ -88,10 +89,12 @@ const AccountPage = () => {
         } else {
           setLoginErrorMsg("incorrect password");
           setFalseLogin(true);
+          setFalseEmail(false);
         }
       } else {
-        setFalseLogin(true);
-        setLoginErrorMsg("incorrect email");
+        setFalseEmail(true);
+        setFalseLogin(false);
+        setLoginErrorMsg("Theres no account with this email");
       }
     });
   };
@@ -363,7 +366,11 @@ const AccountPage = () => {
             <span
               style={{
                 color: "rgba(245, 66, 66,0.7)",
-                display: pathName === "login" && falseLogin ? "block" : "none",
+                display:
+                  (pathName === "login" && falseLogin) ||
+                  (pathName === "login" && falseEmail)
+                    ? "block"
+                    : "none",
               }}
             >
               {loginErrorMsg}
@@ -377,6 +384,8 @@ const AccountPage = () => {
                   <TextField
                     label="Email"
                     type="email"
+                    required
+                    error={falseEmail ? true : false}
                     className="input"
                     onChange={(e) => setLoginEmail(e.target.value)}
                   />
@@ -385,6 +394,8 @@ const AccountPage = () => {
                   <TextField
                     className="input"
                     label="Password"
+                    required
+                    error={falseLogin ? true : false}
                     type={loginPasswordView ? "password" : ""}
                     onChange={(e) => setLoginPassword(e.target.value)}
                     InputProps={{
@@ -443,6 +454,7 @@ const AccountPage = () => {
                     <TextField
                       label="Email"
                       type="email"
+                      required
                       className="input"
                       onChange={(e) => setRegisterEmail(e.target.value)}
                     />
@@ -451,11 +463,13 @@ const AccountPage = () => {
                     <TextField
                       className="input name-input"
                       label="Name"
+                      required
                       onChange={(e) => setRegisterName(e.target.value)}
                     />
                     <TextField
                       className="input name-input"
                       label="Surname"
+                      required
                       onChange={(e) => setRegisterSurname(e.target.value)}
                     />
                   </div>
@@ -463,6 +477,7 @@ const AccountPage = () => {
                     <TextField
                       className="input"
                       label="Password"
+                      required
                       type={registerPasswordView ? "password" : ""}
                       onChange={(e) => setRegisterPassword(e.target.value)}
                       InputProps={{

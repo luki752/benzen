@@ -1,5 +1,5 @@
 import axios from "axios";
-import { itemsUrl, specificItemUrl, allItemsUrl } from "../api";
+import { itemsUrl, specificItemUrl, allItemsUrl, questionUrl } from "../api";
 
 //action creator
 export const loadItems = (gender, category, item, sortOrder) => async (
@@ -44,6 +44,17 @@ export const loadAllItems = (gender) => async (dispatch) => {
     type: "FETCH_ALL_ITEMS",
     payload: {
       AllItems: itemsData.data,
+    },
+  });
+};
+
+export const loadQuestion = (gender, question) => async (dispatch) => {
+  //fetch data
+  const answersData = await axios.get(questionUrl(gender, question));
+  dispatch({
+    type: "FETCH_ANSWER",
+    payload: {
+      answer: answersData.data,
     },
   });
 };

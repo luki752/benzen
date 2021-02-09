@@ -2,18 +2,20 @@ import React, { useState } from "react";
 //styling
 import styled from "styled-components";
 //router
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 //redux
 import { useDispatch, useSelector } from "react-redux";
+//actions
+import { loadQuestion } from "../actions/itemsAction";
 //material ui
 import Button from "@material-ui/core/Button";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
-// import TextField from '@material-ui/core/TextField';
-// import InputAdornment from '@material-ui/core/InputAdornment';
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
 //icons
-// import SearchIcon from '@material-ui/icons/Search';
+import SearchIcon from "@material-ui/icons/Search";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
@@ -27,13 +29,26 @@ const Nav = () => {
   const [manDropdownOpen, SetManDropdown] = useState(false);
   const [womanDropdownOpen, SetWomanDropdown] = useState(false);
   const [loginDropdownOpen, setLoginDropdown] = useState(false);
+  const [manSearch, setManSearch] = useState("");
+  const [womanSearch, setWomanSearch] = useState("");
   const mv = window.matchMedia("(min-width: 1000px)");
   const { isLogged, user } = useSelector((state) => state.login);
   const dispatch = useDispatch();
+  const history = useHistory();
   //handlers
   const linkHandler = () => {
     window.scrollTo(0, 0);
     setNavOpen(!navOpen);
+  };
+  const manSearchHandler = () => {
+    dispatch(loadQuestion("man", manSearch));
+    history.push("/answer/man");
+    setNavOpen(false);
+  };
+  const womanSearchHandler = () => {
+    dispatch(loadQuestion("woman", womanSearch));
+    history.push("/answer/gender");
+    setNavOpen(false);
   };
   return (
     <NavComponent>
@@ -83,13 +98,6 @@ const Nav = () => {
       </div>
       <div className="nav-right-menu">
         <ul>
-          {/* <li><TextField label="search" InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon />
-            </InputAdornment>
-          ),
-        }}/></li> */}
           <li>
             {" "}
             <Link
@@ -133,7 +141,25 @@ const Nav = () => {
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <h1>Man</h1>
             </AccordionSummary>
-
+            <AccordionDetails>
+              <TextField
+                label="search"
+                value={manSearch}
+                className="accordion-input"
+                onChange={(e) => setManSearch(e.target.value)}
+                onKeyDown={(e) => (e.key === "Enter" ? manSearchHandler() : "")}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment
+                      position="start"
+                      onClick={() => manSearchHandler()}
+                    >
+                      <SearchIcon />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </AccordionDetails>
             {/* accordion within main accordion */}
             <AccordionDetails>
               <Accordion className="accordion-within">
@@ -268,6 +294,27 @@ const Nav = () => {
                 <h1>Woman</h1>
               </Link>
             </AccordionSummary>
+            <AccordionDetails>
+              <TextField
+                label="search"
+                className="accordion-input"
+                value={womanSearch}
+                onChange={(e) => setWomanSearch(e.target.value)}
+                onKeyDown={(e) =>
+                  e.key === "Enter" ? womanSearchHandler() : ""
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment
+                      position="start"
+                      onClick={() => womanSearchHandler()}
+                    >
+                      <SearchIcon />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </AccordionDetails>
 
             {/* accordion within main accordion */}
             <AccordionDetails>
@@ -548,6 +595,27 @@ const Nav = () => {
               <li>Socks</li>
             </Link>
           </ul>
+          <ul>
+            <li>
+              <TextField
+                label="search"
+                value={manSearch}
+                className="dropdown-input"
+                onChange={(e) => setManSearch(e.target.value)}
+                onKeyDown={(e) => (e.key === "Enter" ? manSearchHandler() : "")}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment
+                      position="start"
+                      onClick={() => manSearchHandler()}
+                    >
+                      <SearchIcon />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </li>
+          </ul>
         </div>
       </ManDropdown>
       <WomanDropdown style={{ display: womanDropdownOpen ? "flex" : "none" }}>
@@ -630,6 +698,26 @@ const Nav = () => {
             <Link to="/woman/accessories/gloves" className="link">
               <li>Gloves</li>
             </Link>
+          </ul>
+          <ul>
+            <li>
+              <TextField
+                label="search"
+                value={womanSearch}
+                className="dropdown-input"
+                onChange={(e) => setWomanSearch(e.target.value)}
+                onKeyDown={(e) =>
+                  e.key === "Enter" ? womanSearchHandler() : ""
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon onClick={() => womanSearchHandler()} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </li>
           </ul>
         </div>
       </WomanDropdown>
@@ -805,7 +893,10 @@ const HamburgerMenu = styled.div`
       color: tomato;
     }
   }
-
+  .accordion-input {
+    width: 100%;
+    font-size: 1.5rem;
+  }
   .one-accordion {
     display: flex;
     flex-direction: column;
@@ -844,6 +935,9 @@ const ManDropdown = styled.div`
       padding: 3rem;
       font-size: 1rem;
       font-weight: bold;
+      @media screen and (max-width: 1200px) {
+        padding: 1rem;
+      }
       li {
         list-style: none;
         padding: 0.4rem 0rem;
@@ -851,6 +945,11 @@ const ManDropdown = styled.div`
         &:hover {
           text-decoration: underline;
           cursor: pointer;
+        }
+        .dropdown-input {
+          .Mui-focused {
+            color: black;
+          }
         }
       }
       .list-header {
@@ -893,10 +992,18 @@ const WomanDropdown = styled.div`
       padding: 3rem;
       font-size: 1rem;
       font-weight: bold;
+      @media screen and (max-width: 1200px) {
+        padding: 1rem;
+      }
       li {
         list-style: none;
         padding: 0.4rem 0rem;
         font-size: 0.8rem;
+        .dropdown-input {
+          .Mui-focused {
+            color: black;
+          }
+        }
         &:hover {
           text-decoration: underline;
           cursor: pointer;
@@ -928,7 +1035,7 @@ const LoginDropdown = styled.div`
     font-size: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     background-color: white;
     .greetings {
       display: flex;

@@ -14,6 +14,7 @@ import WomanClothesPage from "./pages/WomanClothesPage";
 import ItemDetailsPage from "./pages/ItemDetailsPage";
 import FavoritesPage from "./pages/FavoritesPage";
 import AddItemPage from "./pages/addItemPage";
+import SearchPage from "./pages/SearchPage";
 //router
 import { Route } from "react-router-dom";
 
@@ -74,6 +75,9 @@ function App() {
       </Route>
       <Route path="/add-item">
         <AddItemPage />
+      </Route>
+      <Route path="/answer/:id">
+        <SearchPage />
       </Route>
       <Footer />
     </div>

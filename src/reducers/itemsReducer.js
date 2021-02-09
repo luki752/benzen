@@ -2,6 +2,7 @@ const initState = {
   items: [],
   item: [],
   AllItems: [],
+  answer: [],
   isLoading: true,
 };
 
@@ -18,6 +19,8 @@ const itemsReducer = (state = initState, action) => {
       return { ...state, item: action.payload.item, isLoading: false };
     case "FETCH_ALL_ITEMS":
       return { ...state, AllItems: action.payload.AllItems, isLoading: false };
+    case "FETCH_ANSWER":
+      return { ...state, answer: action.payload.answer };
     default:
       return { ...state };
   }

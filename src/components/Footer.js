@@ -16,7 +16,12 @@ import YouTubeIcon from "@material-ui/icons/YouTube";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import PinterestIcon from "@material-ui/icons/Pinterest";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+//router
+import { Link } from "react-router-dom";
 const Footer = () => {
+  const linkHandler = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <FooterComponent>
       <div className="footer-computer">
@@ -41,8 +46,26 @@ const Footer = () => {
         <div className="two-lists">
           <ul>
             <li>my account</li>
-            <li>Account settings</li>
-            <li>Change password</li>
+
+            <li>
+              <Link
+                to="/customer/account/info"
+                className="link"
+                onClick={() => linkHandler()}
+              >
+                Account settings
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/customer/account/info"
+                className="link"
+                onClick={() => linkHandler()}
+              >
+                Change password
+              </Link>
+            </li>
           </ul>
           <ul className="second-list">
             <li>company</li>
@@ -218,7 +241,13 @@ const FooterComponent = styled.div`
           text-transform: upperCase;
           font-size: 1rem;
           color: black;
-          cursor: regular;
+          cursor: auto;
+        }
+        .link {
+          &:hover {
+            color: #d5b383;
+            cursor: pointer;
+          }
         }
       }
     }

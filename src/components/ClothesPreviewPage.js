@@ -47,8 +47,6 @@ const ClothesPreviewPage = ({ gender }) => {
   }, [size, mv]);
 
   //dispatch data
-  console.log(category);
-  console.log(item);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadItems(gender, category, subItem ? subItem : item, sort));
@@ -364,7 +362,7 @@ const ClothesPreviewPage = ({ gender }) => {
             <div className="options-component">
               <div className="sort">
                 <FormControl>
-                  <InputLabel className="sort-label">Sort price by</InputLabel>
+                  <InputLabel className="sort-label">Sort by price </InputLabel>
                   <Select
                     value={sort}
                     onChange={handleSort}

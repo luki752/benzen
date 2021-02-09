@@ -9,3 +9,5 @@ export const loginUrl = (email) => `http://localhost:3000/users?email=${email}`;
 
 export const registerUrl = (email) =>
   `http://localhost:3000/users?email=${email}`;
+export const questionUrl = (gender, question) =>
+  `http://localhost:3000/${gender}?q=${question}`;
