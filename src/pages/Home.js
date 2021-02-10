@@ -6,6 +6,9 @@ import Carousel from "react-bootstrap/Carousel";
 //router
 import { Link } from "react-router-dom";
 const Home = () => {
+  const linkHandler = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <HomeComponent>
       <div className="home-carousel">
@@ -61,13 +64,13 @@ const Home = () => {
           </Carousel>
         </CarouselStyles>
         <div className="images">
-          <Link to="/man">
+          <Link to="/man" onClick={() => linkHandler()}>
             <img
               src="https://www.reserved.com/media/SHARED/stronywizerunkowe/reserved/home/content/img/bricks/Re-men-kafel-minisite-newin-737x737px-040121_EN.jpg"
               alt="man"
             />
           </Link>
-          <Link to="/woman">
+          <Link to="/woman" onClick={() => linkHandler()}>
             <img
               src="https://www.reserved.com/media/SHARED/stronywizerunkowe/reserved/home/content/img/bricks/Re-ladies-kafel-minisite-newin-737x737px-040121_EN.jpg"
               alt="woman"

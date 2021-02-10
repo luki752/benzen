@@ -983,6 +983,99 @@
           "img": "https://www.reserved.com/media/catalog/product/Z/Z/ZZ556-90M-002_1.jpg"
         }
       ]
+    },
+    {
+      "name": "Coat with wool",
+      "item": "coats",
+      "amount": "1000",
+      "discount": true,
+      "beforeDiscount": "79.99",
+      "category": "clothes",
+      "price": "49.99",
+      "desc": "Fitted box coat made of thick, soft jersey fabric with wool blend.",
+      "material": [
+        {
+          "id": 0,
+          "fabric": "polyester",
+          "percentage": "60"
+        },
+        {
+          "id": 1,
+          "fabric": "wool",
+          "percentage": "40"
+        }
+      ],
+      "images": [
+        {
+          "id": 0,
+          "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-001_15.jpg"
+        },
+        {
+          "id": 1,
+          "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-002_15.jpg"
+        },
+        {
+          "id": 2,
+          "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-003_15.jpg"
+        },
+        {
+          "id": 3,
+          "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-004_15.jpg"
+        },
+        {
+          "id": 4,
+          "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-005_15.jpg"
+        },
+        {
+          "id": 5,
+          "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-006_15.jpg"
+        },
+        {
+          "id": 6,
+          "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-040_17.jpg"
+        }
+      ],
+      "id": 28
+    },
+    {
+      "name": "Quilted jacket with standing collar",
+      "item": "puffer-jackets",
+      "amount": "1000",
+      "category": "clothes",
+      "discount": "false",
+      "beforeDiscount": "",
+      "price": "29.99",
+      "desc": "low stand up collar with press stud, fastening front zip up fastening",
+      "material": [
+        {
+          "id": 0,
+          "fabric": "polyamide",
+          "percentage": "100"
+        }
+      ],
+      "images": [
+        {
+          "id": 0,
+          "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI497-59X-001_4.jpg"
+        },
+        {
+          "id": 1,
+          "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI497-59X-002_4.jpg"
+        },
+        {
+          "id": 2,
+          "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI497-59X-003_4.jpg"
+        },
+        {
+          "id": 3,
+          "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI497-59X-004_4.jpg"
+        },
+        {
+          "id": 4,
+          "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI497-59X-005_4.jpg"
+        }
+      ],
+      "id": 29
     }
   ],
   "woman": [
@@ -2243,6 +2336,78 @@
             }
           ],
           "gender": "man"
+        },
+        {
+          "id": 8,
+          "name": "Oversize hoodie",
+          "item": "sweatshirts",
+          "amount": 1000,
+          "price": 24.99,
+          "desc": "long sleeves with dropped shoulders, it creates a set with trousers in the same colour",
+          "material": [
+            {
+              "fabric": "cotton",
+              "percentage": "76"
+            },
+            {
+              "fabric": "polyester",
+              "percentage": "24"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/0/5/0533C-04X-030_5.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/0/5/0533C-04X-001_5.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/0/5/0533C-04X-002_5.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/0/5/0533C-04X-003_5.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/0/5/0533C-04X-004_5.jpg"
+            }
+          ],
+          "gender": "woman"
+        },
+        {
+          "id": 3,
+          "name": "Cropped cardigan with V neck",
+          "item": "sweaters",
+          "amount": 1000,
+          "price": 19.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-001_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-002_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-003_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-040_1.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-041_1.jpg"
+            }
+          ],
+          "gender": "woman"
         }
       ],
       "orders": [],

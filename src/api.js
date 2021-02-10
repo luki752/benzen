@@ -11,3 +11,5 @@ export const registerUrl = (email) =>
   `http://localhost:3000/users?email=${email}`;
 export const questionUrl = (gender, question) =>
   `http://localhost:3000/${gender}?q=${question}`;
+export const discountUrl = (gender) =>
+  `http://localhost:3000/${gender}?discount=true`;

@@ -41,6 +41,8 @@ const AddItemPage = () => {
       });
       setMaterials(materials);
       setLastMaterialId(lastMaterialId + 1);
+      setMaterialFabric("");
+      setMaterialPercentage("");
     } else {
       alert("inputs cant be empty");
     }
@@ -53,6 +55,7 @@ const AddItemPage = () => {
       });
       setImages(images);
       setLastImageId(lastImageId + 1);
+      setImageUrl("");
     } else {
       alert("inputs cant be empty");
     }
@@ -75,6 +78,8 @@ const AddItemPage = () => {
           item: item,
           amount: amount,
           category: category,
+          discount: discount,
+          beforeDiscount: priceBeforeDiscount,
           price: price,
           desc: description,
           material: [...materials],
@@ -83,6 +88,17 @@ const AddItemPage = () => {
         .then((resp) => {
           console.log(resp);
           alert("Item added successfully");
+          setGender("");
+          setName("");
+          setItem("");
+          setAmount("");
+          setCategory("");
+          setDescription("");
+          setDiscount(false);
+          setPriceBeforeDiscount("");
+          setPrice("");
+          setMaterials([]);
+          setImages([]);
         })
         .catch((error) => {
           console.log(error);
@@ -118,9 +134,7 @@ const AddItemPage = () => {
               >
                 <MenuItem value="clothes">clothes</MenuItem>
                 <MenuItem value="accessories">accessories</MenuItem>
-                {gender === "female" && (
-                  <MenuItem value="shoes">shoes</MenuItem>
-                )}
+                {gender === "woman" && <MenuItem value="shoes">shoes</MenuItem>}
               </Select>
             </FormControl>
           </div>
@@ -134,11 +148,40 @@ const AddItemPage = () => {
           </div>
           <div className="option">
             item:{" "}
-            <TextField
-              className="input"
-              value={item}
-              onChange={(e) => setItem(e.target.value)}
-            />
+            <FormControl>
+              <Select
+                value={item}
+                onChange={(e) => setItem(e.target.value)}
+                className="select"
+              >
+                <MenuItem value="coats">coats</MenuItem>
+                <MenuItem value="jackets">jackets</MenuItem>
+                <MenuItem value="puffer-jackets">puffer-jackets</MenuItem>
+                <MenuItem value="shirts">shirts</MenuItem>
+                <MenuItem value="sweatshirts">sweatshirts</MenuItem>
+                <MenuItem value="trousers">trousers</MenuItem>
+                <MenuItem value="t-shirts">t-shirts</MenuItem>
+                <MenuItem value="jeans">jeans</MenuItem>
+                <MenuItem value="blazers">blazers</MenuItem>
+                <MenuItem value="nightwear">nightwear</MenuItem>
+                <MenuItem value="polos">polos</MenuItem>
+                <MenuItem value="suits">suits</MenuItem>
+                <MenuItem value="underwear">underwear</MenuItem>
+                <MenuItem value="vests">vests</MenuItem>
+                <MenuItem value="dresses">dresses</MenuItem>
+                <MenuItem value="skirts">skirts</MenuItem>
+                <MenuItem value="biker-jackets">biker-jackets</MenuItem>
+                <MenuItem value="lingerie">lingerie</MenuItem>
+                <MenuItem value="bags">bags</MenuItem>
+                <MenuItem value="gloves">gloves</MenuItem>
+                <MenuItem value="hats">hats</MenuItem>
+                <MenuItem value="scarves">scarves</MenuItem>
+                <MenuItem value="boots">boots</MenuItem>
+                <MenuItem value="heels">heels</MenuItem>
+                <MenuItem value="flats">flats</MenuItem>
+                <MenuItem value="sneakers">sneakers</MenuItem>
+              </Select>
+            </FormControl>
           </div>
           <div className="option">
             price:{" "}
@@ -187,6 +230,7 @@ const AddItemPage = () => {
             <TextField
               className="input"
               value={description}
+              multiline
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
@@ -205,6 +249,7 @@ const AddItemPage = () => {
                 type="number"
                 value={materialPercentage}
                 onChange={(e) => setMaterialPercentage(e.target.value)}
+                onKeyDown={(e) => (e.key === "Enter" ? materialHandler() : "")}
               />
               <button
                 className="button-white"
@@ -243,6 +288,7 @@ const AddItemPage = () => {
                 className="input"
                 value={imageUrl}
                 onChange={(e) => setImageUrl(e.target.value)}
+                onKeyDown={(e) => (e.key === "Enter" ? imagesHandler() : "")}
               />
               <button className="button-white" onClick={() => imagesHandler()}>
                 Add Image

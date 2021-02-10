@@ -1,5 +1,11 @@
 import axios from "axios";
-import { itemsUrl, specificItemUrl, allItemsUrl, questionUrl } from "../api";
+import {
+  itemsUrl,
+  specificItemUrl,
+  allItemsUrl,
+  questionUrl,
+  discountUrl,
+} from "../api";
 
 //action creator
 export const loadItems = (gender, category, item, sortOrder) => async (
@@ -55,6 +61,17 @@ export const loadQuestion = (gender, question) => async (dispatch) => {
     type: "FETCH_ANSWER",
     payload: {
       answer: answersData.data,
+    },
+  });
+};
+
+export const loadSale = (gender) => async (dispatch) => {
+  //fetch data
+  const saleData = await axios.get(discountUrl(gender));
+  dispatch({
+    type: "FETCH_SALE",
+    payload: {
+      sale: saleData.data,
     },
   });
 };

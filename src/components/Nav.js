@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //styling
 import styled from "styled-components";
 //router
 import { Link, useHistory } from "react-router-dom";
+//api
+import { discountUrl } from "../api";
+//axios
+import axios from "axios";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //actions
-import { loadQuestion } from "../actions/itemsAction";
+import { loadQuestion, loadSale } from "../actions/itemsAction";
 //material ui
 import Button from "@material-ui/core/Button";
 import Accordion from "@material-ui/core/Accordion";
@@ -29,8 +33,11 @@ const Nav = () => {
   const [manDropdownOpen, SetManDropdown] = useState(false);
   const [womanDropdownOpen, SetWomanDropdown] = useState(false);
   const [loginDropdownOpen, setLoginDropdown] = useState(false);
+  const [saleDropdownOpen, setSaleDropdown] = useState(false);
   const [manSearch, setManSearch] = useState("");
   const [womanSearch, setWomanSearch] = useState("");
+  const [menDiscountsList, setMenDiscountsList] = useState([]);
+  const [womenDiscountsList, setWomenDiscountsList] = useState([]);
   const mv = window.matchMedia("(min-width: 1000px)");
   const { isLogged, user } = useSelector((state) => state.login);
   const dispatch = useDispatch();
@@ -47,9 +54,21 @@ const Nav = () => {
   };
   const womanSearchHandler = () => {
     dispatch(loadQuestion("woman", womanSearch));
-    history.push("/answer/gender");
+    history.push("/answer/woman");
     setNavOpen(false);
   };
+  useEffect(() => {
+    dispatch(loadSale("man"));
+    axios
+      .get(discountUrl("woman"))
+      .then((res) =>
+        setWomenDiscountsList([...new Set(res.data.map((a) => a.item))])
+      );
+  }, [dispatch]);
+  const { sale } = useSelector((state) => state.sale);
+  useEffect(() => {
+    setMenDiscountsList([...new Set(sale.map((a) => a.item))]);
+  }, [setMenDiscountsList, sale]);
   return (
     <NavComponent>
       <div className="nav-left-menu">
@@ -66,6 +85,21 @@ const Nav = () => {
       </div>
       <div className="nav-middle-menu">
         <ul>
+          <li>
+            <Link to="/sale/woman" className="link">
+              <Button
+                className="gender-button"
+                style={{
+                  textDecoration: saleDropdownOpen ? "underline" : "none",
+                  color: "red",
+                }}
+                onMouseEnter={() => setSaleDropdown(true)}
+                onMouseLeave={() => setSaleDropdown(false)}
+              >
+                sale up to 50%
+              </Button>
+            </Link>
+          </li>
           <li>
             <Link to="/woman" className="link">
               <Button
@@ -137,6 +171,49 @@ const Nav = () => {
           {/* MAN ACCORDION */}
 
           {/* Whole accordion */}
+          <Accordion className="one-accordion">
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <h1 style={{ color: "red" }}>Sale up to 50%</h1>
+            </AccordionSummary>
+            <AccordionDetails>
+              {/* men sale */}
+              <Accordion className="accordion-within">
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <h1 style={{ color: "red" }}>Men</h1>
+                </AccordionSummary>
+                {menDiscountsList.map((item) => (
+                  <Link to={`/sale/man/${item}`} className="link" key={item}>
+                    <AccordionDetails
+                      onClick={() => linkHandler()}
+                      style={{ color: "red" }}
+                    >
+                      {item}
+                    </AccordionDetails>
+                  </Link>
+                ))}
+              </Accordion>
+              <AccordionDetails></AccordionDetails>
+            </AccordionDetails>
+            {/* women sale */}
+            <AccordionDetails>
+              <Accordion className="accordion-within" style={{ color: "red" }}>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <h1>Women</h1>
+                </AccordionSummary>
+                {womenDiscountsList.map((item) => (
+                  <Link to={`/sale/woman/${item}`} className="link" key={item}>
+                    <AccordionDetails
+                      onClick={() => linkHandler()}
+                      style={{ color: "red" }}
+                    >
+                      {item}
+                    </AccordionDetails>
+                  </Link>
+                ))}
+              </Accordion>
+              <AccordionDetails></AccordionDetails>
+            </AccordionDetails>
+          </Accordion>
           <Accordion className="one-accordion">
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <h1>Man</h1>
@@ -784,6 +861,28 @@ const Nav = () => {
           </>
         )}
       </LoginDropdown>
+      <SaleDropdown style={{ display: saleDropdownOpen ? "flex" : "none" }}>
+        {sale && (
+          <div
+            className="dropdown-menu"
+            onMouseEnter={() => setSaleDropdown(true)}
+            onMouseLeave={() => setSaleDropdown(false)}
+          >
+            <ul>
+              <li className="list-header">Women</li>
+              {womenDiscountsList.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <ul>
+              <li className="list-header">Men</li>
+              {menDiscountsList.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </SaleDropdown>
     </NavComponent>
   );
 };
@@ -1094,6 +1193,59 @@ const LoginDropdown = styled.div`
         background-color: rgba(0, 0, 0, 1);
         cursor: pointer;
         color: white;
+      }
+    }
+  }
+`;
+
+const SaleDropdown = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+  z-index: 50;
+  .dropdown-menu {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 70%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    display: flex;
+    background-color: white;
+    padding: 0 5rem;
+    border: none;
+    justify-content: Center;
+    color: red;
+    ul {
+      padding: 3rem;
+      font-size: 1rem;
+      font-weight: bold;
+      @media screen and (max-width: 1200px) {
+        padding: 1rem;
+      }
+      li {
+        list-style: none;
+        padding: 0.4rem 0rem;
+        font-size: 0.8rem;
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+      .list-header {
+        font-size: 1rem;
+        padding-bottom: 1rem;
+        text-transform: upperCase;
+        &:hover {
+          text-decoration: none;
+          cursor: default;
+        }
       }
     }
   }
