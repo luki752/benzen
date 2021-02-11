@@ -1935,7 +1935,7 @@
       ]
     },
     {
-      "id": 1,
+      "id": 24,
       "name": "Bum bag with chain detail",
       "item": "bags",
       "amount": 1000,
@@ -1964,7 +1964,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": 25,
       "name": "Wool hat with decorative belt",
       "item": "hats",
       "category": "accessories",
@@ -1989,7 +1989,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": 26,
       "name": "Melange scarf",
       "item": "scarves",
       "category": "accessories",
@@ -2015,7 +2015,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": 27,
       "name": "Leather gloves",
       "item": "gloves",
       "category": "accessories",
@@ -2042,7 +2042,7 @@
       ]
     },
     {
-      "id": 1,
+      "id": 28,
       "name": "Boots with elastic uppers",
       "item": "boots",
       "category": "shoes",
@@ -2073,7 +2073,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": 29,
       "name": "Suede pumps",
       "item": "heels",
       "category": "shoes",
@@ -2108,7 +2108,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": 30,
       "name": "Combined materials sneakers",
       "item": "flats",
       "category": "shoes",
@@ -2140,7 +2140,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": 31,
       "name": "Leather loafers",
       "item": "leather",
       "category": "shoes",
@@ -2175,7 +2175,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": 32,
       "name": "Thick-soled shoes",
       "item": "sneakers",
       "category": "shoes",
@@ -2222,164 +2222,50 @@
       "password": "x61Ey612Kl2gpFL56FT9weDnpSo4AV8j8+qx2AuTHdRyY036xxzTTrw10Wq3+4qQyB+XURPWx1ONxp3Y3pB37A==",
       "favorites": [
         {
-          "id": 13,
-          "name": "Elegant coat with wool",
-          "item": "coats",
-          "amount": 1000,
-          "price": 39.99,
-          "desc": "notch lapels, single-breasted button fastening, open front pockets, practical single vented back hem",
-          "material": [
-            {
-              "fabric": "wool",
-              "percentage": "50"
-            },
-            {
-              "fabric": "polyester",
-              "percentage": "42"
-            },
-            {
-              "fabric": "acrylic",
-              "percentage": "4"
-            },
-            {
-              "fabric": "polyamide",
-              "percentage": "2"
-            },
-            {
-              "fabric": "viscose",
-              "percentage": "2"
-            }
-          ],
-          "images": [
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-001_16.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-002_16.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-003_16.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-004_16.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-005_16.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-040_17.jpg"
-            }
-          ],
-          "gender": "man"
-        },
-        {
-          "id": 4,
-          "name": "Stripe organic cotton rich shirt",
-          "item": "shirts",
-          "amount": 1000,
-          "price": 19.99,
-          "desc": "high round neck",
-          "material": [
-            {
-              "fabric": "polyamide",
-              "percentage": "92"
-            },
-            {
-              "fabric": "elastane",
-              "percentage": "8"
-            }
-          ],
-          "images": [
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU193-05X-002_1.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU193-05X-003_1.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU193-05X-004_1.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU193-05X-040_4.jpg"
-            }
-          ],
-          "gender": "woman"
-        },
-        {
           "id": 18,
-          "name": "Quilted jacket",
-          "item": "puffer-jackets",
-          "amount": 1000,
-          "price": 39.99,
-          "desc": "high collar with hood, long sleeves with ribbed trim,smooth lining",
-          "material": [
-            {
-              "fabric": "polyamide",
-              "percentage": "100"
-            }
-          ],
-          "images": [
-            {
-              "img": "https://www.reserved.com/media/catalog/product/4/8/4845C-59X-030_1.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/4/8/4845C-59X-001_3.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/4/8/4845C-59X-002_3.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/4/8/4845C-59X-003_3.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/4/8/4845C-59X-005_3.jpg"
-            }
-          ],
-          "gender": "man"
-        },
-        {
-          "id": 8,
-          "name": "Oversize hoodie",
-          "item": "sweatshirts",
-          "amount": 1000,
-          "price": 24.99,
-          "desc": "long sleeves with dropped shoulders, it creates a set with trousers in the same colour",
-          "material": [
-            {
-              "fabric": "cotton",
-              "percentage": "76"
-            },
-            {
-              "fabric": "polyester",
-              "percentage": "24"
-            }
-          ],
-          "images": [
-            {
-              "img": "https://www.reserved.com/media/catalog/product/0/5/0533C-04X-030_5.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/0/5/0533C-04X-001_5.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/0/5/0533C-04X-002_5.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/0/5/0533C-04X-003_5.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/0/5/0533C-04X-004_5.jpg"
-            }
-          ],
-          "gender": "woman"
-        },
-        {
-          "id": 3,
-          "name": "Cropped cardigan with V neck",
+          "name": "Lightweight jumper with viscose blend",
           "item": "sweaters",
           "amount": 1000,
-          "price": 19.99,
+          "price": 14.99,
+          "desc": "round neck with trimming",
+          "material": [
+            {
+              "fabric": "viscose",
+              "percentage": "70"
+            },
+            {
+              "fabric": "polyamide",
+              "percentage": "30"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/0/9/0983C-99X-001_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/0/9/0983C-99X-002_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/0/9/0983C-99X-003_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/0/9/0983C-99X-040_1.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/0/9/0983C-99X-041_1.jpg"
+            }
+          ],
+          "gender": "woman"
+        },
+        {
+          "id": 9,
+          "name": "slim fit suit trousers",
+          "item": "suits",
+          "amount": 1000,
+          "price": 22.99,
           "desc": "high round neck",
+          "discount": true,
+          "beforeDiscount": 39.99,
           "material": [
             {
               "fabric": "polyamide",
@@ -2392,22 +2278,28 @@
           ],
           "images": [
             {
-              "img": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-001_3.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-001_9.jpg"
             },
             {
-              "img": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-002_3.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-002_9.jpg"
             },
             {
-              "img": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-003_3.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-003_9.jpg"
             },
             {
-              "img": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-040_1.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-004_9.jpg"
             },
             {
-              "img": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-041_1.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-005_2.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-006_2.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-040_2.jpg"
             }
           ],
-          "gender": "woman"
+          "gender": "man"
         }
       ],
       "orders": [],

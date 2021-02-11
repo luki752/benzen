@@ -3,14 +3,12 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 //router
 import { Link, useHistory } from "react-router-dom";
-//api
-import { discountUrl } from "../api";
 //axios
 import axios from "axios";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //actions
-import { loadQuestion, loadSale } from "../actions/itemsAction";
+import { loadQuestion } from "../actions/itemsAction";
 //material ui
 import Button from "@material-ui/core/Button";
 import Accordion from "@material-ui/core/Accordion";
@@ -58,17 +56,17 @@ const Nav = () => {
     setNavOpen(false);
   };
   useEffect(() => {
-    dispatch(loadSale("man"));
     axios
-      .get(discountUrl("woman"))
+      .get("http://localhost:3000/woman?discount=true")
       .then((res) =>
         setWomenDiscountsList([...new Set(res.data.map((a) => a.item))])
       );
+    axios
+      .get("http://localhost:3000/man?discount=true")
+      .then((res) =>
+        setMenDiscountsList([...new Set(res.data.map((a) => a.item))])
+      );
   }, [dispatch]);
-  const { sale } = useSelector((state) => state.sale);
-  useEffect(() => {
-    setMenDiscountsList([...new Set(sale.map((a) => a.item))]);
-  }, [setMenDiscountsList, sale]);
   return (
     <NavComponent>
       <div className="nav-left-menu">
@@ -855,33 +853,43 @@ const Nav = () => {
                 features
               </p>
               <Link to="/customer/account/register">
-                <button>Register</button>
+                <button className="button-white">Register</button>
               </Link>
             </div>
           </>
         )}
       </LoginDropdown>
       <SaleDropdown style={{ display: saleDropdownOpen ? "flex" : "none" }}>
-        {sale && (
-          <div
-            className="dropdown-menu"
-            onMouseEnter={() => setSaleDropdown(true)}
-            onMouseLeave={() => setSaleDropdown(false)}
-          >
-            <ul>
-              <li className="list-header">Women</li>
-              {womenDiscountsList.map((item) => (
+        <div
+          className="dropdown-menu"
+          onMouseEnter={() => setSaleDropdown(true)}
+          onMouseLeave={() => setSaleDropdown(false)}
+        >
+          <ul>
+            <li className="list-header">Women</li>
+            {womenDiscountsList.map((item) => (
+              <Link
+                to={`/sale/woman/${item}`}
+                className="link"
+                style={{ color: "red" }}
+              >
                 <li key={item}>{item}</li>
-              ))}
-            </ul>
-            <ul>
-              <li className="list-header">Men</li>
-              {menDiscountsList.map((item) => (
+              </Link>
+            ))}
+          </ul>
+          <ul>
+            <li className="list-header">Men</li>
+            {menDiscountsList.map((item) => (
+              <Link
+                to={`/sale/man/${item}`}
+                className="link"
+                style={{ color: "red" }}
+              >
                 <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        )}
+              </Link>
+            ))}
+          </ul>
+        </div>
       </SaleDropdown>
     </NavComponent>
   );
@@ -1233,6 +1241,9 @@ const SaleDropdown = styled.div`
         list-style: none;
         padding: 0.4rem 0rem;
         font-size: 0.8rem;
+        &:first-letter {
+          text-transform: upperCase;
+        }
         &:hover {
           text-decoration: underline;
           cursor: pointer;

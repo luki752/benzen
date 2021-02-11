@@ -15,7 +15,6 @@ import Select from "@material-ui/core/Select";
 //icons
 import ViewComfyIcon from "@material-ui/icons/ViewComfy";
 import ViewColumnIcon from "@material-ui/icons/ViewColumn";
-import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 //components
 import Card from "../components/Card";
 
@@ -53,12 +52,10 @@ const ClothesPreviewPage = ({ gender }) => {
   }, [dispatch, gender, category, item, sort, subItem]);
   //get data back
   const { items, isLoading } = useSelector((state) => state.items);
-  const { user } = useSelector((state) => state.login);
   //handlers
   const handleSort = (event) => {
     setSort(event.target.value);
   };
-  console.log(items);
   return (
     <>
       {!isLoading && (
@@ -362,18 +359,19 @@ const ClothesPreviewPage = ({ gender }) => {
             <div className="options-component">
               <div className="sort">
                 <FormControl>
-                  <InputLabel className="sort-label">Sort by price </InputLabel>
+                  <InputLabel className="sort-label">Sort price </InputLabel>
                   <Select
                     value={sort}
                     onChange={handleSort}
                     className="sort-select"
                   >
-                    <MenuItem value="asc">ASC</MenuItem>
-                    <MenuItem value="desc">DESC</MenuItem>
+                    <MenuItem value="asc">Sort price low to high</MenuItem>
+                    <MenuItem value="desc">Sort price high to low</MenuItem>
                   </Select>
                 </FormControl>
               </div>
               <div className="display-info">
+                {items.length} {items.length === 1 ? "Product" : "Products"}
                 <ViewComfyIcon
                   className={smallView ? "view-icon" : "view-icon active-icon"}
                   onClick={() => {
@@ -393,21 +391,6 @@ const ClothesPreviewPage = ({ gender }) => {
               </div>
             </div>
             <div className="items-display">
-              {user.email === "admin@admin.com" && (
-                <Link to="/add-item" className="link">
-                  <div
-                    className="add-item"
-                    style={{
-                      height: "30rem",
-                      width: "15rem",
-                      margin: mv ? "1.5rem" : "1rem",
-                    }}
-                  >
-                    <AddCircleOutlineIcon className="icon" />
-                    Add Item
-                  </div>
-                </Link>
-              )}
               {items.map((item) => (
                 <Card
                   key={item.id}
@@ -521,22 +504,6 @@ const ClothesPreviewPageComponent = styled.div`
       flex-wrap: wrap;
       @media screen and (max-width: 1000px) {
         justify-content: center;
-      }
-      .add-item {
-        display: flex;
-        align-items: Center;
-        justify-content: center;
-        border: 1px solid black;
-        font-size: 2rem;
-        transition: 0.3s ease-in all;
-        .icon {
-          font-size: 2rem;
-        }
-        &:hover {
-          cursor: pointer;
-          background-color: rgba(3, 1, 1, 0.8);
-          color: White;
-        }
       }
     }
   }

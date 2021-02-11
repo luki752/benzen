@@ -8,6 +8,10 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
+//icons
+import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
+//link
+import { Link } from "react-router-dom";
 
 const AddItemPage = () => {
   //state
@@ -99,6 +103,7 @@ const AddItemPage = () => {
           setPrice("");
           setMaterials([]);
           setImages([]);
+          window.scrollTo(0, 0);
         })
         .catch((error) => {
           console.log(error);
@@ -109,6 +114,12 @@ const AddItemPage = () => {
   };
   return (
     <AddItemPageComponent>
+      <Link to="/customer/account/login">
+        <button className="button-black">
+          <ArrowLeftIcon />
+          Go back to your acc
+        </button>
+      </Link>
       {user.email === "admin@admin.com" && (
         <div className="inputs">
           <div className="option">

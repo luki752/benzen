@@ -51,7 +51,9 @@ const ManMainPage = () => {
                 <h3 style={{ color: "red" }}>sale</h3>
                 <h3 style={{ color: "red" }}>up to 50% off</h3>
                 <div className="buttons">
-                  <button className="button-white">for him</button>
+                  <Link to="/sale/man/coats" className="link">
+                    <button className="button-white">for him</button>
+                  </Link>
                 </div>
               </Carousel.Caption>
             </Carousel.Item>

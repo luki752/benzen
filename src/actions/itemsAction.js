@@ -65,9 +65,9 @@ export const loadQuestion = (gender, question) => async (dispatch) => {
   });
 };
 
-export const loadSale = (gender) => async (dispatch) => {
+export const loadSale = (gender, item, sortOrder) => async (dispatch) => {
   //fetch data
-  const saleData = await axios.get(discountUrl(gender));
+  const saleData = await axios.get(discountUrl(gender, item, sortOrder));
   dispatch({
     type: "FETCH_SALE",
     payload: {

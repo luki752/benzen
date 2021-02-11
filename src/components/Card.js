@@ -39,6 +39,8 @@ const Card = ({ item, height, width, margin, gender, id }) => {
               amount: item.amount,
               price: item.price,
               desc: item.desc,
+              discount: item.discount,
+              beforeDiscount: item.beforeDiscount,
               material: item.material,
               images: item.images,
               gender: gender,

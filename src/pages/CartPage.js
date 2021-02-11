@@ -23,6 +23,7 @@ const CartPage = () => {
 };
 
 const CartPageComponent = styled.div`
+  min-height: 50vh;
   .empty-cart {
     display: flex;
     justify-content: center;

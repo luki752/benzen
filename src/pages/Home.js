@@ -24,8 +24,12 @@ const Home = () => {
                 <h3>sale</h3>
                 <h3>up to 50% off</h3>
                 <div className="buttons">
-                  <button className="button-white">Woman</button>
-                  <button className="button-white">Men</button>
+                  <Link to="/sale/woman/puffer-jackets" className="link">
+                    <button className="button-white">Woman</button>
+                  </Link>
+                  <Link to="/sale/man/puffer-jackets" className="link">
+                    <button className="button-white">Men</button>
+                  </Link>
                 </div>
               </Carousel.Caption>
             </Carousel.Item>

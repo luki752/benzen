@@ -15,7 +15,11 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 //icons
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import SearchIcon from "@material-ui/icons/Search";
+import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import AccountBoxIcon from "@material-ui/icons/AccountBox";
+import MeetingRoomIcon from "@material-ui/icons/MeetingRoom";
 //history
 import HistoryIcon from "@material-ui/icons/History";
 import axios from "axios";
@@ -212,12 +216,19 @@ const AccountPage = () => {
             <ul>
               <Link to="/customer/account/orders" className="link">
                 <li className={pathName === "orders" ? "active" : ""}>
-                  Orders
+                  <ShoppingBasketIcon /> Orders
                 </li>
               </Link>
+              {user.email === "admin@admin.com" && (
+                <Link to="/add-item" className="link">
+                  <li>
+                    <AddCircleOutlineIcon className="icon" /> Add Item
+                  </li>
+                </Link>
+              )}
               <Link to="/customer/account/info" className="link">
                 <li className={pathName === "info" ? "active" : ""}>
-                  Account info
+                  <AccountBoxIcon /> Account info
                 </li>
               </Link>
               <li
@@ -232,7 +243,7 @@ const AccountPage = () => {
                   })
                 }
               >
-                Log out
+                <MeetingRoomIcon /> Log out
               </li>
             </ul>
           </div>
@@ -661,6 +672,11 @@ const LoggedInComponent = styled.div`
     }
     ul {
       list-style: none;
+      li {
+        &:hover {
+          color: rgba(0, 0, 0, 0.6);
+        }
+      }
       .log-out {
         &:hover {
           cursor: pointer;

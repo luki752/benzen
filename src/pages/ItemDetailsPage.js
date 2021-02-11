@@ -128,15 +128,17 @@ const ItemDetailsPage = () => {
           </div>
           <div className="bottom-side">
             <div className="accordions">
-              <Accordion className="accordion" defaultExpanded={true}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  className="accordion-header"
-                >
-                  Description
-                </AccordionSummary>
-                <AccordionDetails> - {item.desc}.</AccordionDetails>
-              </Accordion>
+              {item.desc && (
+                <Accordion className="accordion" defaultExpanded={true}>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    className="accordion-header"
+                  >
+                    Description
+                  </AccordionSummary>
+                  <AccordionDetails> - {item.desc}.</AccordionDetails>
+                </Accordion>
+              )}
               {/* second accordion */}
               <Accordion className="accordion">
                 <AccordionSummary

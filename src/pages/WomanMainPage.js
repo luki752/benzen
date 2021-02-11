@@ -47,7 +47,7 @@ const WomanMainPage = () => {
           }
           btnText={"Woman"}
           width={"99%"}
-          link={"/woman/sale"}
+          link={"/woman/sale/trousers"}
         />
         {!isLoading && (
           <div className="four-cards">

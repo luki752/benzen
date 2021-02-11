@@ -74,6 +74,9 @@ const SearchPage = () => {
             />
           ))}
       </div>
+      {answer.length === 0 && (
+        <div className="no-match-found">No results found</div>
+      )}
     </SearchPageComponent>
   );
 };
@@ -81,8 +84,9 @@ const SearchPage = () => {
 const SearchPageComponent = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: Center;
   align-items: center;
+  min-height: 50vh;
+  margin-top: 2rem;
   .header {
     width: 80%;
     display: flex;
@@ -99,6 +103,12 @@ const SearchPageComponent = styled.div`
     @media screen and (max-width: 1200px) {
       width: 100%;
     }
+  }
+  .no-match-found {
+    display: flex;
+    justify-content: center;
+    align-items: Center;
+    font-size: 2rem;
   }
 `;
 
