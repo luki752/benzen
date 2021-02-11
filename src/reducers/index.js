@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
 import itemsReducer from "./itemsReducer";
 import loginReducer from "./loginReducer";
+import cartReducer from "./cartReducer";
 
 const rootReducer = combineReducers({
   items: itemsReducer,
   item: itemsReducer,
+  cart: cartReducer,
   category: itemsReducer,
   answer: itemsReducer,
   sale: itemsReducer,

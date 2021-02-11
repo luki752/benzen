@@ -14,7 +14,7 @@ const itemsReducer = (state = initState, action) => {
     case "LOADING_DETAIL":
       return {
         ...state,
-        isLoading: true,
+        isLoading: false,
       };
     case "FETCH_ITEM":
       return { ...state, item: action.payload.item, isLoading: false };

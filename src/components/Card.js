@@ -97,7 +97,7 @@ const Card = ({ item, height, width, margin, gender, id }) => {
         <div className="name">{item.name}</div>
       </Link>
       <div className="price">
-        {item.discount ? (
+        {item.discount === true ? (
           <p>
             {item.price} GBP
             <span style={{ textDecoration: "line-through" }}>
@@ -118,7 +118,6 @@ const CardComponent = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 4px;
   .link {
     text-align: center;
   }

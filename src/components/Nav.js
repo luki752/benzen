@@ -38,6 +38,7 @@ const Nav = () => {
   const [womenDiscountsList, setWomenDiscountsList] = useState([]);
   const mv = window.matchMedia("(min-width: 1000px)");
   const { isLogged, user } = useSelector((state) => state.login);
+  const { cart } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const history = useHistory();
   //handlers
@@ -152,9 +153,11 @@ const Nav = () => {
           </li>
           <li>
             {" "}
-            <Link to="/checkout/cart" className="link">
-              <LocalMallIcon className="nav-icon" />{" "}
-            </Link>
+            {cart && (
+              <Link to="/checkout/cart" className="link">
+                <LocalMallIcon className="nav-icon" />({cart.length}){" "}
+              </Link>
+            )}
           </li>
         </ul>
       </div>
@@ -872,8 +875,9 @@ const Nav = () => {
                 to={`/sale/woman/${item}`}
                 className="link"
                 style={{ color: "red" }}
+                key={item}
               >
-                <li key={item}>{item}</li>
+                <li>{item}</li>
               </Link>
             ))}
           </ul>
@@ -884,8 +888,9 @@ const Nav = () => {
                 to={`/sale/man/${item}`}
                 className="link"
                 style={{ color: "red" }}
+                key={item}
               >
-                <li key={item}>{item}</li>
+                <li>{item}</li>
               </Link>
             ))}
           </ul>

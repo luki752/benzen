@@ -31,6 +31,7 @@ const GlobalStyles = createGlobalStyle`
           font-size: 0.5rem;
           margin: 0rem 0.5rem;
         }
+}
 .button-black{
           width: fit-content;
           background-color: black;
@@ -43,7 +44,6 @@ const GlobalStyles = createGlobalStyle`
             background-color: rgba(0, 0, 0, 0.8);
           }
         }
-}
 `;
 
 export default GlobalStyles;

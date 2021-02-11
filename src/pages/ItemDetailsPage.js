@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 //styling
 import styled from "styled-components";
 //material ui
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //actions
-import { loadSpecificItem } from "../actions/itemsAction";
+import { loadSpecificItem, loadAllItems } from "../actions/itemsAction";
 //router
 import { useLocation } from "react-router-dom";
 //icons
@@ -19,22 +23,42 @@ import LocalMallIcon from "@material-ui/icons/LocalMall";
 import CloseIcon from "@material-ui/icons/Close";
 //notistack
 import { useSnackbar } from "notistack";
+//components
+import Card from "../components/Card";
 
 const ItemDetailsPage = () => {
   //state
   const [currentIndex, setCurrentIndex] = useState(0);
   const [modal, setModal] = useState(false);
+  const [ItemsSize, setItemsSize] = useState("");
+  const dots = [];
   //location, id
   const location = useLocation();
   const gender = location.pathname.split("/")[1];
   const pathId = parseInt(location.pathname.split("/")[2], 10);
+  //window size
+  const [size, setSize] = useState([0, 0]);
+  const [mv, setMV] = useState(false);
+  //getting window size
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+  useEffect(() => {
+    setMV(window.matchMedia("(min-width: 1000px)").matches);
+  }, [size, mv]);
   //dispatch data
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadSpecificItem(gender, pathId));
+    dispatch(loadAllItems(gender));
   }, [dispatch, gender, pathId]);
   //get data back
-  const { item, isLoading } = useSelector((state) => state.item);
+  const { item, isLoading, AllItems } = useSelector((state) => state.item);
   //snack bar
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   //handlers
@@ -42,53 +66,92 @@ const ItemDetailsPage = () => {
     enqueueSnackbar(snackbarMessage, { variant: snackVariant });
     closeSnackbar(500);
   };
-
+  //handlers
+  const activeImageHandler = (list) => {
+    for (let i = 0; i < list; i++) {
+      dots.push(i);
+    }
+  };
+  const sizeHandler = (e) => {
+    setItemsSize(e.target.value);
+  };
+  const cartHandler = () => {
+    snackbarHandler("Added to card", "success");
+    item.size = ItemsSize;
+    item.cartAmount = 1;
+    item.gender = gender;
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: {
+        item: item,
+      },
+    });
+  };
   return (
     <>
-      {!isLoading && (
+      {!isLoading && item && (
         <ItemDetailsPageComponent>
           <div className="top-side">
             <div className="left-side">
-              <div className="images-show">
-                {item.images.map((img, index) => (
-                  <img
-                    src={img.img}
-                    alt={index}
-                    key={index}
-                    onClick={(e) => setCurrentIndex(index)}
-                    className={index === currentIndex ? "active-image" : ""}
-                  />
-                ))}
-              </div>
-              <div
-                className="main-image"
-                style={{
-                  backgroundImage: `url(${item.images[currentIndex].img})`,
-                }}
-                onClick={() => setModal(!modal)}
-              >
-                <ArrowBackIosIcon
-                  className="arrows"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    currentIndex - 1 === -1
-                      ? setCurrentIndex(item.images.length - 1)
-                      : setCurrentIndex(
-                          (currentIndex - 1) % item.images.length
-                        );
-                  }}
-                />
-                <ArrowForwardIosIcon
-                  className="arrows"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setCurrentIndex((currentIndex + 1) % item.images.length);
-                  }}
-                />
-                <div className="image-count">
-                  {currentIndex + 1}/{item.images.length}
+              {item.images && (
+                <div className="images-show">
+                  {item.images.map((img, index) => (
+                    <img
+                      src={img.img}
+                      alt={index}
+                      key={index}
+                      onClick={(e) => setCurrentIndex(index)}
+                      className={index === currentIndex ? "active-image" : ""}
+                    />
+                  ))}
                 </div>
-              </div>
+              )}
+              {item.images && (
+                <div
+                  className="main-image"
+                  style={{
+                    backgroundImage: `url(${item.images[currentIndex].img})`,
+                  }}
+                  onClick={() => setModal(!modal)}
+                >
+                  <ArrowBackIosIcon
+                    className="arrows"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      currentIndex - 1 === -1
+                        ? setCurrentIndex(item.images.length - 1)
+                        : setCurrentIndex(
+                            (currentIndex - 1) % item.images.length
+                          );
+                    }}
+                  />
+                  <ArrowForwardIosIcon
+                    className="arrows"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setCurrentIndex((currentIndex + 1) % item.images.length);
+                    }}
+                  />
+                  <div
+                    className="image-count"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {activeImageHandler(item.images.length)}
+                    {dots.map((item, index) => (
+                      <div
+                        key={index}
+                        className={
+                          index === currentIndex ? "dot active-dot" : "dot"
+                        }
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setCurrentIndex(index);
+                        }}
+                      ></div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="right-side">
@@ -97,29 +160,22 @@ const ItemDetailsPage = () => {
                 <span className="price">{item.price} GBP</span>
 
                 <div className="size">
-                  <span>Size</span>
-                  <select name="" id="">
-                    <option value="s" className="option">
-                      S
-                    </option>
-                    <option value="m" className="option">
-                      M
-                    </option>
-                    <option value="l" className="option">
-                      L
-                    </option>
-                    <option value="xl" className="option">
-                      XL
-                    </option>
-                    <option value="xll" className="option">
-                      XLL
-                    </option>
-                  </select>
+                  <FormControl variant="outlined" className="select">
+                    <InputLabel>Size</InputLabel>
+                    <Select
+                      value={ItemsSize}
+                      onChange={(e) => sizeHandler(e)}
+                      label="Size"
+                    >
+                      <MenuItem value="s">S</MenuItem>
+                      <MenuItem value="m">M</MenuItem>
+                      <MenuItem value="l">L</MenuItem>
+                      <MenuItem value="xl">XL</MenuItem>
+                      <MenuItem value="xxl">XXL</MenuItem>
+                    </Select>
+                  </FormControl>
                 </div>
-                <button
-                  className="button-white"
-                  onClick={() => snackbarHandler("Added to card", "success")}
-                >
+                <button className="button-white" onClick={() => cartHandler()}>
                   <LocalMallIcon style={{ color: "white" }} />
                   Add to bag
                 </button>
@@ -140,23 +196,26 @@ const ItemDetailsPage = () => {
                 </Accordion>
               )}
               {/* second accordion */}
-              <Accordion className="accordion">
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  className="accordion-header"
-                >
-                  Material and care
-                </AccordionSummary>
-                <AccordionDetails>Fabric:</AccordionDetails>
-                {item.material.map((material) => (
-                  <AccordionDetails key={material.fabric}>
-                    <span>
-                      {" "}
-                      - {material.percentage}% {material.fabric}
-                    </span>
-                  </AccordionDetails>
-                ))}
-              </Accordion>
+              {item.material && (
+                <Accordion className="accordion">
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    className="accordion-header"
+                  >
+                    Material and care
+                  </AccordionSummary>
+
+                  <AccordionDetails>Fabric:</AccordionDetails>
+                  {item.material.map((material) => (
+                    <AccordionDetails key={material.fabric}>
+                      <span>
+                        {" "}
+                        - {material.percentage}% {material.fabric}
+                      </span>
+                    </AccordionDetails>
+                  ))}
+                </Accordion>
+              )}
               {/* third accordion */}
               <Accordion className="accordion">
                 <AccordionSummary
@@ -206,8 +265,9 @@ const ItemDetailsPage = () => {
                   : setCurrentIndex((currentIndex - 1) % item.images.length)
               }
             />
-            <img src={item.images[currentIndex].img} alt={item.name} />
-
+            {item.images && (
+              <img src={item.images[currentIndex].img} alt={item.name} />
+            )}
             <ArrowForwardIosIcon
               className="arrows right-arrow"
               onClick={() =>
@@ -215,8 +275,31 @@ const ItemDetailsPage = () => {
               }
             />
           </FullImageModal>
+          <h1>Recommended</h1>
         </ItemDetailsPageComponent>
       )}
+      <SimilarItems>
+        {AllItems && (
+          <>
+            {AllItems.filter((similar) => similar.item === item.item)
+              .filter((similar) => similar.id !== item.id)
+              .slice(0, 9)
+              .map((item) => (
+                <div className="card" key={item.id}>
+                  <Card
+                    key={item.id}
+                    height={mv ? "30rem" : "20rem"}
+                    width={mv ? "20rem" : "10rem"}
+                    id={item.id}
+                    gender={gender}
+                    category={item.category}
+                    item={item}
+                  />
+                </div>
+              ))}
+          </>
+        )}
+      </SimilarItems>
     </>
   );
 };
@@ -224,8 +307,17 @@ const ItemDetailsPage = () => {
 const ItemDetailsPageComponent = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
   min-height: 70vh;
   margin: 1rem 0;
+  h1 {
+    margin-left: 10%;
+    margin-top: 2rem;
+    @media screen and (max-width: 1000px) {
+      margin-left: 0rem;
+      font-size: 1.5rem;
+    }
+  }
   .top-side {
     width: 100%;
     display: flex;
@@ -267,17 +359,32 @@ const ItemDetailsPageComponent = styled.div`
         }
         .image-count {
           position: absolute;
-          color: black;
           bottom: 0;
-          left: 58%;
-          margin-left: -50px;
+          width: 100%;
+          left: 50%;
+          margin-left: -50%;
           background-color: rgba(255, 255, 255, 0.6);
           border-radius: 2rem;
           font-size: 1.5rem;
           z-index: 10;
           display: none;
           @media screen and (max-width: 1000px) {
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: auto;
+          }
+          .dot {
+            margin: 5px;
+            height: 20px;
+            width: 20px;
+            padding: 5px;
+            border-radius: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            transition: 0.3s ease-in all;
+          }
+          .active-dot {
+            width: 40px;
           }
         }
       }
@@ -351,10 +458,11 @@ const ItemDetailsPageComponent = styled.div`
           margin: 1rem 0;
           color: rgba(0, 0, 0, 0.6);
         }
-        select {
+        .select {
           width: 20rem;
           height: 3rem;
-          padding: 0.5rem;
+          margin: 1rem 0rem;
+          text-transform: upperCase;
           &:hover {
             cursor: pointer;
           }
@@ -432,6 +540,36 @@ const FullImageModal = styled.div`
   .right-arrow {
     right: 0;
     margin-right: 2rem;
+  }
+`;
+const SimilarItems = styled.div`
+  width: 90%;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin-left: 10%;
+  @media screen and (max-width: 1000px) {
+    margin-left: 0rem;
+    width: 100%;
+  }
+  .card {
+    width: 21rem;
+    flex: 0 0 auto;
+    margin: 1.5rem 0;
+    border: none;
+    @media screen and (max-width: 1000px) {
+      margin: 0.5rem 0;
+      width: 11rem;
+    }
+  }
+  ::-webkit-scrollbar {
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: white;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.6);
   }
 `;
 export default ItemDetailsPage;

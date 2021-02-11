@@ -115,6 +115,7 @@ const SalePageComponent = styled.div`
   margin-top: 2rem;
   .left-side {
     width: 20%;
+    position: Fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -138,6 +139,7 @@ const SalePageComponent = styled.div`
   }
   .right-side {
     width: 80%;
+    margin-left: 20%;
     .items-header {
       display: flex;
       justify-content: space-between;
