@@ -24,8 +24,7 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import CloseIcon from "@material-ui/icons/Close";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
-//notistack
-import { useSnackbar } from "notistack";
+
 //components
 import Card from "../components/Card";
 
@@ -65,13 +64,7 @@ const ItemDetailsPage = () => {
   //get data back
   const { item, isLoading, AllItems } = useSelector((state) => state.item);
   const { cart } = useSelector((state) => state.cart);
-  //snack bar
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-  //handlers
-  const snackbarHandler = (snackbarMessage, snackVariant) => {
-    enqueueSnackbar(snackbarMessage, { variant: snackVariant });
-    closeSnackbar(500);
-  };
+
   //handlers
   const activeImageHandler = (list) => {
     for (let i = 0; i < list; i++) {
@@ -84,55 +77,33 @@ const ItemDetailsPage = () => {
   const cartHandler = () => {
     if (itemsSize !== "") {
       setCheckoutModal(!checkoutModalOpen);
-      snackbarHandler("Added to card", "success");
       setProceedError(false);
-      item.size = itemsSize;
       item.cartAmount = 1;
       item.gender = gender;
-      dispatch({
-        type: "ADD_TO_CART",
-        payload: {
-          item: item,
-        },
-      });
+      console.log(itemsSize);
+      const found = cart.find((i) => i.id === item.id && i.size === itemsSize);
+      item.size = itemsSize;
+      console.log(cart);
+      if (found) {
+        dispatch({
+          type: "INCREASE",
+          payload: {
+            id: found.id,
+            size: found.size,
+            amount: found.cartAmount,
+          },
+        });
+      } else {
+        dispatch({
+          type: "ADD_TO_CART",
+          payload: {
+            item: { ...item, size: itemsSize },
+          },
+        });
+      }
     } else {
       setProceedError(true);
     }
-
-    // if (cart.map((item) => item.id === pathId).length >= 1) {
-    //   cart.forEach((item) => {
-    //     if (item.id === pathId && item.size === itemsSize) {
-    //       console.log(typeof itemsSize);
-    //       console.log(typeof item.size);
-    //       dispatch({
-    //         type: "INCREASE",
-    //         payload: {
-    //           id: item.id,
-    //           size: item.size,
-    //           amount: item.cartAmount,
-    //         },
-    //       });
-    //     } else {
-    //       dispatch({
-    //         type: "ADD_TO_CART",
-    //         payload: {
-    //           item: {
-    //             ...item,
-    //             size: itemsSize,
-    //             cartAmount: 1,
-    //           },
-    //         },
-    //       });
-    //     }
-    //   });
-    // } else {
-    //   dispatch({
-    //     type: "ADD_TO_CART",
-    //     payload: {
-    //       item: item,
-    //     },
-    //   });
-    // }
   };
   return (
     <>

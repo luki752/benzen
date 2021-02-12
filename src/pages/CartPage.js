@@ -25,9 +25,6 @@ const CartPage = () => {
       if (cart.length === 1) {
         setFullPrice(cart[0].price * cart[0].cartAmount);
       } else if (cart.length > 1) {
-        // cart.reduce((a, b) =>
-        //   setFullPrice(a.price * a.cartAmount + b.price * b.cartAmount)
-        // );
         setFullPrice(
           cart.reduce(function (a, s) {
             return (a += s.price * s.cartAmount);
@@ -38,7 +35,7 @@ const CartPage = () => {
       }
     }
   }, [cart]);
-
+  console.log(cart);
   //handlers
   const amountHandler = (type, id, amount, size) => {
     dispatch({
@@ -50,11 +47,12 @@ const CartPage = () => {
       },
     });
   };
-  const removeHandler = (id) => {
+  const removeHandler = (id, size) => {
     dispatch({
       type: "REMOVE",
       payload: {
         id: id,
+        size: size,
       },
     });
   };
@@ -136,7 +134,7 @@ const CartPage = () => {
                     <div className="item-remove">
                       <div className="remove">
                         <DeleteOutlineIcon
-                          onClick={() => removeHandler(item.id)}
+                          onClick={() => removeHandler(item.id, item.size)}
                         />
                       </div>
                       <div className="price">
