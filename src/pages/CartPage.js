@@ -18,8 +18,11 @@ const CartPage = () => {
   const [discountInput, setDiscountInput] = useState("");
   const [discount, setDiscount] = useState(false);
   const [priceBeforeDiscount, setPriceBeforeDiscount] = useState("");
+  const [discountErrorMsg, setDiscountErrorMsg] = useState("");
+  const [discountError, setDiscountError] = useState(false);
   const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.cart);
+  const { user, isLogged } = useSelector((state) => state.login);
   useEffect(() => {
     if (cart) {
       if (cart.length === 1) {
@@ -58,9 +61,29 @@ const CartPage = () => {
   const discountHandler = () => {
     if (!discount) {
       if (discountInput === "DISCOUNT10") {
-        setPriceBeforeDiscount(fullPrice);
-        setFullPrice(fullPrice - fullPrice * 0.1);
-        setDiscount(true);
+        if (isLogged) {
+          if (user.orders.length === 0) {
+            if (cart.find((i) => i.discount === true)) {
+              setDiscountErrorMsg(
+                `this coupon code doesn't work with other discounts`
+              );
+              setDiscountError(true);
+            } else {
+              setPriceBeforeDiscount(fullPrice);
+              setFullPrice(fullPrice - fullPrice * 0.1);
+              setDiscount(true);
+            }
+          } else {
+            setDiscountErrorMsg(`this coupon code was only for first order`);
+            setDiscountError(true);
+          }
+        } else {
+          setDiscountErrorMsg(`this coupon code works only for logged users`);
+          setDiscountError(true);
+        }
+      } else {
+        setDiscountErrorMsg(`coupon code ${discountInput} is not valid`);
+        setDiscountError(true);
       }
     }
   };
@@ -83,6 +106,20 @@ const CartPage = () => {
         <>
           {cart && (
             <div className="cart-with-items">
+              {isLogged && (
+                <div
+                  className="discount-banner"
+                  style={{
+                    display: user.orders.length === 0 ? "flex" : "none",
+                  }}
+                >
+                  <span>
+                    enter a discount code "discount10" and get 10% off your
+                    first order
+                  </span>
+                  <p>doesn't work with other discounts</p>
+                </div>
+              )}
               <div className="itemsDisplay">
                 {cart.map((item) => (
                   <div className="item" key={item.id}>
@@ -176,10 +213,12 @@ const CartPage = () => {
                       <TextField
                         className="input"
                         value={discountInput}
+                        label={discountError ? "Error" : ""}
                         onChange={(e) => setDiscountInput(e.target.value)}
                         onKeyDown={(e) =>
                           e.key === "Enter" ? discountHandler() : ""
                         }
+                        helperText={discountError ? discountErrorMsg : ""}
                       />
                       <button
                         className="button-white"
