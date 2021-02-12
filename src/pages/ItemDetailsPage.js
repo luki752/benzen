@@ -9,6 +9,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+//router
+import { Link } from "react-router-dom";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //actions
@@ -21,6 +23,7 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import CloseIcon from "@material-ui/icons/Close";
+import CheckBoxIcon from "@material-ui/icons/CheckBox";
 //notistack
 import { useSnackbar } from "notistack";
 //components
@@ -30,7 +33,9 @@ const ItemDetailsPage = () => {
   //state
   const [currentIndex, setCurrentIndex] = useState(0);
   const [modal, setModal] = useState(false);
-  const [ItemsSize, setItemsSize] = useState("");
+  const [itemsSize, setItemsSize] = useState("");
+  const [proceedError, setProceedError] = useState(false);
+  const [checkoutModalOpen, setCheckoutModal] = useState(false);
   const dots = [];
   //location, id
   const location = useLocation();
@@ -59,6 +64,7 @@ const ItemDetailsPage = () => {
   }, [dispatch, gender, pathId]);
   //get data back
   const { item, isLoading, AllItems } = useSelector((state) => state.item);
+  const { cart } = useSelector((state) => state.cart);
   //snack bar
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   //handlers
@@ -76,16 +82,57 @@ const ItemDetailsPage = () => {
     setItemsSize(e.target.value);
   };
   const cartHandler = () => {
-    snackbarHandler("Added to card", "success");
-    item.size = ItemsSize;
-    item.cartAmount = 1;
-    item.gender = gender;
-    dispatch({
-      type: "ADD_TO_CART",
-      payload: {
-        item: item,
-      },
-    });
+    if (itemsSize !== "") {
+      setCheckoutModal(!checkoutModalOpen);
+      snackbarHandler("Added to card", "success");
+      setProceedError(false);
+      item.size = itemsSize;
+      item.cartAmount = 1;
+      item.gender = gender;
+      dispatch({
+        type: "ADD_TO_CART",
+        payload: {
+          item: item,
+        },
+      });
+    } else {
+      setProceedError(true);
+    }
+
+    // if (cart.map((item) => item.id === pathId).length >= 1) {
+    //   cart.forEach((item) => {
+    //     if (item.id === pathId && item.size === itemsSize) {
+    //       console.log(typeof itemsSize);
+    //       console.log(typeof item.size);
+    //       dispatch({
+    //         type: "INCREASE",
+    //         payload: {
+    //           id: item.id,
+    //           size: item.size,
+    //           amount: item.cartAmount,
+    //         },
+    //       });
+    //     } else {
+    //       dispatch({
+    //         type: "ADD_TO_CART",
+    //         payload: {
+    //           item: {
+    //             ...item,
+    //             size: itemsSize,
+    //             cartAmount: 1,
+    //           },
+    //         },
+    //       });
+    //     }
+    //   });
+    // } else {
+    //   dispatch({
+    //     type: "ADD_TO_CART",
+    //     payload: {
+    //       item: item,
+    //     },
+    //   });
+    // }
   };
   return (
     <>
@@ -157,22 +204,67 @@ const ItemDetailsPage = () => {
             <div className="right-side">
               <div className="info">
                 <span className="name">{item.name}</span>
-                <span className="price">{item.price} GBP</span>
-
+                <span className="price">
+                  {item.discount ? (
+                    <>
+                      <b
+                        style={{
+                          color: item.discount ? "tomato" : "black",
+                        }}
+                      >
+                        {item.price} GBP
+                      </b>
+                      <p
+                        style={{
+                          color: "#b3b3b3",
+                          textDecoration: "line-through",
+                        }}
+                      >
+                        {item.beforeDiscount} GBP
+                      </p>
+                    </>
+                  ) : (
+                    item.price
+                  )}{" "}
+                </span>
+                {proceedError && (
+                  <span className="error">You need to choose size first</span>
+                )}
                 <div className="size">
                   <FormControl variant="outlined" className="select">
                     <InputLabel>Size</InputLabel>
-                    <Select
-                      value={ItemsSize}
-                      onChange={(e) => sizeHandler(e)}
-                      label="Size"
-                    >
-                      <MenuItem value="s">S</MenuItem>
-                      <MenuItem value="m">M</MenuItem>
-                      <MenuItem value="l">L</MenuItem>
-                      <MenuItem value="xl">XL</MenuItem>
-                      <MenuItem value="xxl">XXL</MenuItem>
-                    </Select>
+
+                    {item.category === "shoes" || item.item === "shoes" ? (
+                      <Select
+                        value={itemsSize}
+                        onChange={(e) => sizeHandler(e)}
+                        label="Size"
+                        error={proceedError ? true : false}
+                      >
+                        <MenuItem value="36">36</MenuItem>
+                        <MenuItem value="37">37</MenuItem>
+                        <MenuItem value="38">38</MenuItem>
+                        <MenuItem value="39">39</MenuItem>
+                        <MenuItem value="40">40</MenuItem>
+                        <MenuItem value="41">41</MenuItem>
+                        <MenuItem value="42">42</MenuItem>
+                        <MenuItem value="43">43</MenuItem>
+                        <MenuItem value="44">44</MenuItem>
+                      </Select>
+                    ) : (
+                      <Select
+                        value={itemsSize}
+                        onChange={(e) => sizeHandler(e)}
+                        label="Size"
+                        error={proceedError ? true : false}
+                      >
+                        <MenuItem value="s">S</MenuItem>
+                        <MenuItem value="m">M</MenuItem>
+                        <MenuItem value="l">L</MenuItem>
+                        <MenuItem value="xl">XL</MenuItem>
+                        <MenuItem value="xxl">XXL</MenuItem>
+                      </Select>
+                    )}
                   </FormControl>
                 </div>
                 <button className="button-white" onClick={() => cartHandler()}>
@@ -300,6 +392,40 @@ const ItemDetailsPage = () => {
           </>
         )}
       </SimilarItems>
+      {item && (
+        <CheckoutModal
+          onClick={() => setCheckoutModal(!checkoutModalOpen)}
+          style={{ display: checkoutModalOpen ? "flex" : "none" }}
+        >
+          <div className="modal">
+            <div className="header">
+              <CheckBoxIcon
+                className="success-icon"
+                style={{ color: "green" }}
+              />
+              <span>Product was added to your shopping cart</span>
+              <CloseIcon
+                className="close-icon"
+                onClick={() => setCheckoutModal(!checkoutModalOpen)}
+              />
+            </div>
+            {item.images && <img src={item.images[0].img} alt={item.name} />}
+            <span>
+              Size: <b>{itemsSize}</b>
+            </span>
+            <span>{item.price} GBP</span>
+            <div className="buttons">
+              <Link to="/checkout/cart" className="link">
+                <button className="button-black">Go to your bag</button>
+              </Link>
+
+              <span onClick={() => setCheckoutModal(!checkoutModalOpen)}>
+                Continue Shopping
+              </span>
+            </div>
+          </div>
+        </CheckoutModal>
+      )}
     </>
   );
 };
@@ -366,7 +492,6 @@ const ItemDetailsPageComponent = styled.div`
           background-color: rgba(255, 255, 255, 0.6);
           border-radius: 2rem;
           font-size: 1.5rem;
-          z-index: 10;
           display: none;
           @media screen and (max-width: 1000px) {
             display: flex;
@@ -436,6 +561,13 @@ const ItemDetailsPageComponent = styled.div`
         .price {
           font-size: 1.5rem;
           font-weight: bold;
+          display: flex;
+          p {
+            padding-left: 10px;
+          }
+        }
+        .error {
+          color: Red;
         }
         button {
           width: 20rem;
@@ -570,6 +702,68 @@ const SimilarItems = styled.div`
   }
   ::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.6);
+  }
+`;
+const CheckoutModal = styled.div`
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 160vh;
+  top: 0;
+  left: 0;
+  .modal {
+    margin-left: 35%;
+    margin-top: 5%;
+    background-color: white;
+    width: 28rem;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    @media screen and (max-width: 1000px) {
+      width: 100%;
+      margin: 0;
+    }
+    .header {
+      width: 100%;
+      display: flex;
+      align-items: Center;
+      justify-content: center;
+      .success-icon {
+        font-size: 2rem;
+        margin: 5px;
+      }
+      .close-icon {
+        font-size: 2rem;
+        margin: 5px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    img {
+      height: 20rem;
+      width: 20rem;
+      margin: 1rem 0;
+    }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      button {
+        padding: 0.5rem;
+        width: 20rem;
+      }
+      span {
+        border-bottom: 1px solid black;
+        font-weight: bold;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
   }
 `;
 export default ItemDetailsPage;

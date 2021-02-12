@@ -43,7 +43,7 @@ const Home = () => {
                 <h3>It's cold outside</h3>
                 <p>get a jacket</p>
                 <div className="buttons">
-                  <Link to="/woman/clothes/jackets" className="link">
+                  <Link to="/women/clothes/jackets" className="link">
                     <button className="button-white">for her</button>
                   </Link>
                 </div>

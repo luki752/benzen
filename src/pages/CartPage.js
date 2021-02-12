@@ -15,6 +15,9 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 const CartPage = () => {
   const [fullPrice, setFullPrice] = useState(0);
+  const [discountInput, setDiscountInput] = useState("");
+  const [discount, setDiscount] = useState(false);
+  const [priceBeforeDiscount, setPriceBeforeDiscount] = useState("");
   const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.cart);
   useEffect(() => {
@@ -22,21 +25,28 @@ const CartPage = () => {
       if (cart.length === 1) {
         setFullPrice(cart[0].price * cart[0].cartAmount);
       } else if (cart.length > 1) {
-        cart.reduce((a, b) =>
-          setFullPrice(a.price * a.cartAmount + b.price * b.cartAmount)
+        // cart.reduce((a, b) =>
+        //   setFullPrice(a.price * a.cartAmount + b.price * b.cartAmount)
+        // );
+        setFullPrice(
+          cart.reduce(function (a, s) {
+            return (a += s.price * s.cartAmount);
+          }, 0)
         );
       } else {
         return;
       }
     }
   }, [cart]);
+
   //handlers
-  const amountHandler = (type, id, amount) => {
+  const amountHandler = (type, id, amount, size) => {
     dispatch({
       type: type,
       payload: {
         id: id,
         amount: amount,
+        size: size,
       },
     });
   };
@@ -47,6 +57,15 @@ const CartPage = () => {
         id: id,
       },
     });
+  };
+  const discountHandler = () => {
+    if (!discount) {
+      if (discountInput === "DISCOUNT10") {
+        setPriceBeforeDiscount(fullPrice);
+        setFullPrice(fullPrice - fullPrice * 0.1);
+        setDiscount(true);
+      }
+    }
   };
   return (
     <CartPageComponent>
@@ -90,7 +109,8 @@ const CartPage = () => {
                               amountHandler(
                                 "DECREASE",
                                 item.id,
-                                item.cartAmount
+                                item.cartAmount,
+                                item.size
                               )
                             }
                           >
@@ -99,7 +119,14 @@ const CartPage = () => {
                           {item.cartAmount}{" "}
                           <b
                             className="amount-change"
-                            onClick={() => amountHandler("INCREASE", item.id)}
+                            onClick={() =>
+                              amountHandler(
+                                "INCREASE",
+                                item.id,
+                                item.cartAmount,
+                                item.size
+                              )
+                            }
                           >
                             +
                           </b>
@@ -122,7 +149,20 @@ const CartPage = () => {
               <div className="cart-info">
                 <div className="full-price">
                   <span>products price</span>
-                  <span>{fullPrice.toFixed(2)} GBP</span>
+                  <div className="price">
+                    <span style={{ color: discount ? "red" : "black" }}>
+                      {fullPrice.toFixed(2)}
+                    </span>
+                    <span
+                      style={{
+                        display: discount ? "block" : "none",
+                        textDecoration: "line-through",
+                      }}
+                    >
+                      {priceBeforeDiscount}
+                    </span>{" "}
+                    GBP
+                  </div>
                 </div>
                 <div className="checkout-button">
                   <button className="button-black">Go to checkout</button>
@@ -136,8 +176,20 @@ const CartPage = () => {
                       i have a coupon code
                     </AccordionSummary>
                     <AccordionDetails className="accordion-details">
-                      <TextField className="input" />
-                      <button className="button-white">Add</button>
+                      <TextField
+                        className="input"
+                        value={discountInput}
+                        onChange={(e) => setDiscountInput(e.target.value)}
+                        onKeyDown={(e) =>
+                          e.key === "Enter" ? discountHandler() : ""
+                        }
+                      />
+                      <button
+                        className="button-white"
+                        onClick={() => discountHandler()}
+                      >
+                        Add
+                      </button>
                     </AccordionDetails>
                   </Accordion>
                 </div>
@@ -268,6 +320,13 @@ const CartPageComponent = styled.div`
           margin-top: 1rem;
           font-size: 1rem;
           width: 90%;
+        }
+        .price {
+          display: flex;
+          width: 10rem;
+          span {
+            margin-left: 20px;
+          }
         }
       }
       .checkout-button {
