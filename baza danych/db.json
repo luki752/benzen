@@ -2300,6 +2300,46 @@
             }
           ],
           "gender": "man"
+        },
+        {
+          "id": 21,
+          "name": "Padded coat",
+          "item": "puffer-jackets",
+          "amount": 1000,
+          "price": 29.99,
+          "desc": "high stand up collar and hood, press stud fastening, two side pockets, insulation made of recycled fabric",
+          "discount": true,
+          "beforeDiscount": 49.99,
+          "material": [
+            {
+              "fabric": "polyester",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-001_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-002_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-003_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-004_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-005_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-006_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-040_15.jpg"
+            }
+          ],
+          "gender": "woman"
         }
       ],
       "orders": [],

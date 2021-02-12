@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 //axios
 import axios from "axios";
 //notistack
-import { useSnackbar } from "notistack";
+// import { useSnackbar } from "notistack";
 //redux
 import { useSelector, useDispatch } from "react-redux";
 //actions
@@ -16,8 +16,8 @@ import { loginAction } from "../actions/loginAction";
 
 const Card = ({ item, height, width, margin, gender, id }) => {
   const dispatch = useDispatch();
-  //snack bar
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  // //snack bar
+  // const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   //state
   const { user, isLogged } = useSelector((state) => state.login);
@@ -26,14 +26,13 @@ const Card = ({ item, height, width, margin, gender, id }) => {
     user.favorites.filter((item) => (item.id === id ? setFavorite(true) : ""));
   }, [user, favorite, id]);
   //handlers
-  const snackbarHandler = (snackbarMessage, snackVariant) => {
-    enqueueSnackbar(snackbarMessage, { variant: snackVariant });
-    closeSnackbar(500);
-  };
+  // const snackbarHandler = (snackbarMessage, snackVariant) => {
+  //   enqueueSnackbar(snackbarMessage, { variant: snackVariant });
+  //   closeSnackbar(500);
+  // };
   const favoritesHandler = () => {
     if (favorite === false) {
       setFavorite(!favorite);
-      snackbarHandler("Added to Favorites", "success");
       axios
         .put(`http://localhost:3000/users/${user.id}/`, {
           name: user.name,
@@ -60,6 +59,7 @@ const Card = ({ item, height, width, margin, gender, id }) => {
         })
         .then((resp) => {
           dispatch(loginAction(resp.data));
+          // snackbarHandler("Added to favorites", "success");
         })
         .catch((error) => {});
     } else {
@@ -76,6 +76,7 @@ const Card = ({ item, height, width, margin, gender, id }) => {
           })
           .then((resp) => {
             dispatch(loginAction(resp.data));
+            // snackbarHandler("Removed from favorites", "error");
           })
           .catch((error) => {});
       }
