@@ -35,7 +35,6 @@ const CartPage = () => {
       }
     }
   }, [cart]);
-  console.log(cart);
   //handlers
   const amountHandler = (type, id, amount, size) => {
     dispatch({

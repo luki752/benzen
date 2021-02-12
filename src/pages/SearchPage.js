@@ -33,7 +33,6 @@ const SearchPage = () => {
   useEffect(() => {
     setMV(window.matchMedia("(min-width: 1000px)").matches);
   }, [size, mv]);
-  console.log(answer);
   const handleSort = (e) => {
     setSort(e.target.value);
   };
