@@ -15,6 +15,9 @@ const ImageComponent = ({
   link,
   secondLink,
 }) => {
+  const linkHandler = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <ImageComponentStyles
       style={{
@@ -25,10 +28,10 @@ const ImageComponent = ({
       <span style={{ color: `${textColor}` }}>{text}</span>
       {btns ? (
         <div className="buttons">
-          <Link to={link} className="link">
+          <Link to={link} className="link" onClick={() => linkHandler()}>
             <button className="button-white">{btnText}</button>
           </Link>
-          <Link to={secondLink} className="link">
+          <Link to={secondLink} className="link" onClick={() => linkHandler()}>
             <button className="button-white">{secondBtn}</button>
           </Link>
         </div>
@@ -48,7 +51,6 @@ const ImageComponentStyles = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 1rem;
   height: 40rem;
   @media screen and (max-width: 1000px) {
     height: 20rem;

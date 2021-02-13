@@ -7,6 +7,8 @@ const rootReducer = combineReducers({
   items: itemsReducer,
   item: itemsReducer,
   cart: cartReducer,
+  discount: cartReducer,
+  cartPrice: cartReducer,
   category: itemsReducer,
   answer: itemsReducer,
   sale: itemsReducer,

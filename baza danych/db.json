@@ -2212,6 +2212,46 @@
           "img": "https://www.reserved.com/media/catalog/product/9/1/9170D-MLC-001_2.jpg"
         }
       ]
+    },
+    {
+      "name": "Faux leather skirt",
+      "item": "skirts",
+      "amount": "1000",
+      "category": "clothes",
+      "discount": "true",
+      "beforeDiscount": "24.99",
+      "price": "9.99",
+      "desc": "Height of female model: 177 cm",
+      "material": [
+        {
+          "id": 0,
+          "fabric": "polyurethane",
+          "percentage": "100"
+        }
+      ],
+      "images": [
+        {
+          "id": 0,
+          "img": "https://www.reserved.com/media/catalog/product/Y/R/YR360-99X-001_1.jpg"
+        },
+        {
+          "id": 1,
+          "img": "https://www.reserved.com/media/catalog/product/Y/R/YR360-99X-002_1.jpg"
+        },
+        {
+          "id": 2,
+          "img": "https://www.reserved.com/media/catalog/product/Y/R/YR360-99X-003_1.jpg"
+        },
+        {
+          "id": 3,
+          "img": "https://www.reserved.com/media/catalog/product/Y/R/YR360-99X-004_1.jpg"
+        },
+        {
+          "id": 4,
+          "img": "https://www.reserved.com/media/catalog/product/Y/R/YR360-99X-040_2.jpg"
+        }
+      ],
+      "id": 33
     }
   ],
   "users": [

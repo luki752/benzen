@@ -16,6 +16,7 @@ import FavoritesPage from "./pages/FavoritesPage";
 import AddItemPage from "./pages/addItemPage";
 import SearchPage from "./pages/SearchPage";
 import SalePage from "./pages/SalePage";
+import SaleMainPage from "./pages/SaleMainPage";
 //router
 import { Route } from "react-router-dom";
 
@@ -80,8 +81,11 @@ function App() {
       <Route path="/answer/:id">
         <SearchPage />
       </Route>
-      <Route path="/sale">
+      <Route path="/sale/:id">
         <SalePage />
+      </Route>
+      <Route path="/sale" exact>
+        <SaleMainPage />
       </Route>
       <Footer />
     </div>
