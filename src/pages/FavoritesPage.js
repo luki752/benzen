@@ -24,7 +24,6 @@ const FavoritesPage = () => {
   }, [size, mv]);
   //get data back
   const { user, isLogged } = useSelector((state) => state.login);
-  console.log(user);
   return (
     <FavoritesPageComponent>
       <div className="header">

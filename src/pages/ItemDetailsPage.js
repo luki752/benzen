@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 //styling
 import styled from "styled-components";
+//motion
+import { motion } from "framer-motion";
 //material ui
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
@@ -80,10 +82,8 @@ const ItemDetailsPage = () => {
       setProceedError(false);
       item.cartAmount = 1;
       item.gender = gender;
-      console.log(itemsSize);
       const found = cart.find((i) => i.id === item.id && i.size === itemsSize);
       item.size = itemsSize;
-      console.log(cart);
       if (found) {
         dispatch({
           type: "INCREASE",
@@ -675,7 +675,7 @@ const SimilarItems = styled.div`
     background: rgba(0, 0, 0, 0.6);
   }
 `;
-const CheckoutModal = styled.div`
+const CheckoutModal = styled(motion.div)`
   position: absolute;
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
@@ -687,7 +687,7 @@ const CheckoutModal = styled.div`
     margin-top: 5%;
     background-color: white;
     width: 28rem;
-    height: 70%;
+    height: 85%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -714,7 +714,7 @@ const CheckoutModal = styled.div`
       }
     }
     img {
-      height: 20rem;
+      height: 25rem;
       width: 20rem;
       margin: 1rem 0;
     }
