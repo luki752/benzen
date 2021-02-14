@@ -2212,6 +2212,46 @@
           "img": "https://www.reserved.com/media/catalog/product/9/1/9170D-MLC-001_2.jpg"
         }
       ]
+    },
+    {
+      "name": "Faux leather skirt",
+      "item": "skirts",
+      "amount": "1000",
+      "category": "clothes",
+      "discount": "true",
+      "beforeDiscount": "24.99",
+      "price": "9.99",
+      "desc": "Height of female model: 177 cm",
+      "material": [
+        {
+          "id": 0,
+          "fabric": "polyurethane",
+          "percentage": "100"
+        }
+      ],
+      "images": [
+        {
+          "id": 0,
+          "img": "https://www.reserved.com/media/catalog/product/Y/R/YR360-99X-001_1.jpg"
+        },
+        {
+          "id": 1,
+          "img": "https://www.reserved.com/media/catalog/product/Y/R/YR360-99X-002_1.jpg"
+        },
+        {
+          "id": 2,
+          "img": "https://www.reserved.com/media/catalog/product/Y/R/YR360-99X-003_1.jpg"
+        },
+        {
+          "id": 3,
+          "img": "https://www.reserved.com/media/catalog/product/Y/R/YR360-99X-004_1.jpg"
+        },
+        {
+          "id": 4,
+          "img": "https://www.reserved.com/media/catalog/product/Y/R/YR360-99X-040_2.jpg"
+        }
+      ],
+      "id": 33
     }
   ],
   "users": [
@@ -2220,250 +2260,27 @@
       "surname": "Programista",
       "email": "admin@admin.com",
       "password": "x61Ey612Kl2gpFL56FT9weDnpSo4AV8j8+qx2AuTHdRyY036xxzTTrw10Wq3+4qQyB+XURPWx1ONxp3Y3pB37A==",
-      "favorites": [
+      "favorites": [],
+      "orders": [],
+      "address": [
         {
-          "id": 18,
-          "name": "Lightweight jumper with viscose blend",
-          "item": "sweaters",
-          "amount": 1000,
-          "price": 14.99,
-          "desc": "round neck with trimming",
-          "material": [
-            {
-              "fabric": "viscose",
-              "percentage": "70"
-            },
-            {
-              "fabric": "polyamide",
-              "percentage": "30"
-            }
-          ],
-          "images": [
-            {
-              "img": "https://www.reserved.com/media/catalog/product/0/9/0983C-99X-001_3.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/0/9/0983C-99X-002_3.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/0/9/0983C-99X-003_3.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/0/9/0983C-99X-040_1.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/0/9/0983C-99X-041_1.jpg"
-            }
-          ],
-          "gender": "woman"
+          "phone": "696969696",
+          "houseNr": "6/5",
+          "street": "swietlista",
+          "city": "urugwaj",
+          "postalCode": "650-320",
+          "id": 1
         },
         {
-          "id": 9,
-          "name": "slim fit suit trousers",
-          "item": "suits",
-          "amount": 1000,
-          "price": 22.99,
-          "desc": "high round neck",
-          "discount": true,
-          "beforeDiscount": 39.99,
-          "material": [
-            {
-              "fabric": "polyamide",
-              "percentage": "92"
-            },
-            {
-              "fabric": "elastane",
-              "percentage": "8"
-            }
-          ],
-          "images": [
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-001_9.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-002_9.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-003_9.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-004_9.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-005_2.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-006_2.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-040_2.jpg"
-            }
-          ],
-          "gender": "man"
-        },
-        {
-          "id": 21,
-          "name": "Padded coat",
-          "item": "puffer-jackets",
-          "amount": 1000,
-          "price": 29.99,
-          "desc": "high stand up collar and hood, press stud fastening, two side pockets, insulation made of recycled fabric",
-          "discount": true,
-          "beforeDiscount": 49.99,
-          "material": [
-            {
-              "fabric": "polyester",
-              "percentage": "100"
-            }
-          ],
-          "images": [
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-001_14.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-002_14.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-003_14.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-004_14.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-005_14.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-006_14.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-040_15.jpg"
-            }
-          ],
-          "gender": "woman"
+          "phone": "696969696",
+          "houseNr": "6/5",
+          "street": "swietlista",
+          "city": "dupa",
+          "postalCode": "650-320",
+          "id": 2
         }
       ],
-      "orders": [],
       "id": 1
-    },
-    {
-      "name": "asia",
-      "surname": "fajna",
-      "email": "asia@gmail.com",
-      "password": "FqhVyF7msaAcVroQ6G9kRz5VmAyYUQ2yY4C5I97RKQ2jmCV3O2V6FJQI5AYM7auWTGk0JEnGpxzi9bmK094SQw==",
-      "favorites": [
-        {
-          "id": 17,
-          "name": "Basic T-shirt",
-          "item": "t-shirts",
-          "amount": 1000,
-          "price": 5.99,
-          "desc": "round neck, short sleeves",
-          "material": [
-            {
-              "fabric": "cotton",
-              "percentage": "60"
-            },
-            {
-              "fabric": "polyester",
-              "percentage": "40"
-            }
-          ],
-          "images": [
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU930-88M-020_5.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU930-88M-021_5.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU930-88M-022_5.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU930-88M-023_5.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU930-88M-024_5.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU930-88M-025_5.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU930-88M-001_5.jpg"
-            }
-          ]
-        },
-        {
-          "id": 9,
-          "name": "slim fit suit trousers",
-          "item": "suits",
-          "amount": 1000,
-          "price": 22.99,
-          "discount": true,
-          "beforeDiscount": 39.99,
-          "desc": "high round neck",
-          "material": [
-            {
-              "fabric": "polyamide",
-              "percentage": "92"
-            },
-            {
-              "fabric": "elastane",
-              "percentage": "8"
-            }
-          ],
-          "images": [
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-001_9.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-002_9.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-003_9.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-004_9.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-005_2.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-006_2.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-040_2.jpg"
-            }
-          ]
-        },
-        {
-          "id": 12,
-          "name": "Friends boxers 3 pack",
-          "item": "underwear",
-          "amount": 1000,
-          "price": 17.99,
-          "desc": "high round neck",
-          "material": [
-            {
-              "fabric": "polyamide",
-              "percentage": "92"
-            },
-            {
-              "fabric": "elastane",
-              "percentage": "8"
-            }
-          ],
-          "images": [
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Z/O/ZO425-90X-001_2.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Z/O/ZO425-90X-002_2.jpg"
-            }
-          ]
-        }
-      ],
-      "orders": [],
-      "id": 2
     }
   ]
 }

@@ -85,7 +85,7 @@ const Nav = () => {
       <div className="nav-middle-menu">
         <ul>
           <li>
-            <Link to="/sale/woman" className="link">
+            <Link to="/sale" className="link">
               <Button
                 className="gender-button"
                 style={{
@@ -143,7 +143,14 @@ const Nav = () => {
           </li>
           <li>
             {" "}
-            <Link to="/customer/account/login" className="link">
+            <Link
+              to={
+                isLogged
+                  ? "/customer/account/orders"
+                  : "/customer/account/login"
+              }
+              className="link"
+            >
               <AccountCircleIcon
                 onMouseEnter={() => setLoginDropdown(true)}
                 onMouseLeave={() => setLoginDropdown(false)}
@@ -913,15 +920,21 @@ const NavComponent = styled.div`
       align-items: center;
       .nav-logo {
         text-transform: upperCase;
-        font-size: 2rem;
+        font-size: 1.5rem;
         padding: 0rem 1rem;
+        letter-spacing: 4px;
         font-weight: bold;
         @media screen and (max-width: 1000px) {
           font-size: 1.5rem;
+          letter-spacing: 1px;
+          padding: 0rem 0.2rem;
         }
       }
       li {
         padding: 0rem 1rem;
+        @media screen and (max-width: 1000px) {
+          padding: 0rem 0.5rem;
+        }
         &:hover {
           cursor: pointer;
         }
@@ -946,7 +959,7 @@ const NavComponent = styled.div`
       li {
         .gender-button {
           font-family: "Raleway", sans-serif;
-          font-size: 1.5rem;
+          font-size: 1rem;
           padding: 0rem 1rem;
         }
       }
@@ -1029,7 +1042,7 @@ const ManDropdown = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   z-index: 50;
   .dropdown-menu {
     position: absolute;
@@ -1085,7 +1098,7 @@ const WomanDropdown = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   z-index: 50;
 
   .dropdown-menu {
@@ -1137,7 +1150,7 @@ const LoginDropdown = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  margin-top: 3.1rem;
+  margin-top: 3rem;
   width: 40vh;
   z-index: 10;
   display: flex;
@@ -1220,7 +1233,7 @@ const SaleDropdown = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   z-index: 50;
   .dropdown-menu {
     position: absolute;

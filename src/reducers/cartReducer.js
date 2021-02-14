@@ -1,5 +1,7 @@
 const initState = {
   cart: [],
+  cartPrice: 0,
+  discount: false,
 };
 
 const cartReducer = (state = initState, action) => {
@@ -34,7 +36,6 @@ const cartReducer = (state = initState, action) => {
             : cartItem
         );
       }
-
       return { ...state, cart: tempCart2 };
     case "REMOVE":
       return {
@@ -46,6 +47,32 @@ const cartReducer = (state = initState, action) => {
             )
         ),
       };
+    case "DISCOUNT":
+      return {
+        ...state,
+        discount: action.payload.boolean,
+      };
+    case "CART_PRICE":
+      return {
+        ...state,
+        cartPrice: action.payload.price.toFixed(2),
+      };
+    case "CHANGE_PRICE":
+      const newCart = state.cart.map((item) =>
+        item.id === action.payload.id && item.size === action.payload.size
+          ? (item = {
+              ...item,
+              discount: true,
+              beforeDiscount: item.price,
+              price: item.price * 0.9,
+            })
+          : item
+      );
+      return {
+        ...state,
+        cart: newCart,
+      };
+
     default:
       return { ...state };
   }

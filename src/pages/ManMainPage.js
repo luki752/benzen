@@ -84,9 +84,9 @@ const ManMainPage = () => {
                   key={cloth.id}
                   item={cloth}
                   id={cloth.id}
-                  height={mv ? "40rem" : "20rem"}
-                  width={mv ? "25%" : "50%"}
-                  margin={mv ? "3rem 0" : "1rem 0"}
+                  height={mv ? "25rem" : "18rem"}
+                  width={mv ? "23%" : "48%"}
+                  margin={mv ? "3rem 0.5rem" : "0.5rem 0.5"}
                   gender={"man"}
                 />
               ))}

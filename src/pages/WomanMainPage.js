@@ -58,9 +58,9 @@ const WomanMainPage = () => {
                   key={cloth.id}
                   id={cloth.id}
                   item={cloth}
-                  height={mv ? "40rem" : "20rem"}
-                  width={mv ? "25%" : "50%"}
-                  margin={mv ? "3rem 0" : "0.5rem 0"}
+                  height={mv ? "25rem" : "18rem"}
+                  width={mv ? "23%" : "48%"}
+                  margin={mv ? "3rem 0.5rem" : "0.5rem 0.5"}
                   gender={"woman"}
                 />
               ))}
@@ -88,9 +88,9 @@ const WomanMainPage = () => {
                   key={cloth.id}
                   id={cloth.id}
                   item={cloth}
-                  height={mv ? "40rem" : "20rem"}
-                  width={mv ? "25%" : "50%"}
-                  margin={mv ? "3rem 0" : "0.5rem 0"}
+                  height={mv ? "25rem" : "18rem"}
+                  width={mv ? "23%" : "48%"}
+                  margin={mv ? "3rem 0.5rem" : "0.5rem 0.5"}
                   gender={"woman"}
                 />
               ))}

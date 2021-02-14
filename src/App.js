@@ -6,6 +6,7 @@ import GlobalStyles from "./components/GlobalStyles";
 //pages
 import Home from "./pages/Home";
 import AccountPage from "./pages/AccountPage";
+import LoginPage from "./pages/LoginPage";
 import WomanMainPage from "./pages/WomanMainPage";
 import ManMainPage from "./pages/ManMainPage";
 import CartPage from "./pages/CartPage";
@@ -16,6 +17,7 @@ import FavoritesPage from "./pages/FavoritesPage";
 import AddItemPage from "./pages/addItemPage";
 import SearchPage from "./pages/SearchPage";
 import SalePage from "./pages/SalePage";
+import SaleMainPage from "./pages/SaleMainPage";
 //router
 import { Route } from "react-router-dom";
 
@@ -29,14 +31,19 @@ function App() {
       </Route>
       <Route
         path={[
-          "/customer/account/login",
-          "/customer/account/register",
           "/customer/account/info",
           "/customer/account/orders",
+          "/customer/account/address",
         ]}
         exact
       >
         <AccountPage />
+      </Route>
+      <Route
+        path={["/customer/account/login", "/customer/account/register"]}
+        exact
+      >
+        <LoginPage />
       </Route>
       <Route path="/woman" exact>
         <WomanMainPage />
@@ -80,8 +87,11 @@ function App() {
       <Route path="/answer/:id">
         <SearchPage />
       </Route>
-      <Route path="/sale">
+      <Route path="/sale/:id">
         <SalePage />
+      </Route>
+      <Route path="/sale" exact>
+        <SaleMainPage />
       </Route>
       <Footer />
     </div>

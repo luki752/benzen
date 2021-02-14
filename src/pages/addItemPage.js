@@ -90,7 +90,6 @@ const AddItemPage = () => {
           images: [...images],
         })
         .then((resp) => {
-          console.log(resp);
           alert("Item added successfully");
           setGender("");
           setName("");
@@ -105,16 +104,14 @@ const AddItemPage = () => {
           setImages([]);
           window.scrollTo(0, 0);
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch((error) => {});
     } else {
       alert("Inputs cant be empty");
     }
   };
   return (
     <AddItemPageComponent>
-      <Link to="/customer/account/login">
+      <Link to="/customer/account/orders">
         <button className="button-black">
           <ArrowLeftIcon />
           Go back to your acc
@@ -269,7 +266,6 @@ const AddItemPage = () => {
                 Add Material
               </button>
             </div>
-            {console.log(materials)}
             {materials.map((material) => (
               <div className="material">
                 <span>
