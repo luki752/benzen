@@ -213,6 +213,9 @@ const AccountPage = () => {
       })
       .catch((error) => {});
   };
+  const checkboxHandler = (e) => {
+    setNewAddressCheckbox(e.target.checked);
+  };
   return (
     <>
       {isLogged && (
@@ -378,7 +381,7 @@ const AccountPage = () => {
                   <div className="line"></div>
                   <h2>Address</h2>
                   <div className="choose-address">
-                    {/* {user.address.map((info) => (
+                    {user.address.map((info) => (
                       <Address
                         key={info.id}
                         name={info.name}
@@ -391,12 +394,12 @@ const AccountPage = () => {
                         id={info.id}
                         usersId={user.id}
                       />
-                    ))} */}
+                    ))}
                     <div className="address">
-                      {/* <Checkbox
+                      <Checkbox
                         checked={newAddressCheckbox}
-                        onChange={setNewAddressCheckbox(!newAddressCheckbox)}
-                      /> */}
+                        onChange={checkboxHandler}
+                      />
                       <span
                         style={{ fontSize: "0.8rem", padding: "1rem 0" }}
                         onClick={() => newAddressHandler()}

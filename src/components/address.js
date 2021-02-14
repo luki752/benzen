@@ -19,7 +19,7 @@ const Address = ({
   phone,
 }) => {
   //state
-  const [address, setAddress] = useState(true);
+  const [address, setAddress] = useState(id === 1 ? true : false);
   const { user } = useSelector((state) => state.login);
   //handlers
   const deleteAddressHandler = (id) => {
@@ -38,9 +38,12 @@ const Address = ({
       })
       .catch((error) => {});
   };
+  const checkboxHandler = (e) => {
+    setAddress(e.target.checked);
+  };
   return (
     <AddressComponent>
-      <Checkbox checked={address} onChange={setAddress(!address)} />
+      <Checkbox checked={address} onChange={checkboxHandler} color="dark" />
       <div className="address-info">
         <span>
           {name} {surname}
