@@ -143,7 +143,14 @@ const Nav = () => {
           </li>
           <li>
             {" "}
-            <Link to="/customer/account/login" className="link">
+            <Link
+              to={
+                isLogged
+                  ? "/customer/account/orders"
+                  : "/customer/account/login"
+              }
+              className="link"
+            >
               <AccountCircleIcon
                 onMouseEnter={() => setLoginDropdown(true)}
                 onMouseLeave={() => setLoginDropdown(false)}

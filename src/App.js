@@ -6,6 +6,7 @@ import GlobalStyles from "./components/GlobalStyles";
 //pages
 import Home from "./pages/Home";
 import AccountPage from "./pages/AccountPage";
+import LoginPage from "./pages/LoginPage";
 import WomanMainPage from "./pages/WomanMainPage";
 import ManMainPage from "./pages/ManMainPage";
 import CartPage from "./pages/CartPage";
@@ -30,14 +31,19 @@ function App() {
       </Route>
       <Route
         path={[
-          "/customer/account/login",
-          "/customer/account/register",
           "/customer/account/info",
           "/customer/account/orders",
+          "/customer/account/address",
         ]}
         exact
       >
         <AccountPage />
+      </Route>
+      <Route
+        path={["/customer/account/login", "/customer/account/register"]}
+        exact
+      >
+        <LoginPage />
       </Route>
       <Route path="/woman" exact>
         <WomanMainPage />

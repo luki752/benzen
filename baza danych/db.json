@@ -2262,127 +2262,25 @@
       "password": "x61Ey612Kl2gpFL56FT9weDnpSo4AV8j8+qx2AuTHdRyY036xxzTTrw10Wq3+4qQyB+XURPWx1ONxp3Y3pB37A==",
       "favorites": [],
       "orders": [],
-      "id": 1
-    },
-    {
-      "name": "asia",
-      "surname": "fajna",
-      "email": "asia@gmail.com",
-      "password": "FqhVyF7msaAcVroQ6G9kRz5VmAyYUQ2yY4C5I97RKQ2jmCV3O2V6FJQI5AYM7auWTGk0JEnGpxzi9bmK094SQw==",
-      "favorites": [
+      "address": [
         {
-          "id": 17,
-          "name": "Basic T-shirt",
-          "item": "t-shirts",
-          "amount": 1000,
-          "price": 5.99,
-          "desc": "round neck, short sleeves",
-          "material": [
-            {
-              "fabric": "cotton",
-              "percentage": "60"
-            },
-            {
-              "fabric": "polyester",
-              "percentage": "40"
-            }
-          ],
-          "images": [
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU930-88M-020_5.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU930-88M-021_5.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU930-88M-022_5.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU930-88M-023_5.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU930-88M-024_5.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU930-88M-025_5.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU930-88M-001_5.jpg"
-            }
-          ]
+          "phone": "696969696",
+          "houseNr": "6/5",
+          "street": "swietlista",
+          "city": "urugwaj",
+          "postalCode": "650-320",
+          "id": 1
         },
         {
-          "id": 9,
-          "name": "slim fit suit trousers",
-          "item": "suits",
-          "amount": 1000,
-          "price": 22.99,
-          "discount": true,
-          "beforeDiscount": 39.99,
-          "desc": "high round neck",
-          "material": [
-            {
-              "fabric": "polyamide",
-              "percentage": "92"
-            },
-            {
-              "fabric": "elastane",
-              "percentage": "8"
-            }
-          ],
-          "images": [
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-001_9.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-002_9.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-003_9.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-004_9.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-005_2.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-006_2.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/P/XP136-99X-040_2.jpg"
-            }
-          ]
-        },
-        {
-          "id": 12,
-          "name": "Friends boxers 3 pack",
-          "item": "underwear",
-          "amount": 1000,
-          "price": 17.99,
-          "desc": "high round neck",
-          "material": [
-            {
-              "fabric": "polyamide",
-              "percentage": "92"
-            },
-            {
-              "fabric": "elastane",
-              "percentage": "8"
-            }
-          ],
-          "images": [
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Z/O/ZO425-90X-001_2.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Z/O/ZO425-90X-002_2.jpg"
-            }
-          ]
+          "phone": "696969696",
+          "houseNr": "6/5",
+          "street": "swietlista",
+          "city": "dupa",
+          "postalCode": "650-320",
+          "id": 2
         }
       ],
-      "orders": [],
-      "id": 2
+      "id": 1
     }
   ]
 }
