@@ -24,10 +24,10 @@ const CartPage = () => {
   const [discountBanner, setDiscountBanner] = useState(true);
   const [PriceBeforeDiscounts, setPriceBeforeDiscounts] = useState(0);
   const dispatch = useDispatch();
-  const { cart, cartPrice, discount } = useSelector((state) => state.cart);
   useEffect(() => {
     dispatch(loginAction());
   }, [dispatch]);
+  const { cart, cartPrice, discount } = useSelector((state) => state.cart);
   const { user, isLogged } = useSelector((state) => state.login);
   useEffect(() => {
     if (cart) {
@@ -244,7 +244,14 @@ const CartPage = () => {
                     </div>
                   </div>
                   <div className="checkout-button">
-                    <button className="button-black">Go to checkout</button>
+                    <Link
+                      to={
+                        isLogged ? "/checkout/order" : "/customer/account/login"
+                      }
+                      className="link"
+                    >
+                      <button className="button-black">Go to checkout</button>
+                    </Link>
                   </div>
                   <div className="coupon">
                     <Accordion className="accordion">
@@ -307,7 +314,7 @@ const CartPageComponent = styled.div`
       align-items: center;
       justify-content: center;
       text-align: center;
-      background-color: rgba(0, 0, 0, 0.3);
+      background-color: rgba(0, 0, 0, 0.2);
       color: white;
 
       span {
@@ -317,6 +324,7 @@ const CartPageComponent = styled.div`
         }
       }
       p {
+        font-size: 0.6rem;
         @media screen and (max-width: 1000px) {
           font-size: 0.4rem;
         }
@@ -357,6 +365,7 @@ const CartPageComponent = styled.div`
           display: flex;
           justify-content: space-between;
           padding: 1rem 0rem;
+          margin: 1rem 0rem;
           border-bottom: 1px solid rgba(0, 0, 0, 0.2);
           @media screen and (max-width: 1000px) {
             width: 100%;

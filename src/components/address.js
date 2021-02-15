@@ -75,10 +75,12 @@ const Address = ({
         email: user.email,
         password: user.password,
         favorites: user.favorites,
-        address: user.addresses.filter((info) => info.id !== id),
+        addresses: user.addresses.filter((info) => info.id !== id),
         orders: user.orders,
+        isLogged: user.isLogged,
       })
       .then((resp) => {
+        window.location.reload();
         alert("Address deleted successfully");
       })
       .catch((error) => {});

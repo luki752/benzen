@@ -111,7 +111,7 @@ const AddItemPage = () => {
           setPrice("");
           setMaterials([]);
           setImages([]);
-          window.scrollTo(0, 0);
+          window.location.reload();
         })
         .catch((error) => {});
     } else {

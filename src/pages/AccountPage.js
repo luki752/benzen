@@ -73,6 +73,7 @@ const AccountPage = () => {
           favorites: user.favorites,
           orders: user.orders,
           addresses: user.addresses,
+          isLogged: user.isLogged,
         })
         .then((resp) => {
           setPasswordErrorMsg("Password changed successfully");
@@ -95,6 +96,7 @@ const AccountPage = () => {
               favorites: user.favorites,
               orders: user.orders,
               addresses: user.addresses,
+              isLogged: user.isLogged,
             })
             .then((resp) => {
               setPasswordErrorMsg("Password changed successfully");
@@ -145,7 +147,6 @@ const AccountPage = () => {
     if (
       usersAddressName !== "" &&
       usersAddressSurname !== "" &&
-      usersEmail !== "" &&
       usersPhone !== "" &&
       usersPhone.length === 9 &&
       usersHouseNr !== "" &&
@@ -163,6 +164,8 @@ const AccountPage = () => {
               street: usersStreet,
               city: usersCity,
               postalCode: usersPostalCode,
+              isLogged: user.isLogged,
+              id: addressId,
             })
           : location
       );
@@ -175,9 +178,10 @@ const AccountPage = () => {
           favorites: user.favorites,
           orders: user.orders,
           addresses: newAddress,
+          isLogged: user.isLogged,
         })
         .then((resp) => {
-          window.scrollTo(0, 0);
+          window.location.reload();
           alert("address changed succesfully");
         })
         .catch((error) => {});
@@ -185,7 +189,6 @@ const AccountPage = () => {
       setAddressMsg("Inputs cant be empty");
     }
   };
-
   const newAddressHandler = () => {
     setAction("add");
     setUsersAddressName("");
@@ -198,31 +201,47 @@ const AccountPage = () => {
     setUsersPostalCode("");
   };
   const addAddress = () => {
-    axios
-      .put(`http://localhost:3000/users/${user.id}/`, {
-        name: user.name,
-        surname: user.surname,
-        email: user.email,
-        password: user.password,
-        favorites: user.favorites,
-        addresses: [
-          ...user.addresses,
-          {
-            name: usersAddressName,
-            surname: usersAddressSurname,
-            phone: usersPhone,
-            houseNr: usersHouseNr,
-            street: usersStreet,
-            city: usersCity,
-            postalCode: usersPostalCode,
-          },
-        ],
-        orders: user.orders,
-      })
-      .then((resp) => {
-        alert("Address deleted successfully");
-      })
-      .catch((error) => {});
+    if (
+      usersAddressName !== "" &&
+      usersAddressSurname !== "" &&
+      usersPhone !== "" &&
+      usersPhone.length === 9 &&
+      usersHouseNr !== "" &&
+      usersStreet !== "" &&
+      usersCity !== "" &&
+      usersPostalCode !== ""
+    ) {
+      axios
+        .put(`http://localhost:3000/users/${user.id}/`, {
+          name: user.name,
+          surname: user.surname,
+          email: user.email,
+          password: user.password,
+          favorites: user.favorites,
+          isLogged: user.isLogged,
+          addresses: [
+            ...user.addresses,
+            {
+              name: usersAddressName,
+              surname: usersAddressSurname,
+              phone: usersPhone,
+              houseNr: usersHouseNr,
+              street: usersStreet,
+              city: usersCity,
+              postalCode: usersPostalCode,
+              id: user.addresses.length + 1,
+            },
+          ],
+          orders: user.orders,
+        })
+        .then((resp) => {
+          window.location.reload();
+          alert("Address added successfully");
+        })
+        .catch((error) => {});
+    } else {
+      alert("inputs cant be empty");
+    }
   };
   const checkboxHandler = (e) => {
     setNewAddressCheckbox(e.target.checked);
@@ -230,7 +249,21 @@ const AccountPage = () => {
       newAddressHandler();
     }
   };
-  console.log(user);
+  const LogOutHandler = () => {
+    axios
+      .put(`http://localhost:3000/users/${user.id}/`, {
+        name: usersName,
+        surname: usersSurname,
+        email: usersEmail,
+        password: user.password,
+        favorites: user.favorites,
+        orders: user.orders,
+        addresses: user.addresses,
+        isLogged: false,
+      })
+      .then((resp) => {})
+      .catch((error) => {});
+  };
 
   return (
     <>
@@ -261,18 +294,7 @@ const AccountPage = () => {
                   </li>
                 </Link>
               )}
-              <li
-                className="log-out"
-                onClick={() =>
-                  dispatch({
-                    type: "LOG_OUT",
-                    payload: {
-                      login: false,
-                      user: [],
-                    },
-                  })
-                }
-              >
+              <li className="log-out" onClick={() => LogOutHandler()}>
                 <MeetingRoomIcon /> Log out
               </li>
             </ul>
@@ -400,6 +422,7 @@ const AccountPage = () => {
                     {user.addresses.map((info) => (
                       <Address
                         key={info.id}
+                        id={info.id}
                         name={info.name}
                         surname={info.surname}
                         street={info.street}
@@ -407,7 +430,6 @@ const AccountPage = () => {
                         postalCode={info.postalCode}
                         phone={info.phone}
                         city={info.city}
-                        id={info.id}
                         usersId={user.id}
                         setUsersAddressName={setUsersAddressName}
                         setUsersAddressSurname={setUsersAddressSurname}
@@ -442,6 +464,11 @@ const AccountPage = () => {
                     </div>
                   </div>
 
+                  <span>
+                    You are currently{" "}
+                    {action === "change" && <b>changing {addressId} address</b>}
+                    {action === "add" && <b>adding new address</b>}
+                  </span>
                   <span>{addressMsg}</span>
                   <div className="two-inputs">
                     <TextField
