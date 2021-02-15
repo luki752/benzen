@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 //actions
 import { loadSpecificItem, loadAllItems } from "../actions/itemsAction";
+import { loginAction } from "../actions/loginAction";
 //router
 import { useLocation } from "react-router-dom";
 //icons
@@ -62,6 +63,7 @@ const ItemDetailsPage = () => {
   useEffect(() => {
     dispatch(loadSpecificItem(gender, pathId));
     dispatch(loadAllItems(gender));
+    dispatch(loginAction());
   }, [dispatch, gender, pathId]);
   //get data back
   const { item, isLoading, AllItems } = useSelector((state) => state.item);

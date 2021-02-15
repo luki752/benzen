@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 //api
 import { loginUrl, registerUrl } from "../api";
 //redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../actions/loginAction";
 //styling
 import styled from "styled-components";
@@ -45,10 +45,14 @@ const AccountPage = () => {
   const [registerSuccess, setRegisterSuccess] = useState(false);
   //location
   const location = useLocation();
+  const dispatch = useDispatch();
   const pathName = location.pathname.split("/")[3];
+  const { user } = useSelector((state) => state.login);
   //history
   const history = useHistory();
-
+  useEffect(() => {
+    dispatch(loginAction());
+  }, [dispatch]);
   //getting width
   useLayoutEffect(() => {
     function updateSize() {
@@ -61,7 +65,6 @@ const AccountPage = () => {
   useEffect(() => {
     setMV(window.matchMedia("(min-width: 1000px)").matches);
   }, [size]);
-  const dispatch = useDispatch();
   //handlers
   const loginHandler = (e) => {
     e.preventDefault();
@@ -70,8 +73,22 @@ const AccountPage = () => {
         if (
           res.data[0].password === sha512(loginPasswordInput).toString(Base64)
         ) {
-          dispatch(loginAction(res.data[0]));
-          history.push("/customer/account/orders");
+          axios
+            .put(`http://localhost:3000/users/${res.data[0].id}/`, {
+              name: user.name,
+              surname: user.surname,
+              email: user.email,
+              isLogged: true,
+              password: user.password,
+              favorites: user.favorites,
+              orders: user.orders,
+              addresses: user.addresses,
+            })
+            .then((resp) => {
+              dispatch(loginAction());
+              history.push("/customer/account/orders");
+            })
+            .catch((error) => {});
         } else {
           setLoginErrorMsg("incorrect password");
           setFalseLogin(true);

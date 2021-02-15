@@ -1,8 +1,6 @@
 const initState = {
   isLogged: false,
-  user: {
-    favorites: [],
-  },
+  user: [],
 };
 
 const loginReducer = (state = initState, action) => {

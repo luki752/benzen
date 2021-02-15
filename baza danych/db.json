@@ -2262,24 +2262,8 @@
       "password": "x61Ey612Kl2gpFL56FT9weDnpSo4AV8j8+qx2AuTHdRyY036xxzTTrw10Wq3+4qQyB+XURPWx1ONxp3Y3pB37A==",
       "favorites": [],
       "orders": [],
-      "address": [
-        {
-          "phone": "696969696",
-          "houseNr": "6/5",
-          "street": "swietlista",
-          "city": "urugwaj",
-          "postalCode": "650-320",
-          "id": 1
-        },
-        {
-          "phone": "696969696",
-          "houseNr": "6/5",
-          "street": "swietlista",
-          "city": "dupa",
-          "postalCode": "650-320",
-          "id": 2
-        }
-      ],
+      "isLogged": true,
+      "addresses": [],
       "id": 1
     }
   ]

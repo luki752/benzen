@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 //actions
 import { loadAllItems } from "../actions/itemsAction";
+import { loginAction } from "../actions/loginAction";
 //components
 import Card from "../components/Card";
 import ImageComponent from "../components/ImageComponent";
@@ -20,6 +21,7 @@ const ManMainPage = () => {
   //dispatch
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(loginAction());
     dispatch(loadAllItems("man"));
   }, [dispatch]);
   //get width

@@ -3,6 +3,7 @@ import React, { useEffect, useState, useLayoutEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 //actions
 import { loadItems } from "../actions/itemsAction";
+import { loginAction } from "../actions/loginAction";
 //styling
 import styled from "styled-components";
 //router
@@ -44,11 +45,11 @@ const ClothesPreviewPage = ({ gender }) => {
     setCardWidth(mv ? "25%" : "50%");
     setCardHeight(mv ? "30rem" : "20rem");
   }, [size, mv]);
-
   //dispatch data
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadItems(gender, category, subItem ? subItem : item, sort));
+    dispatch(loginAction());
   }, [dispatch, gender, category, item, sort, subItem]);
   //get data back
   const { items, isLoading } = useSelector((state) => state.items);

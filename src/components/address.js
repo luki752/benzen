@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //styling
 import styled from "styled-components";
 //material ui
 import Checkbox from "@material-ui/core/Checkbox";
-//axios
-import axios from "axios";
 //redux
 import { useSelector } from "react-redux";
 
@@ -17,20 +15,67 @@ const Address = ({
   city,
   id,
   phone,
+  setNewAddressCheckbox,
+  setUsersAddressName,
+  setUsersAddressSurname,
+  setUsersCity,
+  setUsersPhone,
+  setUsersHouseNr,
+  setUsersStreet,
+  setUsersPostalCode,
+  usersAddressName,
+  usersAddressSurname,
+  usersCity,
+  usersPhone,
+  usersStreet,
+  usersPostalCode,
+  setAction,
+  setAddressId,
 }) => {
   //state
   const [address, setAddress] = useState(id === 1 ? true : false);
   const { user } = useSelector((state) => state.login);
+  const checkboxHandler = (e) => {
+    setAddress(e);
+    if (address === false) {
+      setUsersAddressName(name);
+      setUsersAddressSurname(surname);
+      setUsersCity(city);
+      setUsersPhone(phone);
+      setUsersHouseNr(houseNr);
+      setUsersStreet(street);
+      setUsersPostalCode(postalCode);
+      setAction("change");
+      setAddressId(id);
+      setNewAddressCheckbox(false);
+    }
+  };
+  useEffect(() => {
+    if (
+      usersCity === city &&
+      usersAddressName === name &&
+      usersAddressSurname === surname &&
+      usersPhone === phone &&
+      usersStreet === street &&
+      usersPostalCode === postalCode
+    ) {
+      setAddress(true);
+    } else {
+      setAddress(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [checkboxHandler]);
+  const axios = require("axios");
   //handlers
   const deleteAddressHandler = (id) => {
     axios
-      .post(`http://localhost:3000/users/${user.id}/`, {
+      .put(`http://localhost:3000/users/${user.id}/`, {
         name: user.name,
         surname: user.surname,
         email: user.email,
         password: user.password,
         favorites: user.favorites,
-        address: user.address.filter((info) => info.id !== id),
+        address: user.addresses.filter((info) => info.id !== id),
         orders: user.orders,
       })
       .then((resp) => {
@@ -38,12 +83,14 @@ const Address = ({
       })
       .catch((error) => {});
   };
-  const checkboxHandler = (e) => {
-    setAddress(e.target.checked);
-  };
+
   return (
     <AddressComponent>
-      <Checkbox checked={address} onChange={checkboxHandler} color="dark" />
+      <Checkbox
+        checked={address}
+        onChange={(e) => checkboxHandler(e.target.checked)}
+        color="primary"
+      />
       <div className="address-info">
         <span>
           {name} {surname}

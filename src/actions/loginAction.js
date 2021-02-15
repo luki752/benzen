@@ -1,11 +1,16 @@
+import { allUsersUrl } from "../api";
+import axios from "axios";
+
 //action creator
-export const loginAction = (user) => async (dispatch) => {
-  console.log(user);
+export const loginAction = () => async (dispatch) => {
+  const usersData = await axios.get(allUsersUrl());
+  const user = usersData.data.filter((user) => user.isLogged === true);
+  const isLogged = usersData.data.find((user) => user.isLogged === true);
   dispatch({
     type: "LOG_IN",
     payload: {
-      login: true,
-      user: user,
+      login: isLogged,
+      user: user[0],
     },
   });
 };

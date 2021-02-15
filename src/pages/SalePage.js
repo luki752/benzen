@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { useLocation, Link } from "react-router-dom";
 //action
 import { loadSale } from "../actions/itemsAction";
+import { loginAction } from "../actions/loginAction";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //components
@@ -41,6 +42,7 @@ const SalePage = () => {
   }, [size, mv]);
   useEffect(() => {
     dispatch(loadSale(gender, category, sort));
+    dispatch(loginAction());
   }, [dispatch, gender, category, sort]);
   useEffect(() => {
     axios

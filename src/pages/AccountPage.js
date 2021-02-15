@@ -4,6 +4,8 @@ import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 //redux
 import { useDispatch, useSelector } from "react-redux";
+//actions
+import { loginAction } from "../actions/loginAction";
 //styling
 import styled from "styled-components";
 //material ui
@@ -38,6 +40,7 @@ const AccountPage = () => {
   const [usersPostalCode, setUsersPostalCode] = useState("");
   const [addressMsg, setAddressMsg] = useState("");
   const [newAddressCheckbox, setNewAddressCheckbox] = useState(false);
+  const [addressId, setAddressId] = useState(1);
   //account state
   const [newPassword, setNewPassword] = useState("");
   const [oldPassword, setOldPassword] = useState("");
@@ -48,9 +51,11 @@ const AccountPage = () => {
   //location
   const location = useLocation();
   const pathName = location.pathname.split("/")[3];
-
-  const { isLogged, user } = useSelector((state) => state.login);
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loginAction());
+  }, [dispatch]);
+  const { isLogged, user } = useSelector((state) => state.login);
   //handlers
   const userAccountHandler = () => {
     if (
@@ -67,6 +72,7 @@ const AccountPage = () => {
           password: user.password,
           favorites: user.favorites,
           orders: user.orders,
+          addresses: user.addresses,
         })
         .then((resp) => {
           setPasswordErrorMsg("Password changed successfully");
@@ -88,6 +94,7 @@ const AccountPage = () => {
               password: sha512(newPassword).toString(Base64),
               favorites: user.favorites,
               orders: user.orders,
+              addresses: user.addresses,
             })
             .then((resp) => {
               setPasswordErrorMsg("Password changed successfully");
@@ -124,11 +131,14 @@ const AccountPage = () => {
       setUsersAddressName(user.name);
       setUsersAddressSurname(user.surname);
       setUsersEmail(user.email);
-      setUsersPhone(user.address[0].phone);
-      setUsersHouseNr(user.address[0].houseNr);
-      setUsersStreet(user.address[0].street);
-      setUsersCity(user.address[0].city);
-      setUsersPostalCode(user.address[0].postalCode);
+
+      if (user.addresses[0]) {
+        setUsersPhone(user.addresses[0].phone);
+        setUsersHouseNr(user.addresses[0].houseNr);
+        setUsersStreet(user.addresses[0].street);
+        setUsersCity(user.addresses[0].city);
+        setUsersPostalCode(user.addresses[0].postalCode);
+      }
     }
   }, [user, isLogged]);
   const addressHandler = () => {
@@ -143,6 +153,19 @@ const AccountPage = () => {
       usersCity !== "" &&
       usersPostalCode !== ""
     ) {
+      const newAddress = user.addresses.map((location) =>
+        location.id === addressId
+          ? (location = {
+              name: usersAddressName,
+              surname: usersAddressSurname,
+              phone: usersPhone,
+              houseNr: usersHouseNr,
+              street: usersStreet,
+              city: usersCity,
+              postalCode: usersPostalCode,
+            })
+          : location
+      );
       axios
         .put(`http://localhost:3000/users/${user.id}/`, {
           name: usersName,
@@ -151,17 +174,7 @@ const AccountPage = () => {
           password: user.password,
           favorites: user.favorites,
           orders: user.orders,
-          address: [
-            {
-              name: usersAddressName,
-              surname: usersAddressSurname,
-              phone: usersPhone,
-              houseNr: usersHouseNr,
-              street: usersStreet,
-              city: usersCity,
-              postalCode: usersPostalCode,
-            },
-          ],
+          addresses: newAddress,
         })
         .then((resp) => {
           window.scrollTo(0, 0);
@@ -174,8 +187,7 @@ const AccountPage = () => {
   };
 
   const newAddressHandler = () => {
-    setUsersName("");
-    setUsersSurname("");
+    setAction("add");
     setUsersAddressName("");
     setUsersAddressSurname("");
     setUsersEmail("");
@@ -184,7 +196,6 @@ const AccountPage = () => {
     setUsersStreet("");
     setUsersCity("");
     setUsersPostalCode("");
-    setAction("add");
   };
   const addAddress = () => {
     axios
@@ -192,10 +203,10 @@ const AccountPage = () => {
         name: user.name,
         surname: user.surname,
         email: user.email,
-        password: sha512(newPassword).toString(Base64),
+        password: user.password,
         favorites: user.favorites,
-        address: [
-          ...user.address,
+        addresses: [
+          ...user.addresses,
           {
             name: usersAddressName,
             surname: usersAddressSurname,
@@ -215,7 +226,12 @@ const AccountPage = () => {
   };
   const checkboxHandler = (e) => {
     setNewAddressCheckbox(e.target.checked);
+    if (newAddressCheckbox === false) {
+      newAddressHandler();
+    }
   };
+  console.log(user);
+
   return (
     <>
       {isLogged && (
@@ -381,7 +397,7 @@ const AccountPage = () => {
                   <div className="line"></div>
                   <h2>Address</h2>
                   <div className="choose-address">
-                    {user.address.map((info) => (
+                    {user.addresses.map((info) => (
                       <Address
                         key={info.id}
                         name={info.name}
@@ -393,12 +409,29 @@ const AccountPage = () => {
                         city={info.city}
                         id={info.id}
                         usersId={user.id}
+                        setUsersAddressName={setUsersAddressName}
+                        setUsersAddressSurname={setUsersAddressSurname}
+                        setUsersCity={setUsersCity}
+                        setUsersPhone={setUsersPhone}
+                        setUsersHouseNr={setUsersHouseNr}
+                        setUsersStreet={setUsersStreet}
+                        setUsersPostalCode={setUsersPostalCode}
+                        setAction={setAction}
+                        usersAddressName={usersAddressName}
+                        usersAddressSurname={usersAddressSurname}
+                        usersCity={usersCity}
+                        usersPhone={usersPhone}
+                        usersStreet={usersStreet}
+                        usersPostalCode={usersPostalCode}
+                        setNewAddressCheckbox={setNewAddressCheckbox}
+                        setAddressId={setAddressId}
                       />
                     ))}
                     <div className="address">
                       <Checkbox
                         checked={newAddressCheckbox}
                         onChange={checkboxHandler}
+                        color="primary"
                       />
                       <span
                         style={{ fontSize: "0.8rem", padding: "1rem 0" }}

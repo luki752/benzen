@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //styling
 import styled from "styled-components";
 //redux
@@ -12,6 +12,10 @@ import TextField from "@material-ui/core/TextField";
 import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 //link
 import { Link } from "react-router-dom";
+//actions
+import { loginAction } from "../actions/loginAction";
+//redux
+import { useDispatch } from "react-redux";
 
 const AddItemPage = () => {
   //state
@@ -34,6 +38,11 @@ const AddItemPage = () => {
   const [images, setImages] = useState([]);
   const [imageUrl, setImageUrl] = useState("");
   const [lastImageId, setLastImageId] = useState(0);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loginAction());
+  }, [dispatch]);
 
   const axios = require("axios");
   const materialHandler = () => {

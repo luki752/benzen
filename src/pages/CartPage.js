@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 //actions
 import { changeCartPrice, setDiscount } from "../actions/cartActions";
+import { loginAction } from "../actions/loginAction";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //material ui
@@ -24,6 +25,9 @@ const CartPage = () => {
   const [PriceBeforeDiscounts, setPriceBeforeDiscounts] = useState(0);
   const dispatch = useDispatch();
   const { cart, cartPrice, discount } = useSelector((state) => state.cart);
+  useEffect(() => {
+    dispatch(loginAction());
+  }, [dispatch]);
   const { user, isLogged } = useSelector((state) => state.login);
   useEffect(() => {
     if (cart) {

@@ -4,7 +4,9 @@ import styled from "styled-components";
 //components
 import Card from "../components/Card";
 //redux
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+//actions
+import { loginAction } from "../actions/loginAction";
 
 const FavoritesPage = () => {
   //state
@@ -22,6 +24,10 @@ const FavoritesPage = () => {
   useEffect(() => {
     setMV(window.matchMedia("(min-width: 1000px)").matches);
   }, [size, mv]);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loginAction());
+  }, [dispatch]);
   //get data back
   const { user, isLogged } = useSelector((state) => state.login);
   return (
@@ -35,22 +41,24 @@ const FavoritesPage = () => {
           </span>
         )}
       </div>
-      <div className="items-display">
-        {user.favorites.length > 0
-          ? user.favorites.map((item) => (
-              <Card
-                key={item.id}
-                height={mv ? "30rem" : "20rem"}
-                width={mv ? "25%" : "50%"}
-                margin={mv ? "1.5rem 0" : "0.5rem 0"}
-                id={item.id}
-                gender={item.gender}
-                category={item.category}
-                item={item}
-              />
-            ))
-          : "Add item to favorites"}
-      </div>
+      {isLogged && (
+        <div className="items-display">
+          {user.favorites.length > 0
+            ? user.favorites.map((item) => (
+                <Card
+                  key={item.id}
+                  height={mv ? "30rem" : "20rem"}
+                  width={mv ? "25%" : "50%"}
+                  margin={mv ? "1.5rem 0" : "0.5rem 0"}
+                  id={item.id}
+                  gender={item.gender}
+                  category={item.category}
+                  item={item}
+                />
+              ))
+            : "Add item to favorites"}
+        </div>
+      )}
     </FavoritesPageComponent>
   );
 };

@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 //styling
 import styled from "styled-components";
 //components
 import ImageComponent from "../components/ImageComponent";
-
+//actions
+import { loginAction } from "../actions/loginAction";
+//redux
+import { useDispatch } from "react-redux";
 const SaleMainPage = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loginAction());
+  }, [dispatch]);
   return (
     <SaleMainPageComponent>
       <ImageComponent

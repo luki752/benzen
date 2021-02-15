@@ -4,6 +4,7 @@ export const itemsUrl = (gender, category, item, sortOrder) =>
 export const specificItemUrl = (gender, id) =>
   `http://localhost:3000/${gender}/${id}`;
 export const allItemsUrl = (gender) => `http://localhost:3000/${gender}`;
+export const allUsersUrl = () => `http://localhost:3000/users`;
 
 export const loginUrl = (email) => `http://localhost:3000/users?email=${email}`;
 

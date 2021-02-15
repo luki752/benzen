@@ -12,6 +12,10 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 //components
 import Card from "../components/Card";
+//actions
+import { loginAction } from "../actions/loginAction";
+//redux
+import { useDispatch } from "react-redux";
 
 const SearchPage = () => {
   //state
@@ -20,6 +24,7 @@ const SearchPage = () => {
   const [size, setSize] = useState([0, 0]);
   const [mv, setMV] = useState(false);
   const location = useLocation();
+  const dispatch = useDispatch();
   const gender = location.pathname.split("/")[2];
   //useEffects
   useLayoutEffect(() => {
@@ -36,6 +41,9 @@ const SearchPage = () => {
   const handleSort = (e) => {
     setSort(e.target.value);
   };
+  useEffect(() => {
+    dispatch(loginAction());
+  }, [dispatch]);
   return (
     <SearchPageComponent>
       <div className="header">

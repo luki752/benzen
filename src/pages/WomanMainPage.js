@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 //actions
 import { loadAllItems } from "../actions/itemsAction";
+import { loginAction } from "../actions/loginAction";
 //components
 import Card from "../components/Card";
 import ImageComponent from "../components/ImageComponent";
@@ -21,6 +22,7 @@ const WomanMainPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadAllItems("woman"));
+    dispatch(loginAction());
   }, [dispatch]);
   //get width
   useLayoutEffect(() => {

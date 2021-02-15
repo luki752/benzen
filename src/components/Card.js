@@ -20,19 +20,26 @@ const Card = ({ item, height, width, margin, gender, id }) => {
 
   //snack bar
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-
+  useEffect(() => {
+    dispatch(loginAction());
+  }, [dispatch]);
   //state
   const { user, isLogged } = useSelector((state) => state.login);
   const [favorite, setFavorite] = useState(false);
+  console.log(user);
   useEffect(() => {
-    user.favorites.filter((item) => (item.id === id ? setFavorite(true) : ""));
-  }, [user, favorite, id]);
+    if (isLogged) {
+      user.favorites.filter((item) =>
+        item.id === id ? setFavorite(true) : ""
+      );
+    }
+  }, [user, favorite, id, isLogged]);
   //handlers
-
   const snackbarHandler = (snackbarMessage, snackVariant) => {
     enqueueSnackbar(snackbarMessage, { variant: snackVariant });
     closeSnackbar(500);
   };
+  console.log(favorite);
   const favoritesHandler = () => {
     if (favorite === false) {
       axios
@@ -41,6 +48,9 @@ const Card = ({ item, height, width, margin, gender, id }) => {
           surname: user.surname,
           email: user.email,
           password: user.password,
+          orders: user.orders,
+          addresses: user.addresses,
+          isLogged: user.isLogged,
           favorites: [
             ...user.favorites,
             {
@@ -57,15 +67,13 @@ const Card = ({ item, height, width, margin, gender, id }) => {
               gender: gender,
             },
           ],
-          orders: user.orders,
         })
         .then((resp) => {
-          dispatch(loginAction(resp.data));
           setFavorite(true);
           snackbarHandler("Added to favorites", "success");
         })
         .catch((error) => {});
-    } else {
+    } else if (favorite === true) {
       if (user.favorites) {
         axios
           .put(`http://localhost:3000/users/${user.id}/`, {
@@ -75,9 +83,11 @@ const Card = ({ item, height, width, margin, gender, id }) => {
             password: user.password,
             favorites: user.favorites.filter((item) => item.id !== id),
             orders: user.orders,
+            isLogged: user.isLogged,
+            addresses: user.addresses,
           })
           .then((resp) => {
-            dispatch(loginAction(resp.data));
+            dispatch(loginAction());
             snackbarHandler("Removed from favorites", "error");
             setFavorite(false);
           })
