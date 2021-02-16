@@ -2259,7 +2259,6 @@
       "name": "Łukasz",
       "surname": "Programista",
       "email": "admin@admin.com",
-      "accessibility": "headAdmin",
       "isLogged": true,
       "password": "x61Ey612Kl2gpFL56FT9weDnpSo4AV8j8+qx2AuTHdRyY036xxzTTrw10Wq3+4qQyB+XURPWx1ONxp3Y3pB37A==",
       "favorites": [
@@ -2316,7 +2315,41 @@
           "id": 1
         }
       ],
+      "accessibility": "headAdmin",
       "id": 1
+    },
+    {
+      "name": "asiunia",
+      "surname": "lewek",
+      "email": "asiajestfajna@lwica.dupa",
+      "password": "atPmwItNW43rXBgRlw2a1gbbm8JLOLap+u1c5CJiDe10d70nd9sGEsRlvvrwgM5yHek8piPGJp/eoUGOgioIIA==",
+      "favorites": [],
+      "addresses": [],
+      "accessibility": "customer",
+      "isLogged": false,
+      "id": 2
+    },
+    {
+      "name": "duka",
+      "surname": "czarny",
+      "email": "duka@czarny.pl",
+      "password": "FqhVyF7msaAcVroQ6G9kRz5VmAyYUQ2yY4C5I97RKQ2jmCV3O2V6FJQI5AYM7auWTGk0JEnGpxzi9bmK094SQw==",
+      "favorites": [],
+      "addresses": [],
+      "accessibility": "customer",
+      "isLogged": false,
+      "id": 3
+    },
+    {
+      "name": "asia",
+      "surname": "aska",
+      "email": "asiajestfajna@asia.pl",
+      "password": "FqhVyF7msaAcVroQ6G9kRz5VmAyYUQ2yY4C5I97RKQ2jmCV3O2V6FJQI5AYM7auWTGk0JEnGpxzi9bmK094SQw==",
+      "favorites": [],
+      "addresses": [],
+      "accessibility": "customer",
+      "isLogged": false,
+      "id": 4
     }
   ],
   "orders": [

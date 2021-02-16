@@ -52,7 +52,7 @@ const ClothesPreviewPage = ({ gender }) => {
     dispatch(loginAction());
   }, [dispatch, gender, category, item, sort, subItem]);
   //get data back
-  const { items, isLoading } = useSelector((state) => state.items);
+  const { items, isLoading } = useSelector((state) => state.item);
   //handlers
   const handleSort = (event) => {
     setSort(event.target.value);

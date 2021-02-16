@@ -14,3 +14,13 @@ export const loginAction = () => async (dispatch) => {
     },
   });
 };
+
+export const loadUsers = () => async (dispatch) => {
+  const usersData = await axios.get(allUsersUrl());
+  dispatch({
+    type: "FETCH_USERS",
+    payload: {
+      users: usersData.data,
+    },
+  });
+};

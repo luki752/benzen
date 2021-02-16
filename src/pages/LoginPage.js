@@ -124,7 +124,7 @@ const AccountPage = () => {
               surname: registerSurname,
               email: registerEmailInput,
               password: sha512(registerPassword).toString(Base64),
-              accessibility: "user",
+              accessibility: "customer",
               favorites: [],
               addresses: [],
             })
@@ -135,6 +135,7 @@ const AccountPage = () => {
               setRegisterName("");
               setRegisterPassword("");
               setRegisterEmail("");
+              dispatch(loginAction());
             })
             .catch((error) => {});
         } else {

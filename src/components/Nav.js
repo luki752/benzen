@@ -83,7 +83,7 @@ const Nav = () => {
         isLogged: false,
       })
       .then((resp) => {
-        history.push("/customer/account/orders");
+        history.push("/customer/account/login");
         dispatch(loginAction());
       })
       .catch((error) => {});
@@ -153,19 +153,21 @@ const Nav = () => {
         <ul>
           <li>
             {" "}
-            <Link
-              to="/favorites"
-              className="link"
-              style={{
-                display:
-                  user.accessibility === "admin" ||
-                  user.accessibility === "headAdmin"
-                    ? "block"
-                    : "none",
-              }}
-            >
-              <SupervisorAccountIcon className="nav-icon" />{" "}
-            </Link>
+            {isLogged && (
+              <Link
+                to="/admin/panel/orders"
+                className="link"
+                style={{
+                  display:
+                    user.accessibility === "admin" ||
+                    user.accessibility === "headAdmin"
+                      ? "block"
+                      : "none",
+                }}
+              >
+                <SupervisorAccountIcon className="nav-icon" />{" "}
+              </Link>
+            )}
           </li>
           <li>
             {" "}

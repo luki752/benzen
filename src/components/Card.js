@@ -26,7 +26,7 @@ const Card = ({ item, height, width, margin, gender, id }) => {
   //state
   const { user, isLogged } = useSelector((state) => state.login);
   const [favorite, setFavorite] = useState(false);
-  console.log(user);
+
   useEffect(() => {
     if (isLogged) {
       user.favorites.filter((item) =>
@@ -39,7 +39,6 @@ const Card = ({ item, height, width, margin, gender, id }) => {
     enqueueSnackbar(snackbarMessage, { variant: snackVariant });
     closeSnackbar(500);
   };
-  console.log(favorite);
   const favoritesHandler = () => {
     if (favorite === false) {
       axios

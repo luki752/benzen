@@ -120,7 +120,7 @@ const AddItemPage = () => {
   };
   return (
     <AddItemPageComponent>
-      <Link to="/customer/account/orders">
+      <Link to="/admin/panel/orders">
         <button className="button-black">
           <ArrowLeftIcon />
           Go back to your acc

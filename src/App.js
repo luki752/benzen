@@ -20,6 +20,7 @@ import SalePage from "./pages/SalePage";
 import SaleMainPage from "./pages/SaleMainPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import FinalizedOrderPage from "./pages/finalizedOrderPage";
+import AdminPanel from "./pages/AdminPanel";
 //router
 import { Route } from "react-router-dom";
 
@@ -104,6 +105,9 @@ function App() {
       </Route>
       <Route path="/checkout/order/finalized" exact>
         <FinalizedOrderPage />
+      </Route>
+      <Route path="/admin/panel/:id" exact>
+        <AdminPanel />
       </Route>
       <Footer />
     </div>

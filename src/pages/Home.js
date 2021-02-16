@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 //actions
 import { loginAction } from "../actions/loginAction";
 //redux
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 const Home = () => {
   const linkHandler = () => {
     window.scrollTo(0, 0);
@@ -17,9 +17,6 @@ const Home = () => {
   useEffect(() => {
     dispatch(loginAction());
   }, [dispatch]);
-  const { user, isLogged } = useSelector((state) => state.login);
-  console.log(user);
-  console.log(isLogged);
   return (
     <HomeComponent>
       <div className="home-carousel">

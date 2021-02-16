@@ -13,7 +13,6 @@ import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
 import Checkbox from "@material-ui/core/Checkbox";
 //icons
-import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import MeetingRoomIcon from "@material-ui/icons/MeetingRoom";
@@ -58,12 +57,11 @@ const AccountPage = () => {
     dispatch(loginAction());
   }, [dispatch]);
   const { isLogged, user } = useSelector((state) => state.login);
-  console.log(user);
   useEffect(() => {
-    if (isLogged) {
+    if (isLogged && user) {
       dispatch(loadUsersOrders(user.id));
     }
-  }, [dispatch, isLogged, user.id]);
+  }, [dispatch, isLogged, user]);
   const { userOrders } = useSelector((state) => state.orders);
   //handlers
   const userAccountHandler = () => {
@@ -338,13 +336,6 @@ const AccountPage = () => {
                   <AccountBoxIcon /> Account info
                 </li>
               </Link>
-              {user.email === "admin@admin.com" && (
-                <Link to="/add-item" className="link">
-                  <li>
-                    <AddCircleOutlineIcon className="icon" /> Add Item
-                  </li>
-                </Link>
-              )}
               <li className="log-out" onClick={() => LogOutHandler()}>
                 <MeetingRoomIcon /> Log out
               </li>
