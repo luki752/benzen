@@ -14,3 +14,5 @@ export const questionUrl = (gender, question) =>
   `http://localhost:3000/${gender}?q=${question}`;
 export const discountUrl = (gender, item, sortOrder) =>
   `http://localhost:3000/${gender}?item=${item}&discount=true&_sort=price&_order=${sortOrder}`;
+export const allOrders = () => `http://localhost:3000/orders`;
+export const usersOrders = (id) => `http://localhost:3000/orders?usersId=${id}`;

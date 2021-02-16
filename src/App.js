@@ -19,6 +19,7 @@ import SearchPage from "./pages/SearchPage";
 import SalePage from "./pages/SalePage";
 import SaleMainPage from "./pages/SaleMainPage";
 import CheckoutPage from "./pages/CheckoutPage";
+import FinalizedOrderPage from "./pages/finalizedOrderPage";
 //router
 import { Route } from "react-router-dom";
 
@@ -96,6 +97,9 @@ function App() {
       </Route>
       <Route path="/checkout/order" exact>
         <CheckoutPage />
+      </Route>
+      <Route path="/checkout/order/finalized" exact>
+        <FinalizedOrderPage />
       </Route>
       <Footer />
     </div>

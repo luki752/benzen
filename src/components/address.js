@@ -4,7 +4,9 @@ import styled from "styled-components";
 //material ui
 import Checkbox from "@material-ui/core/Checkbox";
 //redux
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+//actions
+import { loginAction } from "../actions/loginAction";
 
 const Address = ({
   name,
@@ -33,6 +35,7 @@ const Address = ({
   setAddressId,
 }) => {
   //state
+  const dispatch = useDispatch();
   const [address, setAddress] = useState(id === 1 ? true : false);
   const { user } = useSelector((state) => state.login);
   const checkboxHandler = (e) => {
@@ -80,7 +83,7 @@ const Address = ({
         isLogged: user.isLogged,
       })
       .then((resp) => {
-        window.location.reload();
+        dispatch(loginAction());
         alert("Address deleted successfully");
       })
       .catch((error) => {});

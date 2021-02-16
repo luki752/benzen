@@ -2261,7 +2261,6 @@
       "email": "admin@admin.com",
       "password": "x61Ey612Kl2gpFL56FT9weDnpSo4AV8j8+qx2AuTHdRyY036xxzTTrw10Wq3+4qQyB+XURPWx1ONxp3Y3pB37A==",
       "favorites": [],
-      "isLogged": true,
       "addresses": [
         {
           "name": "Łukasz",
@@ -2271,7 +2270,6 @@
           "street": "kwiatowa",
           "city": "Urugwaj",
           "postalCode": "24-560",
-          "isLogged": true,
           "id": 1
         },
         {
@@ -2285,8 +2283,116 @@
           "id": 2
         }
       ],
-      "orders": [],
+      "isLogged": true,
       "id": 1
+    }
+  ],
+  "orders": [
+    {
+      "items": [
+        {
+          "id": 29,
+          "name": "Suede pumps",
+          "item": "heels",
+          "category": "shoes",
+          "amount": 1000,
+          "price": 39.99,
+          "desc": "leather insert",
+          "material": [
+            {
+              "fabric": "leather",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/K/ZK827-80X-001_7.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/K/ZK827-80X-040_2.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/K/ZK827-80X-002_7.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/K/ZK827-80X-003_7.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/K/ZK827-80X-004_7.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/K/ZK827-80X-005_7.jpg"
+            }
+          ],
+          "cartAmount": 1,
+          "gender": "woman",
+          "size": "38"
+        },
+        {
+          "id": 23,
+          "name": "Slim trousers with pockets",
+          "item": "trousers",
+          "category": "clothes",
+          "amount": 1000,
+          "price": 12.99,
+          "discount": true,
+          "beforeDiscount": 24.99,
+          "desc": "zip and hook fastening, high waist",
+          "material": [
+            {
+              "fabric": "polyester",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-001_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-002_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-003_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-004_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-005_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-006_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-040_12.jpg"
+            }
+          ],
+          "cartAmount": 1,
+          "gender": "woman",
+          "size": "m"
+        }
+      ],
+      "date": "16.02.2021",
+      "time": "11:21:47",
+      "usersId": 1,
+      "status": "new",
+      "delivery": "dhl",
+      "cartPrice": 52.98,
+      "deliveryPrice": 2.99,
+      "payment": "cash",
+      "address": [
+        {
+          "name": "Łukasz",
+          "surname": "Programista",
+          "city": "Urugwaj",
+          "postalCode": "24-560",
+          "street": "kwiatowa",
+          "houseNr": "5",
+          "phone": "123456789",
+          "email": "admin@admin.com"
+        }
+      ],
+      "id": 2
     }
   ]
 }

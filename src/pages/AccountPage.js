@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 //actions
 import { loginAction } from "../actions/loginAction";
+import { loadUsersOrders } from "../actions/ordersAction";
 //styling
 import styled from "styled-components";
 //material ui
@@ -56,6 +57,12 @@ const AccountPage = () => {
     dispatch(loginAction());
   }, [dispatch]);
   const { isLogged, user } = useSelector((state) => state.login);
+  useEffect(() => {
+    if (isLogged) {
+      dispatch(loadUsersOrders(user.id));
+    }
+  }, [dispatch, isLogged, user.id]);
+  const { userOrders } = useSelector((state) => state.orders);
   //handlers
   const userAccountHandler = () => {
     if (
@@ -71,7 +78,6 @@ const AccountPage = () => {
           email: usersEmail,
           password: user.password,
           favorites: user.favorites,
-          orders: user.orders,
           addresses: user.addresses,
           isLogged: user.isLogged,
         })
@@ -94,12 +100,12 @@ const AccountPage = () => {
               email: user.email,
               password: sha512(newPassword).toString(Base64),
               favorites: user.favorites,
-              orders: user.orders,
               addresses: user.addresses,
               isLogged: user.isLogged,
             })
             .then((resp) => {
               setPasswordErrorMsg("Password changed successfully");
+              dispatch(loginAction());
             })
             .catch((error) => {});
         } else {
@@ -171,17 +177,16 @@ const AccountPage = () => {
       );
       axios
         .put(`http://localhost:3000/users/${user.id}/`, {
-          name: usersName,
-          surname: usersSurname,
-          email: usersEmail,
+          name: user.name,
+          surname: user.surname,
+          email: user.email,
           password: user.password,
           favorites: user.favorites,
-          orders: user.orders,
           addresses: newAddress,
           isLogged: user.isLogged,
         })
         .then((resp) => {
-          window.location.reload();
+          dispatch(loginAction());
           alert("address changed succesfully");
         })
         .catch((error) => {});
@@ -229,13 +234,12 @@ const AccountPage = () => {
               street: usersStreet,
               city: usersCity,
               postalCode: usersPostalCode,
-              id: user.addresses.length + 1,
+              id: user.addresses.length !== 0 ? user.addresses.length + 1 : 1,
             },
           ],
-          orders: user.orders,
         })
         .then((resp) => {
-          window.location.reload();
+          dispatch(loginAction());
           alert("Address added successfully");
         })
         .catch((error) => {});
@@ -252,9 +256,9 @@ const AccountPage = () => {
   const LogOutHandler = () => {
     axios
       .put(`http://localhost:3000/users/${user.id}/`, {
-        name: usersName,
-        surname: usersSurname,
-        email: usersEmail,
+        name: user.name,
+        surname: user.surname,
+        email: user.email,
         password: user.password,
         favorites: user.favorites,
         orders: user.orders,
@@ -391,9 +395,9 @@ const AccountPage = () => {
               )}
               {pathName === "orders" && (
                 <div className="orders">
-                  {user.orders.length > 0 ? (
+                  {userOrders.length > 0 ? (
                     <>
-                      {user.orders.map((item) => (
+                      {userOrders.map((item) => (
                         <div className="order">{item.name}</div>
                       ))}
                     </>

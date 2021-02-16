@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 //actions
 import { changeCartPrice, setDiscount } from "../actions/cartActions";
 import { loginAction } from "../actions/loginAction";
+import { loadUsersOrders } from "../actions/ordersAction";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //material ui
@@ -29,6 +30,12 @@ const CartPage = () => {
   }, [dispatch]);
   const { cart, cartPrice, discount } = useSelector((state) => state.cart);
   const { user, isLogged } = useSelector((state) => state.login);
+  useEffect(() => {
+    if (isLogged) {
+      dispatch(loadUsersOrders(user.id));
+    }
+  }, [dispatch, isLogged, user.id]);
+  const { userOrders } = useSelector((state) => state.orders);
   useEffect(() => {
     if (cart) {
       if (cart.length === 1) {
@@ -91,7 +98,7 @@ const CartPage = () => {
     if (!discount) {
       if (discountInput === "DISCOUNT10" || discountInput === "discount10") {
         if (isLogged) {
-          if (user.orders.length === 0) {
+          if (userOrders.length === 0) {
             cart.forEach((item) =>
               !item.discount
                 ? dispatch({ type: "CHANGE_PRICE", payload: { id: item.id } })
@@ -136,7 +143,7 @@ const CartPage = () => {
                 <div
                   className="discount-banner"
                   style={{
-                    display: user.orders.length === 0 ? "flex" : "none",
+                    display: userOrders.length === 0 ? "flex" : "none",
                   }}
                 >
                   <span>

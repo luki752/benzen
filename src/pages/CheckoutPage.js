@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 //styling
 import styled from "styled-components";
+//history
+import { useHistory } from "react-router-dom";
 //actions
 import { loginAction } from "../actions/loginAction";
 //redux
 import { useDispatch, useSelector } from "react-redux";
+//axios
+import axios from "axios";
 //material ui
-
 import TextField from "@material-ui/core/TextField";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
@@ -20,18 +23,21 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 const CheckoutPage = () => {
   //state
   const dispatch = useDispatch();
+  const history = useHistory();
   const { cartPrice, cart } = useSelector((state) => state.cart);
   //delivery state
-  const [deliveryPrice, setDeliveryPrice] = useState(0);
+  const [standard, setStandard] = useState(false);
   const [dhl, setDhl] = useState(false);
+  const [deliveryPrice, setDeliveryPrice] = useState(0);
   const [addressModal, setModal] = useState(false);
   const [addressChoosed, setAddressChoosed] = useState(false);
+  const [delivery, setDelivery] = useState("");
   //payment state
-  const [standard, setStandard] = useState(false);
   const [card, setCard] = useState(false);
   const [blik, setBlik] = useState(false);
   const [cash, setCash] = useState(false);
   const [paymentChoosed, setPaymentChoosed] = useState(false);
+  const [payment, setPayment] = useState("");
   //address state
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -50,6 +56,10 @@ const CheckoutPage = () => {
   const [newPostalCode, setNewPostalCode] = useState("");
   const [newCity, setNewCity] = useState("");
   const [addAddressModal, setAddAddressModal] = useState(false);
+  const [editModal, setEditModal] = useState(false);
+  //anonymous
+  const [anonymousModal, setAnonymousModal] = useState(false);
+  const [email, setEmail] = useState("");
   //useEffect
   useEffect(() => {
     dispatch(loginAction());
@@ -62,31 +72,35 @@ const CheckoutPage = () => {
     setStandard(false);
     setDeliveryPrice(2.99);
     setModal(true);
+    setDelivery("dhl");
   };
-
   const standardHandler = () => {
     setStandard(true);
     setDhl(false);
     setDeliveryPrice(1.99);
     setModal(true);
+    setDelivery("standard");
   };
   const cashHandler = () => {
     setCash(true);
     setCard(false);
     setBlik(false);
     setPaymentChoosed(true);
+    setPayment("cash");
   };
   const cardHandler = () => {
     setCard(true);
     setCash(false);
     setBlik(false);
     setPaymentChoosed(true);
+    setPayment("card");
   };
   const blikHandler = () => {
     setBlik(true);
     setCash(false);
     setCard(false);
     setPaymentChoosed(true);
+    setPayment("blik");
   };
   const addressChooseHandler = (
     id,
@@ -114,6 +128,140 @@ const CheckoutPage = () => {
   const modalHandler = () => {
     setAddAddressModal(!addAddressModal);
     setModal(!addressModal);
+  };
+  const editModalHandler = () => {
+    setModal(!addressModal);
+    setEditModal(!editModal);
+  };
+  const addAddressHandler = () => {
+    if (
+      newName !== "" &&
+      newSurname !== "" &&
+      newPhone !== "" &&
+      newPhone.length >= 9 &&
+      newCity !== "" &&
+      newStreet !== "" &&
+      newHouseNr !== "" &&
+      newPostalCode !== ""
+    ) {
+      axios
+        .put(`http://localhost:3000/users/${user.id}/`, {
+          name: user.name,
+          surname: user.surname,
+          email: user.email,
+          password: user.password,
+          favorites: user.favorites,
+          isLogged: user.isLogged,
+          addresses: [
+            ...user.addresses,
+            {
+              name: newName,
+              surname: newSurname,
+              phone: newPhone,
+              houseNr: newHouseNr,
+              street: newStreet,
+              city: newCity,
+              postalCode: newPostalCode,
+              id: user.addresses.length !== 0 ? user.addresses.length + 1 : 1,
+            },
+          ],
+        })
+        .then((resp) => {
+          dispatch(loginAction());
+          modalHandler();
+        })
+        .catch((error) => {});
+    } else {
+      alert("inputs cant be empty");
+    }
+  };
+
+  const editAddressHandler = (addressId) => {
+    if (
+      name !== "" &&
+      surname !== "" &&
+      phone !== "" &&
+      phone.length === 9 &&
+      houseNr !== "" &&
+      street !== "" &&
+      city !== "" &&
+      postalCode !== ""
+    ) {
+      const newAddress = user.addresses.map((location) =>
+        location.id === addressId
+          ? (location = {
+              name: name,
+              surname: surname,
+              phone: phone,
+              houseNr: houseNr,
+              street: street,
+              city: city,
+              postalCode: postalCode,
+              id: addressId,
+            })
+          : location
+      );
+      axios
+        .put(`http://localhost:3000/users/${user.id}/`, {
+          name: user.name,
+          surname: user.surname,
+          email: user.email,
+          password: user.password,
+          favorites: user.favorites,
+          addresses: newAddress,
+          isLogged: user.isLogged,
+        })
+        .then((resp) => {
+          dispatch(loginAction());
+          editModalHandler();
+        })
+        .catch((error) => {});
+    } else {
+      alert("inputs cant be empty");
+    }
+  };
+  const finalizeOrderHandler = () => {
+    let current = new Date();
+    axios
+      .post("http://localhost:3000/orders", {
+        items: cart,
+        date: current.toLocaleDateString(),
+        time: current.toLocaleTimeString(),
+        usersId: isLogged ? user.id : "",
+        status: "new",
+        delivery: delivery,
+        cartPrice: parseFloat(cartPrice),
+        deliveryPrice: deliveryPrice,
+        payment: payment,
+        address: [
+          {
+            name: name,
+            surname: surname,
+            city: city,
+            postalCode: postalCode,
+            street: street,
+            houseNr: houseNr,
+            phone: phone,
+            email: isLogged ? user.email : email,
+          },
+        ],
+      })
+      .then((resp) => {
+        history.push("/checkout/order/finalized");
+        window.location.reload();
+      })
+      .catch((error) => {});
+  };
+  const anonymousAddressHandler = () => {
+    setAnonymousModal(!anonymousModal);
+    setName(name);
+    setSurname(surname);
+    setCity(city);
+    setPostalCode(postalCode);
+    setStreet(street);
+    setPhone(phone);
+    setHouseNr(houseNr);
+    setAddressChoosed(true);
   };
   return (
     <CheckoutPageComponents>
@@ -260,8 +408,9 @@ const CheckoutPage = () => {
         </div>
         <button
           className={paymentChoosed ? "button-black" : "button-black disabled"}
+          onClick={() => finalizeOrderHandler()}
         >
-          Shop and pay
+          Buy and pay
         </button>
         <p>
           When you click Shop and Pay you will create your order. When you order
@@ -346,7 +495,7 @@ const CheckoutPage = () => {
                       {address.city}
                     </span>
                     <span>{address.phone}</span>
-                    <p>Edit</p>
+                    <p onClick={() => editModalHandler()}>Edit</p>
                   </div>
                 </div>
               ))}
@@ -367,76 +516,206 @@ const CheckoutPage = () => {
       </AddressModal>
       <NewAddressModal style={{ display: addAddressModal ? "block" : "none" }}>
         <div className="new-address">
-          {isLogged ? (
-            <div className="header">
-              <span onClick={() => modalHandler()}>
-                {" "}
-                <ArrowBackIosIcon />
-                Go back
-              </span>
-              <CloseIcon
-                className="close-modal"
-                onClick={() => setAddAddressModal(!addAddressModal)}
-              />
-            </div>
-          ) : (
-            <div className="header">
-              <span>Add</span>
-              <CloseIcon
-                className="close-modal"
-                onClick={() => setAddAddressModal(!addAddressModal)}
-              />
-            </div>
-          )}
+          <div className="header">
+            <span onClick={() => modalHandler()}>
+              {" "}
+              <ArrowBackIosIcon />
+              Go back
+            </span>
+            <CloseIcon
+              className="close-modal"
+              onClick={() => setAddAddressModal(!addAddressModal)}
+            />
+          </div>
           <div className="inputs">
             <TextField
               value={newName}
               label="Name"
-              onChange={() => setNewName()}
+              onChange={(e) => setNewName(e.target.value)}
               className="input"
             />
             <TextField
               value={newSurname}
               label="Surname"
-              onChange={() => setNewSurname()}
+              onChange={(e) => setNewSurname(e.target.value)}
               className="input"
             />
             <TextField
               value={newStreet}
               label="Street"
-              onChange={() => setNewStreet()}
+              onChange={(e) => setNewStreet(e.target.value)}
               className="input"
             />
             <TextField
               value={newHouseNr}
               label="House Nr"
-              onChange={() => setNewHouseNr()}
+              onChange={(e) => setNewHouseNr(e.target.value)}
               className="input"
             />
             <div className="two-inputs">
               <TextField
                 value={newPostalCode}
                 label="Postal Code"
-                onChange={() => setNewPostalCode()}
+                onChange={(e) => setNewPostalCode(e.target.value)}
                 className="postal input"
               />
               <TextField
                 value={newCity}
                 label="City"
-                onChange={() => setNewCity()}
+                onChange={(e) => setNewCity(e.target.value)}
                 className="input"
               />
             </div>
             <TextField
               value={newPhone}
               label="Phone"
-              onChange={() => setNewPhone()}
+              onChange={(e) => setNewPhone(e.target.value)}
               className="input"
             />
           </div>
-          <div className="button-black">Save</div>
+          <div className="button-black" onClick={() => addAddressHandler()}>
+            Save
+          </div>
         </div>
       </NewAddressModal>
+      <EditAddressModal style={{ display: editModal ? "block" : "none" }}>
+        <div className="edit-address">
+          <div className="header">
+            <span onClick={() => editModalHandler()}>
+              {" "}
+              <ArrowBackIosIcon />
+              Go back
+            </span>
+            <CloseIcon
+              className="close-modal"
+              onClick={() => setEditModal(!editModal)}
+            />
+          </div>
+          <div className="inputs">
+            <TextField
+              value={name}
+              label="Name"
+              onChange={(e) => setName(e.target.value)}
+              className="input"
+            />
+            <TextField
+              value={surname}
+              label="Surname"
+              onChange={(e) => setSurname(e.target.value)}
+              className="input"
+            />
+            <TextField
+              value={street}
+              label="Street"
+              onChange={(e) => setStreet(e.target.value)}
+              className="input"
+            />
+            <TextField
+              value={houseNr}
+              label="House Nr"
+              onChange={(e) => setHouseNr(e.target.value)}
+              className="input"
+            />
+            <div className="two-inputs">
+              <TextField
+                value={postalCode}
+                label="Postal Code"
+                onChange={(e) => setPostalCode(e.target.value)}
+                className="postal input"
+              />
+              <TextField
+                value={city}
+                label="City"
+                onChange={(e) => setCity(e.target.value)}
+                className="input"
+              />
+            </div>
+            <TextField
+              value={phone}
+              label="Phone"
+              onChange={(e) => setPhone(e.target.value)}
+              className="input"
+            />
+          </div>
+          <div
+            className="button-black"
+            onClick={() => editAddressHandler(addressId)}
+          >
+            Save
+          </div>
+        </div>
+      </EditAddressModal>
+      <AnonymousAddressModal
+        style={{ display: anonymousModal ? "block" : "none" }}
+      >
+        <div className="anonymous-address">
+          <div className="header">
+            <span>Add</span>
+            <CloseIcon
+              className="close-modal"
+              onClick={() => setAnonymousModal(!anonymousModal)}
+            />
+          </div>
+          <div className="inputs">
+            <TextField
+              value={name}
+              label="Name"
+              onChange={(e) => setName(e.target.value)}
+              className="input"
+            />
+            <TextField
+              value={surname}
+              label="Surname"
+              onChange={(e) => setSurname(e.target.value)}
+              className="input"
+            />
+            <TextField
+              value={email}
+              label="Email"
+              onChange={(e) => setEmail(e.target.value)}
+              className="input"
+            />
+            <TextField
+              value={street}
+              label="Street"
+              onChange={(e) => setStreet(e.target.value)}
+              className="input"
+            />
+            <TextField
+              value={houseNr}
+              label="House Nr"
+              onChange={(e) => setHouseNr(e.target.value)}
+              className="input"
+            />
+            <div className="two-inputs">
+              <TextField
+                value={postalCode}
+                label="Postal Code"
+                onChange={(e) => setPostalCode(e.target.value)}
+                className="postal input"
+              />
+              <TextField
+                value={city}
+                label="City"
+                onChange={(e) => setCity(e.target.value)}
+                className="input"
+              />
+            </div>
+            <TextField
+              value={phone}
+              label="Phone"
+              onChange={(e) => setPhone(e.target.value)}
+              className="input"
+            />
+          </div>
+          <div
+            className="button-black"
+            onClick={() => anonymousAddressHandler()}
+          >
+            Save
+          </div>
+        </div>
+      </AnonymousAddressModal>
     </CheckoutPageComponents>
   );
 };
@@ -458,6 +737,7 @@ const CheckoutPageComponents = styled.div`
         border: 1px solid black;
       }
       .delivery-option {
+        border: 1px solid rgba(0, 0, 0, 0.1);
         &:hover {
           border: 1px solid rgba(0, 0, 0, 0.6);
           cursor: pointer;
@@ -525,7 +805,7 @@ const CheckoutPageComponents = styled.div`
     .payment {
       .payment-option {
         display: flex;
-        width: 80%;
+        width: 100%;
         font-size: 1rem;
         align-items: center;
         border: 1px solid rgba(0, 0, 0, 0.2);
@@ -695,9 +975,9 @@ const AddressModal = styled.div`
       }
     }
     .single-address {
-      border: 1px solid rgba(0, 0, 0, 0.2);
       display: flex;
       align-items: center;
+      border: 1px solid rgba(0, 0, 0, 0.4);
       &:hover {
         border: 1px solid rgba(0, 0, 0, 0.8);
         cursor: pointer;
@@ -757,6 +1037,114 @@ const NewAddressModal = styled.div`
   height: 100%;
   width: 100%;
   .new-address {
+    background-color: white;
+    margin-left: 40%;
+    margin-top: 10%;
+    width: 25%;
+    justify-content: center;
+    padding: 1rem;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 1rem;
+      span {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding: 1rem;
+      .input {
+        width: 100%;
+      }
+      .two-inputs {
+        width: 100%;
+        display: flex;
+      }
+      .postal {
+        margin-right: 10px;
+      }
+    }
+    .button-black {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.5rem;
+      text-align: center;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+`;
+const EditAddressModal = styled.div`
+  position: absolute;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.4);
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  .edit-address {
+    background-color: white;
+    margin-left: 40%;
+    margin-top: 10%;
+    width: 25%;
+    justify-content: center;
+    padding: 1rem;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 1rem;
+      span {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding: 1rem;
+      .input {
+        width: 100%;
+      }
+      .two-inputs {
+        width: 100%;
+        display: flex;
+      }
+      .postal {
+        margin-right: 10px;
+      }
+    }
+    .button-black {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.5rem;
+      text-align: center;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+`;
+const AnonymousAddressModal = styled.div`
+  position: absolute;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.4);
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  .anonymous-address {
     background-color: white;
     margin-left: 40%;
     margin-top: 10%;

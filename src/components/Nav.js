@@ -68,6 +68,20 @@ const Nav = () => {
         setMenDiscountsList([...new Set(res.data.map((a) => a.item))])
       );
   }, [dispatch]);
+  const LogOutHandler = () => {
+    axios
+      .put(`http://localhost:3000/users/${user.id}/`, {
+        name: user.name,
+        surname: user.surname,
+        email: user.email,
+        password: user.password,
+        favorites: user.favorites,
+        addresses: user.addresses,
+        isLogged: false,
+      })
+      .then((resp) => {})
+      .catch((error) => {});
+  };
   return (
     <NavComponent>
       <div className="nav-left-menu">
@@ -820,18 +834,7 @@ const Nav = () => {
                   <div style={{ color: "rgba(0, 0, 0, 0.6)" }}>
                     nice to have you with us
                   </div>
-                  <div
-                    className="log-out"
-                    onClick={() =>
-                      dispatch({
-                        type: "LOG_OUT",
-                        payload: {
-                          login: false,
-                          user: [],
-                        },
-                      })
-                    }
-                  >
+                  <div className="log-out" onClick={() => LogOutHandler()}>
                     log out
                   </div>
                 </div>
