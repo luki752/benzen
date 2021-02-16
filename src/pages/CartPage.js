@@ -30,8 +30,9 @@ const CartPage = () => {
   }, [dispatch]);
   const { cart, cartPrice, discount } = useSelector((state) => state.cart);
   const { user, isLogged } = useSelector((state) => state.login);
+  console.log(isLogged);
   useEffect(() => {
-    if (isLogged) {
+    if (user) {
       dispatch(loadUsersOrders(user.id));
     }
   }, [dispatch, isLogged, user.id]);

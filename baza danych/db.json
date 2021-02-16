@@ -2271,19 +2271,9 @@
           "city": "Urugwaj",
           "postalCode": "24-560",
           "id": 1
-        },
-        {
-          "name": "Jerzy ",
-          "surname": "Ścigaj",
-          "phone": "695134123",
-          "houseNr": "2",
-          "street": "1 stycznia",
-          "city": "Libiąż",
-          "postalCode": "32-590",
-          "id": 2
         }
       ],
-      "isLogged": true,
+      "isLogged": false,
       "id": 1
     }
   ],

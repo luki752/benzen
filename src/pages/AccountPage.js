@@ -18,8 +18,6 @@ import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import MeetingRoomIcon from "@material-ui/icons/MeetingRoom";
 import HomeIcon from "@material-ui/icons/Home";
-//components
-import Address from "../components/address";
 //axios
 import axios from "axios";
 //encrypting password
@@ -195,6 +193,8 @@ const AccountPage = () => {
     }
   };
   const newAddressHandler = () => {
+    setNewAddressCheckbox(true);
+    setAddressId(0);
     setAction("add");
     setUsersAddressName("");
     setUsersAddressSurname("");
@@ -267,6 +267,45 @@ const AccountPage = () => {
       })
       .then((resp) => {})
       .catch((error) => {});
+  };
+  const deleteAddressHandler = (id) => {
+    axios
+      .put(`http://localhost:3000/users/${user.id}/`, {
+        name: user.name,
+        surname: user.surname,
+        email: user.email,
+        password: user.password,
+        favorites: user.favorites,
+        addresses: user.addresses.filter((info) => info.id !== id),
+        orders: user.orders,
+        isLogged: user.isLogged,
+      })
+      .then((resp) => {
+        dispatch(loginAction());
+        alert("Address deleted successfully");
+      })
+      .catch((error) => {});
+  };
+  const chooseAddressHandler = (
+    name,
+    surname,
+    city,
+    phone,
+    houseNr,
+    street,
+    postalCode,
+    id
+  ) => {
+    setUsersAddressName(name);
+    setUsersAddressSurname(surname);
+    setUsersCity(city);
+    setUsersPhone(phone);
+    setUsersHouseNr(houseNr);
+    setUsersStreet(street);
+    setUsersPostalCode(postalCode);
+    setAction("change");
+    setAddressId(id);
+    setNewAddressCheckbox(false);
   };
 
   return (
@@ -397,8 +436,13 @@ const AccountPage = () => {
                 <div className="orders">
                   {userOrders.length > 0 ? (
                     <>
-                      {userOrders.map((item) => (
-                        <div className="order">{item.name}</div>
+                      {userOrders.map((order) => (
+                        <div className="order">
+                          <div className="order-header">
+                            <span>date:{order.date}</span>
+                            <span>time:{order.time}</span>
+                          </div>
+                        </div>
                       ))}
                     </>
                   ) : (
@@ -421,37 +465,46 @@ const AccountPage = () => {
                 <div className="addressComponent">
                   <h2>My account</h2>
                   <div className="line"></div>
-                  <h2>Address</h2>
+                  <h2>Addresses</h2>
                   <div className="choose-address">
-                    {user.addresses.map((info) => (
-                      <Address
+                    {user.addresses.map((info, index) => (
+                      <div
                         key={info.id}
-                        id={info.id}
-                        name={info.name}
-                        surname={info.surname}
-                        street={info.street}
-                        houseNr={info.houseNr}
-                        postalCode={info.postalCode}
-                        phone={info.phone}
-                        city={info.city}
-                        usersId={user.id}
-                        setUsersAddressName={setUsersAddressName}
-                        setUsersAddressSurname={setUsersAddressSurname}
-                        setUsersCity={setUsersCity}
-                        setUsersPhone={setUsersPhone}
-                        setUsersHouseNr={setUsersHouseNr}
-                        setUsersStreet={setUsersStreet}
-                        setUsersPostalCode={setUsersPostalCode}
-                        setAction={setAction}
-                        usersAddressName={usersAddressName}
-                        usersAddressSurname={usersAddressSurname}
-                        usersCity={usersCity}
-                        usersPhone={usersPhone}
-                        usersStreet={usersStreet}
-                        usersPostalCode={usersPostalCode}
-                        setNewAddressCheckbox={setNewAddressCheckbox}
-                        setAddressId={setAddressId}
-                      />
+                        className={
+                          index + 1 === addressId
+                            ? "single-address active-address"
+                            : "single-address"
+                        }
+                        onClick={() =>
+                          chooseAddressHandler(
+                            info.name,
+                            info.surname,
+                            info.city,
+                            info.phone,
+                            info.houseNr,
+                            info.street,
+                            info.postalCode,
+                            info.id
+                          )
+                        }
+                      >
+                        <div className="checkbox"></div>
+                        <div className="address-info">
+                          <span>
+                            {info.name} {info.surname}
+                          </span>
+                          <span>
+                            {info.street} {info.houseNr}
+                          </span>
+                          <span>
+                            {info.postalCode} {info.city}
+                          </span>
+                          <span> Tel. {info.phone}</span>
+                          <p onClick={() => deleteAddressHandler(info.id)}>
+                            Delete address
+                          </p>
+                        </div>
+                      </div>
                     ))}
                     <div className="address">
                       <Checkbox
@@ -467,13 +520,8 @@ const AccountPage = () => {
                       </span>
                     </div>
                   </div>
-
-                  <span>
-                    You are currently{" "}
-                    {action === "change" && <b>changing {addressId} address</b>}
-                    {action === "add" && <b>adding new address</b>}
-                  </span>
                   <span>{addressMsg}</span>
+                  <div className="line"></div>
                   <div className="two-inputs">
                     <TextField
                       label="name"
@@ -533,7 +581,6 @@ const AccountPage = () => {
                       }
                     />
                   </div>
-                  <div className="line"></div>
 
                   <button
                     className="button-white"
@@ -663,6 +710,42 @@ const LoggedInComponent = styled.div`
       }
       .choose-address {
         display: flex;
+        align-items: start;
+        .active-address {
+          .checkbox {
+            background-color: black;
+          }
+        }
+        .single-address {
+          display: flex;
+          font-size: 0.8rem;
+          &:hover {
+            cursor: pointer;
+          }
+          .checkbox {
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            width: 1rem;
+            height: 1rem;
+            margin: 0 1rem;
+            @media screen and (max-width: 1000px) {
+              width: 1rem;
+              height: 1rem;
+              border-radius: 1rem;
+              margin: 0 0.5rem;
+            }
+          }
+          .address-info {
+            display: flex;
+            flex-direction: column;
+            p {
+              margin: 5px 0;
+              font-weight: bold;
+              &:hover {
+                cursor: pointer;
+              }
+            }
+          }
+        }
       }
       .two-inputs {
         display: flex;
@@ -713,6 +796,16 @@ const LoggedInComponent = styled.div`
       }
     }
     font-size: 2rem;
+    .orders {
+      background-color: gray;
+      .order {
+        .order-header {
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+        }
+      }
+    }
   }
 `;
 export default AccountPage;
