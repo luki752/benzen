@@ -2261,7 +2261,7 @@
       "email": "admin@admin.com",
       "password": "x61Ey612Kl2gpFL56FT9weDnpSo4AV8j8+qx2AuTHdRyY036xxzTTrw10Wq3+4qQyB+XURPWx1ONxp3Y3pB37A==",
       "favorites": [],
-      "orders": [],
+      "isLogged": true,
       "addresses": [
         {
           "name": "Łukasz",
@@ -2273,9 +2273,19 @@
           "postalCode": "24-560",
           "isLogged": true,
           "id": 1
+        },
+        {
+          "name": "Jerzy ",
+          "surname": "Ścigaj",
+          "phone": "695134123",
+          "houseNr": "2",
+          "street": "1 stycznia",
+          "city": "Libiąż",
+          "postalCode": "32-590",
+          "id": 2
         }
       ],
-      "isLogged": true,
+      "orders": [],
       "id": 1
     }
   ]
