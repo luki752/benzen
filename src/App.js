@@ -42,7 +42,11 @@ function App() {
         <AccountPage />
       </Route>
       <Route
-        path={["/customer/account/login", "/customer/account/register"]}
+        path={[
+          "/customer/account/login",
+          "/customer/account/login/order",
+          "/customer/account/register",
+        ]}
         exact
       >
         <LoginPage />

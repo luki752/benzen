@@ -2259,8 +2259,51 @@
       "name": "Łukasz",
       "surname": "Programista",
       "email": "admin@admin.com",
+      "accessibility": "headAdmin",
+      "isLogged": true,
       "password": "x61Ey612Kl2gpFL56FT9weDnpSo4AV8j8+qx2AuTHdRyY036xxzTTrw10Wq3+4qQyB+XURPWx1ONxp3Y3pB37A==",
-      "favorites": [],
+      "favorites": [
+        {
+          "id": 23,
+          "name": "Slim trousers with pockets",
+          "item": "trousers",
+          "amount": 1000,
+          "price": 12.99,
+          "desc": "zip and hook fastening, high waist",
+          "discount": true,
+          "beforeDiscount": 24.99,
+          "material": [
+            {
+              "fabric": "polyester",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-001_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-002_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-003_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-004_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-005_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-006_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-040_12.jpg"
+            }
+          ],
+          "gender": "woman"
+        }
+      ],
       "addresses": [
         {
           "name": "Łukasz",
@@ -2273,7 +2316,6 @@
           "id": 1
         }
       ],
-      "isLogged": false,
       "id": 1
     }
   ],
@@ -2383,6 +2425,63 @@
         }
       ],
       "id": 2
+    },
+    {
+      "items": [
+        {
+          "id": 24,
+          "name": "Bum bag with chain detail",
+          "item": "bags",
+          "amount": 1000,
+          "category": "accessories",
+          "price": 19.99,
+          "desc": "zip fastening, smooth lining on the inside",
+          "material": [
+            {
+              "fabric": "pvc",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/Y/ZY089-99X-001_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/Y/ZY089-99X-002_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/Y/ZY089-99X-003_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/Y/ZY089-99X-020_14.jpg"
+            }
+          ],
+          "cartAmount": 3,
+          "gender": "woman",
+          "size": "m"
+        }
+      ],
+      "date": "16.02.2021",
+      "time": "18:20:03",
+      "usersId": 1,
+      "status": "new",
+      "delivery": "standard",
+      "cartPrice": 59.97,
+      "deliveryPrice": 1.99,
+      "payment": "blik",
+      "address": [
+        {
+          "name": "Łukasz",
+          "surname": "Programista",
+          "city": "Urugwaj",
+          "postalCode": "24-560",
+          "street": "kwiatowa",
+          "houseNr": "5",
+          "phone": "123456789",
+          "email": "admin@admin.com"
+        }
+      ],
+      "id": 3
     }
   ]
 }

@@ -71,14 +71,14 @@ const CheckoutPage = () => {
     setDhl(true);
     setStandard(false);
     setDeliveryPrice(2.99);
-    setModal(true);
+    isLogged ? setModal(true) : setAnonymousModal(true);
     setDelivery("dhl");
   };
   const standardHandler = () => {
     setStandard(true);
     setDhl(false);
     setDeliveryPrice(1.99);
-    setModal(true);
+    isLogged ? setModal(true) : setAnonymousModal(true);
     setDelivery("standard");
   };
   const cashHandler = () => {
@@ -221,36 +221,38 @@ const CheckoutPage = () => {
     }
   };
   const finalizeOrderHandler = () => {
-    let current = new Date();
-    axios
-      .post("http://localhost:3000/orders", {
-        items: cart,
-        date: current.toLocaleDateString(),
-        time: current.toLocaleTimeString(),
-        usersId: isLogged ? user.id : "",
-        status: "new",
-        delivery: delivery,
-        cartPrice: parseFloat(cartPrice),
-        deliveryPrice: deliveryPrice,
-        payment: payment,
-        address: [
-          {
-            name: name,
-            surname: surname,
-            city: city,
-            postalCode: postalCode,
-            street: street,
-            houseNr: houseNr,
-            phone: phone,
-            email: isLogged ? user.email : email,
-          },
-        ],
-      })
-      .then((resp) => {
-        history.push("/checkout/order/finalized");
-        window.location.reload();
-      })
-      .catch((error) => {});
+    if (cart.length !== 0 && paymentChoosed) {
+      let current = new Date();
+      axios
+        .post("http://localhost:3000/orders", {
+          items: cart,
+          date: current.toLocaleDateString(),
+          time: current.toLocaleTimeString(),
+          usersId: isLogged ? user.id : "",
+          status: "new",
+          delivery: delivery,
+          cartPrice: parseFloat(cartPrice),
+          deliveryPrice: deliveryPrice,
+          payment: payment,
+          address: [
+            {
+              name: name,
+              surname: surname,
+              city: city,
+              postalCode: postalCode,
+              street: street,
+              houseNr: houseNr,
+              phone: phone,
+              email: isLogged ? user.email : email,
+            },
+          ],
+        })
+        .then((resp) => {
+          history.push("/checkout/order/finalized");
+          window.location.reload();
+        })
+        .catch((error) => {});
+    }
   };
   const anonymousAddressHandler = () => {
     setAnonymousModal(!anonymousModal);
@@ -286,7 +288,7 @@ const CheckoutPage = () => {
               </div>
               <div className="right-info">
                 <span>1-3 working days</span>
-                <span>1.99 GBP</span>
+                <span>2.99 GBP</span>
               </div>
             </div>
             {addressChoosed && dhl && (
@@ -324,7 +326,7 @@ const CheckoutPage = () => {
               </div>
               <div className="right-info">
                 <span>1-5 working days</span>
-                <span>2.99 GBP</span>
+                <span>1.99 GBP</span>
               </div>
             </div>
             {addressChoosed && standard && (
@@ -722,7 +724,7 @@ const CheckoutPage = () => {
 
 const CheckoutPageComponents = styled.div`
   display: flex;
-  min-height: 50vh;
+  min-height: 80vh;
   @media screen and (max-width: 1000px) {
     flex-direction: column;
   }

@@ -9,6 +9,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 //actions
 import { loadQuestion } from "../actions/itemsAction";
+import { loginAction } from "../actions/loginAction";
 //material ui
 import Button from "@material-ui/core/Button";
 import Accordion from "@material-ui/core/Accordion";
@@ -24,6 +25,7 @@ import LocalMallIcon from "@material-ui/icons/LocalMall";
 import MenuIcon from "@material-ui/icons/Menu";
 import CloseIcon from "@material-ui/icons/Close";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 
 const Nav = () => {
   //state
@@ -77,9 +79,13 @@ const Nav = () => {
         password: user.password,
         favorites: user.favorites,
         addresses: user.addresses,
+        accessibility: user.accessibility,
         isLogged: false,
       })
-      .then((resp) => {})
+      .then((resp) => {
+        history.push("/customer/account/orders");
+        dispatch(loginAction());
+      })
       .catch((error) => {});
   };
   return (
@@ -145,6 +151,22 @@ const Nav = () => {
       </div>
       <div className="nav-right-menu">
         <ul>
+          <li>
+            {" "}
+            <Link
+              to="/favorites"
+              className="link"
+              style={{
+                display:
+                  user.accessibility === "admin" ||
+                  user.accessibility === "headAdmin"
+                    ? "block"
+                    : "none",
+              }}
+            >
+              <SupervisorAccountIcon className="nav-icon" />{" "}
+            </Link>
+          </li>
           <li>
             {" "}
             <Link
@@ -833,7 +855,7 @@ const Nav = () => {
                 <div className="greetings">
                   <div style={{ color: "rgba(0, 0, 0, 0.6)" }}>
                     nice to have you with us
-                  </div>
+                  </div>{" "}
                   <div className="log-out" onClick={() => LogOutHandler()}>
                     log out
                   </div>

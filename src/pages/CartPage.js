@@ -30,12 +30,12 @@ const CartPage = () => {
   }, [dispatch]);
   const { cart, cartPrice, discount } = useSelector((state) => state.cart);
   const { user, isLogged } = useSelector((state) => state.login);
-  console.log(isLogged);
   useEffect(() => {
-    if (user) {
+    if (isLogged) {
       dispatch(loadUsersOrders(user.id));
     }
-  }, [dispatch, isLogged, user.id]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
   const { userOrders } = useSelector((state) => state.orders);
   useEffect(() => {
     if (cart) {
@@ -254,7 +254,9 @@ const CartPage = () => {
                   <div className="checkout-button">
                     <Link
                       to={
-                        isLogged ? "/checkout/order" : "/customer/account/login"
+                        isLogged
+                          ? "/checkout/order"
+                          : "/customer/account/login/order"
                       }
                       className="link"
                     >

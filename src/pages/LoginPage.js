@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 //api
 import { loginUrl, registerUrl } from "../api";
 //redux
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { loginAction } from "../actions/loginAction";
 //styling
 import styled from "styled-components";
@@ -47,7 +47,7 @@ const AccountPage = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const pathName = location.pathname.split("/")[3];
-  const { user } = useSelector((state) => state.login);
+  const order = location.pathname.split("/")[4];
   //history
   const history = useHistory();
   useEffect(() => {
@@ -75,18 +75,20 @@ const AccountPage = () => {
         ) {
           axios
             .put(`http://localhost:3000/users/${res.data[0].id}/`, {
-              name: user.name,
-              surname: user.surname,
-              email: user.email,
+              name: res.data[0].name,
+              surname: res.data[0].surname,
+              email: res.data[0].email,
               isLogged: true,
-              password: user.password,
-              favorites: user.favorites,
-              orders: user.orders,
-              addresses: user.addresses,
+              password: res.data[0].password,
+              favorites: res.data[0].favorites,
+              addresses: res.data[0].addresses,
+              accessibility: res.data[0].accessibility,
             })
             .then((resp) => {
               dispatch(loginAction());
-              history.push("/customer/account/orders");
+              history.push(
+                order ? "/checkout/order" : "/customer/account/orders"
+              );
             })
             .catch((error) => {});
         } else {
@@ -122,8 +124,9 @@ const AccountPage = () => {
               surname: registerSurname,
               email: registerEmailInput,
               password: sha512(registerPassword).toString(Base64),
+              accessibility: "user",
               favorites: [],
-              orders: [],
+              addresses: [],
             })
             .then((resp) => {
               setRegisterSuccess(true);
@@ -211,6 +214,13 @@ const AccountPage = () => {
               Sign in
             </button>
           </Link>
+          <div className="anonymous-order">
+            <span>
+              <Link to="/checkout/order" className="link">
+                I want to purchase without logging in
+              </Link>
+            </span>
+          </div>
         </form>
       </div>
       <div

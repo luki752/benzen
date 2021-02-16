@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 //react router
 import { useLocation } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //actions
@@ -47,14 +47,18 @@ const AccountPage = () => {
   const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
   const [accountErrorMsg, setAccountErrorMsg] = useState("");
   const [action, setAction] = useState("change");
-  //location
+  //use
   const location = useLocation();
-  const pathName = location.pathname.split("/")[3];
+  const history = useHistory();
   const dispatch = useDispatch();
+  //pathName
+  const pathName = location.pathname.split("/")[3];
+
   useEffect(() => {
     dispatch(loginAction());
   }, [dispatch]);
   const { isLogged, user } = useSelector((state) => state.login);
+  console.log(user);
   useEffect(() => {
     if (isLogged) {
       dispatch(loadUsersOrders(user.id));
@@ -78,9 +82,11 @@ const AccountPage = () => {
           favorites: user.favorites,
           addresses: user.addresses,
           isLogged: user.isLogged,
+          accessibility: user.accessibility,
         })
         .then((resp) => {
-          setPasswordErrorMsg("Password changed successfully");
+          dispatch(loginAction());
+          setPasswordErrorMsg("success");
         })
         .catch((error) => {});
     } else {
@@ -100,6 +106,7 @@ const AccountPage = () => {
               favorites: user.favorites,
               addresses: user.addresses,
               isLogged: user.isLogged,
+              accessibility: user.accessibility,
             })
             .then((resp) => {
               setPasswordErrorMsg("Password changed successfully");
@@ -120,13 +127,7 @@ const AccountPage = () => {
     axios
       .delete(`http://localhost:3000/users/${user.id}/`)
       .then((resp) => {
-        dispatch({
-          type: "LOG_OUT",
-          payload: {
-            login: false,
-            user: [],
-          },
-        });
+        LogOutHandler();
       })
       .catch((error) => {});
   };
@@ -182,6 +183,7 @@ const AccountPage = () => {
           favorites: user.favorites,
           addresses: newAddress,
           isLogged: user.isLogged,
+          accessibility: user.accessibility,
         })
         .then((resp) => {
           dispatch(loginAction());
@@ -224,6 +226,7 @@ const AccountPage = () => {
           password: user.password,
           favorites: user.favorites,
           isLogged: user.isLogged,
+          accessibility: user.accessibility,
           addresses: [
             ...user.addresses,
             {
@@ -264,8 +267,12 @@ const AccountPage = () => {
         orders: user.orders,
         addresses: user.addresses,
         isLogged: false,
+        accessibility: user.accessibility,
       })
-      .then((resp) => {})
+      .then((resp) => {
+        dispatch(loginAction());
+        history.push("/customer/account/login");
+      })
       .catch((error) => {});
   };
   const deleteAddressHandler = (id) => {
@@ -279,6 +286,7 @@ const AccountPage = () => {
         addresses: user.addresses.filter((info) => info.id !== id),
         orders: user.orders,
         isLogged: user.isLogged,
+        accessibility: user.accessibility,
       })
       .then((resp) => {
         dispatch(loginAction());
@@ -437,7 +445,7 @@ const AccountPage = () => {
                   {userOrders.length > 0 ? (
                     <>
                       {userOrders.map((order) => (
-                        <div className="order">
+                        <div className="order" key={order.id}>
                           <div className="order-header">
                             <span>date:{order.date}</span>
                             <span>time:{order.time}</span>
