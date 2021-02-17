@@ -18,6 +18,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import Pagination from "@material-ui/lab/Pagination";
 //icons
 import SearchIcon from "@material-ui/icons/Search";
 
@@ -37,14 +38,29 @@ const AdminPanel = () => {
   const [usersAccess, setUsersAccess] = useState("customer");
   const [changeAccess, setChangeAccess] = useState("");
   const [usersSearch, setUsersSearch] = useState("");
+  const [usersPage, setUsersPage] = useState(1);
+  const [pageIndex, setPageIndex] = useState(1);
   //useEffect
   useEffect(() => {
     if (isLogged) {
-      dispatch(loadOrders());
-      dispatch(loadUsers(usersAccess, usersSearch));
+      dispatch(loadOrders(ordersDate));
+      dispatch(loadUsers(usersAccess, usersSearch, usersPage));
     }
-  }, [isLogged, dispatch, usersAccess, usersSearch]);
-  console.log(users);
+  }, [isLogged, dispatch, usersAccess, usersSearch, usersPage, ordersDate]);
+  useEffect(() => {
+    if (users.header) {
+      if (users.header.link) {
+        setPageIndex(
+          users.headers.link
+            .split(",")
+            [users.headers.link.split(",").length - 1].split(";")[0]
+            .split("&")[3]
+            .split("=")[1]
+            .split("")[0]
+        );
+      }
+    }
+  }, [users, setPageIndex, isLogged]);
   //handlers
   const ordersSortHandler = (e) => {
     setOrdersDate(e.target.value);
@@ -84,6 +100,9 @@ const AdminPanel = () => {
         })
         .catch((error) => {});
     }
+  };
+  const handleUsersPage = (e, v) => {
+    setUsersPage(v);
   };
   return (
     <AdminPanelComponent>
@@ -157,57 +176,66 @@ const AdminPanel = () => {
               </div>
             </div>
 
-            {users.map((user, index) => (
-              <div
-                className="user"
-                key={user.id}
-                style={{
-                  backgroundColor: index % 2 ? "rgba(0,0,0,0.4)" : "white",
-                }}
-              >
-                <div className="personal-info">
-                  <span>{user.name}</span> <span>{user.surname}</span>
-                </div>
-                <div className="email">email: {user.email}</div>
-                <div className="accessibility">
-                  accessibility: {user.accessibility}
-                </div>
-                <div className="change-access">
-                  <FormControl>
-                    <InputLabel className="sort-label">
-                      Change accessibility
-                    </InputLabel>
-                    <Select
-                      value={changeAccess}
-                      onChange={usersChangeAccessHandler}
-                      className="sort-select"
+            {users.data &&
+              users.data.length > 0 &&
+              users.data.map((user, index) => (
+                <div
+                  className="user"
+                  key={user.id}
+                  style={{
+                    backgroundColor: index % 2 ? "rgba(0,0,0,0.4)" : "white",
+                  }}
+                >
+                  <div className="personal-info">
+                    <span>{user.name}</span> <span>{user.surname}</span>
+                  </div>
+                  <div className="email">email: {user.email}</div>
+                  <div className="accessibility">
+                    accessibility: {user.accessibility}
+                  </div>
+                  <div className="change-access">
+                    <FormControl>
+                      <InputLabel className="sort-label">
+                        Change accessibility
+                      </InputLabel>
+                      <Select
+                        value={changeAccess}
+                        onChange={usersChangeAccessHandler}
+                        className="sort-select"
+                      >
+                        <MenuItem value="customer">customer</MenuItem>
+                        <MenuItem value="admin">admin</MenuItem>
+                        <MenuItem value="headAdmin">Head admin</MenuItem>
+                      </Select>
+                    </FormControl>
+                    <button
+                      className="button-white"
+                      onClick={() =>
+                        changeUsersAccessHandler(
+                          user.id,
+                          user.name,
+                          user.surname,
+                          user.email,
+                          user.password,
+                          user.favorites,
+                          user.orders,
+                          user.addresses,
+                          user.isLogged
+                        )
+                      }
                     >
-                      <MenuItem value="customer">customer</MenuItem>
-                      <MenuItem value="admin">admin</MenuItem>
-                      <MenuItem value="headAdmin">Head admin</MenuItem>
-                    </Select>
-                  </FormControl>
-                  <button
-                    className="button-white"
-                    onClick={() =>
-                      changeUsersAccessHandler(
-                        user.id,
-                        user.name,
-                        user.surname,
-                        user.email,
-                        user.password,
-                        user.favorites,
-                        user.orders,
-                        user.addresses,
-                        user.isLogged
-                      )
-                    }
-                  >
-                    change
-                  </button>
+                      change
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+
+            <Pagination
+              count={parseInt(pageIndex)}
+              page={usersPage}
+              onChange={handleUsersPage}
+              className="pagination"
+            />
           </div>
         )}
       </div>
@@ -219,11 +247,18 @@ const AdminPanelComponent = styled.div`
   display: flex;
   min-height: 50rem;
   margin-top: 2rem;
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
   .left-side {
     width: 20%;
     display: flex;
     flex-direction: Column;
     align-items: flex-end;
+    @media screen and (max-width: 1000px) {
+      align-items: center;
+      width: 100%;
+    }
     ul {
       list-style: none;
       li {
@@ -234,6 +269,9 @@ const AdminPanelComponent = styled.div`
   .right-side {
     width: 80%;
     margin-left: 2rem;
+    @media screen and (max-width: 1000px) {
+      width: 100%;
+    }
     .orders-component {
       width: 100%;
       display: flex;
@@ -246,6 +284,10 @@ const AdminPanelComponent = styled.div`
     }
     .sort-select {
       width: 10rem;
+      @media screen and (max-width: 1000px) {
+        width: 7rem;
+        font-size: 1rem;
+      }
     }
     .users-component {
       width: 100%;
@@ -262,13 +304,34 @@ const AdminPanelComponent = styled.div`
         display: flex;
         justify-content: space-evenly;
         align-items: Center;
+        @media screen and (max-width: 1000px) {
+          font-size: 1rem;
+          flex-wrap: wrap;
+          padding: 1rem;
+        }
         .button-white {
           background-color: transparent;
+          @media screen and (max-width: 1000px) {
+            font-size: 1rem;
+          }
           &:hover {
             color: black;
             text-decoration: underline;
           }
         }
+        .change-access {
+          .sort-label {
+            @media screen and (max-width: 1000px) {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+      .pagination {
+        display: flex;
+        justify-content: Center;
+        align-items: center;
+        margin: 1rem 0;
       }
     }
   }

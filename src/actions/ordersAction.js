@@ -1,8 +1,8 @@
 import { allOrders, usersOrders } from "../api";
 import axios from "axios";
 
-export const loadOrders = () => async (dispatch) => {
-  const ordersData = await axios.get(allOrders());
+export const loadOrders = (sortOrder) => async (dispatch) => {
+  const ordersData = await axios.get(allOrders(sortOrder));
   dispatch({
     type: "ALL_ORDERS",
     payload: {

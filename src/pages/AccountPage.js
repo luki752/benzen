@@ -319,6 +319,7 @@ const AccountPage = () => {
   const orderDetailsHandler = (id, order) => {
     history.push(`/customer/account/orders/${id}`);
     setOrder(order);
+    window.scrollTo(0, 0);
   };
   return (
     <>

@@ -2259,8 +2259,8 @@
       "name": "Łukasz",
       "surname": "Programista",
       "email": "admin@admin.com",
-      "isLogged": true,
       "password": "x61Ey612Kl2gpFL56FT9weDnpSo4AV8j8+qx2AuTHdRyY036xxzTTrw10Wq3+4qQyB+XURPWx1ONxp3Y3pB37A==",
+      "accessibility": "headAdmin",
       "favorites": [
         {
           "id": 23,
@@ -2301,8 +2301,38 @@
             }
           ],
           "gender": "woman"
+        },
+        {
+          "id": 24,
+          "name": "Bum bag with chain detail",
+          "item": "bags",
+          "amount": 1000,
+          "price": 19.99,
+          "desc": "zip fastening, smooth lining on the inside",
+          "material": [
+            {
+              "fabric": "pvc",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/Y/ZY089-99X-001_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/Y/ZY089-99X-002_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/Y/ZY089-99X-003_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/Y/ZY089-99X-020_14.jpg"
+            }
+          ],
+          "gender": "woman"
         }
       ],
+      "isLogged": true,
       "addresses": [
         {
           "name": "Łukasz",
@@ -2313,9 +2343,18 @@
           "city": "Urugwaj",
           "postalCode": "24-560",
           "id": 1
+        },
+        {
+          "name": "Jerzy ",
+          "surname": "asdasd",
+          "phone": "123456123",
+          "houseNr": "2",
+          "street": "1 stycznia",
+          "city": "Libiąż",
+          "postalCode": "32-700",
+          "id": 2
         }
       ],
-      "accessibility": "headAdmin",
       "id": 1
     },
     {
@@ -2593,6 +2632,104 @@
         }
       ],
       "id": 4
+    },
+    {
+      "items": [
+        {
+          "id": 19,
+          "name": "Quilted jacket with high neck",
+          "item": "puffer-jackets",
+          "amount": 1000,
+          "category": "clothes",
+          "price": 29.99,
+          "desc": "low stand up collar with press stud fastening, zip fastening, side pockets with press studs, long sleeves",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-001_12.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-002_12.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-003_12.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-004_12.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-005_12.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-006_12.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-040_12.jpg"
+            }
+          ],
+          "cartAmount": 1,
+          "gender": "man",
+          "size": "l"
+        },
+        {
+          "id": 24,
+          "name": "Bum bag with chain detail",
+          "item": "bags",
+          "amount": 1000,
+          "category": "accessories",
+          "price": 19.99,
+          "desc": "zip fastening, smooth lining on the inside",
+          "material": [
+            {
+              "fabric": "pvc",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/Y/ZY089-99X-001_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/Y/ZY089-99X-002_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/Y/ZY089-99X-003_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/Y/ZY089-99X-020_14.jpg"
+            }
+          ],
+          "cartAmount": 1,
+          "gender": "woman",
+          "size": "s"
+        }
+      ],
+      "date": "17.02.2021",
+      "time": "23:10:32",
+      "usersId": 1,
+      "status": "new",
+      "delivery": "standard",
+      "cartPrice": 49.98,
+      "deliveryPrice": 1.99,
+      "payment": "card",
+      "address": [
+        {
+          "name": "Jerzy ",
+          "surname": "asdasd",
+          "city": "Libiąż",
+          "postalCode": "32-700",
+          "street": "1 stycznia",
+          "houseNr": "2",
+          "phone": "123456123",
+          "email": "admin@admin.com"
+        }
+      ],
+      "id": 5
     }
   ]
 }

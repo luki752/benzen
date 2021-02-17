@@ -15,12 +15,12 @@ export const loginAction = () => async (dispatch) => {
   });
 };
 
-export const loadUsers = (access, query) => async (dispatch) => {
-  const usersData = await axios.get(allUsersFilteredUrl(access, query));
+export const loadUsers = (access, query, page) => async (dispatch) => {
+  const usersData = await axios.get(allUsersFilteredUrl(access, query, page));
   dispatch({
     type: "FETCH_USERS",
     payload: {
-      users: usersData.data,
+      users: usersData,
     },
   });
 };

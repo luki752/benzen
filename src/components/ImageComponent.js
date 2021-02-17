@@ -36,7 +36,7 @@ const ImageComponent = ({
           </Link>
         </div>
       ) : (
-        <Link to={link} className="link">
+        <Link to={link} className="link" onClick={() => linkHandler()}>
           <button className="button-white">{btnText}</button>
         </Link>
       )}

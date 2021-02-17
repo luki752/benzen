@@ -50,6 +50,7 @@ const Card = ({ item, height, width, margin, gender, id }) => {
           orders: user.orders,
           addresses: user.addresses,
           isLogged: user.isLogged,
+          accessibility: user.accessibility,
           favorites: [
             ...user.favorites,
             {
@@ -84,6 +85,7 @@ const Card = ({ item, height, width, margin, gender, id }) => {
             orders: user.orders,
             isLogged: user.isLogged,
             addresses: user.addresses,
+            accessibility: user.accessibility,
           })
           .then((resp) => {
             dispatch(loginAction());

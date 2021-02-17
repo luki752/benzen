@@ -7,8 +7,8 @@ export const specificItemUrl = (gender, id) =>
 export const allItemsUrl = (gender) => `http://localhost:3000/${gender}`;
 
 export const allUsersUrl = () => `http://localhost:3000/users`;
-export const allUsersFilteredUrl = (accessibility, query) =>
-  `http://localhost:3000/users?accessibility=${accessibility}&q=${query}`;
+export const allUsersFilteredUrl = (accessibility, query, page) =>
+  `http://localhost:3000/users?accessibility=${accessibility}&q=${query}&_limit=20&_page=${page}`;
 
 export const loginUrl = (email) => `http://localhost:3000/users?email=${email}`;
 
@@ -21,6 +21,7 @@ export const questionUrl = (gender, question) =>
 export const discountUrl = (gender, item, sortOrder) =>
   `http://localhost:3000/${gender}?item=${item}&discount=true&_sort=price&_order=${sortOrder}`;
 
-export const allOrders = () => `http://localhost:3000/orders`;
+export const allOrders = (sortOrder) =>
+  `http://localhost:3000/orders?_sort=date&_order=${sortOrder}`;
 
 export const usersOrders = (id) => `http://localhost:3000/orders?usersId=${id}`;
