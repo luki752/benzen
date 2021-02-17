@@ -2325,8 +2325,8 @@
       "password": "atPmwItNW43rXBgRlw2a1gbbm8JLOLap+u1c5CJiDe10d70nd9sGEsRlvvrwgM5yHek8piPGJp/eoUGOgioIIA==",
       "favorites": [],
       "addresses": [],
-      "accessibility": "customer",
       "isLogged": false,
+      "accessibility": "admin",
       "id": 2
     },
     {
@@ -2525,6 +2525,74 @@
         }
       ],
       "id": 3
+    },
+    {
+      "items": [
+        {
+          "id": 23,
+          "name": "Slim trousers with pockets",
+          "item": "trousers",
+          "category": "clothes",
+          "amount": 1000,
+          "price": 12.99,
+          "discount": true,
+          "beforeDiscount": 24.99,
+          "desc": "zip and hook fastening, high waist",
+          "material": [
+            {
+              "fabric": "polyester",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-001_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-002_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-003_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-004_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-005_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-006_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-040_12.jpg"
+            }
+          ],
+          "cartAmount": 3,
+          "gender": "woman",
+          "size": "l"
+        }
+      ],
+      "date": "17.02.2021",
+      "time": "22:59:28",
+      "usersId": 1,
+      "status": "new",
+      "delivery": "dhl",
+      "cartPrice": 38.97,
+      "deliveryPrice": 2.99,
+      "payment": "card",
+      "address": [
+        {
+          "name": "Łukasz",
+          "surname": "Programista",
+          "city": "Urugwaj",
+          "postalCode": "24-560",
+          "street": "kwiatowa",
+          "houseNr": "5",
+          "phone": "123456789",
+          "email": "admin@admin.com"
+        }
+      ],
+      "id": 4
     }
   ]
 }

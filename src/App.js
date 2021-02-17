@@ -37,6 +37,7 @@ function App() {
           "/customer/account/info",
           "/customer/account/orders",
           "/customer/account/address",
+          "/customer/account/orders/:id",
         ]}
         exact
       >
