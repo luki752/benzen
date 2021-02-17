@@ -37,7 +37,7 @@ const ManMainPage = () => {
     setMV(window.matchMedia("(min-width: 1000px)").matches);
   }, [size, mv]);
   //get data back
-  const { AllItems, isLoading } = useSelector((state) => state.items);
+  const { AllItems, isLoading } = useSelector((state) => state.item);
   return (
     <ManMainPageComponent>
       <div className="items">

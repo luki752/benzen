@@ -2350,6 +2350,16 @@
       "accessibility": "customer",
       "isLogged": false,
       "id": 4
+    },
+    {
+      "name": "luki",
+      "surname": "jezyki",
+      "email": "luki@email.com",
+      "password": "0glaVcvcW2jNBQjS9Mf/+DQejUNlt2Ngy0UZPpqcJ5a6waTmhwSnklLzhAYnROMMPooL0XlMRpuyaxgzYDgqpw==",
+      "accessibility": "customer",
+      "favorites": [],
+      "addresses": [],
+      "id": 5
     }
   ],
   "orders": [

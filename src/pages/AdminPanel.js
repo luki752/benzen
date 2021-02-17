@@ -25,17 +25,20 @@ const AdminPanel = () => {
   const { user, users, isLogged } = useSelector((state) => state.login);
   const location = useLocation();
   const pathName = location.pathname.split("/")[3];
+  //orders state
   const [ordersDate, setOrdersDate] = useState("");
+  //users state
   const [usersAccess, setUsersAccess] = useState("");
   const [changeAccess, setChangeAccess] = useState("");
-  console.log(users);
+  const [usersSearch, setUsersSearch] = useState("");
   //useEffect
   useEffect(() => {
     if (isLogged) {
       dispatch(loadOrders());
-      dispatch(loadUsers());
+      dispatch(loadUsers(" ", "asia"));
     }
-  }, [isLogged, dispatch]);
+  }, [isLogged, dispatch, usersAccess, usersSearch]);
+  console.log(users);
   //handlers
   const ordersSortHandler = (e) => {
     setOrdersDate(e.target.value);
@@ -90,9 +93,7 @@ const AdminPanel = () => {
           <div className="users-component">
             <div className="sort-users">
               <FormControl>
-                <InputLabel className="sort-label">
-                  Sort accessibility
-                </InputLabel>
+                <InputLabel className="sort-label">Show only</InputLabel>
                 <Select
                   value={usersAccess}
                   onChange={sortAccessHandler}

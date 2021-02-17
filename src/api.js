@@ -7,6 +7,8 @@ export const specificItemUrl = (gender, id) =>
 export const allItemsUrl = (gender) => `http://localhost:3000/${gender}`;
 
 export const allUsersUrl = () => `http://localhost:3000/users`;
+export const allUsersFilteredUrl = (accessibility, query) =>
+  `http://localhost:3000/users?accessibility=${accessibility}&q=${query}`;
 
 export const loginUrl = (email) => `http://localhost:3000/users?email=${email}`;
 
