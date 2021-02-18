@@ -1,12 +1,10 @@
 {
   "man": [
     {
-      "id": 1,
       "name": "Denim sherpa jacket",
       "item": "jackets",
+      "amount": 998,
       "category": "clothes",
-      "amount": 1000,
-      "gender": "male",
       "price": 39.99,
       "desc": "high round neck",
       "material": [
@@ -38,7 +36,8 @@
         {
           "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-031_11.jpg"
         }
-      ]
+      ],
+      "id": 1
     },
     {
       "id": 2,
@@ -2262,6 +2261,30 @@
       "surname": "Programista",
       "email": "admin@admin.com",
       "password": "x61Ey612Kl2gpFL56FT9weDnpSo4AV8j8+qx2AuTHdRyY036xxzTTrw10Wq3+4qQyB+XURPWx1ONxp3Y3pB37A==",
+      "addresses": [
+        {
+          "name": "Łukasz",
+          "surname": "Programista",
+          "phone": "123456789",
+          "houseNr": "5",
+          "street": "kwiatowa",
+          "city": "Urugwaj",
+          "postalCode": "24-560",
+          "id": 1
+        },
+        {
+          "name": "Jerzy ",
+          "surname": "asdasd",
+          "phone": "123456123",
+          "houseNr": "2",
+          "street": "1 stycznia",
+          "city": "Libiąż",
+          "postalCode": "32-700",
+          "id": 2
+        }
+      ],
+      "isLogged": true,
+      "accessibility": "headAdmin",
       "favorites": [
         {
           "id": 13,
@@ -2516,46 +2539,6 @@
           "gender": "man"
         },
         {
-          "id": 29,
-          "name": "Quilted jacket with standing collar",
-          "item": "puffer-jackets",
-          "amount": "1000",
-          "price": "29.99",
-          "desc": "low stand up collar with press stud, fastening front zip up fastening",
-          "discount": "false",
-          "beforeDiscount": "",
-          "material": [
-            {
-              "id": 0,
-              "fabric": "polyamide",
-              "percentage": "100"
-            }
-          ],
-          "images": [
-            {
-              "id": 0,
-              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI497-59X-001_4.jpg"
-            },
-            {
-              "id": 1,
-              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI497-59X-002_4.jpg"
-            },
-            {
-              "id": 2,
-              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI497-59X-003_4.jpg"
-            },
-            {
-              "id": 3,
-              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI497-59X-004_4.jpg"
-            },
-            {
-              "id": 4,
-              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI497-59X-005_4.jpg"
-            }
-          ],
-          "gender": "man"
-        },
-        {
           "id": 14,
           "name": "Quilted jacket with hood",
           "item": "puffer-jackets",
@@ -2592,32 +2575,48 @@
             }
           ],
           "gender": "man"
-        }
-      ],
-      "isLogged": true,
-      "addresses": [
-        {
-          "name": "Łukasz",
-          "surname": "Programista",
-          "phone": "123456789",
-          "houseNr": "5",
-          "street": "kwiatowa",
-          "city": "Urugwaj",
-          "postalCode": "24-560",
-          "id": 1
         },
         {
-          "name": "Jerzy ",
-          "surname": "asdasd",
-          "phone": "123456123",
-          "houseNr": "2",
-          "street": "1 stycznia",
-          "city": "Libiąż",
-          "postalCode": "32-700",
-          "id": 2
+          "id": 21,
+          "name": "Padded coat",
+          "item": "puffer-jackets",
+          "amount": 1000,
+          "price": 29.99,
+          "desc": "high stand up collar and hood, press stud fastening, two side pockets, insulation made of recycled fabric",
+          "discount": true,
+          "beforeDiscount": 49.99,
+          "material": [
+            {
+              "fabric": "polyester",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-001_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-002_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-003_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-004_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-005_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-006_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-040_15.jpg"
+            }
+          ],
+          "gender": "woman"
         }
       ],
-      "accessibility": "headAdmin",
       "id": 1
     },
     {
@@ -2993,6 +2992,512 @@
         }
       ],
       "id": 5
+    },
+    {
+      "items": [
+        {
+          "name": "Quilted jacket",
+          "beforeDiscount": "",
+          "item": "puffer-jackets",
+          "amount": 1000,
+          "category": "clothes",
+          "discount": false,
+          "price": 39.99,
+          "desc": "high collar with hood, long sleeves with ribbed trim,smooth lining",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/4/8/4845C-59X-030_1.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/4/8/4845C-59X-001_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/4/8/4845C-59X-002_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/4/8/4845C-59X-003_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/4/8/4845C-59X-005_3.jpg"
+            }
+          ],
+          "id": 18,
+          "cartAmount": 1,
+          "gender": "man",
+          "size": "l"
+        },
+        {
+          "id": 1,
+          "name": "Denim sherpa jacket",
+          "item": "jackets",
+          "category": "clothes",
+          "amount": 1000,
+          "gender": "man",
+          "price": 39.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-001_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-003_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-004_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-005_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-006_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-031_11.jpg"
+            }
+          ],
+          "cartAmount": 1,
+          "size": "m"
+        }
+      ],
+      "date": "18.02.2021",
+      "time": "18:55:15",
+      "usersId": 1,
+      "status": "new",
+      "delivery": "standard",
+      "cartPrice": 79.98,
+      "deliveryPrice": 1.99,
+      "payment": "blik",
+      "address": [
+        {
+          "name": "Łukasz",
+          "surname": "Programista",
+          "city": "Urugwaj",
+          "postalCode": "24-560",
+          "street": "kwiatowa",
+          "houseNr": "5",
+          "phone": "123456789",
+          "email": "admin@admin.com"
+        }
+      ],
+      "id": 6
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "name": "Denim sherpa jacket",
+          "item": "jackets",
+          "category": "clothes",
+          "amount": 1000,
+          "gender": "man",
+          "price": 39.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-001_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-003_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-004_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-005_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-006_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-031_11.jpg"
+            }
+          ],
+          "cartAmount": 1,
+          "size": "l"
+        }
+      ],
+      "date": "18.02.2021",
+      "time": "18:59:13",
+      "usersId": 1,
+      "status": "new",
+      "delivery": "standard",
+      "cartPrice": 39.99,
+      "deliveryPrice": 1.99,
+      "payment": "blik",
+      "address": [
+        {
+          "name": "Jerzy ",
+          "surname": "asdasd",
+          "city": "Libiąż",
+          "postalCode": "32-700",
+          "street": "1 stycznia",
+          "houseNr": "2",
+          "phone": "123456123",
+          "email": "admin@admin.com"
+        }
+      ],
+      "id": 7
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "name": "Denim sherpa jacket",
+          "item": "jackets",
+          "category": "clothes",
+          "amount": 1000,
+          "gender": "man",
+          "price": 39.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-001_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-003_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-004_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-005_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-006_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-031_11.jpg"
+            }
+          ],
+          "cartAmount": 1,
+          "size": "m"
+        }
+      ],
+      "date": "18.02.2021",
+      "time": "19:00:31",
+      "usersId": 1,
+      "status": "new",
+      "delivery": "dhl",
+      "cartPrice": 39.99,
+      "deliveryPrice": 2.99,
+      "payment": "card",
+      "address": [
+        {
+          "name": "Jerzy ",
+          "surname": "asdasd",
+          "city": "Libiąż",
+          "postalCode": "32-700",
+          "street": "1 stycznia",
+          "houseNr": "2",
+          "phone": "123456123",
+          "email": "admin@admin.com"
+        }
+      ],
+      "id": 8
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "name": "Denim sherpa jacket",
+          "item": "jackets",
+          "category": "clothes",
+          "amount": 1000,
+          "gender": "man",
+          "price": 39.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-001_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-003_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-004_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-005_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-006_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-031_11.jpg"
+            }
+          ],
+          "cartAmount": 1,
+          "size": "m"
+        }
+      ],
+      "date": "18.02.2021",
+      "time": "19:05:15",
+      "usersId": 1,
+      "status": "new",
+      "delivery": "standard",
+      "cartPrice": 39.99,
+      "deliveryPrice": 1.99,
+      "payment": "card",
+      "address": [
+        {
+          "name": "Łukasz",
+          "surname": "Programista",
+          "city": "Urugwaj",
+          "postalCode": "24-560",
+          "street": "kwiatowa",
+          "houseNr": "5",
+          "phone": "123456789",
+          "email": "admin@admin.com"
+        }
+      ],
+      "id": 9
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "name": "Denim sherpa jacket",
+          "item": "jackets",
+          "category": "clothes",
+          "amount": 1000,
+          "gender": "man",
+          "price": 39.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-001_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-003_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-004_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-005_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-006_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-031_11.jpg"
+            }
+          ],
+          "cartAmount": 1,
+          "size": "m"
+        }
+      ],
+      "date": "18.02.2021",
+      "time": "19:06:38",
+      "usersId": 1,
+      "status": "new",
+      "delivery": "standard",
+      "cartPrice": 39.99,
+      "deliveryPrice": 1.99,
+      "payment": "card",
+      "address": [
+        {
+          "name": "Łukasz",
+          "surname": "Programista",
+          "city": "Urugwaj",
+          "postalCode": "24-560",
+          "street": "kwiatowa",
+          "houseNr": "5",
+          "phone": "123456789",
+          "email": "admin@admin.com"
+        }
+      ],
+      "id": 10
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "name": "Denim sherpa jacket",
+          "item": "jackets",
+          "category": "clothes",
+          "amount": 1000,
+          "gender": "man",
+          "price": 39.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-001_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-003_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-004_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-005_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-006_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-031_11.jpg"
+            }
+          ],
+          "cartAmount": 1,
+          "size": "m"
+        }
+      ],
+      "date": "18.02.2021",
+      "time": "19:07:41",
+      "usersId": 1,
+      "status": "new",
+      "delivery": "standard",
+      "cartPrice": 39.99,
+      "deliveryPrice": 1.99,
+      "payment": "card",
+      "address": [
+        {
+          "name": "Łukasz",
+          "surname": "Programista",
+          "city": "Urugwaj",
+          "postalCode": "24-560",
+          "street": "kwiatowa",
+          "houseNr": "5",
+          "phone": "123456789",
+          "email": "admin@admin.com"
+        }
+      ],
+      "id": 11
+    },
+    {
+      "items": [
+        {
+          "name": "Denim sherpa jacket",
+          "item": "jackets",
+          "amount": 999,
+          "category": "clothes",
+          "price": 39.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-001_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-003_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-004_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-005_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-006_11.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH963-55J-031_11.jpg"
+            }
+          ],
+          "id": 1,
+          "cartAmount": 11,
+          "gender": "man",
+          "size": "l"
+        }
+      ],
+      "date": "18.02.2021",
+      "time": "19:08:15",
+      "usersId": 1,
+      "status": "new",
+      "delivery": "standard",
+      "cartPrice": 439.89,
+      "deliveryPrice": 1.99,
+      "payment": "card",
+      "address": [
+        {
+          "name": "Łukasz",
+          "surname": "Programista",
+          "city": "Urugwaj",
+          "postalCode": "24-560",
+          "street": "kwiatowa",
+          "houseNr": "5",
+          "phone": "123456789",
+          "email": "admin@admin.com"
+        }
+      ],
+      "id": 12
     }
   ]
 }

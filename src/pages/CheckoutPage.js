@@ -222,6 +222,24 @@ const CheckoutPage = () => {
   };
   const finalizeOrderHandler = () => {
     if (cart.length !== 0 && paymentChoosed) {
+      cart.map((item) =>
+        axios
+          .put(`http://localhost:3000/${item.gender}/${item.id}`, {
+            name: item.name,
+            item: item.item,
+            amount: item.amount - item.cartAmount,
+            category: item.category,
+            discount: item.discount,
+            beforeDiscount: item.beforeDiscount,
+            price: item.price,
+            desc: item.desc,
+            material: item.material,
+            images: item.images,
+            id: item.id,
+          })
+          .then((resp) => {})
+          .catch((error) => {})
+      );
       let current = new Date();
       axios
         .post("http://localhost:3000/orders", {
@@ -419,7 +437,7 @@ const CheckoutPage = () => {
           at reserved.com, you agree to our Terms and Conditions.
         </p>
         <div className="your-order">
-          <Accordion className="accordion" defaultExpanded={true}>
+          <Accordion className="accordion">
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               className="accordion-header"
