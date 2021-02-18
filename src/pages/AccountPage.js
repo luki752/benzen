@@ -364,6 +364,7 @@ const AccountPage = () => {
                         label="Name"
                         value={usersName}
                         className="input"
+                        required
                         onChange={(e) => setUsersName(e.target.value)}
                       />
                     </span>
@@ -371,6 +372,7 @@ const AccountPage = () => {
                       <TextField
                         label="Surname"
                         value={usersSurname}
+                        required
                         className="input"
                         onChange={(e) => setUsersSurname(e.target.value)}
                       />
@@ -379,6 +381,7 @@ const AccountPage = () => {
                       <TextField
                         label="Email"
                         type="email"
+                        required
                         value={usersEmail}
                         className="input"
                         onChange={(e) => setUsersEmail(e.target.value)}
@@ -395,6 +398,7 @@ const AccountPage = () => {
                         label="Your Password"
                         type="password"
                         value={oldPassword}
+                        required
                         className="input"
                         onChange={(e) => setOldPassword(e.target.value)}
                       />
@@ -402,6 +406,7 @@ const AccountPage = () => {
                         label="New password"
                         type="password"
                         value={newPassword}
+                        required
                         className="input"
                         onChange={(e) => setNewPassword(e.target.value)}
                       />
@@ -409,6 +414,7 @@ const AccountPage = () => {
                         label="Confirm password"
                         type="email"
                         value={confirmNewPassword}
+                        required
                         className="input"
                         onChange={(e) => setConfirmNewPassword(e.target.value)}
                       />

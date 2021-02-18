@@ -48,8 +48,8 @@ const FavoritesPage = () => {
                 <Card
                   key={item.id}
                   height={mv ? "30rem" : "20rem"}
-                  width={mv ? "25%" : "50%"}
-                  margin={mv ? "1.5rem 0" : "0.5rem 0"}
+                  width={mv ? "23%" : "50%"}
+                  margin={mv ? "1.5rem 0.5rem" : "0.5rem 0"}
                   id={item.id}
                   gender={item.gender}
                   category={item.category}
@@ -70,7 +70,7 @@ const FavoritesPageComponent = styled.div`
   margin-top: 2rem;
   align-items: center;
   .header {
-    width: 70%;
+    width: 80%;
     position: relative;
     display: flex;
     text-align: Center;
@@ -92,7 +92,7 @@ const FavoritesPageComponent = styled.div`
   }
   .items-display {
     margin-top: 2rem;
-    width: 70%;
+    width: 80%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

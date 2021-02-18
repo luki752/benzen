@@ -633,11 +633,12 @@
       ]
     },
     {
-      "id": 18,
       "name": "Quilted jacket",
+      "beforeDiscount": "",
       "item": "puffer-jackets",
       "amount": 1000,
       "category": "clothes",
+      "discount": false,
       "price": 39.99,
       "desc": "high collar with hood, long sleeves with ribbed trim,smooth lining",
       "material": [
@@ -662,7 +663,8 @@
         {
           "img": "https://www.reserved.com/media/catalog/product/4/8/4845C-59X-005_3.jpg"
         }
-      ]
+      ],
+      "id": 18
     },
     {
       "id": 19,

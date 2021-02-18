@@ -19,7 +19,7 @@ import { useDispatch } from "react-redux";
 
 const SearchPage = () => {
   //state
-  const { answer } = useSelector((state) => state.answer);
+  const { answer } = useSelector((state) => state.item);
   const [sort, setSort] = useState("");
   const [size, setSize] = useState([0, 0]);
   const [mv, setMV] = useState(false);
@@ -72,8 +72,8 @@ const SearchPage = () => {
             <Card
               key={item.id}
               height={mv ? "30rem" : "20rem"}
-              width={mv ? "25%" : "50%"}
-              margin={mv ? "1.5rem 0" : "0.5rem 0"}
+              width={mv ? "23%" : "50%"}
+              margin={mv ? "1.5rem 0.5rem" : "0.5rem 0"}
               id={item.id}
               gender={gender}
               category={item.category}

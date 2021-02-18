@@ -11,8 +11,11 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import TextField from "@material-ui/core/TextField";
+//axios
+import axios from "axios";
 //router
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //actions
@@ -27,6 +30,7 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import CloseIcon from "@material-ui/icons/Close";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
+import EditIcon from "@material-ui/icons/Edit";
 
 //components
 import Card from "../components/Card";
@@ -41,11 +45,20 @@ const ItemDetailsPage = () => {
   const dots = [];
   //location, id
   const location = useLocation();
+  const history = useHistory();
   const gender = location.pathname.split("/")[1];
   const pathId = parseInt(location.pathname.split("/")[2], 10);
   //window size
   const [size, setSize] = useState([0, 0]);
   const [mv, setMV] = useState(false);
+  //edit items state
+  const [editMode, setEditMode] = useState(false);
+  const [itemsName, setItemsName] = useState("");
+  const [itemsPrice, setItemsPrice] = useState("");
+  const [itemsDiscount, setItemsDiscount] = useState("");
+  const [itemsDescription, setItemsDescription] = useState("");
+  const [itemsAmount, setItemsAmount] = useState("");
+  const [editMsg, setEditMsg] = useState("");
   //getting window size
   useLayoutEffect(() => {
     function updateSize() {
@@ -68,7 +81,14 @@ const ItemDetailsPage = () => {
   //get data back
   const { item, isLoading, AllItems } = useSelector((state) => state.item);
   const { cart } = useSelector((state) => state.cart);
-
+  const { user } = useSelector((state) => state.login);
+  useEffect(() => {
+    setItemsName(item.name);
+    setItemsPrice(item.price);
+    setItemsDiscount(item.discount ? true : false);
+    setItemsDescription(item.desc);
+    setItemsAmount(item.amount);
+  }, [item]);
   //handlers
   const activeImageHandler = (list) => {
     for (let i = 0; i < list; i++) {
@@ -106,6 +126,47 @@ const ItemDetailsPage = () => {
     } else {
       setProceedError(true);
     }
+  };
+  const discountHandler = (e) => {
+    setItemsDiscount(e.target.value);
+  };
+  const changeItemHandler = () => {
+    if (
+      itemsName !== "" &&
+      itemsPrice !== "" &&
+      itemsDiscount !== "" &&
+      itemsDescription !== ""
+    ) {
+      axios
+        .put(`http://localhost:3000/${gender}/${item.id}/`, {
+          name: itemsName,
+          beforeDiscount: itemsDiscount ? item.price : "",
+          item: item.item,
+          amount: itemsAmount,
+          category: item.category,
+          discount: itemsDiscount,
+          price: itemsPrice,
+          desc: itemsDescription,
+          material: item.material,
+          images: item.images,
+          id: item.id,
+        })
+        .then((resp) => {
+          dispatch(loadSpecificItem(gender, pathId));
+          setEditMsg("success");
+        })
+        .catch((error) => {});
+    } else {
+      setEditMsg("Inputs cant be empty");
+    }
+  };
+  const deleteItemHandler = () => {
+    axios
+      .delete(`http://localhost:3000/${gender}/${item.id}/`)
+      .then((resp) => {
+        history.push(`/${gender}`);
+      })
+      .catch((error) => {});
   };
   return (
     <>
@@ -175,6 +236,25 @@ const ItemDetailsPage = () => {
             </div>
 
             <div className="right-side">
+              {user.accessibility === "headAdmin" ||
+              user.accessibility === "admin" ? (
+                <div
+                  className="edit-button"
+                  onClick={() => setEditMode(!editMode)}
+                >
+                  {editMode ? (
+                    <span>
+                      Stop editing <CloseIcon />
+                    </span>
+                  ) : (
+                    <span>
+                      Edit <EditIcon className="edit-icon" />
+                    </span>
+                  )}
+                </div>
+              ) : (
+                ""
+              )}
               <div className="info">
                 <span className="name">{item.name}</span>
                 <span className="price">
@@ -244,6 +324,74 @@ const ItemDetailsPage = () => {
                   <LocalMallIcon style={{ color: "white" }} />
                   Add to bag
                 </button>
+                {(user.accessibility === "headAdmin" && editMode) ||
+                (user.accessibility === "admin" && editMode) ? (
+                  <div className="edit-item">
+                    <span>{editMsg}</span>
+                    <span>
+                      <TextField
+                        label="Name"
+                        value={itemsName}
+                        className="input"
+                        onChange={(e) => setItemsName(e.target.value)}
+                      />
+                    </span>
+                    <span>
+                      <TextField
+                        label="amount"
+                        value={itemsAmount}
+                        className="input"
+                        type="number"
+                        onChange={(e) => setItemsAmount(e.target.value)}
+                      />
+                    </span>
+                    <span>
+                      <TextField
+                        label="price"
+                        value={itemsPrice}
+                        className="input"
+                        type="number"
+                        onChange={(e) => setItemsPrice(e.target.value)}
+                      />
+                    </span>
+                    <span>
+                      <FormControl variant="outlined" className="select">
+                        <InputLabel>Discount</InputLabel>
+                        <Select
+                          value={itemsDiscount}
+                          onChange={(e) => discountHandler(e)}
+                          label="discount"
+                        >
+                          <MenuItem value="true">true</MenuItem>
+                          <MenuItem value="false">false</MenuItem>
+                        </Select>
+                      </FormControl>
+                    </span>
+                    <span>
+                      <TextField
+                        label="description"
+                        value={itemsDescription}
+                        multiline
+                        className="input"
+                        onChange={(e) => setItemsDescription(e.target.value)}
+                      />
+                    </span>
+                    <button
+                      className="button-black"
+                      onClick={() => changeItemHandler()}
+                    >
+                      Save changes
+                    </button>
+                    <span
+                      style={{ color: "tomato", fontWeight: "bold" }}
+                      onClick={() => deleteItemHandler()}
+                    >
+                      DELETE ITEM
+                    </span>
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>
@@ -522,8 +670,29 @@ const ItemDetailsPageComponent = styled.div`
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      position: relative;
+      .edit-item {
+        display: flex;
+        flex-direction: column;
+
+        .input,
+        .select {
+          width: 15rem;
+          margin: 0.5rem 0;
+        }
+      }
       @media screen and (max-width: 1000px) {
         width: 100%;
+      }
+      .edit-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0 2rem;
+        font-size: 2rem;
+        &:hover {
+          cursor: pointer;
+        }
       }
       .info {
         display: flex;
