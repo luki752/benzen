@@ -33,7 +33,7 @@ const Card = ({ item, height, width, margin, gender, id }) => {
         item.id === id ? setFavorite(true) : ""
       );
     }
-  }, [user, favorite, id, isLogged]);
+  }, [user, id, isLogged]);
   //handlers
   const snackbarHandler = (snackbarMessage, snackVariant) => {
     enqueueSnackbar(snackbarMessage, { variant: snackVariant });
@@ -70,6 +70,7 @@ const Card = ({ item, height, width, margin, gender, id }) => {
         })
         .then((resp) => {
           setFavorite(true);
+          dispatch(loginAction());
           snackbarHandler("Added to favorites", "success");
         })
         .catch((error) => {});
@@ -88,9 +89,9 @@ const Card = ({ item, height, width, margin, gender, id }) => {
             accessibility: user.accessibility,
           })
           .then((resp) => {
+            setFavorite(false);
             dispatch(loginAction());
             snackbarHandler("Removed from favorites", "error");
-            setFavorite(false);
           })
           .catch((error) => {});
       }

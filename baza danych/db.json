@@ -2260,76 +2260,336 @@
       "surname": "Programista",
       "email": "admin@admin.com",
       "password": "x61Ey612Kl2gpFL56FT9weDnpSo4AV8j8+qx2AuTHdRyY036xxzTTrw10Wq3+4qQyB+XURPWx1ONxp3Y3pB37A==",
-      "accessibility": "headAdmin",
       "favorites": [
         {
-          "id": 23,
-          "name": "Slim trousers with pockets",
-          "item": "trousers",
+          "id": 13,
+          "name": "Elegant coat with wool",
+          "item": "coats",
           "amount": 1000,
-          "price": 12.99,
-          "desc": "zip and hook fastening, high waist",
+          "price": 39.99,
+          "desc": "notch lapels, single-breasted button fastening, open front pockets, practical single vented back hem",
           "discount": true,
-          "beforeDiscount": 24.99,
+          "beforeDiscount": 79.99,
           "material": [
             {
+              "fabric": "wool",
+              "percentage": "50"
+            },
+            {
               "fabric": "polyester",
-              "percentage": "100"
+              "percentage": "42"
+            },
+            {
+              "fabric": "acrylic",
+              "percentage": "4"
+            },
+            {
+              "fabric": "polyamide",
+              "percentage": "2"
+            },
+            {
+              "fabric": "viscose",
+              "percentage": "2"
             }
           ],
           "images": [
             {
-              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-001_11.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-001_16.jpg"
             },
             {
-              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-002_11.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-002_16.jpg"
             },
             {
-              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-003_11.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-003_16.jpg"
             },
             {
-              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-004_11.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-004_16.jpg"
             },
             {
-              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-005_11.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-005_16.jpg"
             },
             {
-              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-006_11.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-040_17.jpg"
+            }
+          ],
+          "gender": "man"
+        },
+        {
+          "id": 28,
+          "name": "Coat with wool",
+          "item": "coats",
+          "amount": "1000",
+          "price": "49.99",
+          "desc": "Fitted box coat made of thick, soft jersey fabric with wool blend.",
+          "discount": true,
+          "beforeDiscount": "79.99",
+          "material": [
+            {
+              "id": 0,
+              "fabric": "polyester",
+              "percentage": "60"
             },
             {
-              "img": "https://www.reserved.com/media/catalog/product/Y/R/YR958-80M-040_12.jpg"
+              "id": 1,
+              "fabric": "wool",
+              "percentage": "40"
+            }
+          ],
+          "images": [
+            {
+              "id": 0,
+              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-001_15.jpg"
+            },
+            {
+              "id": 1,
+              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-002_15.jpg"
+            },
+            {
+              "id": 2,
+              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-003_15.jpg"
+            },
+            {
+              "id": 3,
+              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-004_15.jpg"
+            },
+            {
+              "id": 4,
+              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-005_15.jpg"
+            },
+            {
+              "id": 5,
+              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-006_15.jpg"
+            },
+            {
+              "id": 6,
+              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-040_17.jpg"
+            }
+          ],
+          "gender": "man"
+        },
+        {
+          "id": 22,
+          "name": "Bum bag",
+          "item": "bags",
+          "amount": 1000,
+          "price": 12.99,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-001_4.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-041_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-002_4.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-042_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-003_4.jpg"
+            }
+          ],
+          "gender": "man"
+        },
+        {
+          "id": 18,
+          "name": "Lightweight jumper with viscose blend",
+          "item": "sweaters",
+          "amount": 1000,
+          "price": 14.99,
+          "desc": "round neck with trimming",
+          "material": [
+            {
+              "fabric": "viscose",
+              "percentage": "70"
+            },
+            {
+              "fabric": "polyamide",
+              "percentage": "30"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/0/9/0983C-99X-001_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/0/9/0983C-99X-002_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/0/9/0983C-99X-003_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/0/9/0983C-99X-040_1.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/0/9/0983C-99X-041_1.jpg"
             }
           ],
           "gender": "woman"
         },
         {
-          "id": 24,
-          "name": "Bum bag with chain detail",
-          "item": "bags",
+          "id": 3,
+          "name": "Cropped cardigan with V neck",
+          "item": "sweaters",
           "amount": 1000,
           "price": 19.99,
-          "desc": "zip fastening, smooth lining on the inside",
+          "desc": "high round neck",
           "material": [
             {
-              "fabric": "pvc",
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-001_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-002_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-003_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-040_1.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-041_1.jpg"
+            }
+          ],
+          "gender": "woman"
+        },
+        {
+          "id": 19,
+          "name": "Quilted jacket with high neck",
+          "item": "puffer-jackets",
+          "amount": 1000,
+          "price": 29.99,
+          "desc": "low stand up collar with press stud fastening, zip fastening, side pockets with press studs, long sleeves",
+          "material": [
+            {
+              "fabric": "polyamide",
               "percentage": "100"
             }
           ],
           "images": [
             {
-              "img": "https://www.reserved.com/media/catalog/product/Z/Y/ZY089-99X-001_14.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-001_12.jpg"
             },
             {
-              "img": "https://www.reserved.com/media/catalog/product/Z/Y/ZY089-99X-002_14.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-002_12.jpg"
             },
             {
-              "img": "https://www.reserved.com/media/catalog/product/Z/Y/ZY089-99X-003_14.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-003_12.jpg"
             },
             {
-              "img": "https://www.reserved.com/media/catalog/product/Z/Y/ZY089-99X-020_14.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-004_12.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-005_12.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-006_12.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-040_12.jpg"
             }
           ],
-          "gender": "woman"
+          "gender": "man"
+        },
+        {
+          "id": 29,
+          "name": "Quilted jacket with standing collar",
+          "item": "puffer-jackets",
+          "amount": "1000",
+          "price": "29.99",
+          "desc": "low stand up collar with press stud, fastening front zip up fastening",
+          "discount": "false",
+          "beforeDiscount": "",
+          "material": [
+            {
+              "id": 0,
+              "fabric": "polyamide",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "id": 0,
+              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI497-59X-001_4.jpg"
+            },
+            {
+              "id": 1,
+              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI497-59X-002_4.jpg"
+            },
+            {
+              "id": 2,
+              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI497-59X-003_4.jpg"
+            },
+            {
+              "id": 3,
+              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI497-59X-004_4.jpg"
+            },
+            {
+              "id": 4,
+              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI497-59X-005_4.jpg"
+            }
+          ],
+          "gender": "man"
+        },
+        {
+          "id": 14,
+          "name": "Quilted jacket with hood",
+          "item": "puffer-jackets",
+          "amount": 1000,
+          "price": 39.99,
+          "desc": "high collar with hood, front zip up fastening, zipped chest pocket, side pocket, with press stud fastening, sleeve and hem narrow ribbing, quilted lining on the inside",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/X/K/XK344-99X-001_24.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/X/K/XK344-99X-002_24.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/X/K/XK344-99X-003_24.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/X/K/XK344-99X-004_24.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/X/K/XK344-99X-005_24.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/X/K/XK344-99X-006_24.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/X/K/XK344-99X-040_24.jpg"
+            }
+          ],
+          "gender": "man"
         }
       ],
       "isLogged": true,
@@ -2355,6 +2615,7 @@
           "id": 2
         }
       ],
+      "accessibility": "headAdmin",
       "id": 1
     },
     {
@@ -2489,7 +2750,7 @@
       "date": "16.02.2021",
       "time": "11:21:47",
       "usersId": 1,
-      "status": "new",
+      "status": "packing",
       "delivery": "dhl",
       "cartPrice": 52.98,
       "deliveryPrice": 2.99,
@@ -2546,7 +2807,7 @@
       "date": "16.02.2021",
       "time": "18:20:03",
       "usersId": 1,
-      "status": "new",
+      "status": "received",
       "delivery": "standard",
       "cartPrice": 59.97,
       "deliveryPrice": 1.99,

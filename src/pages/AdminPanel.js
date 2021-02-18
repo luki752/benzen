@@ -3,14 +3,12 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 //router
 import { useLocation } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 //actions
 import { loginAction, loadUsers } from "../actions/loginAction";
 import { loadOrders } from "../actions/ordersAction";
 //redux
 import { useDispatch, useSelector } from "react-redux";
-//axios
-import axios from "axios";
 //material ui
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -19,8 +17,12 @@ import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Pagination from "@material-ui/lab/Pagination";
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 //icons
 import SearchIcon from "@material-ui/icons/Search";
+//components
+import Order from "../components/Order";
+import User from "../components/User";
 
 const AdminPanel = () => {
   const dispatch = useDispatch();
@@ -31,22 +33,35 @@ const AdminPanel = () => {
   const { orders } = useSelector((state) => state.orders);
   const { user, users, isLogged } = useSelector((state) => state.login);
   const location = useLocation();
+  const history = useHistory();
   const pathName = location.pathname.split("/")[3];
+  const details = location.pathname.split("/")[4];
   //orders state
+  const [order, setOrder] = useState([]);
   const [ordersDate, setOrdersDate] = useState("");
+  const [ordersPage, setOrdersPage] = useState(1);
+  const [ordersPageIndex, setOrdersPageIndex] = useState(1);
   //users state
+  const [userId, setUserId] = useState("");
   const [usersAccess, setUsersAccess] = useState("customer");
-  const [changeAccess, setChangeAccess] = useState("");
   const [usersSearch, setUsersSearch] = useState("");
   const [usersPage, setUsersPage] = useState(1);
   const [pageIndex, setPageIndex] = useState(1);
   //useEffect
   useEffect(() => {
     if (isLogged) {
-      dispatch(loadOrders(ordersDate));
+      dispatch(loadOrders(ordersDate, ordersPage));
       dispatch(loadUsers(usersAccess, usersSearch, usersPage));
     }
-  }, [isLogged, dispatch, usersAccess, usersSearch, usersPage, ordersDate]);
+  }, [
+    isLogged,
+    dispatch,
+    usersAccess,
+    usersSearch,
+    usersPage,
+    ordersDate,
+    ordersPage,
+  ]);
   useEffect(() => {
     if (users.header) {
       if (users.header.link) {
@@ -61,6 +76,20 @@ const AdminPanel = () => {
       }
     }
   }, [users, setPageIndex, isLogged]);
+  useEffect(() => {
+    if (orders.header) {
+      if (orders.header.link) {
+        setOrdersPageIndex(
+          users.headers.link
+            .split(",")
+            [users.headers.link.split(",").length - 1].split(";")[0]
+            .split("&")[3]
+            .split("=")[1]
+            .split("")[0]
+        );
+      }
+    }
+  }, [users, setPageIndex, isLogged, orders.header]);
   //handlers
   const ordersSortHandler = (e) => {
     setOrdersDate(e.target.value);
@@ -68,41 +97,21 @@ const AdminPanel = () => {
   const sortAccessHandler = (e) => {
     setUsersAccess(e.target.value);
   };
-  const usersChangeAccessHandler = (e) => {
-    setChangeAccess(e.target.value);
-  };
-  const changeUsersAccessHandler = (
-    id,
-    name,
-    surname,
-    email,
-    password,
-    favorites,
-    orders,
-    addresses,
-    isLogged
-  ) => {
-    if (changeAccess !== "") {
-      axios
-        .put(`http://localhost:3000/users/${id}/`, {
-          name: name,
-          surname: surname,
-          email: email,
-          password: password,
-          favorites: favorites,
-          orders: orders,
-          addresses: addresses,
-          isLogged: isLogged,
-          accessibility: changeAccess,
-        })
-        .then((resp) => {
-          dispatch(loadUsers(usersAccess, usersSearch));
-        })
-        .catch((error) => {});
-    }
-  };
   const handleUsersPage = (e, v) => {
     setUsersPage(v);
+  };
+  const handleOrdersPage = (e, v) => {
+    setOrdersPage(v);
+  };
+  const orderDetailsHandler = (id, order) => {
+    history.push(`/admin/panel/orders/${id}`);
+    setOrder(order);
+    window.scrollTo(0, 0);
+  };
+  const userDetailsHandler = (id) => {
+    history.push(`/admin/panel/users/${id}`);
+    setUserId(id);
+    window.scrollTo(0, 0);
   };
   return (
     <AdminPanelComponent>
@@ -122,7 +131,7 @@ const AdminPanel = () => {
         </ul>
       </div>
       <div className="right-side">
-        {pathName === "orders" && (
+        {pathName === "orders" && !details && (
           <div className="orders-component">
             <div className="orders-sort">
               <FormControl>
@@ -137,106 +146,152 @@ const AdminPanel = () => {
                 </Select>
               </FormControl>
             </div>
-            {orders.map((order) => (
-              <div className="order" key={order.id}>
-                {order.time}
-              </div>
-            ))}
-          </div>
-        )}
-        {pathName === "users" && (
-          <div className="users-component">
-            <div className="sort-users">
-              <FormControl>
-                <InputLabel className="sort-label">Show only</InputLabel>
-                <Select
-                  value={usersAccess}
-                  onChange={sortAccessHandler}
-                  className="sort-select"
-                >
-                  <MenuItem value="customer">customer</MenuItem>
-                  <MenuItem value="admin">admin</MenuItem>
-                  <MenuItem value="headAdmin">Head admin</MenuItem>
-                </Select>
-              </FormControl>
-              <div className="search-users">
-                <TextField
-                  label="search"
-                  value={usersSearch}
-                  className="users-input"
-                  onChange={(e) => setUsersSearch(e.target.value)}
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <SearchIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </div>
+            <div className="orders">
+              <Breadcrumbs aria-label="breadcrumb">
+                <span>Admin panel</span>
+                <Link to="/admin/panel/orders" className="link">
+                  orders
+                </Link>
+              </Breadcrumbs>
+              {orders.data &&
+                orders.data.length > 0 &&
+                orders.data.map((order) => (
+                  <div className="order" key={order.id}>
+                    <div className="order-left">
+                      <div className="price-info">
+                        <span>Nr:{order.id}</span>
+                        <span>
+                          <b>{order.cartPrice + order.deliveryPrice} GBP</b>
+                        </span>
+                      </div>
+                      <div className="items-image">
+                        {order.items.map((item) => (
+                          <img
+                            src={item.images[0].img}
+                            alt={item.name}
+                            onClick={() => orderDetailsHandler(order.id, order)}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                    <div className="order-right">
+                      <div className="time-info">
+                        <span>
+                          {order.date} {order.time}
+                        </span>
+                        <span>{order.status}</span>
+                      </div>
+                      <div className="details">
+                        <span
+                          className="details-button"
+                          onClick={() => orderDetailsHandler(order.id, order)}
+                        >
+                          Details
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
             </div>
-
-            {users.data &&
-              users.data.length > 0 &&
-              users.data.map((user, index) => (
-                <div
-                  className="user"
-                  key={user.id}
-                  style={{
-                    backgroundColor: index % 2 ? "rgba(0,0,0,0.4)" : "white",
-                  }}
-                >
-                  <div className="personal-info">
-                    <span>{user.name}</span> <span>{user.surname}</span>
-                  </div>
-                  <div className="email">email: {user.email}</div>
-                  <div className="accessibility">
-                    accessibility: {user.accessibility}
-                  </div>
-                  <div className="change-access">
-                    <FormControl>
-                      <InputLabel className="sort-label">
-                        Change accessibility
-                      </InputLabel>
-                      <Select
-                        value={changeAccess}
-                        onChange={usersChangeAccessHandler}
-                        className="sort-select"
-                      >
-                        <MenuItem value="customer">customer</MenuItem>
-                        <MenuItem value="admin">admin</MenuItem>
-                        <MenuItem value="headAdmin">Head admin</MenuItem>
-                      </Select>
-                    </FormControl>
-                    <button
-                      className="button-white"
-                      onClick={() =>
-                        changeUsersAccessHandler(
-                          user.id,
-                          user.name,
-                          user.surname,
-                          user.email,
-                          user.password,
-                          user.favorites,
-                          user.orders,
-                          user.addresses,
-                          user.isLogged
-                        )
-                      }
-                    >
-                      change
-                    </button>
-                  </div>
-                </div>
-              ))}
-
             <Pagination
-              count={parseInt(pageIndex)}
-              page={usersPage}
-              onChange={handleUsersPage}
+              count={parseInt(ordersPageIndex)}
+              page={ordersPage}
+              onChange={handleOrdersPage}
               className="pagination"
             />
           </div>
+        )}
+        {details && pathName === "orders" && (
+          <>
+            <Breadcrumbs aria-label="breadcrumb">
+              <span>Admin panel</span>
+              <Link to="/admin/panel/orders" className="link">
+                orders
+              </Link>
+              <span>{order.id}</span>
+            </Breadcrumbs>
+            <Order />
+          </>
+        )}
+        {pathName === "users" &&
+          !details &&
+          user.accessibility === "headAdmin" && (
+            <div className="users-component">
+              <div className="sort-users">
+                <FormControl>
+                  <InputLabel className="sort-label">Show only</InputLabel>
+                  <Select
+                    value={usersAccess}
+                    onChange={sortAccessHandler}
+                    className="sort-select"
+                  >
+                    <MenuItem value="customer">customer</MenuItem>
+                    <MenuItem value="admin">admin</MenuItem>
+                    <MenuItem value="headAdmin">Head admin</MenuItem>
+                  </Select>
+                </FormControl>
+                <div className="search-users">
+                  <TextField
+                    label="search"
+                    value={usersSearch}
+                    className="users-input"
+                    onChange={(e) => setUsersSearch(e.target.value)}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <SearchIcon />
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                </div>
+              </div>
+
+              {users.data &&
+                users.data.length > 0 &&
+                users.data.map((user, index) => (
+                  <div
+                    className="user"
+                    key={user.id}
+                    style={{
+                      backgroundColor: index % 2 ? "rgba(0,0,0,0.4)" : "white",
+                    }}
+                  >
+                    <div className="personal-info">
+                      <span>{user.name}</span> <span>{user.surname}</span>
+                    </div>
+                    <div className="email">email: {user.email}</div>
+                    <div className="accessibility">
+                      accessibility: {user.accessibility}
+                    </div>
+                    <div
+                      className="span"
+                      onClick={() => userDetailsHandler(user.id, user)}
+                    >
+                      Details
+                    </div>
+                  </div>
+                ))}
+
+              <Pagination
+                count={parseInt(pageIndex)}
+                page={usersPage}
+                onChange={handleUsersPage}
+                className="pagination"
+              />
+            </div>
+          )}
+        {details && pathName === "users" && (
+          <>
+            <Breadcrumbs aria-label="breadcrumb">
+              <span>Admin panel</span>
+              <Link to="/admin/panel/orders" className="link">
+                users
+              </Link>
+              <span>{userId}</span>
+            </Breadcrumbs>
+            <User />
+          </>
         )}
       </div>
     </AdminPanelComponent>
@@ -254,9 +309,8 @@ const AdminPanelComponent = styled.div`
     width: 20%;
     display: flex;
     flex-direction: Column;
-    align-items: flex-end;
+    align-items: center;
     @media screen and (max-width: 1000px) {
-      align-items: center;
       width: 100%;
     }
     ul {
@@ -267,9 +321,10 @@ const AdminPanelComponent = styled.div`
     }
   }
   .right-side {
-    width: 80%;
+    width: 70%;
     margin-left: 2rem;
     @media screen and (max-width: 1000px) {
+      margin-left: 0;
       width: 100%;
     }
     .orders-component {
@@ -279,7 +334,70 @@ const AdminPanelComponent = styled.div`
       .sort-select {
         width: 10rem;
       }
-      .order {
+      .orders {
+        margin-left: 2rem;
+        @media screen and (max-width: 1000px) {
+          margin-left: 0;
+        }
+        .order {
+          display: flex;
+          justify-content: space-between;
+          font-size: 1.5rem;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+          padding: 1rem;
+
+          .order-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .price-info {
+              display: flex;
+              flex-direction: column;
+              font-size: 1rem;
+            }
+            .items-image {
+              display: flex;
+              flex-wrap: wrap;
+              img {
+                margin: 0.5rem 0.5rem 0.5rem 0;
+                height: 10rem;
+                width: 8rem;
+              }
+            }
+          }
+          .order-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .time-info {
+              display: flex;
+              flex-direction: column;
+              font-size: 1rem;
+              span {
+                align-self: flex-end;
+              }
+            }
+            .details {
+              align-self: flex-end;
+              span {
+                padding: 0.6rem;
+                font-size: 1rem;
+                font-weight: bold;
+                text-transform: upperCase;
+                &:hover {
+                  background-color: rgba(0, 0, 0, 0.2);
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        }
+      }
+      .pagination {
+        display: flex;
+        justify-content: Center;
+        align-items: Center;
+        margin: 1rem;
       }
     }
     .sort-select {

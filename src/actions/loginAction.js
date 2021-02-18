@@ -1,4 +1,4 @@
-import { allUsersUrl, allUsersFilteredUrl } from "../api";
+import { allUsersUrl, allUsersFilteredUrl, specificUser } from "../api";
 import axios from "axios";
 
 //action creator
@@ -21,6 +21,16 @@ export const loadUsers = (access, query, page) => async (dispatch) => {
     type: "FETCH_USERS",
     payload: {
       users: usersData,
+    },
+  });
+};
+
+export const loadUser = (id) => async (dispatch) => {
+  const userData = await axios.get(specificUser(id));
+  dispatch({
+    type: "FETCH_USER",
+    payload: {
+      userDetails: userData.data,
     },
   });
 };

@@ -107,7 +107,14 @@ function App() {
       <Route path="/checkout/order/finalized" exact>
         <FinalizedOrderPage />
       </Route>
-      <Route path="/admin/panel/:id" exact>
+      <Route
+        path={[
+          "/admin/panel/:id",
+          "/admin/panel/orders/:id",
+          "/admin/panel/users/:id",
+        ]}
+        exact
+      >
         <AdminPanel />
       </Route>
       <Footer />

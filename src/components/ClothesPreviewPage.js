@@ -42,7 +42,7 @@ const ClothesPreviewPage = ({ gender }) => {
   }, []);
   useEffect(() => {
     setMV(window.matchMedia("(min-width: 1000px)").matches);
-    setCardWidth(mv ? "25%" : "50%");
+    setCardWidth(mv ? "23%" : "48%");
     setCardHeight(mv ? "30rem" : "20rem");
   }, [size, mv]);
   //dispatch data
@@ -376,7 +376,7 @@ const ClothesPreviewPage = ({ gender }) => {
                 <ViewComfyIcon
                   className={smallView ? "view-icon" : "view-icon active-icon"}
                   onClick={() => {
-                    setCardWidth(mv ? "25%" : "50%");
+                    setCardWidth(mv ? "23%" : "48%");
                     setCardHeight(mv ? "30rem" : "20rem");
                     setSmallView(false);
                   }}
@@ -399,7 +399,7 @@ const ClothesPreviewPage = ({ gender }) => {
                   id={item.id}
                   height={cardHeight}
                   width={cardWidth}
-                  margin="1.5rem 0"
+                  margin={mv ? "1.5rem 0.5rem" : "1rem 0.2rem"}
                   gender={gender}
                 />
               ))}

@@ -1,12 +1,12 @@
-import { allOrders, usersOrders } from "../api";
+import { allOrders, usersOrders, specificOrder } from "../api";
 import axios from "axios";
 
-export const loadOrders = (sortOrder) => async (dispatch) => {
-  const ordersData = await axios.get(allOrders(sortOrder));
+export const loadOrders = (sortOrder, page) => async (dispatch) => {
+  const ordersData = await axios.get(allOrders(sortOrder, page));
   dispatch({
     type: "ALL_ORDERS",
     payload: {
-      orders: ordersData.data,
+      orders: ordersData,
     },
   });
 };
@@ -17,6 +17,19 @@ export const loadUsersOrders = (id) => async (dispatch) => {
     type: "USER_ORDERS",
     payload: {
       userOrders: userOrdersData.data,
+    },
+  });
+};
+
+export const loadSpecificOrder = (id) => async (dispatch) => {
+  dispatch({
+    type: "LOADING_DETAIL",
+  });
+  const orderData = await axios.get(specificOrder(id));
+  dispatch({
+    type: "FETCH_ORDER",
+    payload: {
+      order: orderData.data,
     },
   });
 };

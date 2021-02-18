@@ -2,6 +2,7 @@ const initState = {
   isLogged: false,
   user: [],
   users: [],
+  userDetails: [],
 };
 
 const loginReducer = (state = initState, action) => {
@@ -22,6 +23,11 @@ const loginReducer = (state = initState, action) => {
       return {
         ...state,
         users: action.payload.users,
+      };
+    case "FETCH_USER":
+      return {
+        ...state,
+        userDetails: action.payload.userDetails,
       };
     default:
       return { ...state };
