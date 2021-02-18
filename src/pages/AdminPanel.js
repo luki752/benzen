@@ -99,9 +99,11 @@ const AdminPanel = () => {
   };
   const handleUsersPage = (e, v) => {
     setUsersPage(v);
+    window.scrollTo(0, 0);
   };
   const handleOrdersPage = (e, v) => {
     setOrdersPage(v);
+    window.scrollTo(0, 0);
   };
   const orderDetailsHandler = (id, order) => {
     history.push(`/admin/panel/orders/${id}`);

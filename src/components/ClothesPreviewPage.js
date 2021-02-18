@@ -18,6 +18,8 @@ import ViewComfyIcon from "@material-ui/icons/ViewComfy";
 import ViewColumnIcon from "@material-ui/icons/ViewColumn";
 //components
 import Card from "../components/Card";
+//scroll bottom
+import { useBottomScrollListener } from "react-bottom-scroll-listener";
 
 const ClothesPreviewPage = ({ gender }) => {
   //state
@@ -27,6 +29,7 @@ const ClothesPreviewPage = ({ gender }) => {
   const [mv, setMV] = useState(false);
   const [cardWidth, setCardWidth] = useState();
   const [cardHeight, setCardHeight] = useState();
+  const [limit, setLimit] = useState(20);
   const location = useLocation();
   const item = location.pathname.split("/")[3];
   const subItem = location.pathname.split("/")[4];
@@ -42,21 +45,27 @@ const ClothesPreviewPage = ({ gender }) => {
   }, []);
   useEffect(() => {
     setMV(window.matchMedia("(min-width: 1000px)").matches);
-    setCardWidth(mv ? "23%" : "48%");
+    setCardWidth(mv ? "24%" : "48%");
     setCardHeight(mv ? "30rem" : "20rem");
   }, [size, mv]);
   //dispatch data
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loadItems(gender, category, subItem ? subItem : item, sort));
+    dispatch(
+      loadItems(gender, category, subItem ? subItem : item, sort, limit)
+    );
     dispatch(loginAction());
-  }, [dispatch, gender, category, item, sort, subItem]);
+  }, [dispatch, gender, category, item, sort, subItem, limit]);
   //get data back
   const { items, isLoading } = useSelector((state) => state.item);
   //handlers
   const handleSort = (event) => {
     setSort(event.target.value);
   };
+  const handleLimit = () => {
+    setLimit(limit + 20);
+  };
+  useBottomScrollListener(handleLimit);
   return (
     <>
       {!isLoading && (
@@ -376,7 +385,7 @@ const ClothesPreviewPage = ({ gender }) => {
                 <ViewComfyIcon
                   className={smallView ? "view-icon" : "view-icon active-icon"}
                   onClick={() => {
-                    setCardWidth(mv ? "23%" : "48%");
+                    setCardWidth(mv ? "24%" : "48%");
                     setCardHeight(mv ? "30rem" : "20rem");
                     setSmallView(false);
                   }}
@@ -384,7 +393,7 @@ const ClothesPreviewPage = ({ gender }) => {
                 <ViewColumnIcon
                   className={smallView ? "view-icon active-icon" : "view-icon"}
                   onClick={() => {
-                    setCardWidth(mv ? "33%" : "90%");
+                    setCardWidth(mv ? "32%" : "90%");
                     setCardHeight(mv ? "40rem" : "24rem");
                     setSmallView(true);
                   }}
@@ -399,7 +408,7 @@ const ClothesPreviewPage = ({ gender }) => {
                   id={item.id}
                   height={cardHeight}
                   width={cardWidth}
-                  margin={mv ? "1.5rem 0.5rem" : "1rem 0.2rem"}
+                  margin={mv ? "1.5rem 0.3rem" : "1rem 0.2rem"}
                   gender={gender}
                 />
               ))}
@@ -416,6 +425,7 @@ const ClothesPreviewPageComponent = styled.div`
   min-height: 90vw;
   display: flex;
   margin-top: 2rem;
+
   .left-side {
     position: fixed;
     display: flex;

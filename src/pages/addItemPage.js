@@ -81,7 +81,6 @@ const AddItemPage = () => {
       item !== "" &&
       amount !== "" &&
       price !== "" &&
-      description !== "" &&
       materials.length !== 0 &&
       images.length !== 0
     ) {
@@ -111,7 +110,8 @@ const AddItemPage = () => {
           setPrice("");
           setMaterials([]);
           setImages([]);
-          window.location.reload();
+          dispatch(loginAction());
+          window.scrollTo(0, 0);
         })
         .catch((error) => {});
     } else {

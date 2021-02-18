@@ -1,5 +1,5 @@
-export const itemsUrl = (gender, category, item, sortOrder) =>
-  `http://localhost:3000/${gender}?category=${category}&item=${item}&_sort=price&_order=${sortOrder} `;
+export const itemsUrl = (gender, category, item, sortOrder, page) =>
+  `http://localhost:3000/${gender}?category=${category}&item=${item}&_sort=price&_order=${sortOrder}&_limit=${page} `;
 
 export const specificItemUrl = (gender, id) =>
   `http://localhost:3000/${gender}/${id}`;

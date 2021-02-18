@@ -8,7 +8,7 @@ import {
 } from "../api";
 
 //action creator
-export const loadItems = (gender, category, item, sortOrder) => async (
+export const loadItems = (gender, category, item, sortOrder, page) => async (
   dispatch
 ) => {
   dispatch({
@@ -16,7 +16,7 @@ export const loadItems = (gender, category, item, sortOrder) => async (
   });
   //fetch axios
   const itemsData = await axios.get(
-    itemsUrl(gender, category, item, sortOrder)
+    itemsUrl(gender, category, item, sortOrder, page)
   );
   dispatch({
     type: "FETCH_ITEMS",
