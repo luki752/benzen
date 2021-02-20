@@ -163,7 +163,10 @@ const AdminPanel = () => {
                       <div className="price-info">
                         <span>Nr:{order.id}</span>
                         <span>
-                          <b>{order.cartPrice + order.deliveryPrice} GBP</b>
+                          <b>
+                            {(order.cartPrice + order.deliveryPrice).toFixed(2)}{" "}
+                            GBP
+                          </b>
                         </span>
                       </div>
                       <div className="items-image">
@@ -171,6 +174,7 @@ const AdminPanel = () => {
                           <img
                             src={item.images[0].img}
                             alt={item.name}
+                            key={item.id}
                             onClick={() => orderDetailsHandler(order.id, order)}
                           />
                         ))}

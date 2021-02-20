@@ -463,7 +463,10 @@ const AccountPage = () => {
                               <span>Nr:{order.id}</span>
                               <span>
                                 <b>
-                                  {order.cartPrice + order.deliveryPrice} GBP
+                                  {(
+                                    order.cartPrice + order.deliveryPrice
+                                  ).toFixed(2)}{" "}
+                                  GBP
                                 </b>
                               </span>
                             </div>
@@ -472,6 +475,7 @@ const AccountPage = () => {
                                 <img
                                   src={item.images[0].img}
                                   alt={item.name}
+                                  key={item.id}
                                   onClick={() =>
                                     orderDetailsHandler(order.id, order)
                                   }

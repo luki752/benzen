@@ -145,7 +145,9 @@ const Order = () => {
                 </div>
                 <div className="full-price">
                   <span>Total with vat:</span>
-                  <span>{order.cartPrice + order.deliveryPrice} GBP</span>
+                  <span>
+                    {(order.cartPrice + order.deliveryPrice).toFixed(2)} GBP
+                  </span>
                 </div>
               </div>
             </div>

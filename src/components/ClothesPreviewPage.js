@@ -19,7 +19,7 @@ import ViewColumnIcon from "@material-ui/icons/ViewColumn";
 //components
 import Card from "../components/Card";
 //scroll bottom
-import { useBottomScrollListener } from "react-bottom-scroll-listener";
+import { BottomScrollListener } from "react-bottom-scroll-listener";
 
 const ClothesPreviewPage = ({ gender }) => {
   //state
@@ -65,11 +65,11 @@ const ClothesPreviewPage = ({ gender }) => {
   const handleLimit = () => {
     setLimit(limit + 20);
   };
-  useBottomScrollListener(handleLimit);
   return (
     <>
       {!isLoading && (
         <ClothesPreviewPageComponent>
+          <BottomScrollListener onBottom={handleLimit} offset={700} />
           <div className="left-side">
             <ul>
               <Link to={`/${gender}/clothes/outerwear/coats`} className="link">
