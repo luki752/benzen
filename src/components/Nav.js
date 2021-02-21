@@ -1192,6 +1192,7 @@ const LoginDropdown = styled.div`
     .greetings {
       display: flex;
       justify-content: space-between;
+      font-size: 0.8rem;
       .log-out {
         color: black;
         &:hover {

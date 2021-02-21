@@ -152,7 +152,6 @@ const CardComponent = styled.div`
     object-position: center;
   }
   .price {
-    height: 2%;
     font-size: 0.8rem;
     display: flex;
     @media screen and (max-width: 1000px) {
@@ -169,9 +168,10 @@ const CardComponent = styled.div`
     }
   }
   .name {
-    height: 5%;
+    height: 1rem;
     padding: 2px 0;
-    color: rgba(0, 0, 0, 0.6);
+    font-weight: bold;
+    font-size: 0.8rem;
     @media screen and (max-width: 1000px) {
       font-size: 0.6rem;
     }

@@ -15,7 +15,7 @@ const FinalizedOrderPage = () => {
   return (
     <FinalizedComponent>
       <h2>
-        Your Payment was <b>successfull</b>
+        Your payment was <b>successful</b>
       </h2>
       <span>We are packing your order!</span>
       <DoneAllIcon className="icon" />

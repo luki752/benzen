@@ -123,7 +123,7 @@ const AddItemPage = () => {
       <Link to="/admin/panel/orders">
         <button className="button-black">
           <ArrowLeftIcon />
-          Go back to your acc
+          Go back to admins panel
         </button>
       </Link>
       {user.email === "admin@admin.com" && (
@@ -155,6 +155,75 @@ const AddItemPage = () => {
               </Select>
             </FormControl>
           </div>
+          {gender === "woman" && category === "shoes" && (
+            <div className="option">
+              item:{" "}
+              <FormControl>
+                <Select
+                  value={item}
+                  onChange={(e) => setItem(e.target.value)}
+                  className="select"
+                >
+                  <MenuItem value="heels">heels</MenuItem>
+                  <MenuItem value="flats">flats</MenuItem>
+                  <MenuItem value="sneakers">sneakers</MenuItem>
+                  <MenuItem value="boots">boots</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+          )}
+          {category === "accessories" && (
+            <div className="option">
+              item:{" "}
+              <FormControl>
+                <Select
+                  value={item}
+                  onChange={(e) => setItem(e.target.value)}
+                  className="select"
+                >
+                  <MenuItem value="bags">bags</MenuItem>
+                  <MenuItem value="gloves">gloves</MenuItem>
+                  <MenuItem value="hats">hats</MenuItem>
+                  <MenuItem value="scarves">scarves</MenuItem>
+                  <MenuItem value="socks">socks</MenuItem>
+                  {gender === "man" && <MenuItem value="shoes">shoes</MenuItem>}
+                </Select>
+              </FormControl>
+            </div>
+          )}
+          {category === "clothes" && (
+            <div className="option">
+              item:{" "}
+              <FormControl>
+                <Select
+                  value={item}
+                  onChange={(e) => setItem(e.target.value)}
+                  className="select"
+                >
+                  <MenuItem value="coats">coats</MenuItem>
+                  <MenuItem value="jackets">jackets</MenuItem>
+                  <MenuItem value="puffer-jackets">puffer-jackets</MenuItem>
+                  <MenuItem value="shirts">shirts</MenuItem>
+                  <MenuItem value="sweatshirts">sweatshirts</MenuItem>
+                  <MenuItem value="sweaters">sweaters</MenuItem>
+                  <MenuItem value="trousers">trousers</MenuItem>
+                  <MenuItem value="t-shirts">t-shirts</MenuItem>
+                  <MenuItem value="jeans">jeans</MenuItem>
+                  <MenuItem value="blazers">blazers</MenuItem>
+                  <MenuItem value="nightwear">nightwear</MenuItem>
+                  <MenuItem value="polos">polos</MenuItem>
+                  <MenuItem value="suits">suits</MenuItem>
+                  <MenuItem value="underwear">underwear</MenuItem>
+                  <MenuItem value="vests">vests</MenuItem>
+                  <MenuItem value="dresses">dresses</MenuItem>
+                  <MenuItem value="skirts">skirts</MenuItem>
+                  <MenuItem value="biker-jackets">biker-jackets</MenuItem>
+                  <MenuItem value="lingerie">lingerie</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+          )}
+
           <div className="option">
             Name:{" "}
             <TextField
@@ -163,61 +232,7 @@ const AddItemPage = () => {
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div className="option">
-            item:{" "}
-            <FormControl>
-              <Select
-                value={item}
-                onChange={(e) => setItem(e.target.value)}
-                className="select"
-              >
-                <MenuItem value="coats">coats</MenuItem>
-                <MenuItem value="jackets">jackets</MenuItem>
-                <MenuItem value="puffer-jackets">puffer-jackets</MenuItem>
-                <MenuItem value="shirts">shirts</MenuItem>
-                <MenuItem value="sweatshirts">sweatshirts</MenuItem>
-                <MenuItem value="trousers">trousers</MenuItem>
-                <MenuItem value="t-shirts">t-shirts</MenuItem>
-                <MenuItem value="jeans">jeans</MenuItem>
-                <MenuItem value="blazers">blazers</MenuItem>
-                <MenuItem value="nightwear">nightwear</MenuItem>
-                <MenuItem value="polos">polos</MenuItem>
-                <MenuItem value="suits">suits</MenuItem>
-                <MenuItem value="underwear">underwear</MenuItem>
-                <MenuItem value="vests">vests</MenuItem>
-                <MenuItem value="dresses">dresses</MenuItem>
-                <MenuItem value="skirts">skirts</MenuItem>
-                <MenuItem value="biker-jackets">biker-jackets</MenuItem>
-                <MenuItem value="lingerie">lingerie</MenuItem>
-                <MenuItem value="bags">bags</MenuItem>
-                <MenuItem value="gloves">gloves</MenuItem>
-                <MenuItem value="hats">hats</MenuItem>
-                <MenuItem value="scarves">scarves</MenuItem>
-                <MenuItem value="boots">boots</MenuItem>
-                <MenuItem value="heels">heels</MenuItem>
-                <MenuItem value="flats">flats</MenuItem>
-                <MenuItem value="sneakers">sneakers</MenuItem>
-              </Select>
-            </FormControl>
-          </div>
-          <div className="option">
-            price:{" "}
-            <TextField
-              className="input"
-              value={price}
-              type="number"
-              onChange={(e) => setPrice(e.target.value)}
-            />
-          </div>
-          <div className="option">
-            amount:{" "}
-            <TextField
-              className="input"
-              value={amount}
-              type="number"
-              onChange={(e) => setAmount(e.target.value)}
-            />
-          </div>
+
           <div className="option">
             discount:
             <FormControl>
@@ -242,6 +257,25 @@ const AddItemPage = () => {
               />
             </div>
           )}
+          <div className="option">
+            price:{" "}
+            <TextField
+              className="input"
+              value={price}
+              type="number"
+              onChange={(e) => setPrice(e.target.value)}
+            />
+          </div>
+          <div className="option">
+            amount:{" "}
+            <TextField
+              className="input"
+              value={amount}
+              type="number"
+              onChange={(e) => setAmount(e.target.value)}
+            />
+          </div>
+
           <div className="option">
             description:{" "}
             <TextField

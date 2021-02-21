@@ -1350,7 +1350,7 @@
     {
       "name": "Cotton t-shirt with print",
       "item": "t-shirts",
-      "amount": "1000",
+      "amount": 997,
       "category": "clothes",
       "discount": false,
       "beforeDiscount": "",
@@ -1875,7 +1875,7 @@
     },
     {
       "name": "Classic cotton jumper",
-      "item": "sweatshirts",
+      "item": "sweaters",
       "amount": "1000",
       "category": "clothes",
       "discount": false,
@@ -2376,6 +2376,209 @@
         }
       ],
       "id": 61
+    },
+    {
+      "name": "Classic sneakers",
+      "item": "shoes",
+      "amount": "1000",
+      "category": "accessories",
+      "discount": false,
+      "beforeDiscount": "",
+      "price": "25.99",
+      "desc": "round toes",
+      "material": [
+        {
+          "id": 0,
+          "fabric": "polyurethane",
+          "percentage": "100"
+        }
+      ],
+      "images": [
+        {
+          "id": 0,
+          "img": "https://www.reserved.com/media/catalog/product/S/Z/SZ517-99X-040.jpg"
+        },
+        {
+          "id": 1,
+          "img": "https://www.reserved.com/media/catalog/product/S/Z/SZ517-99X-001_2.jpg"
+        },
+        {
+          "id": 2,
+          "img": "https://www.reserved.com/media/catalog/product/S/Z/SZ517-99X-002_2.jpg"
+        },
+        {
+          "id": 3,
+          "img": "https://www.reserved.com/media/catalog/product/S/Z/SZ517-99X-003_2.jpg"
+        },
+        {
+          "id": 4,
+          "img": "https://www.reserved.com/media/catalog/product/S/Z/SZ517-99X-004_2.jpg"
+        }
+      ],
+      "id": 62
+    },
+    {
+      "name": "Faux leather bag",
+      "item": "bags",
+      "amount": "1000",
+      "category": "accessories",
+      "discount": "false",
+      "beforeDiscount": "",
+      "price": "39.99",
+      "desc": "zip fastening",
+      "material": [
+        {
+          "id": 1,
+          "fabric": "polyurethane",
+          "percentage": "100"
+        }
+      ],
+      "images": [
+        {
+          "id": 6,
+          "img": "https://www.reserved.com/media/catalog/product/Z/W/ZW814-99X-001_2.jpg"
+        },
+        {
+          "id": 7,
+          "img": "https://www.reserved.com/media/catalog/product/Z/W/ZW814-99X-002_2.jpg"
+        },
+        {
+          "id": 8,
+          "img": "https://www.reserved.com/media/catalog/product/Z/W/ZW814-99X-003_2.jpg"
+        },
+        {
+          "id": 9,
+          "img": "https://www.reserved.com/media/catalog/product/Z/W/ZW814-99X-004_2.jpg"
+        }
+      ],
+      "id": 63
+    },
+    {
+      "name": "NASA cap",
+      "item": "hats",
+      "amount": "1000",
+      "category": "accessories",
+      "discount": "false",
+      "beforeDiscount": "",
+      "price": "12.99",
+      "desc": "",
+      "material": [
+        {
+          "id": 2,
+          "fabric": "polyester",
+          "percentage": "100"
+        }
+      ],
+      "images": [
+        {
+          "id": 11,
+          "img": "https://www.reserved.com/media/catalog/product/9/1/9157D-99X-001_2.jpg"
+        },
+        {
+          "id": 12,
+          "img": "https://www.reserved.com/media/catalog/product/9/1/9157D-99X-002_2.jpg"
+        }
+      ],
+      "id": 64
+    },
+    {
+      "name": "Plaid scarf with fringes",
+      "item": "scarves",
+      "amount": "1000",
+      "category": "accessories",
+      "discount": "true",
+      "beforeDiscount": "14.99",
+      "price": "3.99",
+      "desc": "ECO AWARE\n\nRecycled polyester is a synthetic fibre derived from PET plastic bottles and/or recycled post-consumption materials in a process that allows for the reduction of water and energy consumption. Fabrics made from recycled polyester are durable, quick-drying and stretch-resistant.",
+      "material": [
+        {
+          "id": 3,
+          "fabric": "acrylic",
+          "percentage": "65"
+        },
+        {
+          "id": 4,
+          "fabric": "polyester",
+          "percentage": "35"
+        }
+      ],
+      "images": [
+        {
+          "id": 16,
+          "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH261-28X-001.jpg"
+        },
+        {
+          "id": 17,
+          "img": "https://www.reserved.com/media/catalog/product/Z/H/ZH261-28X-002.jpg"
+        }
+      ],
+      "id": 65
+    },
+    {
+      "name": "Leather gloves",
+      "item": "gloves",
+      "amount": "1000",
+      "category": "accessories",
+      "discount": "true",
+      "beforeDiscount": "29.99",
+      "price": "12.99",
+      "desc": "",
+      "material": [
+        {
+          "id": 5,
+          "fabric": "leather",
+          "percentage": "100"
+        }
+      ],
+      "images": [
+        {
+          "id": 18,
+          "img": "https://www.reserved.com/media/catalog/product/W/L/WL878-99X-001.jpg"
+        },
+        {
+          "id": 22,
+          "img": "https://www.reserved.com/media/catalog/product/W/L/WL878-99X-002.jpg"
+        }
+      ],
+      "id": 66
+    },
+    {
+      "name": "Patterned socks 2 pack",
+      "item": "socks",
+      "amount": "1000",
+      "category": "accessories",
+      "discount": "false",
+      "beforeDiscount": "",
+      "price": "7.99",
+      "desc": "",
+      "material": [
+        {
+          "id": 0,
+          "fabric": "cotton",
+          "percentage": "70"
+        },
+        {
+          "id": 1,
+          "fabric": "polyester",
+          "percentage": "27"
+        },
+        {
+          "id": 2,
+          "fabric": "elastane",
+          "percentage": "3"
+        }
+      ],
+      "images": [
+        {
+          "id": 0,
+          "img": "https://www.reserved.com/media/catalog/product/Z/X/ZX388-90X-001_2.jpg"
+        },
+        {
+          "id": 1,
+          "img": "https://www.reserved.com/media/catalog/product/Z/X/ZX388-90X-002_2.jpg"
+        }
+      ],
+      "id": 67
     }
   ],
   "woman": [
@@ -4797,6 +5000,66 @@
         }
       ],
       "id": 12
+    },
+    {
+      "items": [
+        {
+          "name": "Cotton t-shirt with print",
+          "item": "t-shirts",
+          "amount": "1000",
+          "category": "clothes",
+          "discount": false,
+          "beforeDiscount": "",
+          "price": "7.99",
+          "desc": "model’s height: 187 cm",
+          "material": [
+            {
+              "id": 4,
+              "fabric": "cotton",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "id": 10,
+              "img": "https://www.reserved.com/media/catalog/product/2/4/2418C-99X-030_1.jpg"
+            },
+            {
+              "id": 11,
+              "img": "https://www.reserved.com/media/catalog/product/2/4/2418C-99X-040_3.jpg"
+            },
+            {
+              "id": 12,
+              "img": "https://www.reserved.com/media/catalog/product/2/4/2418C-99X-041_3.jpg"
+            }
+          ],
+          "id": 37,
+          "cartAmount": 3,
+          "gender": "man",
+          "size": "l"
+        }
+      ],
+      "date": "21.02.2021",
+      "time": "14:13:43",
+      "usersId": 1,
+      "status": "new",
+      "delivery": "standard",
+      "cartPrice": 23.97,
+      "deliveryPrice": 1.99,
+      "payment": "blik",
+      "address": [
+        {
+          "name": "Łukasz",
+          "surname": "Programista",
+          "city": "Urugwaj",
+          "postalCode": "24-560",
+          "street": "kwiatowa",
+          "houseNr": "5",
+          "phone": "123456789",
+          "email": "admin@admin.com"
+        }
+      ],
+      "id": 13
     }
   ]
 }

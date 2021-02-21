@@ -2,7 +2,7 @@ import React, { useEffect, useState, useLayoutEffect } from "react";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //actions
-import { loadItems } from "../actions/itemsAction";
+import { loadItems, loadAllItems } from "../actions/itemsAction";
 import { loginAction } from "../actions/loginAction";
 //styling
 import styled from "styled-components";
@@ -55,9 +55,10 @@ const ClothesPreviewPage = ({ gender }) => {
       loadItems(gender, category, subItem ? subItem : item, sort, limit)
     );
     dispatch(loginAction());
+    dispatch(loadAllItems(gender));
   }, [dispatch, gender, category, item, sort, subItem, limit]);
   //get data back
-  const { items, isLoading } = useSelector((state) => state.item);
+  const { items, isLoading, AllItems } = useSelector((state) => state.item);
   //handlers
   const handleSort = (event) => {
     setSort(event.target.value);
@@ -381,7 +382,14 @@ const ClothesPreviewPage = ({ gender }) => {
                 </FormControl>
               </div>
               <div className="display-info">
-                {items.length} {items.length === 1 ? "Product" : "Products"}
+                {
+                  AllItems.filter((specificItem) => specificItem.item === item)
+                    .length
+                }{" "}
+                {AllItems.filter((specificItem) => specificItem.item === item)
+                  .length === 1
+                  ? "Product"
+                  : "Products"}
                 <ViewComfyIcon
                   className={smallView ? "view-icon" : "view-icon active-icon"}
                   onClick={() => {
