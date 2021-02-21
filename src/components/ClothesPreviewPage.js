@@ -54,7 +54,7 @@ const ClothesPreviewPage = ({ gender }) => {
     dispatch(
       loadItems(gender, category, subItem ? subItem : item, sort, limit)
     );
-    dispatch(loginAction());
+    dispatch(loginAction(localStorage.getItem("userId")));
     dispatch(loadAllItems(gender));
   }, [dispatch, gender, category, item, sort, subItem, limit]);
   //get data back

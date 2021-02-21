@@ -15,7 +15,7 @@ const Home = () => {
   };
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loginAction());
+    dispatch(loginAction(localStorage.getItem("userId")));
   }, [dispatch]);
   return (
     <HomeComponent>

@@ -53,7 +53,6 @@ const User = () => {
           favorites: favorites,
           orders: orders,
           addresses: addresses,
-          isLogged: isLogged,
           accessibility: changeAccess,
         })
         .then((resp) => {
@@ -62,8 +61,6 @@ const User = () => {
         .catch((error) => {});
     }
   };
-  console.log(userOrders);
-  console.log(userDetails);
   return (
     <UserComponent>
       {userDetails && (

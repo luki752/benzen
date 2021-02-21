@@ -42,7 +42,7 @@ const SalePage = () => {
   }, [size, mv]);
   useEffect(() => {
     dispatch(loadSale(gender, category, sort));
-    dispatch(loginAction());
+    dispatch(loginAction(localStorage.getItem("userId")));
   }, [dispatch, gender, category, sort]);
   useEffect(() => {
     axios

@@ -27,7 +27,7 @@ import User from "../components/User";
 const AdminPanel = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loginAction());
+    dispatch(loginAction(localStorage.getItem("userId")));
   }, [dispatch]);
   //state
   const { orders } = useSelector((state) => state.orders);

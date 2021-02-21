@@ -57,9 +57,8 @@ const AccountPage = () => {
   //pathName
   const pathName = location.pathname.split("/")[3];
   const orderDetails = location.pathname.split("/")[4];
-
   useEffect(() => {
-    dispatch(loginAction());
+    dispatch(loginAction(localStorage.getItem("userId")));
   }, [dispatch]);
   const { isLogged, user } = useSelector((state) => state.login);
   useEffect(() => {
@@ -84,11 +83,10 @@ const AccountPage = () => {
           password: user.password,
           favorites: user.favorites,
           addresses: user.addresses,
-          isLogged: user.isLogged,
           accessibility: user.accessibility,
         })
         .then((resp) => {
-          dispatch(loginAction());
+          dispatch(loginAction(localStorage.getItem("userId")));
           setPasswordErrorMsg("success");
         })
         .catch((error) => {});
@@ -108,12 +106,11 @@ const AccountPage = () => {
               password: sha512(newPassword).toString(Base64),
               favorites: user.favorites,
               addresses: user.addresses,
-              isLogged: user.isLogged,
               accessibility: user.accessibility,
             })
             .then((resp) => {
               setPasswordErrorMsg("Password changed successfully");
-              dispatch(loginAction());
+              dispatch(loginAction(localStorage.getItem("userId")));
             })
             .catch((error) => {});
         } else {
@@ -172,7 +169,6 @@ const AccountPage = () => {
               street: usersStreet,
               city: usersCity,
               postalCode: usersPostalCode,
-              isLogged: user.isLogged,
               id: addressId,
             })
           : location
@@ -185,11 +181,10 @@ const AccountPage = () => {
           password: user.password,
           favorites: user.favorites,
           addresses: newAddress,
-          isLogged: user.isLogged,
           accessibility: user.accessibility,
         })
         .then((resp) => {
-          dispatch(loginAction());
+          dispatch(loginAction(localStorage.getItem("userId")));
           alert("address changed succesfully");
         })
         .catch((error) => {});
@@ -228,7 +223,6 @@ const AccountPage = () => {
           email: user.email,
           password: user.password,
           favorites: user.favorites,
-          isLogged: user.isLogged,
           accessibility: user.accessibility,
           addresses: [
             ...user.addresses,
@@ -245,7 +239,7 @@ const AccountPage = () => {
           ],
         })
         .then((resp) => {
-          dispatch(loginAction());
+          dispatch(loginAction(localStorage.getItem("userId")));
           alert("Address added successfully");
         })
         .catch((error) => {});
@@ -260,23 +254,8 @@ const AccountPage = () => {
     }
   };
   const LogOutHandler = () => {
-    axios
-      .put(`http://localhost:3000/users/${user.id}/`, {
-        name: user.name,
-        surname: user.surname,
-        email: user.email,
-        password: user.password,
-        favorites: user.favorites,
-        orders: user.orders,
-        addresses: user.addresses,
-        isLogged: false,
-        accessibility: user.accessibility,
-      })
-      .then((resp) => {
-        dispatch(loginAction());
-        history.push("/customer/account/login");
-      })
-      .catch((error) => {});
+    localStorage.removeItem("userId");
+    history.push("/customer/account/login");
   };
   const deleteAddressHandler = (id) => {
     axios
@@ -288,11 +267,10 @@ const AccountPage = () => {
         favorites: user.favorites,
         addresses: user.addresses.filter((info) => info.id !== id),
         orders: user.orders,
-        isLogged: user.isLogged,
         accessibility: user.accessibility,
       })
       .then((resp) => {
-        dispatch(loginAction());
+        dispatch(loginAction(localStorage.getItem("userId")));
         alert("Address deleted successfully");
       })
       .catch((error) => {});

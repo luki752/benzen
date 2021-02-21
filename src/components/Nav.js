@@ -9,7 +9,6 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 //actions
 import { loadQuestion } from "../actions/itemsAction";
-import { loginAction } from "../actions/loginAction";
 //material ui
 import Button from "@material-ui/core/Button";
 import Accordion from "@material-ui/core/Accordion";
@@ -71,22 +70,8 @@ const Nav = () => {
       );
   }, [dispatch]);
   const LogOutHandler = () => {
-    axios
-      .put(`http://localhost:3000/users/${user.id}/`, {
-        name: user.name,
-        surname: user.surname,
-        email: user.email,
-        password: user.password,
-        favorites: user.favorites,
-        addresses: user.addresses,
-        accessibility: user.accessibility,
-        isLogged: false,
-      })
-      .then((resp) => {
-        history.push("/customer/account/login");
-        dispatch(loginAction());
-      })
-      .catch((error) => {});
+    localStorage.removeItem("userId");
+    history.push("/customer/account/login");
   };
   return (
     <NavComponent>

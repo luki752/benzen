@@ -22,7 +22,7 @@ const WomanMainPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadAllItems("woman"));
-    dispatch(loginAction());
+    dispatch(loginAction(localStorage.getItem("userId")));
   }, [dispatch]);
   //get width
   useLayoutEffect(() => {

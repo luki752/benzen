@@ -3755,6 +3755,46 @@
         }
       ],
       "id": 33
+    },
+    {
+      "name": "Quilted coat with lining",
+      "item": "coats",
+      "amount": "1000",
+      "category": "clothes",
+      "discount": "true",
+      "beforeDiscount": "54.99",
+      "price": "19.99",
+      "desc": "placket-concealed zip and press stud fastening,\ntwo pockets with flaps and press stud fastening",
+      "material": [
+        {
+          "id": 3,
+          "fabric": "polyester",
+          "percentage": "100"
+        }
+      ],
+      "images": [
+        {
+          "id": 2,
+          "img": "https://www.reserved.com/media/catalog/product/Y/U/YU213-80X-001_3.jpg"
+        },
+        {
+          "id": 3,
+          "img": "https://www.reserved.com/media/catalog/product/Y/U/YU213-80X-002_3.jpg"
+        },
+        {
+          "id": 4,
+          "img": "https://www.reserved.com/media/catalog/product/Y/U/YU213-80X-003_3.jpg"
+        },
+        {
+          "id": 5,
+          "img": "https://www.reserved.com/media/catalog/product/Y/U/YU213-80X-004_3.jpg"
+        },
+        {
+          "id": 6,
+          "img": "https://www.reserved.com/media/catalog/product/Y/U/YU213-80X-005_3.jpg"
+        }
+      ],
+      "id": 34
     }
   ],
   "users": [
@@ -3763,30 +3803,6 @@
       "surname": "Programista",
       "email": "admin@admin.com",
       "password": "x61Ey612Kl2gpFL56FT9weDnpSo4AV8j8+qx2AuTHdRyY036xxzTTrw10Wq3+4qQyB+XURPWx1ONxp3Y3pB37A==",
-      "addresses": [
-        {
-          "name": "Łukasz",
-          "surname": "Programista",
-          "phone": "123456789",
-          "houseNr": "5",
-          "street": "kwiatowa",
-          "city": "Urugwaj",
-          "postalCode": "24-560",
-          "id": 1
-        },
-        {
-          "name": "Jerzy ",
-          "surname": "asdasd",
-          "phone": "123456123",
-          "houseNr": "2",
-          "street": "1 stycznia",
-          "city": "Libiąż",
-          "postalCode": "32-700",
-          "id": 2
-        }
-      ],
-      "isLogged": true,
-      "accessibility": "headAdmin",
       "favorites": [
         {
           "id": 13,
@@ -3890,42 +3906,6 @@
             {
               "id": 6,
               "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-040_17.jpg"
-            }
-          ],
-          "gender": "man"
-        },
-        {
-          "id": 22,
-          "name": "Bum bag",
-          "item": "bags",
-          "amount": 1000,
-          "price": 12.99,
-          "desc": "high round neck",
-          "material": [
-            {
-              "fabric": "polyamide",
-              "percentage": "92"
-            },
-            {
-              "fabric": "elastane",
-              "percentage": "8"
-            }
-          ],
-          "images": [
-            {
-              "img": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-001_4.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-041_3.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-002_4.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-042_3.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/1/0/1073E-59X-003_4.jpg"
             }
           ],
           "gender": "man"
@@ -4119,6 +4099,29 @@
           "gender": "woman"
         }
       ],
+      "addresses": [
+        {
+          "name": "Łukasz",
+          "surname": "Programista",
+          "phone": "123456789",
+          "houseNr": "5",
+          "street": "kwiatowa",
+          "city": "Urugwaj",
+          "postalCode": "24-560",
+          "id": 1
+        },
+        {
+          "name": "Jerzy ",
+          "surname": "fajowy",
+          "phone": "123456123",
+          "houseNr": "2",
+          "street": "1 stycznia",
+          "city": "Libiąż",
+          "postalCode": "32-700",
+          "id": 2
+        }
+      ],
+      "accessibility": "headAdmin",
       "id": 1
     },
     {
@@ -4136,11 +4139,11 @@
       "name": "duka",
       "surname": "czarny",
       "email": "duka@czarny.pl",
+      "isLogged": true,
       "password": "FqhVyF7msaAcVroQ6G9kRz5VmAyYUQ2yY4C5I97RKQ2jmCV3O2V6FJQI5AYM7auWTGk0JEnGpxzi9bmK094SQw==",
       "favorites": [],
       "addresses": [],
       "accessibility": "customer",
-      "isLogged": false,
       "id": 3
     },
     {

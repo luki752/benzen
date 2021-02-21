@@ -26,7 +26,7 @@ const FavoritesPage = () => {
   }, [size, mv]);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loginAction());
+    dispatch(loginAction(localStorage.getItem("userId")));
   }, [dispatch]);
   //get data back
   const { user, isLogged } = useSelector((state) => state.login);

@@ -21,7 +21,7 @@ const ManMainPage = () => {
   //dispatch
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loginAction());
+    dispatch(loginAction(localStorage.getItem("userId")));
     dispatch(loadAllItems("man"));
   }, [dispatch]);
   //get width

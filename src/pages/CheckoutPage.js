@@ -62,7 +62,7 @@ const CheckoutPage = () => {
   const [email, setEmail] = useState("");
   //useEffect
   useEffect(() => {
-    dispatch(loginAction());
+    dispatch(loginAction(localStorage.getItem("userId")));
   }, [dispatch]);
 
   const { user, isLogged } = useSelector((state) => state.login);
@@ -151,7 +151,6 @@ const CheckoutPage = () => {
           email: user.email,
           password: user.password,
           favorites: user.favorites,
-          isLogged: user.isLogged,
           addresses: [
             ...user.addresses,
             {
@@ -167,7 +166,7 @@ const CheckoutPage = () => {
           ],
         })
         .then((resp) => {
-          dispatch(loginAction());
+          dispatch(loginAction(loginAction(localStorage.getItem("userId"))));
           modalHandler();
         })
         .catch((error) => {});
@@ -209,10 +208,9 @@ const CheckoutPage = () => {
           password: user.password,
           favorites: user.favorites,
           addresses: newAddress,
-          isLogged: user.isLogged,
         })
         .then((resp) => {
-          dispatch(loginAction());
+          dispatch(loginAction(loginAction(localStorage.getItem("userId"))));
           editModalHandler();
         })
         .catch((error) => {});

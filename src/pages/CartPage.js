@@ -26,7 +26,7 @@ const CartPage = () => {
   const [PriceBeforeDiscounts, setPriceBeforeDiscounts] = useState(0);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loginAction());
+    dispatch(loginAction(localStorage.getItem("userId")));
   }, [dispatch]);
   const { cart, cartPrice, discount } = useSelector((state) => state.cart);
   const { user, isLogged } = useSelector((state) => state.login);

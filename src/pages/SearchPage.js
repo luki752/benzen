@@ -42,7 +42,7 @@ const SearchPage = () => {
     setSort(e.target.value);
   };
   useEffect(() => {
-    dispatch(loginAction());
+    dispatch(loginAction(localStorage.getItem("userId")));
   }, [dispatch]);
   return (
     <SearchPageComponent>

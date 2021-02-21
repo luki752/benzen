@@ -21,7 +21,7 @@ const Card = ({ item, height, width, margin, gender, id }) => {
   //snack bar
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   useEffect(() => {
-    dispatch(loginAction());
+    dispatch(loginAction(localStorage.getItem("userId")));
   }, [dispatch]);
   //state
   const { user, isLogged } = useSelector((state) => state.login);
@@ -49,7 +49,6 @@ const Card = ({ item, height, width, margin, gender, id }) => {
           password: user.password,
           orders: user.orders,
           addresses: user.addresses,
-          isLogged: user.isLogged,
           accessibility: user.accessibility,
           favorites: [
             ...user.favorites,
@@ -70,7 +69,7 @@ const Card = ({ item, height, width, margin, gender, id }) => {
         })
         .then((resp) => {
           setFavorite(true);
-          dispatch(loginAction());
+          dispatch(loginAction(localStorage.getItem("userId")));
           snackbarHandler("Added to favorites", "success");
         })
         .catch((error) => {});
@@ -84,13 +83,12 @@ const Card = ({ item, height, width, margin, gender, id }) => {
             password: user.password,
             favorites: user.favorites.filter((item) => item.id !== id),
             orders: user.orders,
-            isLogged: user.isLogged,
             addresses: user.addresses,
             accessibility: user.accessibility,
           })
           .then((resp) => {
             setFavorite(false);
-            dispatch(loginAction());
+            dispatch(loginAction(localStorage.getItem("userId")));
             snackbarHandler("Removed from favorites", "error");
           })
           .catch((error) => {});

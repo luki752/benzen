@@ -76,7 +76,7 @@ const ItemDetailsPage = () => {
   useEffect(() => {
     dispatch(loadSpecificItem(gender, pathId));
     dispatch(loadAllItems(gender));
-    dispatch(loginAction());
+    dispatch(loginAction(localStorage.getItem("userId")));
   }, [dispatch, gender, pathId]);
   //get data back
   const { item, isLoading, AllItems } = useSelector((state) => state.item);

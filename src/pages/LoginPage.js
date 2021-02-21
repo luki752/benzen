@@ -51,7 +51,7 @@ const AccountPage = () => {
   //history
   const history = useHistory();
   useEffect(() => {
-    dispatch(loginAction());
+    dispatch(loginAction(localStorage.getItem("userId")));
   }, [dispatch]);
   //getting width
   useLayoutEffect(() => {
@@ -78,14 +78,14 @@ const AccountPage = () => {
               name: res.data[0].name,
               surname: res.data[0].surname,
               email: res.data[0].email,
-              isLogged: true,
               password: res.data[0].password,
               favorites: res.data[0].favorites,
               addresses: res.data[0].addresses,
               accessibility: res.data[0].accessibility,
             })
             .then((resp) => {
-              dispatch(loginAction());
+              localStorage.setItem("userId", res.data[0].id);
+              dispatch(loginAction(localStorage.getItem("userId")));
               history.push(
                 order ? "/checkout/order" : "/customer/account/orders"
               );
