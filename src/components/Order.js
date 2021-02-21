@@ -110,6 +110,9 @@ const Order = () => {
                         <h3>{item.name}</h3>
                       </Link>
                       <span>size: {item.size}</span>
+                      {item.cartAmount > 1 && (
+                        <span>Amount: {item.cartAmount}</span>
+                      )}
                     </div>
                   </div>
                   <div className="right-item">
@@ -118,7 +121,7 @@ const Order = () => {
                         color: item.discount ? "red" : "black",
                       }}
                     >
-                      {item.price} GBP
+                      {(item.price * item.cartAmount).toFixed(2)} GBP
                     </span>
                     <span
                       style={{

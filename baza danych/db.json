@@ -958,14 +958,13 @@
       ]
     },
     {
-      "id": 27,
       "name": "Gloves with buckle fastening",
       "item": "gloves",
-      "amount": 1000,
+      "amount": 999,
       "category": "accessories",
-      "price": 7.99,
       "discount": true,
       "beforeDiscount": 17.99,
+      "price": 7.99,
       "material": [
         {
           "fabric": "polyester",
@@ -983,7 +982,8 @@
         {
           "img": "https://www.reserved.com/media/catalog/product/Z/Z/ZZ556-90M-002_1.jpg"
         }
-      ]
+      ],
+      "id": 27
     },
     {
       "name": "Coat with wool",
@@ -2766,12 +2766,13 @@
       ]
     },
     {
-      "id": 6,
       "name": "Ladies` blouse body",
       "item": "t-shirts",
+      "amount": 995,
       "category": "clothes",
-      "amount": 1000,
-      "price": 12.99,
+      "discount": true,
+      "beforeDiscount": 12.99,
+      "price": 11.691,
       "desc": "high round neck",
       "material": [
         {
@@ -2799,7 +2800,8 @@
         {
           "img": "https://www.reserved.com/media/catalog/product/9/4/9499B-02X-041.jpg"
         }
-      ]
+      ],
+      "id": 6
     },
     {
       "id": 7,
@@ -3323,14 +3325,13 @@
       ]
     },
     {
-      "id": 21,
       "name": "Padded coat",
       "item": "puffer-jackets",
-      "amount": 1000,
-      "price": 29.99,
+      "amount": 999,
       "category": "clothes",
       "discount": true,
       "beforeDiscount": 49.99,
+      "price": 29.99,
       "desc": "high stand up collar and hood, press stud fastening, two side pockets, insulation made of recycled fabric",
       "material": [
         {
@@ -3360,7 +3361,8 @@
         {
           "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-040_15.jpg"
         }
-      ]
+      ],
+      "id": 21
     },
     {
       "id": 22,
@@ -5073,6 +5075,146 @@
         }
       ],
       "id": 13
+    },
+    {
+      "items": [
+        {
+          "id": 21,
+          "name": "Padded coat",
+          "item": "puffer-jackets",
+          "amount": 1000,
+          "price": 29.99,
+          "category": "clothes",
+          "discount": true,
+          "beforeDiscount": 49.99,
+          "desc": "high stand up collar and hood, press stud fastening, two side pockets, insulation made of recycled fabric",
+          "material": [
+            {
+              "fabric": "polyester",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-001_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-002_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-003_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-004_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-005_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-006_14.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-040_15.jpg"
+            }
+          ],
+          "cartAmount": 1,
+          "gender": "woman",
+          "size": "m"
+        },
+        {
+          "id": 6,
+          "name": "Ladies` blouse body",
+          "item": "t-shirts",
+          "category": "clothes",
+          "amount": 1000,
+          "price": 11.691,
+          "desc": "high round neck",
+          "material": [
+            {
+              "fabric": "polyamide",
+              "percentage": "92"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "8"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/9/4/9499B-02X-001_1.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/9/4/9499B-02X-002_1.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/9/4/9499B-02X-003_1.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/9/4/9499B-02X-040.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/9/4/9499B-02X-041.jpg"
+            }
+          ],
+          "cartAmount": 5,
+          "gender": "woman",
+          "size": "xl",
+          "discount": true,
+          "beforeDiscount": 12.99
+        },
+        {
+          "id": 27,
+          "name": "Gloves with buckle fastening",
+          "item": "gloves",
+          "amount": 1000,
+          "category": "accessories",
+          "price": 7.99,
+          "discount": true,
+          "beforeDiscount": 17.99,
+          "material": [
+            {
+              "fabric": "polyester",
+              "percentage": "97"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "3"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/Z/ZZ556-90M-001_1.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/Z/ZZ556-90M-002_1.jpg"
+            }
+          ],
+          "cartAmount": 1,
+          "gender": "man",
+          "size": "xxl"
+        }
+      ],
+      "date": "21.02.2021",
+      "time": "17:32:50",
+      "usersId": 3,
+      "status": "new",
+      "delivery": "dhl",
+      "cartPrice": 96.44,
+      "deliveryPrice": 2.99,
+      "payment": "card",
+      "address": [
+        {
+          "name": "duka",
+          "surname": "sliczna",
+          "city": "wilkowyje",
+          "postalCode": "40-500",
+          "street": "czarny",
+          "houseNr": "9",
+          "phone": "123456789",
+          "email": "duka@czarny.pl"
+        }
+      ],
+      "id": 14
     }
   ]
 }
