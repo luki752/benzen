@@ -446,12 +446,17 @@ const CheckoutPage = () => {
               <AccordionDetails key={item.id} className="accordion-detail">
                 <img src={item.images[0].img} alt={item.name} />
                 <div className="item-info">
-                  <div className="item-name">{item.name}</div>
+                  <div className="item-name">
+                    <span>{item.name}</span>
+                    {item.cartAmount > 1 && (
+                      <span className="amount">amount: {item.cartAmount}</span>
+                    )}
+                  </div>
                   <div className="item-size">
                     <span>Size: {item.size}</span>
                     {item.discount ? (
                       <span style={{ color: "red", fontWeight: "bold" }}>
-                        {item.price.toFixed(2)} GBP{" "}
+                        {parseFloat(item.price).toFixed(2)} GBP{" "}
                         <b
                           style={{
                             textDecoration: "line-through",
@@ -745,7 +750,7 @@ const CheckoutPageComponents = styled.div`
     flex-direction: column;
   }
   .left-side {
-    width: 70%;
+    width: 60%;
     padding-left: 10vh;
     h2 {
       padding: 1rem 0;
@@ -873,7 +878,7 @@ const CheckoutPageComponents = styled.div`
     align-items: Center;
     flex-direction: column;
     background-color: #f3f3f5;
-    width: 30%;
+    width: 40%;
     @media screen and (max-width: 1000px) {
       width: 100%;
       padding: 1rem 0rem;
@@ -953,6 +958,11 @@ const CheckoutPageComponents = styled.div`
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             .item-name {
               font-weight: bold;
+              display: flex;
+              justify-content: space-between;
+              .amount {
+                font-weight: normal;
+              }
             }
             .item-size {
               display: flex;

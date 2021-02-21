@@ -4139,11 +4139,21 @@
       "name": "duka",
       "surname": "czarny",
       "email": "duka@czarny.pl",
-      "isLogged": true,
       "password": "FqhVyF7msaAcVroQ6G9kRz5VmAyYUQ2yY4C5I97RKQ2jmCV3O2V6FJQI5AYM7auWTGk0JEnGpxzi9bmK094SQw==",
       "favorites": [],
-      "addresses": [],
       "accessibility": "customer",
+      "addresses": [
+        {
+          "name": "duka",
+          "surname": "sliczna",
+          "phone": "123456789",
+          "houseNr": "9",
+          "street": "czarny",
+          "city": "wilkowyje",
+          "postalCode": "40-500",
+          "id": 1
+        }
+      ],
       "id": 3
     },
     {

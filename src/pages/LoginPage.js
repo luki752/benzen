@@ -215,13 +215,15 @@ const AccountPage = () => {
               Sign in
             </button>
           </Link>
-          <div className="anonymous-order">
-            <span>
-              <Link to="/checkout/order" className="link">
-                I want to purchase without logging in
-              </Link>
-            </span>
-          </div>
+          {order && (
+            <div className="anonymous-order">
+              <span>
+                <Link to="/checkout/order" className="link">
+                  I want to purchase without logging in
+                </Link>
+              </span>
+            </div>
+          )}
         </form>
       </div>
       <div

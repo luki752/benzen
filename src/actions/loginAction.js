@@ -4,9 +4,7 @@ import axios from "axios";
 //action creator
 export const loginAction = (id) => async (dispatch) => {
   const usersData = await axios.get(allUsersUrl());
-  console.log(id);
   const user = usersData.data.filter((user) => user.id === Number(id));
-  console.log(user);
   const isLogged = usersData.data.find((user) => user.id === Number(id));
   dispatch({
     type: "LOG_IN",

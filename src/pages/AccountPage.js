@@ -49,7 +49,6 @@ const AccountPage = () => {
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
   const [accountErrorMsg, setAccountErrorMsg] = useState("");
-  const [action, setAction] = useState("change");
   //use
   const location = useLocation();
   const history = useHistory();
@@ -61,6 +60,8 @@ const AccountPage = () => {
     dispatch(loginAction(localStorage.getItem("userId")));
   }, [dispatch]);
   const { isLogged, user } = useSelector((state) => state.login);
+  const [action, setAction] = useState("change");
+
   useEffect(() => {
     if (isLogged && user) {
       dispatch(loadUsersOrders(user.id));
@@ -205,6 +206,13 @@ const AccountPage = () => {
     setUsersCity("");
     setUsersPostalCode("");
   };
+  useEffect(() => {
+    if (isLogged && user) {
+      if (user.addresses.length === 0) {
+        newAddressHandler();
+      }
+    }
+  }, [user, isLogged]);
   const addAddress = () => {
     if (
       usersAddressName !== "" &&
