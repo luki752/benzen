@@ -16,6 +16,8 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
+import Tooltip from "@material-ui/core/Tooltip";
+import IconButton from "@material-ui/core/IconButton";
 //icons
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
@@ -24,7 +26,7 @@ import LocalMallIcon from "@material-ui/icons/LocalMall";
 import MenuIcon from "@material-ui/icons/Menu";
 import CloseIcon from "@material-ui/icons/Close";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
+import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 
 const Nav = () => {
   //state
@@ -141,7 +143,7 @@ const Nav = () => {
             {isLogged && (
               <Link
                 to="/admin/panel/orders"
-                className="link"
+                className="link icon-link"
                 style={{
                   display:
                     user.accessibility === "admin" ||
@@ -150,20 +152,42 @@ const Nav = () => {
                       : "none",
                 }}
               >
-                <SupervisorAccountIcon className="nav-icon" />{" "}
+                <Tooltip title="admin panel">
+                  <IconButton>
+                    <AssignmentIndIcon className="nav-icon" />{" "}
+                  </IconButton>
+                </Tooltip>
               </Link>
             )}
           </li>
+
           <li>
             {" "}
             <Link
               to="/favorites"
-              className="link"
+              className="link icon-link"
               style={{ display: isLogged ? "block" : "none" }}
             >
-              <FavoriteIcon className="nav-icon" />{" "}
+              <Tooltip title="favorites">
+                <IconButton>
+                  <FavoriteIcon className="nav-icon" />{" "}
+                </IconButton>
+              </Tooltip>
             </Link>
           </li>
+          <li>
+            {" "}
+            {cart && (
+              <Link to="/checkout/cart" className="link icon-link">
+                <Tooltip title="cart">
+                  <IconButton>
+                    <LocalMallIcon className="nav-icon" />({cart.length})
+                  </IconButton>
+                </Tooltip>
+              </Link>
+            )}
+          </li>
+
           <li>
             {" "}
             <Link
@@ -172,22 +196,18 @@ const Nav = () => {
                   ? "/customer/account/orders"
                   : "/customer/account/login"
               }
-              className="link"
+              className="link icon-link"
             >
-              <AccountCircleIcon
-                onMouseEnter={() => setLoginDropdown(true)}
-                onMouseLeave={() => setLoginDropdown(false)}
-                className="nav-icon"
-              />
+              <Tooltip title="account">
+                <IconButton>
+                  <AccountCircleIcon
+                    onMouseEnter={() => setLoginDropdown(true)}
+                    onMouseLeave={() => setLoginDropdown(false)}
+                    className="nav-icon"
+                  />
+                </IconButton>
+              </Tooltip>
             </Link>{" "}
-          </li>
-          <li>
-            {" "}
-            {cart && (
-              <Link to="/checkout/cart" className="link">
-                <LocalMallIcon className="nav-icon" />({cart.length}){" "}
-              </Link>
-            )}
           </li>
         </ul>
       </div>
@@ -923,13 +943,13 @@ const NavComponent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 1rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   .nav-left-menu {
     ul {
       display: flex;
       list-style: none;
       align-items: center;
+      margin: 0;
       .nav-logo {
         text-transform: upperCase;
         font-size: 1.5rem;
@@ -965,6 +985,7 @@ const NavComponent = styled.div`
       display: flex;
       list-style: none;
       align-items: center;
+      margin: 0;
       @media screen and (max-width: 1000px) {
         display: none;
       }
@@ -983,18 +1004,31 @@ const NavComponent = styled.div`
       display: flex;
       list-style: none;
       align-items: center;
+      margin: 0;
       li {
-        padding: 0rem 1rem;
+        padding: 0rem 0.25rem;
         @media screen and (max-width: 1000px) {
-          padding: 0rem 0.25rem;
+          padding: 0rem 0rem;
+          .MuiButtonBase-root,
+          .MuiIconButton-root {
+            padding: 0;
+            margin: 0;
+          }
+        }
+        .icon-link {
+          @media screen and (max-width: 1000px) {
+            margin: 0rem 0.5rem;
+          }
         }
         .nav-icon {
+          color: black;
+          padding: 0;
+          margin: 0;
           &:hover {
             cursor: pointer;
           }
           @media screen and (max-width: 1000px) {
-            padding: 0rem 0.5rem;
-            font-size: 2.5rem;
+            font-size: 1.5rem;
           }
         }
       }
@@ -1054,7 +1088,7 @@ const ManDropdown = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2.5rem;
+  margin-top: 2.2rem;
   z-index: 50;
   .dropdown-menu {
     position: absolute;
@@ -1110,7 +1144,7 @@ const WomanDropdown = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2.5rem;
+  margin-top: 2.2rem;
   z-index: 50;
 
   .dropdown-menu {
@@ -1162,7 +1196,7 @@ const LoginDropdown = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  margin-top: 3rem;
+  margin-top: 2.4rem;
   width: 40vh;
   z-index: 10;
   display: flex;

@@ -230,6 +230,7 @@ const FooterComponent = styled.div`
     ul {
       padding: 2rem;
       list-style: none;
+      margin: 0;
       li {
         font-size: 0.9rem;
         padding: 0.2rem 0rem;
@@ -255,7 +256,7 @@ const FooterComponent = styled.div`
       padding-top: 0;
     }
     .footer-newsletter {
-      padding: 2rem;
+      padding: 2rem 2rem 0rem 2rem;
       width: 20rem;
       button {
         border: 1px solid black;
@@ -269,7 +270,7 @@ const FooterComponent = styled.div`
       }
     }
     .footer-contact {
-      padding: 2rem 0rem;
+      padding: 1rem 0rem;
       .icon {
         font-size: 3rem;
         margin-right: 0.2rem;
@@ -298,7 +299,7 @@ const FooterComponent = styled.div`
     }
     .icon {
       font-size: 3rem;
-      margin: 0.6rem;
+      margin: 0.3rem;
     }
   }
 `;

@@ -81,7 +81,7 @@ const ItemDetailsPage = () => {
   //get data back
   const { item, isLoading, AllItems } = useSelector((state) => state.item);
   const { cart } = useSelector((state) => state.cart);
-  const { user } = useSelector((state) => state.login);
+  const { user, isLogged } = useSelector((state) => state.login);
   useEffect(() => {
     setItemsName(item.name);
     setItemsPrice(item.price);
@@ -236,11 +236,17 @@ const ItemDetailsPage = () => {
             </div>
 
             <div className="right-side">
-              {user.accessibility === "headAdmin" ||
-              user.accessibility === "admin" ? (
+              {isLogged && (
                 <div
                   className="edit-button"
                   onClick={() => setEditMode(!editMode)}
+                  style={{
+                    display:
+                      user.accessibility === "admin" ||
+                      user.accessibility === "headAdmin"
+                        ? "block"
+                        : "none",
+                  }}
                 >
                   {editMode ? (
                     <span>
@@ -252,8 +258,6 @@ const ItemDetailsPage = () => {
                     </span>
                   )}
                 </div>
-              ) : (
-                ""
               )}
               <div className="info">
                 <span className="name">{item.name}</span>
@@ -324,9 +328,17 @@ const ItemDetailsPage = () => {
                   <LocalMallIcon style={{ color: "white" }} />
                   Add to bag
                 </button>
-                {(user.accessibility === "headAdmin" && editMode) ||
-                (user.accessibility === "admin" && editMode) ? (
-                  <div className="edit-item">
+                {isLogged && (
+                  <div
+                    className="edit-item"
+                    style={{
+                      display:
+                        (user.accessibility === "admin" && editMode) ||
+                        (user.accessibility === "headAdmin" && editMode)
+                          ? "block"
+                          : "none",
+                    }}
+                  >
                     <span>{editMsg}</span>
                     <span>
                       <TextField
@@ -389,8 +401,6 @@ const ItemDetailsPage = () => {
                       DELETE ITEM
                     </span>
                   </div>
-                ) : (
-                  ""
                 )}
               </div>
             </div>

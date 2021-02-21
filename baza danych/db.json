@@ -4143,7 +4143,6 @@
       "email": "duka@czarny.pl",
       "password": "FqhVyF7msaAcVroQ6G9kRz5VmAyYUQ2yY4C5I97RKQ2jmCV3O2V6FJQI5AYM7auWTGk0JEnGpxzi9bmK094SQw==",
       "favorites": [],
-      "accessibility": "customer",
       "addresses": [
         {
           "name": "duka",
@@ -4156,6 +4155,7 @@
           "id": 1
         }
       ],
+      "accessibility": "customer",
       "id": 3
     },
     {

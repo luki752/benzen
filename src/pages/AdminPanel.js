@@ -252,33 +252,37 @@ const AdminPanel = () => {
                   />
                 </div>
               </div>
+              <table className="users-table">
+                <tbody>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Accessibility</th>
+                    <th>More info</th>
+                  </tr>
 
-              {users.data &&
-                users.data.length > 0 &&
-                users.data.map((user, index) => (
-                  <div
-                    className="user"
-                    key={user.id}
-                    style={{
-                      backgroundColor: index % 2 ? "rgba(0,0,0,0.4)" : "white",
-                    }}
-                  >
-                    <div className="personal-info">
-                      <span>{user.name}</span> <span>{user.surname}</span>
-                    </div>
-                    <div className="email">email: {user.email}</div>
-                    <div className="accessibility">
-                      accessibility: {user.accessibility}
-                    </div>
-                    <div
-                      className="span"
-                      onClick={() => userDetailsHandler(user.id, user)}
-                    >
-                      Details
-                    </div>
-                  </div>
-                ))}
-
+                  {users.data &&
+                    users.data.length > 0 &&
+                    users.data.map((user, index) => (
+                      <tr
+                        key={user.id}
+                        style={{
+                          backgroundColor:
+                            index % 2 ? "rgba(0,0,0,0.4)" : "white",
+                        }}
+                      >
+                        <td>
+                          {user.name} {user.surname}
+                        </td>
+                        <td>{user.email}</td>
+                        <td>{user.accessibility}</td>
+                        <td onClick={() => userDetailsHandler(user.id, user)}>
+                          Details
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
               <Pagination
                 count={parseInt(pageIndex)}
                 page={usersPage}
@@ -291,7 +295,7 @@ const AdminPanel = () => {
           <>
             <Breadcrumbs aria-label="breadcrumb">
               <span>Admin panel</span>
-              <Link to="/admin/panel/orders" className="link">
+              <Link to="/admin/panel/users" className="link">
                 users
               </Link>
               <span>{userId}</span>
@@ -414,41 +418,27 @@ const AdminPanelComponent = styled.div`
       }
     }
     .users-component {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
       .sort-users {
         display: flex;
-
+        padding: 0 10px;
         .search-users {
           margin: 0 1rem;
         }
       }
-      .user {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: Center;
+      .users-table {
+        margin-top: 1rem;
+        width: 100%;
+        td,
+        th {
+          border: 1px solid rgba(0, 0, 0, 0.4);
+          text-align: left;
+          padding: 8px;
+        }
+        th {
+          font-weight: bold;
+        }
         @media screen and (max-width: 1000px) {
-          font-size: 1rem;
-          flex-wrap: wrap;
-          padding: 1rem;
-        }
-        .button-white {
-          background-color: transparent;
-          @media screen and (max-width: 1000px) {
-            font-size: 1rem;
-          }
-          &:hover {
-            color: black;
-            text-decoration: underline;
-          }
-        }
-        .change-access {
-          .sort-label {
-            @media screen and (max-width: 1000px) {
-              font-size: 1rem;
-            }
-          }
+          font-size: 0.9rem;
         }
       }
       .pagination {

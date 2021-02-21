@@ -128,158 +128,168 @@ const AddItemPage = () => {
       </Link>
       {user.email === "admin@admin.com" && (
         <div className="inputs">
-          <div className="option">
-            Items Gender:
-            <FormControl>
-              <Select
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-                className="select"
-              >
-                <MenuItem value="man">man</MenuItem>
-                <MenuItem value="woman">woman</MenuItem>
-              </Select>
-            </FormControl>
+          <div className="two-inputs">
+            <div className="option">
+              Items Gender:
+              <FormControl>
+                <Select
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value)}
+                  className="select"
+                >
+                  <MenuItem value="man">man</MenuItem>
+                  <MenuItem value="woman">woman</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="option">
+              Items Category:
+              <FormControl>
+                <Select
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  className="select"
+                >
+                  <MenuItem value="clothes">clothes</MenuItem>
+                  <MenuItem value="accessories">accessories</MenuItem>
+                  {gender === "woman" && (
+                    <MenuItem value="shoes">shoes</MenuItem>
+                  )}
+                </Select>
+              </FormControl>
+            </div>
           </div>
-          <div className="option">
-            Items Category:
-            <FormControl>
-              <Select
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                className="select"
-              >
-                <MenuItem value="clothes">clothes</MenuItem>
-                <MenuItem value="accessories">accessories</MenuItem>
-                {gender === "woman" && <MenuItem value="shoes">shoes</MenuItem>}
-              </Select>
-            </FormControl>
-          </div>
-          {gender === "woman" && category === "shoes" && (
-            <div className="option">
-              item:{" "}
-              <FormControl>
-                <Select
-                  value={item}
-                  onChange={(e) => setItem(e.target.value)}
-                  className="select"
-                >
-                  <MenuItem value="heels">heels</MenuItem>
-                  <MenuItem value="flats">flats</MenuItem>
-                  <MenuItem value="sneakers">sneakers</MenuItem>
-                  <MenuItem value="boots">boots</MenuItem>
-                </Select>
-              </FormControl>
-            </div>
-          )}
-          {category === "accessories" && (
-            <div className="option">
-              item:{" "}
-              <FormControl>
-                <Select
-                  value={item}
-                  onChange={(e) => setItem(e.target.value)}
-                  className="select"
-                >
-                  <MenuItem value="bags">bags</MenuItem>
-                  <MenuItem value="gloves">gloves</MenuItem>
-                  <MenuItem value="hats">hats</MenuItem>
-                  <MenuItem value="scarves">scarves</MenuItem>
-                  <MenuItem value="socks">socks</MenuItem>
-                  {gender === "man" && <MenuItem value="shoes">shoes</MenuItem>}
-                </Select>
-              </FormControl>
-            </div>
-          )}
-          {category === "clothes" && (
-            <div className="option">
-              item:{" "}
-              <FormControl>
-                <Select
-                  value={item}
-                  onChange={(e) => setItem(e.target.value)}
-                  className="select"
-                >
-                  <MenuItem value="coats">coats</MenuItem>
-                  <MenuItem value="jackets">jackets</MenuItem>
-                  <MenuItem value="puffer-jackets">puffer-jackets</MenuItem>
-                  <MenuItem value="shirts">shirts</MenuItem>
-                  <MenuItem value="sweatshirts">sweatshirts</MenuItem>
-                  <MenuItem value="sweaters">sweaters</MenuItem>
-                  <MenuItem value="trousers">trousers</MenuItem>
-                  <MenuItem value="t-shirts">t-shirts</MenuItem>
-                  <MenuItem value="jeans">jeans</MenuItem>
-                  <MenuItem value="blazers">blazers</MenuItem>
-                  <MenuItem value="nightwear">nightwear</MenuItem>
-                  <MenuItem value="polos">polos</MenuItem>
-                  <MenuItem value="suits">suits</MenuItem>
-                  <MenuItem value="underwear">underwear</MenuItem>
-                  <MenuItem value="vests">vests</MenuItem>
-                  <MenuItem value="dresses">dresses</MenuItem>
-                  <MenuItem value="skirts">skirts</MenuItem>
-                  <MenuItem value="biker-jackets">biker-jackets</MenuItem>
-                  <MenuItem value="lingerie">lingerie</MenuItem>
-                </Select>
-              </FormControl>
-            </div>
-          )}
+          <div className="two-inputs">
+            {gender === "woman" && category === "shoes" && (
+              <div className="option">
+                item:{" "}
+                <FormControl>
+                  <Select
+                    value={item}
+                    onChange={(e) => setItem(e.target.value)}
+                    className="select"
+                  >
+                    <MenuItem value="heels">heels</MenuItem>
+                    <MenuItem value="flats">flats</MenuItem>
+                    <MenuItem value="sneakers">sneakers</MenuItem>
+                    <MenuItem value="boots">boots</MenuItem>
+                  </Select>
+                </FormControl>
+              </div>
+            )}
+            {category === "accessories" && (
+              <div className="option">
+                item:{" "}
+                <FormControl>
+                  <Select
+                    value={item}
+                    onChange={(e) => setItem(e.target.value)}
+                    className="select"
+                  >
+                    <MenuItem value="bags">bags</MenuItem>
+                    <MenuItem value="gloves">gloves</MenuItem>
+                    <MenuItem value="hats">hats</MenuItem>
+                    <MenuItem value="scarves">scarves</MenuItem>
+                    <MenuItem value="socks">socks</MenuItem>
+                    {gender === "man" && (
+                      <MenuItem value="shoes">shoes</MenuItem>
+                    )}
+                  </Select>
+                </FormControl>
+              </div>
+            )}
+            {category === "clothes" && (
+              <div className="option">
+                item:{" "}
+                <FormControl>
+                  <Select
+                    value={item}
+                    onChange={(e) => setItem(e.target.value)}
+                    className="select"
+                  >
+                    <MenuItem value="coats">coats</MenuItem>
+                    <MenuItem value="jackets">jackets</MenuItem>
+                    <MenuItem value="puffer-jackets">puffer-jackets</MenuItem>
+                    <MenuItem value="shirts">shirts</MenuItem>
+                    <MenuItem value="sweatshirts">sweatshirts</MenuItem>
+                    <MenuItem value="sweaters">sweaters</MenuItem>
+                    <MenuItem value="trousers">trousers</MenuItem>
+                    <MenuItem value="t-shirts">t-shirts</MenuItem>
+                    <MenuItem value="jeans">jeans</MenuItem>
+                    <MenuItem value="blazers">blazers</MenuItem>
+                    <MenuItem value="nightwear">nightwear</MenuItem>
+                    <MenuItem value="polos">polos</MenuItem>
+                    <MenuItem value="suits">suits</MenuItem>
+                    <MenuItem value="underwear">underwear</MenuItem>
+                    <MenuItem value="vests">vests</MenuItem>
+                    <MenuItem value="dresses">dresses</MenuItem>
+                    <MenuItem value="skirts">skirts</MenuItem>
+                    <MenuItem value="biker-jackets">biker-jackets</MenuItem>
+                    <MenuItem value="lingerie">lingerie</MenuItem>
+                  </Select>
+                </FormControl>
+              </div>
+            )}
 
-          <div className="option">
-            Name:{" "}
-            <TextField
-              className="input"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-
-          <div className="option">
-            discount:
-            <FormControl>
-              <Select
-                value={discount}
-                onChange={(e) => setDiscount(e.target.value)}
-                className="select"
-              >
-                <MenuItem value="false">false</MenuItem>
-                <MenuItem value="true">true</MenuItem>
-              </Select>
-            </FormControl>
-          </div>
-          {discount === "true" && (
             <div className="option">
-              Price before discount:{" "}
+              Name:{" "}
               <TextField
                 className="input"
-                type="number"
-                value={priceBeforeDiscount}
-                onChange={(e) => setPriceBeforeDiscount(e.target.value)}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
-          )}
-          <div className="option">
-            price:{" "}
-            <TextField
-              className="input"
-              value={price}
-              type="number"
-              onChange={(e) => setPrice(e.target.value)}
-            />
           </div>
-          <div className="option">
-            amount:{" "}
-            <TextField
-              className="input"
-              value={amount}
-              type="number"
-              onChange={(e) => setAmount(e.target.value)}
-            />
+          <div className="two-inputs">
+            <div className="option">
+              discount:
+              <FormControl>
+                <Select
+                  value={discount}
+                  onChange={(e) => setDiscount(e.target.value)}
+                  className="select"
+                >
+                  <MenuItem value="false">false</MenuItem>
+                  <MenuItem value="true">true</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            {discount === "true" && (
+              <div className="option">
+                Price before discount:{" "}
+                <TextField
+                  className="input"
+                  type="number"
+                  value={priceBeforeDiscount}
+                  onChange={(e) => setPriceBeforeDiscount(e.target.value)}
+                />
+              </div>
+            )}
           </div>
-
+          <div className="two-inputs">
+            <div className="option">
+              price:{" "}
+              <TextField
+                className="input"
+                value={price}
+                type="number"
+                onChange={(e) => setPrice(e.target.value)}
+              />
+            </div>
+            <div className="option">
+              amount:{" "}
+              <TextField
+                className="input"
+                value={amount}
+                type="number"
+                onChange={(e) => setAmount(e.target.value)}
+              />
+            </div>
+          </div>
           <div className="option">
             description:{" "}
             <TextField
-              className="input"
+              className="description-input"
               value={description}
               multiline
               onChange={(e) => setDescription(e.target.value)}
@@ -393,16 +403,32 @@ const AddItemPageComponent = styled.div`
       background-color: rgba(0, 0, 0, 0.8);
     }
   }
+  .two-inputs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media screen and (max-width: 1000px) {
+      flex-direction: column;
+      align-items: flex-start;
+      font-size: 1rem;
+    }
+  }
   .option {
     font-size: 2rem;
     margin: 1rem 0rem;
     font-weight: bold;
+    @media screen and (max-width: 1000px) {
+      font-size: 1rem;
+    }
     &:first-letter {
       text-transform: upperCase;
     }
     .select {
       width: 10rem;
       margin: 0rem 1rem;
+    }
+    .description-input {
+      width: 100%;
     }
     .material {
       display: flex;
@@ -427,6 +453,9 @@ const AddItemPageComponent = styled.div`
       margin: 1rem 0rem;
       padding: 1rem;
       border: 1px solid black;
+      @media screen and (max-width: 1000px) {
+        font-size: 1rem;
+      }
       button {
         font-size: 1rem;
         width: fit-content;
