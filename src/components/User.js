@@ -114,7 +114,9 @@ const User = () => {
                   {order.time} {order.date}
                 </span>
                 <span>ID: {order.id}</span>
-                <span>{order.cartPrice + order.deliveryPrice} GBP</span>
+                <span>
+                  {(order.cartPrice + order.deliveryPrice).toFixed(2)} GBP
+                </span>
                 <Link to={`/admin/panel/orders/${order.id}`} className="link">
                   <span>Details</span>
                 </Link>
@@ -173,6 +175,11 @@ const UserComponent = styled.div`
         justify-content: space-evenly;
         border: 1px solid rgba(0, 0, 0, 0.2);
         padding: 1rem;
+        .link {
+          &:hover {
+            cursor: pointer;
+          }
+        }
         @media screen and (max-width: 1000px) {
           width: 100%;
         }

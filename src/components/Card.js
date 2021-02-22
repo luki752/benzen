@@ -15,7 +15,7 @@ import { useSelector, useDispatch } from "react-redux";
 //actions
 import { loginAction } from "../actions/loginAction";
 
-const Card = ({ item, height, width, margin, gender, id }) => {
+const Card = ({ item, height, width, margin, gender, id, adminPanel }) => {
   const dispatch = useDispatch();
 
   //snack bar
@@ -105,7 +105,9 @@ const Card = ({ item, height, width, margin, gender, id }) => {
         />
       )}
       <Link
-        to={`/${gender}/${item.id}`}
+        to={
+          adminPanel ? `/${gender}/${item.id}/admin` : `/${gender}/${item.id}`
+        }
         className="link"
         onClick={() => window.scrollTo(0, 0)}
       >

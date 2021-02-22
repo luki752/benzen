@@ -23,6 +23,7 @@ import SearchIcon from "@material-ui/icons/Search";
 //components
 import Order from "../components/Order";
 import User from "../components/User";
+import ItemsComponent from '../components/ItemsComponent'
 
 const AdminPanel = () => {
   const dispatch = useDispatch();
@@ -122,6 +123,9 @@ const AdminPanel = () => {
           <Link to="/admin/panel/orders" className="link">
             <li>Manage Orders</li>
           </Link>
+          <Link to="/admin/panel/items" className="link">
+            <li>Manage Items</li>
+          </Link>        
           {user.accessibility === "headAdmin" && (
             <Link to="/admin/panel/users" className="link">
               <li>Manage users</li>
@@ -302,6 +306,9 @@ const AdminPanel = () => {
             </Breadcrumbs>
             <User />
           </>
+        )}
+        {pathName === "items" && (
+          <ItemsComponent/>
         )}
       </div>
     </AdminPanelComponent>

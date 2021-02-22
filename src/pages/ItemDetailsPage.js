@@ -31,6 +31,7 @@ import LocalMallIcon from "@material-ui/icons/LocalMall";
 import CloseIcon from "@material-ui/icons/Close";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import EditIcon from "@material-ui/icons/Edit";
+import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 
 //components
 import Card from "../components/Card";
@@ -48,6 +49,7 @@ const ItemDetailsPage = () => {
   const history = useHistory();
   const gender = location.pathname.split("/")[1];
   const pathId = parseInt(location.pathname.split("/")[2], 10);
+  const adminPanel = location.pathname.split("/")[3];
   //window size
   const [size, setSize] = useState([0, 0]);
   const [mv, setMV] = useState(false);
@@ -260,6 +262,14 @@ const ItemDetailsPage = () => {
                 </div>
               )}
               <div className="info">
+                {adminPanel && (
+                  <Link to="/admin/panel/items" className="link">
+                    <button className="button-black">
+                      <ArrowLeftIcon />
+                      Go back to admins panel
+                    </button>
+                  </Link>
+                )}
                 <span className="name">{item.name}</span>
                 <span className="price">
                   {item.discount ? (
@@ -335,7 +345,7 @@ const ItemDetailsPage = () => {
                       display:
                         (user.accessibility === "admin" && editMode) ||
                         (user.accessibility === "headAdmin" && editMode)
-                          ? "block"
+                          ? "flex"
                           : "none",
                     }}
                   >

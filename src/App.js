@@ -14,12 +14,12 @@ import ManClothesPage from "./pages/ManClothesPage";
 import WomanClothesPage from "./pages/WomanClothesPage";
 import ItemDetailsPage from "./pages/ItemDetailsPage";
 import FavoritesPage from "./pages/FavoritesPage";
-import AddItemPage from "./pages/addItemPage";
+import AddItemPage from "./pages/AddItemPage";
 import SearchPage from "./pages/SearchPage";
 import SalePage from "./pages/SalePage";
 import SaleMainPage from "./pages/SaleMainPage";
 import CheckoutPage from "./pages/CheckoutPage";
-import FinalizedOrderPage from "./pages/finalizedOrderPage";
+import FinalizedOrderPage from "./pages/FinalizedOrderPage";
 import AdminPanel from "./pages/AdminPanel";
 //router
 import { Route } from "react-router-dom";
@@ -83,7 +83,10 @@ function App() {
       >
         <WomanClothesPage />
       </Route>
-      <Route path={["/man/:id", "/woman/:id"]} exact>
+      <Route
+        path={["/man/:id", "/woman/:id", "/man/:id/admin", "/woman/:id/admin"]}
+        exact
+      >
         <ItemDetailsPage />
       </Route>
       <Route path="/favorites">

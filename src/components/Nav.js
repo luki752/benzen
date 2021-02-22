@@ -53,11 +53,15 @@ const Nav = () => {
     dispatch(loadQuestion("man", manSearch));
     history.push("/answer/man");
     setNavOpen(false);
+    SetManDropdown(false);
+    setManSearch("");
   };
   const womanSearchHandler = () => {
     dispatch(loadQuestion("woman", womanSearch));
     history.push("/answer/woman");
     setNavOpen(false);
+    SetWomanDropdown(false);
+    setWomanSearch("");
   };
   useEffect(() => {
     axios
@@ -1197,7 +1201,7 @@ const LoginDropdown = styled.div`
   top: 0;
   right: 0;
   margin-top: 2.4rem;
-  width: 40vh;
+  width: 30vh;
   z-index: 10;
   display: flex;
   flex-direction: column;

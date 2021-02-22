@@ -40,12 +40,12 @@ export const loadSpecificItem = (gender, id) => async (dispatch) => {
   });
 };
 
-export const loadAllItems = (gender) => async (dispatch) => {
+export const loadAllItems = (gender, search, item) => async (dispatch) => {
   dispatch({
     type: "LOADING_DETAIL",
   });
   //fetch data
-  const itemsData = await axios.get(allItemsUrl(gender));
+  const itemsData = await axios.get(allItemsUrl(gender, search, item));
   dispatch({
     type: "FETCH_ALL_ITEMS",
     payload: {

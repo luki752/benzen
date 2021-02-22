@@ -51,8 +51,8 @@ const SearchPage = () => {
           <FormControl>
             <InputLabel className="sort-label">Sort by price</InputLabel>
             <Select value={sort} onChange={handleSort} className="sort-select">
-              <MenuItem value="asc">ASC</MenuItem>
-              <MenuItem value="desc">DESC</MenuItem>
+              <MenuItem value="asc">Sort price low to high</MenuItem>
+              <MenuItem value="desc">Sort price high to low </MenuItem>
             </Select>
           </FormControl>
         </div>
@@ -100,12 +100,13 @@ const SearchPageComponent = styled.div`
     justify-content: space-between;
     align-items: Center;
     .sort-select {
-      width: 10rem;
+      width: 15rem;
     }
   }
   .items-display {
     width: 80%;
     display: Flex;
+    justify-content:space-evenly;
     flex-wrap: wrap;
     @media screen and (max-width: 1200px) {
       width: 100%;
