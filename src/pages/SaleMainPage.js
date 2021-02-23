@@ -16,7 +16,7 @@ const SaleMainPage = () => {
     <SaleMainPageComponent>
       <ImageComponent
         width="100%"
-        text="sale up to 70%"
+        text="sale up to 50%"
         textColor="red"
         img="https://www.reserved.com/media/SHARED/stronywizerunkowe/reserved/home/content/img/sliders/desktop/baner-full-SALE-ona-1900x950px-130121.jpg"
         btnText="Woman"

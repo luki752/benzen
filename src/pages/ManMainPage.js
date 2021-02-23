@@ -22,7 +22,7 @@ const ManMainPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loginAction(localStorage.getItem("userId")));
-    dispatch(loadAllItems("man"));
+    dispatch(loadAllItems("man", "", "puffer-jackets"));
   }, [dispatch]);
   //get width
   useLayoutEffect(() => {
@@ -79,19 +79,17 @@ const ManMainPage = () => {
         </CarouselStyles>
         {!isLoading && (
           <div className="four-cards">
-            {AllItems.filter((cloth) => cloth.item === "puffer-jackets")
-              .slice(0, 4)
-              .map((cloth) => (
-                <Card
-                  key={cloth.id}
-                  item={cloth}
-                  id={cloth.id}
-                  height={mv ? "25rem" : "18rem"}
-                  width={mv ? "23%" : "48%"}
-                  margin={mv ? "3rem 0.5rem" : "0.5rem 0.5"}
-                  gender={"man"}
-                />
-              ))}
+            {AllItems.slice(0, 4).map((cloth) => (
+              <Card
+                key={cloth.id}
+                item={cloth}
+                id={cloth.id}
+                height={mv ? "25rem" : "18rem"}
+                width={mv ? "23%" : "48%"}
+                margin={mv ? "3rem 0.5rem" : "0.5rem 0.5"}
+                gender={"man"}
+              />
+            ))}
           </div>
         )}
         <div className="four-components">
@@ -175,6 +173,7 @@ const ManMainPageComponent = styled.div`
       display: flex;
       flex-wrap: wrap;
       justify-content: space-evenly;
+      padding: 0rem 0rem 1rem 0rem;
     }
   }
 `;

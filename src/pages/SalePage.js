@@ -96,8 +96,8 @@ const SalePage = () => {
                 <Card
                   key={item.id}
                   height={mv ? "30rem" : "20rem"}
-                  width={mv ? "25%" : "50%"}
-                  margin={mv ? "1.5rem 0" : "0.5rem 0"}
+                  width={mv ? "24%" : "49%"}
+                  margin={mv ? "1.5rem 0.3rem" : "1rem 0.2rem"}
                   id={item.id}
                   gender={gender}
                   category={item.category}

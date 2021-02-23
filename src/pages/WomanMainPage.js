@@ -21,7 +21,7 @@ const WomanMainPage = () => {
   //dispatch
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loadAllItems("woman"));
+    dispatch(loadAllItems("woman", "", "sweatshirts"));
     dispatch(loginAction(localStorage.getItem("userId")));
   }, [dispatch]);
   //get width
@@ -38,6 +38,10 @@ const WomanMainPage = () => {
   }, [size, mv]);
   //get data back
   const { AllItems, isLoading } = useSelector((state) => state.item);
+  //handlers
+  const linkHandler = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <WomanMainPageComponent>
       <div className="items">
@@ -53,19 +57,17 @@ const WomanMainPage = () => {
         />
         {!isLoading && (
           <div className="four-cards">
-            {AllItems.filter((cloth) => cloth.item === "sweatshirts")
-              .slice(0, 4)
-              .map((cloth) => (
-                <Card
-                  key={cloth.id}
-                  id={cloth.id}
-                  item={cloth}
-                  height={mv ? "25rem" : "18rem"}
-                  width={mv ? "23%" : "48%"}
-                  margin={mv ? "3rem 0.5rem" : "0.5rem 0.5"}
-                  gender={"woman"}
-                />
-              ))}
+            {AllItems.slice(0, 4).map((cloth) => (
+              <Card
+                key={cloth.id}
+                id={cloth.id}
+                item={cloth}
+                height={mv ? "25rem" : "18rem"}
+                width={mv ? "23%" : "48%"}
+                margin={mv ? "3rem 0.5rem" : "0.5rem 0.5"}
+                gender={"woman"}
+              />
+            ))}
           </div>
         )}
         <ImageComponent
@@ -83,19 +85,17 @@ const WomanMainPage = () => {
         />
         {!isLoading && (
           <div className="four-cards">
-            {AllItems.filter((cloth) => cloth.item === "sweaters")
-              .slice(0, 4)
-              .map((cloth) => (
-                <Card
-                  key={cloth.id}
-                  id={cloth.id}
-                  item={cloth}
-                  height={mv ? "25rem" : "18rem"}
-                  width={mv ? "23%" : "48%"}
-                  margin={mv ? "3rem 0.5rem" : "0.5rem 0.5"}
-                  gender={"woman"}
-                />
-              ))}
+            {AllItems.slice(4, 8).map((cloth) => (
+              <Card
+                key={cloth.id}
+                id={cloth.id}
+                item={cloth}
+                height={mv ? "25rem" : "18rem"}
+                width={mv ? "23%" : "48%"}
+                margin={mv ? "3rem 0.5rem" : "0.5rem 0.5"}
+                gender={"woman"}
+              />
+            ))}
           </div>
         )}
         <CarouselStyles>
@@ -109,7 +109,10 @@ const WomanMainPage = () => {
               <Carousel.Caption>
                 <h3>puffer jackets</h3>
                 <div className="buttons">
-                  <Link to="/woman/clothes/outerwear/puffer-jackets">
+                  <Link
+                    to="/woman/clothes/outerwear/puffer-jackets"
+                    onClick={() => linkHandler()}
+                  >
                     <button className="button-white">for her</button>
                   </Link>
                 </div>
@@ -125,10 +128,13 @@ const WomanMainPage = () => {
                 <h3>winter</h3>
                 <h3>accessories</h3>
                 <div className="buttons">
-                  <Link to="/woman/shoes/boots">
+                  <Link to="/woman/shoes/boots" onClick={() => linkHandler()}>
                     <button className="button-white">Shoes</button>
                   </Link>
-                  <Link to="/woman/accessories/hats">
+                  <Link
+                    to="/woman/accessories/hats"
+                    onClick={() => linkHandler()}
+                  >
                     <button className="button-white">
                       Hats, scarfs, gloves
                     </button>

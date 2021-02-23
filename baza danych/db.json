@@ -1081,11 +1081,11 @@
     {
       "name": "Mickey Mouse T-shirt",
       "item": "t-shirts",
-      "amount": "1000",
+      "amount": 999,
       "category": "clothes",
-      "discount": false,
-      "beforeDiscount": "",
-      "price": "15.99",
+      "discount": "true",
+      "beforeDiscount": "15.99",
+      "price": "13.99",
       "desc": "model’s height: 186 cm",
       "material": [
         {
@@ -2947,11 +2947,10 @@
       ]
     },
     {
-      "id": 11,
       "name": "Leather imitation pencil skirt",
       "item": "skirts",
+      "amount": 999,
       "category": "clothes",
-      "amount": 1000,
       "price": 19.99,
       "desc": "concealed zip fastening to the back",
       "material": [
@@ -2983,7 +2982,8 @@
         {
           "img": "https://www.reserved.com/media/catalog/product/0/2/0226C-99X-041_3.jpg"
         }
-      ]
+      ],
+      "id": 11
     },
     {
       "id": 12,
@@ -3805,6 +3805,29 @@
       "surname": "Programista",
       "email": "admin@admin.com",
       "password": "x61Ey612Kl2gpFL56FT9weDnpSo4AV8j8+qx2AuTHdRyY036xxzTTrw10Wq3+4qQyB+XURPWx1ONxp3Y3pB37A==",
+      "addresses": [
+        {
+          "name": "Łukasz",
+          "surname": "Programista",
+          "phone": "123456789",
+          "houseNr": "5",
+          "street": "kwiatowa",
+          "city": "Urugwaj",
+          "postalCode": "24-560",
+          "id": 1
+        },
+        {
+          "name": "Jerzy ",
+          "surname": "fajowy",
+          "phone": "123456123",
+          "houseNr": "2",
+          "street": "1 stycznia",
+          "city": "Libiąż",
+          "postalCode": "32-700",
+          "id": 2
+        }
+      ],
+      "accessibility": "headAdmin",
       "favorites": [
         {
           "id": 13,
@@ -4099,31 +4122,36 @@
             }
           ],
           "gender": "woman"
-        }
-      ],
-      "addresses": [
-        {
-          "name": "Łukasz",
-          "surname": "Programista",
-          "phone": "123456789",
-          "houseNr": "5",
-          "street": "kwiatowa",
-          "city": "Urugwaj",
-          "postalCode": "24-560",
-          "id": 1
         },
         {
-          "name": "Jerzy ",
-          "surname": "fajowy",
-          "phone": "123456123",
-          "houseNr": "2",
-          "street": "1 stycznia",
-          "city": "Libiąż",
-          "postalCode": "32-700",
-          "id": 2
+          "id": 27,
+          "name": "Gloves with buckle fastening",
+          "item": "gloves",
+          "amount": 999,
+          "price": 7.99,
+          "discount": true,
+          "beforeDiscount": 17.99,
+          "material": [
+            {
+              "fabric": "polyester",
+              "percentage": "97"
+            },
+            {
+              "fabric": "elastane",
+              "percentage": "3"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/Z/ZZ556-90M-001_1.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/Z/Z/ZZ556-90M-002_1.jpg"
+            }
+          ],
+          "gender": "man"
         }
       ],
-      "accessibility": "headAdmin",
       "id": 1
     },
     {
@@ -5215,6 +5243,141 @@
         }
       ],
       "id": 14
+    },
+    {
+      "items": [
+        {
+          "name": "Mickey Mouse T-shirt",
+          "beforeDiscount": "15.99",
+          "item": "t-shirts",
+          "amount": "1000",
+          "category": "clothes",
+          "discount": "true",
+          "price": "13.99",
+          "desc": "model’s height: 186 cm",
+          "material": [
+            {
+              "id": 0,
+              "fabric": "cotton",
+              "percentage": "100"
+            }
+          ],
+          "images": [
+            {
+              "id": 0,
+              "img": "https://www.reserved.com/media/catalog/product/2/4/2408C-01X-001_5.jpg"
+            },
+            {
+              "id": 1,
+              "img": "https://www.reserved.com/media/catalog/product/2/4/2408C-01X-002_5.jpg"
+            },
+            {
+              "id": 2,
+              "img": "https://www.reserved.com/media/catalog/product/2/4/2408C-01X-003_5.jpg"
+            },
+            {
+              "id": 3,
+              "img": "https://www.reserved.com/media/catalog/product/2/4/2408C-01X-040_4.jpg"
+            },
+            {
+              "id": 4,
+              "img": "https://www.reserved.com/media/catalog/product/2/4/2408C-01X-041_4.jpg"
+            }
+          ],
+          "id": 30,
+          "cartAmount": 1,
+          "gender": "man",
+          "size": "m"
+        }
+      ],
+      "date": "23.02.2021",
+      "time": "18:44:37",
+      "usersId": 1,
+      "status": "new",
+      "delivery": "standard",
+      "cartPrice": 13.99,
+      "deliveryPrice": 1.99,
+      "payment": "card",
+      "address": [
+        {
+          "name": "Jerzy ",
+          "surname": "fajowy",
+          "city": "Libiąż",
+          "postalCode": "32-700",
+          "street": "1 stycznia",
+          "houseNr": "2",
+          "phone": "123456123",
+          "email": "admin@admin.com"
+        }
+      ],
+      "id": 15
+    },
+    {
+      "items": [
+        {
+          "id": 11,
+          "name": "Leather imitation pencil skirt",
+          "item": "skirts",
+          "category": "clothes",
+          "amount": 1000,
+          "price": 19.99,
+          "desc": "concealed zip fastening to the back",
+          "material": [
+            {
+              "fabric": "polyester",
+              "percentage": "50"
+            },
+            {
+              "fabric": "polyurethane",
+              "percentage": "50"
+            }
+          ],
+          "images": [
+            {
+              "img": "https://www.reserved.com/media/catalog/product/0/2/0226C-99X-001_2.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/0/2/0226C-99X-040_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/0/2/0226C-99X-041_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/0/2/0226C-99X-001_2.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/0/2/0226C-99X-040_3.jpg"
+            },
+            {
+              "img": "https://www.reserved.com/media/catalog/product/0/2/0226C-99X-041_3.jpg"
+            }
+          ],
+          "cartAmount": 1,
+          "gender": "woman",
+          "size": "m"
+        }
+      ],
+      "date": "23.02.2021",
+      "time": "19:40:36",
+      "usersId": 1,
+      "status": "new",
+      "delivery": "standard",
+      "cartPrice": 19.99,
+      "deliveryPrice": 1.99,
+      "payment": "card",
+      "address": [
+        {
+          "name": "Łukasz",
+          "surname": "Programista",
+          "city": "Urugwaj",
+          "postalCode": "24-560",
+          "street": "kwiatowa",
+          "houseNr": "5",
+          "phone": "123456789",
+          "email": "admin@admin.com"
+        }
+      ],
+      "id": 16
     }
   ]
 }
