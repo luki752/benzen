@@ -7,7 +7,7 @@ import { loginAction } from "../actions/loginAction";
 //styling
 import styled from "styled-components";
 //router
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 //material ui
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -18,6 +18,8 @@ import ViewComfyIcon from "@material-ui/icons/ViewComfy";
 import ViewColumnIcon from "@material-ui/icons/ViewColumn";
 //components
 import Card from "../components/Card";
+import WomanLinksComponent from "../components/WomanLinksComponent";
+import ManLinksComponent from "../components/ManLinksComponent";
 //scroll bottom
 import { BottomScrollListener } from "react-bottom-scroll-listener";
 
@@ -55,7 +57,7 @@ const ClothesPreviewPage = ({ gender }) => {
       loadItems(gender, category, subItem ? subItem : item, sort, limit)
     );
     dispatch(loginAction(localStorage.getItem("userId")));
-    dispatch(loadAllItems(gender));
+    dispatch(loadAllItems(gender, "", subItem ? subItem : item));
   }, [dispatch, gender, category, item, sort, subItem, limit]);
   //get data back
   const { items, isLoading, AllItems } = useSelector((state) => state.item);
@@ -66,302 +68,15 @@ const ClothesPreviewPage = ({ gender }) => {
   const handleLimit = () => {
     setLimit(limit + 20);
   };
+
   return (
     <>
       {!isLoading && (
         <ClothesPreviewPageComponent>
           <BottomScrollListener onBottom={handleLimit} offset={700} />
           <div className="left-side">
-            <ul>
-              <Link to={`/${gender}/clothes/outerwear/coats`} className="link">
-                <li
-                  className={
-                    category === "clothes" ? "category active-list" : "category"
-                  }
-                >
-                  Clothes
-                </li>
-              </Link>
-              {category === "clothes" ? (
-                <ul>
-                  <Link
-                    to={`/${gender}/clothes/outerwear/coats`}
-                    className="link"
-                  >
-                    <li className={item === "outerwear" ? "active-list" : ""}>
-                      Coats, jackets, puffer jackets
-                    </li>
-                  </Link>
-                  {item === "outerwear" ? (
-                    <ul>
-                      <Link
-                        to={`/${gender}/clothes/outerwear/coats`}
-                        className="link"
-                      >
-                        <li
-                          className={
-                            subItem === "coats"
-                              ? "list-in-list active-list"
-                              : "list-in-list"
-                          }
-                        >
-                          Coats
-                        </li>
-                      </Link>
-                      {gender === "woman" && (
-                        <Link
-                          to={`/${gender}/clothes/outerwear/biker-jackets`}
-                          className="link"
-                        >
-                          <li
-                            className={
-                              subItem === "biker-jackets"
-                                ? "list-in-list active-list"
-                                : "list-in-list"
-                            }
-                          >
-                            Biker jackets
-                          </li>
-                        </Link>
-                      )}
-                      <Link
-                        to={`/${gender}/clothes/outerwear/jackets`}
-                        className="link"
-                      >
-                        <li
-                          className={
-                            subItem === "jackets"
-                              ? "list-in-list active-list"
-                              : "list-in-list"
-                          }
-                        >
-                          jackets
-                        </li>
-                      </Link>
-                      <Link
-                        to={`/${gender}/clothes/outerwear/puffer-jackets`}
-                        className="link"
-                      >
-                        <li
-                          className={
-                            subItem === "puffer-jackets"
-                              ? "list-in-list active-list"
-                              : "list-in-list"
-                          }
-                        >
-                          puffer jackets
-                        </li>
-                      </Link>
-
-                      {gender === "man" && (
-                        <Link
-                          to={`/${gender}/clothes/outerwear/vests`}
-                          className="link"
-                        >
-                          <li
-                            className={
-                              subItem === "vests"
-                                ? "list-in-list active-list"
-                                : "list-in-list"
-                            }
-                          >
-                            vests
-                          </li>
-                        </Link>
-                      )}
-                    </ul>
-                  ) : (
-                    ""
-                  )}
-
-                  <Link to={`/${gender}/clothes/sweaters`} className="link">
-                    <li className={item === "sweaters" ? "active-list" : ""}>
-                      Jumpers, Cardigans
-                    </li>
-                  </Link>
-                  {gender === "woman" && (
-                    <Link to={`/${gender}/clothes/dresses`} className="link">
-                      <li className={item === "dresses" ? "active-list" : ""}>
-                        Dresses
-                      </li>
-                    </Link>
-                  )}
-                  {gender === "woman" && (
-                    <Link to={`/${gender}/clothes/skirts`} className="link">
-                      <li className={item === "skirts" ? "active-list" : ""}>
-                        Skirts
-                      </li>
-                    </Link>
-                  )}
-                  {gender === "woman" && (
-                    <Link to={`/${gender}/clothes/blouses`} className="link">
-                      <li className={item === "blouses" ? "active-list" : ""}>
-                        Blouses
-                      </li>
-                    </Link>
-                  )}
-                  <Link to={`/${gender}/clothes/shirts`} className="link">
-                    <li className={item === "shirts" ? "active-list" : ""}>
-                      Shirts
-                    </li>
-                  </Link>
-                  <Link to={`/${gender}/clothes/sweatshirts`} className="link">
-                    <li className={item === "sweatshirts" ? "active-list" : ""}>
-                      Hoodies, sweatshirts
-                    </li>
-                  </Link>
-                  <Link to={`/${gender}/clothes/trousers`} className="link">
-                    <li className={item === "trousers" ? "active-list" : ""}>
-                      Trousers
-                    </li>
-                  </Link>
-                  {gender === "man" && (
-                    <Link to={`/${gender}/clothes/polos`} className="link">
-                      <li className={item === "polos" ? "active-list" : ""}>
-                        Polo shirts
-                      </li>
-                    </Link>
-                  )}
-                  <Link to={`/${gender}/clothes/t-shirts`} className="link">
-                    <li className={item === "t-shirts" ? "active-list" : ""}>
-                      T-shirts
-                    </li>
-                  </Link>
-                  <Link to={`/${gender}/clothes/jeans`} className="link">
-                    <li className={item === "jeans" ? "active-list" : ""}>
-                      Jeans
-                    </li>
-                  </Link>
-                  <Link to={`/${gender}/clothes/blazers`} className="link">
-                    <li className={item === "blazers" ? "active-list" : ""}>
-                      Blazers
-                    </li>
-                  </Link>
-                  {gender === "man" && (
-                    <Link to={`/${gender}/clothes/suits`} className="link">
-                      <li className={item === "suits" ? "active-list" : ""}>
-                        Suits
-                      </li>
-                    </Link>
-                  )}
-                  <Link to={`/${gender}/clothes/nightwear`} className="link">
-                    <li className={item === "nightwear" ? "active-list" : ""}>
-                      Nightwear
-                    </li>
-                  </Link>
-                  {gender === "man" && (
-                    <Link to={`/${gender}/clothes/underwear`} className="link">
-                      <li className={item === "underwear" ? "active-list" : ""}>
-                        Underwear
-                      </li>
-                    </Link>
-                  )}
-                  {gender === "woman" && (
-                    <Link to={`/${gender}/clothes/lingerie`} className="link">
-                      <li className={item === "lingerie" ? "active-list" : ""}>
-                        Lingerie
-                      </li>
-                    </Link>
-                  )}
-                </ul>
-              ) : (
-                ""
-              )}
-              <Link to={`/${gender}/accessories/bags`} className="link">
-                <li
-                  className={
-                    category === "accessories"
-                      ? "category active-list"
-                      : "category"
-                  }
-                >
-                  Accessories
-                </li>
-              </Link>
-
-              {category === "accessories" ? (
-                <ul>
-                  <Link to={`/${gender}/accessories/bags`} className="link">
-                    <li className={item === "bags" ? "active-list" : ""}>
-                      Bags, toiletry bags
-                    </li>
-                  </Link>
-                  {gender === "man" && (
-                    <Link to={`/${gender}/accessories/shoes`} className="link">
-                      <li className={item === "shoes" ? "active-list" : ""}>
-                        Shoes
-                      </li>
-                    </Link>
-                  )}
-                  <Link to={`/${gender}/accessories/hats`} className="link">
-                    <li className={item === "hats" ? "active-list" : ""}>
-                      Hats
-                    </li>
-                  </Link>
-                  <Link to={`/${gender}/accessories/scarves`} className="link">
-                    <li className={item === "scarves" ? "active-list" : ""}>
-                      scarves
-                    </li>
-                  </Link>
-                  <Link to={`/${gender}/accessories/gloves`} className="link">
-                    <li className={item === "gloves" ? "active-list" : ""}>
-                      gloves
-                    </li>
-                  </Link>
-                  {gender === "man" && (
-                    <Link to={`/${gender}/accessories/socks`} className="link">
-                      <li className={item === "socks" ? "active-list" : ""}>
-                        Socks
-                      </li>
-                    </Link>
-                  )}
-                </ul>
-              ) : (
-                ""
-              )}
-              {gender === "woman" && (
-                <Link to="/woman/shoes/boots" className="link">
-                  <li
-                    className={
-                      category === "shoes" ? "category active-list" : "category"
-                    }
-                  >
-                    Shoes
-                  </li>
-                </Link>
-              )}
-              {category === "shoes" ? (
-                <ul>
-                  <Link to="/woman/shoes/boots" className="link">
-                    <li className={item === "boots" ? "active-list" : ""}>
-                      Boots
-                    </li>
-                  </Link>
-                  <Link to="/woman/shoes/heels" className="link">
-                    <li className={item === "heels" ? "active-list" : ""}>
-                      Heels
-                    </li>
-                  </Link>
-                  <Link to="/woman/shoes/flats" className="link">
-                    <li className={item === "flats" ? "active-list" : ""}>
-                      Flats
-                    </li>
-                  </Link>
-                  <Link to="/woman/shoes/leather" className="link">
-                    <li className={item === "leather" ? "active-list" : ""}>
-                      Leather
-                    </li>
-                  </Link>
-                  <Link to="/woman/shoes/sneakers" className="link">
-                    <li className={item === "sneakers" ? "active-list" : ""}>
-                      Sneakers
-                    </li>
-                  </Link>
-                </ul>
-              ) : (
-                ""
-              )}
-            </ul>
+            {gender === "woman" && <WomanLinksComponent gender={gender} />}
+            {gender === "man" && <ManLinksComponent gender={gender} />}
           </div>
           <div className="right-side">
             <div className="items-name">
@@ -382,14 +97,8 @@ const ClothesPreviewPage = ({ gender }) => {
                 </FormControl>
               </div>
               <div className="display-info">
-                {
-                  AllItems.filter((specificItem) => specificItem.item === item)
-                    .length
-                }{" "}
-                {AllItems.filter((specificItem) => specificItem.item === item)
-                  .length === 1
-                  ? "Product"
-                  : "Products"}
+                {AllItems.length}{" "}
+                {AllItems.length === 1 ? "Product" : "Products"}
                 <ViewComfyIcon
                   className={smallView ? "view-icon" : "view-icon active-icon"}
                   onClick={() => {
@@ -433,7 +142,6 @@ const ClothesPreviewPageComponent = styled.div`
   min-height: 90vw;
   display: flex;
   margin-top: 2rem;
-
   .left-side {
     position: fixed;
     display: flex;
@@ -443,33 +151,10 @@ const ClothesPreviewPageComponent = styled.div`
     @media screen and (max-width: 1000px) {
       display: none;
     }
-    ul {
-      list-style: none;
-      .link {
-        font-size: 0.9rem;
-      }
-      li {
-        text-indent: 10px;
-        letter-spacing: 2px;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-      .active-list {
-        font-weight: bold;
-      }
-      .list-in-list {
-        text-indent: 30px;
-      }
-      .category {
-        font-size: 1.5rem;
-        text-indent: -5px;
-      }
-    }
   }
   .right-side {
     width: 80%;
-    margin-left: 20rem;
+    margin-left: 23rem;
     @media screen and (max-width: 1000px) {
       margin: 0;
       width: 100%;
