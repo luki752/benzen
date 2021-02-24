@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 //actions
 import { loadAllItems } from "../actions/itemsAction";
 import { loginAction } from "../actions/loginAction";
+import { setGoBack } from "../actions/scrollAction";
 //components
 import Card from "../components/Card";
 import ImageComponent from "../components/ImageComponent";
@@ -20,6 +21,7 @@ const WomanMainPage = () => {
   useEffect(() => {
     dispatch(loadAllItems("woman", "", "sweatshirts"));
     dispatch(loginAction(localStorage.getItem("userId")));
+    dispatch(setGoBack(false));
   }, [dispatch]);
   //get data back
   const { AllItems, isLoading } = useSelector((state) => state.item);

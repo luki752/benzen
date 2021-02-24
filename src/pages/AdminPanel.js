@@ -6,6 +6,7 @@ import { useLocation } from "react-router";
 import { Link, useHistory } from "react-router-dom";
 //actions
 import { loginAction, loadUsers } from "../actions/loginAction";
+import { setGoBack } from "../actions/scrollAction";
 import { loadOrders } from "../actions/ordersAction";
 //redux
 import { useDispatch, useSelector } from "react-redux";
@@ -23,12 +24,13 @@ import SearchIcon from "@material-ui/icons/Search";
 //components
 import Order from "../components/Order";
 import User from "../components/User";
-import ItemsComponent from '../components/ItemsComponent'
+import ItemsComponent from "../components/ItemsComponent";
 
 const AdminPanel = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loginAction(localStorage.getItem("userId")));
+    dispatch(setGoBack(false));
   }, [dispatch]);
   //state
   const { orders } = useSelector((state) => state.orders);
@@ -125,7 +127,7 @@ const AdminPanel = () => {
           </Link>
           <Link to="/admin/panel/items" className="link">
             <li>Manage Items</li>
-          </Link>        
+          </Link>
           {user.accessibility === "headAdmin" && (
             <Link to="/admin/panel/users" className="link">
               <li>Manage users</li>
@@ -307,9 +309,7 @@ const AdminPanel = () => {
             <User />
           </>
         )}
-        {pathName === "items" && (
-          <ItemsComponent/>
-        )}
+        {pathName === "items" && <ItemsComponent />}
       </div>
     </AdminPanelComponent>
   );

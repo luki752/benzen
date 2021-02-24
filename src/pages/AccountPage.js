@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 //actions
 import { loginAction } from "../actions/loginAction";
 import { loadUsersOrders } from "../actions/ordersAction";
+import { setGoBack } from "../actions/scrollAction";
 //styling
 import styled from "styled-components";
 //material ui
@@ -58,6 +59,7 @@ const AccountPage = () => {
   const orderDetails = location.pathname.split("/")[4];
   useEffect(() => {
     dispatch(loginAction(localStorage.getItem("userId")));
+    dispatch(setGoBack(false));
   }, [dispatch]);
   const { isLogged, user } = useSelector((state) => state.login);
   const [action, setAction] = useState("change");

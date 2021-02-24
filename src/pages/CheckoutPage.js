@@ -30,13 +30,13 @@ const CheckoutPage = () => {
   const [dhl, setDhl] = useState(false);
   const [deliveryPrice, setDeliveryPrice] = useState(0);
   const [addressModal, setModal] = useState(false);
-  const [addressChoosed, setAddressChoosed] = useState(false);
+  const [chosenAddress, setChosenAddress] = useState(false);
   const [delivery, setDelivery] = useState("");
   //payment state
   const [card, setCard] = useState(false);
   const [blik, setBlik] = useState(false);
   const [cash, setCash] = useState(false);
-  const [paymentChoosed, setPaymentChoosed] = useState(false);
+  const [chosenPayment, setChosenPayment] = useState(false);
   const [payment, setPayment] = useState("");
   //address state
   const [name, setName] = useState("");
@@ -85,21 +85,21 @@ const CheckoutPage = () => {
     setCash(true);
     setCard(false);
     setBlik(false);
-    setPaymentChoosed(true);
+    setChosenPayment(true);
     setPayment("cash");
   };
   const cardHandler = () => {
     setCard(true);
     setCash(false);
     setBlik(false);
-    setPaymentChoosed(true);
+    setChosenPayment(true);
     setPayment("card");
   };
   const blikHandler = () => {
     setBlik(true);
     setCash(false);
     setCard(false);
-    setPaymentChoosed(true);
+    setChosenPayment(true);
     setPayment("blik");
   };
   const addressChooseHandler = (
@@ -122,7 +122,7 @@ const CheckoutPage = () => {
     setAddressId(id);
   };
   const chooseButton = () => {
-    setAddressChoosed(true);
+    setChosenAddress(true);
     setModal(false);
   };
   const modalHandler = () => {
@@ -219,7 +219,7 @@ const CheckoutPage = () => {
     }
   };
   const finalizeOrderHandler = () => {
-    if (cart.length !== 0 && paymentChoosed) {
+    if (cart.length !== 0 && chosenPayment) {
       cart.map((item) =>
         axios
           .put(`http://localhost:3000/${item.gender}/${item.id}`, {
@@ -279,7 +279,7 @@ const CheckoutPage = () => {
     setStreet(street);
     setPhone(phone);
     setHouseNr(houseNr);
-    setAddressChoosed(true);
+    setChosenAddress(true);
   };
   return (
     <CheckoutPageComponents>
@@ -307,7 +307,7 @@ const CheckoutPage = () => {
                 <span>2.99 GBP</span>
               </div>
             </div>
-            {addressChoosed && dhl && (
+            {chosenAddress && dhl && (
               <div className="address">
                 <div className="address-info">
                   <div className="address-name">
@@ -345,7 +345,7 @@ const CheckoutPage = () => {
                 <span>1.99 GBP</span>
               </div>
             </div>
-            {addressChoosed && standard && (
+            {chosenAddress && standard && (
               <div className="address">
                 <div className="address-info">
                   <div className="address-name">
@@ -366,7 +366,7 @@ const CheckoutPage = () => {
         <h2>2. Payment method</h2>
         <div
           className="payment"
-          style={{ display: addressChoosed ? "block" : "none" }}
+          style={{ display: chosenAddress ? "block" : "none" }}
         >
           <div className="payment-option" onClick={() => cardHandler()}>
             <div
@@ -425,7 +425,7 @@ const CheckoutPage = () => {
           </div>
         </div>
         <button
-          className={paymentChoosed ? "button-black" : "button-black disabled"}
+          className={chosenPayment ? "button-black" : "button-black disabled"}
           onClick={() => finalizeOrderHandler()}
         >
           Buy and pay

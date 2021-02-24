@@ -4,6 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 //actions
 import { loadItems, loadAllItems } from "../actions/itemsAction";
 import { loginAction } from "../actions/loginAction";
+import {
+  getScrollPosition,
+  setPreviousPage,
+  setGoBack,
+} from "../actions/scrollAction";
 //styling
 import styled from "styled-components";
 //router
@@ -27,15 +32,17 @@ const ClothesPreviewPage = ({ gender }) => {
   //state
   const [smallView, setSmallView] = useState(false);
   const [sort, setSort] = useState("");
-  const [cardLgWidth, setCardLgWidth] = useState("24%");
-  const [cardLgHeight, setCardLgHeight] = useState("32rem");
-  const [cardSmWidth, setCardSmWidth] = useState("48%");
-  const [cardSmHeight, setCardSmHeight] = useState("20rem");
+  const [scrollPosition, setScrollPosition] = useState(0);
   const [limit, setLimit] = useState(20);
   const location = useLocation();
   const item = location.pathname.split("/")[3];
   const subItem = location.pathname.split("/")[4];
   const category = location.pathname.split("/")[2];
+  //card height and width
+  const [cardLgWidth, setCardLgWidth] = useState("24%");
+  const [cardLgHeight, setCardLgHeight] = useState("32rem");
+  const [cardSmWidth, setCardSmWidth] = useState("48%");
+  const [cardSmHeight, setCardSmHeight] = useState("20rem");
   //dispatch data
   const dispatch = useDispatch();
   useEffect(() => {
@@ -45,6 +52,20 @@ const ClothesPreviewPage = ({ gender }) => {
     dispatch(loginAction(localStorage.getItem("userId")));
     dispatch(loadAllItems(gender, "", subItem ? subItem : item));
   }, [dispatch, gender, category, item, sort, subItem, limit]);
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  useEffect(() => {
+    dispatch(getScrollPosition(scrollPosition));
+  }, [scrollPosition, dispatch]);
+  useEffect(() => {
+    dispatch(setPreviousPage(location.pathname));
+    dispatch(setGoBack(true));
+  }, [dispatch, location.pathname]);
   //get data back
   const { items, isLoading, AllItems } = useSelector((state) => state.item);
   //handlers
@@ -54,7 +75,10 @@ const ClothesPreviewPage = ({ gender }) => {
   const handleLimit = () => {
     setLimit(limit + 20);
   };
-
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
   return (
     <>
       {!isLoading && (

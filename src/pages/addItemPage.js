@@ -43,7 +43,6 @@ const AddItemPage = () => {
   useEffect(() => {
     dispatch(loginAction(localStorage.getItem("userId")));
   }, [dispatch]);
-
   const axios = require("axios");
   const materialHandler = () => {
     if (materialFabric !== "" && materialPercentage !== "") {

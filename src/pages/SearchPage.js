@@ -14,6 +14,7 @@ import Select from "@material-ui/core/Select";
 import Card from "../components/Card";
 //actions
 import { loginAction } from "../actions/loginAction";
+import { setGoBack, setPreviousPage } from "../actions/scrollAction";
 //redux
 import { useDispatch } from "react-redux";
 
@@ -29,6 +30,8 @@ const SearchPage = () => {
   };
   useEffect(() => {
     dispatch(loginAction(localStorage.getItem("userId")));
+    dispatch(setPreviousPage(location.pathname));
+    dispatch(setGoBack(true));
   }, [dispatch]);
   return (
     <SearchPageComponent>

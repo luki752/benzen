@@ -84,6 +84,9 @@ const ItemDetailsPage = () => {
   const { item, isLoading, AllItems } = useSelector((state) => state.item);
   const { cart } = useSelector((state) => state.cart);
   const { user, isLogged } = useSelector((state) => state.login);
+  const { scrollPosition, previousPage, goBack } = useSelector(
+    (state) => state.scrollPosition
+  );
   useEffect(() => {
     setItemsName(item.name);
     setItemsPrice(item.price);
@@ -170,73 +173,90 @@ const ItemDetailsPage = () => {
       })
       .catch((error) => {});
   };
+  const goBackHandler = () => {
+    history.push(previousPage);
+    window.scrollTo(scrollPosition, scrollPosition);
+  };
   return (
     <>
       {!isLoading && item && (
         <ItemDetailsPageComponent>
           <div className="top-side">
             <div className="left-side">
-              {item.images && (
-                <div className="images-show">
-                  {item.images.map((img, index) => (
-                    <img
-                      src={img.img}
-                      alt={index}
-                      key={index}
-                      onClick={(e) => setCurrentIndex(index)}
-                      className={index === currentIndex ? "active-image" : ""}
-                    />
-                  ))}
-                </div>
-              )}
-              {item.images && (
-                <div
-                  className="main-image"
-                  style={{
-                    backgroundImage: `url(${item.images[currentIndex].img})`,
-                  }}
-                  onClick={() => setModal(!modal)}
-                >
-                  <ArrowBackIosIcon
-                    className="arrows"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      currentIndex - 1 === -1
-                        ? setCurrentIndex(item.images.length - 1)
-                        : setCurrentIndex(
-                            (currentIndex - 1) % item.images.length
-                          );
-                    }}
-                  />
-                  <ArrowForwardIosIcon
-                    className="arrows"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setCurrentIndex((currentIndex + 1) % item.images.length);
-                    }}
-                  />
-                  <div
-                    className="image-count"
-                    onClick={(e) => e.stopPropagation()}
+              <div className="button">
+                {goBack && (
+                  <button
+                    className="button-white"
+                    onClick={() => goBackHandler()}
                   >
-                    {activeImageHandler(item.images.length)}
-                    {dots.map((item, index) => (
-                      <div
+                    <ArrowLeftIcon /> go back
+                  </button>
+                )}
+              </div>
+              <div className="images">
+                {item.images && (
+                  <div className="images-show">
+                    {item.images.map((img, index) => (
+                      <img
+                        src={img.img}
+                        alt={index}
                         key={index}
-                        className={
-                          index === currentIndex ? "dot active-dot" : "dot"
-                        }
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setCurrentIndex(index);
-                        }}
-                      ></div>
+                        onClick={(e) => setCurrentIndex(index)}
+                        className={index === currentIndex ? "active-image" : ""}
+                      />
                     ))}
                   </div>
-                </div>
-              )}
+                )}
+                {item.images && (
+                  <div
+                    className="main-image"
+                    style={{
+                      backgroundImage: `url(${item.images[currentIndex].img})`,
+                    }}
+                    onClick={() => setModal(!modal)}
+                  >
+                    <ArrowBackIosIcon
+                      className="arrows"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        currentIndex - 1 === -1
+                          ? setCurrentIndex(item.images.length - 1)
+                          : setCurrentIndex(
+                              (currentIndex - 1) % item.images.length
+                            );
+                      }}
+                    />
+                    <ArrowForwardIosIcon
+                      className="arrows"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setCurrentIndex(
+                          (currentIndex + 1) % item.images.length
+                        );
+                      }}
+                    />
+                    <div
+                      className="image-count"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {activeImageHandler(item.images.length)}
+                      {dots.map((item, index) => (
+                        <div
+                          key={index}
+                          className={
+                            index === currentIndex ? "dot active-dot" : "dot"
+                          }
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setCurrentIndex(index);
+                          }}
+                        ></div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
-
             <div className="right-side">
               {isLogged && (
                 <div
@@ -577,6 +597,7 @@ const ItemDetailsPageComponent = styled.div`
   width: 100%;
   min-height: 70vh;
   margin: 1rem 0;
+
   h1 {
     margin-left: 10%;
     margin-top: 2rem;
@@ -592,13 +613,30 @@ const ItemDetailsPageComponent = styled.div`
       flex-direction: column;
     }
     .left-side {
+      position: relative;
       width: 50%;
       display: flex;
       justify-content: flex-end;
       align-items: center;
+      flex-direction: column;
       @media screen and (max-width: 1000px) {
         width: 100%;
         justify-content: center;
+      }
+      .button {
+        width: 100%;
+        align-self: flex-start;
+        .button-white {
+          width: 100%;
+          @media screen and (max-width: 1000px) {
+            background-color: black;
+            color: white;
+          }
+        }
+      }
+
+      .images {
+        display: flex;
       }
       .main-image {
         height: 70vh;
@@ -610,6 +648,7 @@ const ItemDetailsPageComponent = styled.div`
         position: relative;
         @media screen and (max-width: 1000px) {
           pointer-events: none;
+          margin-top: 5rem;
         }
         &:hover {
           cursor: zoom-in;
@@ -798,6 +837,7 @@ const ItemDetailsPageComponent = styled.div`
 `;
 const FullImageModal = styled.div`
   width: 100%;
+  height: fit-content;
   position: absolute;
   top: 0;
   left: 0;

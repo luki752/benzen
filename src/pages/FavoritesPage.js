@@ -7,11 +7,13 @@ import Card from "../components/Card";
 import { useSelector, useDispatch } from "react-redux";
 //actions
 import { loginAction } from "../actions/loginAction";
+import { setGoBack } from "../actions/scrollAction";
 
 const FavoritesPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loginAction(localStorage.getItem("userId")));
+    dispatch(setGoBack(false));
   }, [dispatch]);
   //get data back
   const { user, isLogged } = useSelector((state) => state.login);
@@ -32,8 +34,8 @@ const FavoritesPage = () => {
             ? user.favorites.map((item) => (
                 <Card
                   key={item.id}
-                  lgHeight={"25rem"}
-                  smHeight={"18rem"}
+                  lgHeight={"30rem"}
+                  smHeight={"20rem"}
                   smWidth={"48%"}
                   lgWidth={"24%"}
                   lgMargin={"1rem 0.3rem"}

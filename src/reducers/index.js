@@ -3,6 +3,7 @@ import itemsReducer from "./itemsReducer";
 import loginReducer from "./loginReducer";
 import cartReducer from "./cartReducer";
 import ordersReducer from "./ordersReducer";
+import scrollReducer from "./scrollReducer";
 
 const rootReducer = combineReducers({
   item: itemsReducer,
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   cart: cartReducer,
   login: loginReducer,
   orders: ordersReducer,
+  scrollPosition: scrollReducer,
 });
 
 export default rootReducer;

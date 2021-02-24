@@ -6,6 +6,7 @@ import { useLocation, Link } from "react-router-dom";
 //action
 import { loadSale } from "../actions/itemsAction";
 import { loginAction } from "../actions/loginAction";
+import { setGoBack, setPreviousPage } from "../actions/scrollAction";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //components
@@ -31,6 +32,10 @@ const SalePage = () => {
     dispatch(loadSale(gender, category, sort));
     dispatch(loginAction(localStorage.getItem("userId")));
   }, [dispatch, gender, category, sort]);
+  useEffect(() => {
+    dispatch(setPreviousPage(location.pathname));
+    dispatch(setGoBack(true));
+  }, [dispatch]);
   useEffect(() => {
     axios
       .get(`http://localhost:3000/${gender}?discount=true`)
@@ -82,8 +87,8 @@ const SalePage = () => {
               {sale.map((item) => (
                 <Card
                   key={item.id}
-                  lgHeight={"25rem"}
-                  smHeight={"18rem"}
+                  lgHeight={"30rem"}
+                  smHeight={"20rem"}
                   smWidth={"48%"}
                   lgWidth={"24%"}
                   lgMargin={"1rem 0.3rem"}
