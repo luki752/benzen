@@ -1,7 +1,6 @@
 import React from "react";
-
+//styling
 import styled from "styled-components";
-
 //components
 import ClothesPreviewPage from "../components/ClothesPreviewPage";
 

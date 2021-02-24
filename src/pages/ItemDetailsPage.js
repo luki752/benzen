@@ -174,8 +174,11 @@ const ItemDetailsPage = () => {
       .catch((error) => {});
   };
   const goBackHandler = () => {
-    history.push(previousPage);
-    window.scrollTo(scrollPosition, scrollPosition);
+    // history.push(previousPage);
+    // window.history.go(-1);
+    window.scrollTo(0, scrollPosition);
+    // history.goBack();
+    // window.location = previousPage;
   };
   return (
     <>
@@ -624,8 +627,7 @@ const ItemDetailsPageComponent = styled.div`
         justify-content: center;
       }
       .button {
-        width: 100%;
-        align-self: flex-start;
+        width: 20rem;
         .button-white {
           width: 100%;
           @media screen and (max-width: 1000px) {

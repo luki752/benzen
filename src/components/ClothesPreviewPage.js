@@ -30,9 +30,9 @@ import { BottomScrollListener } from "react-bottom-scroll-listener";
 
 const ClothesPreviewPage = ({ gender }) => {
   //state
+  const [scrollPosition, setScrollPosition] = useState(0);
   const [smallView, setSmallView] = useState(false);
   const [sort, setSort] = useState("");
-  const [scrollPosition, setScrollPosition] = useState(0);
   const [limit, setLimit] = useState(20);
   const location = useLocation();
   const item = location.pathname.split("/")[3];
@@ -45,6 +45,7 @@ const ClothesPreviewPage = ({ gender }) => {
   const [cardSmHeight, setCardSmHeight] = useState("20rem");
   //dispatch data
   const dispatch = useDispatch();
+  //dispatching
   useEffect(() => {
     dispatch(
       loadItems(gender, category, subItem ? subItem : item, sort, limit)
@@ -52,6 +53,7 @@ const ClothesPreviewPage = ({ gender }) => {
     dispatch(loginAction(localStorage.getItem("userId")));
     dispatch(loadAllItems(gender, "", subItem ? subItem : item));
   }, [dispatch, gender, category, item, sort, subItem, limit]);
+  //getting scroll position
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
 
@@ -59,9 +61,11 @@ const ClothesPreviewPage = ({ gender }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  //dispatching
   useEffect(() => {
     dispatch(getScrollPosition(scrollPosition));
   }, [scrollPosition, dispatch]);
+
   useEffect(() => {
     dispatch(setPreviousPage(location.pathname));
     dispatch(setGoBack(true));
