@@ -3,40 +3,19 @@ import React from "react";
 import styled from "styled-components";
 //router
 import { Link } from "react-router-dom";
-const LinkComponent = ({
-  gender,
-  item,
-  subItem,
-  category,
-  text,
-  LinkItem,
-  LinkSubitem,
-  header,
-}) => {
+const LinkComponent = ({ gender, item, category, text, linkItem }) => {
+  //handlers
+  const linkHandler = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <LinkComponentView>
       <Link
-        to={
-          subItem
-            ? `/${gender}/${category}/${LinkItem}/${LinkSubitem}`
-            : `/${gender}/${category}/${LinkItem}`
-        }
+        to={`/${gender}/${category}/${linkItem}`}
         className="link"
+        onClick={() => linkHandler()}
       >
-        <li
-          style={{ fontSize: header ? "1.2rem" : "0.9rem" }}
-          className={
-            subItem
-              ? subItem === LinkSubitem
-                ? "active-list"
-                : ""
-              : item === LinkItem
-              ? "active-list"
-              : ""
-          }
-        >
-          {text}
-        </li>
+        <li className={item === linkItem ? "active-list" : ""}>{text}</li>
       </Link>
     </LinkComponentView>
   );

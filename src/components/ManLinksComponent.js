@@ -3,6 +3,10 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 //styling
 import styled from "styled-components";
+//components
+import LinkComponent from "../components/LinkComponent";
+import CategoryLinkComponent from "./CategoryLinkComponent";
+import SubLinkComponent from "./SubLinkComponent";
 
 const ManLinksComponent = ({ gender }) => {
   const location = useLocation();
@@ -16,19 +20,13 @@ const ManLinksComponent = ({ gender }) => {
   return (
     <ManView>
       <ul>
-        <Link
-          to={`/${gender}/clothes/outerwear/coats`}
-          className="link"
-          onClick={() => linkHandler()}
-        >
-          <li
-            className={
-              category === "clothes" ? "category active-list" : "category"
-            }
-          >
-            Clothes
-          </li>
-        </Link>
+        <CategoryLinkComponent
+          gender={gender}
+          category={category}
+          item={"t-shirts"}
+          linkCategory={"clothes"}
+          text={"Clothes"}
+        />
         {category === "clothes" ? (
           <ul>
             <Link
@@ -40,243 +38,178 @@ const ManLinksComponent = ({ gender }) => {
                 Coats, jackets, puffer jackets
               </li>
             </Link>
+
             {item === "outerwear" ? (
               <ul>
-                <Link
-                  to={`/${gender}/clothes/outerwear/coats`}
-                  className="link"
-                  onClick={() => linkHandler()}
-                >
-                  <li
-                    className={
-                      subItem === "coats"
-                        ? "list-in-list active-list"
-                        : "list-in-list"
-                    }
-                  >
-                    Coats
-                  </li>
-                </Link>
-                <Link
-                  onClick={() => linkHandler()}
-                  to={`/${gender}/clothes/outerwear/jackets`}
-                  className="link"
-                >
-                  <li
-                    className={
-                      subItem === "jackets"
-                        ? "list-in-list active-list"
-                        : "list-in-list"
-                    }
-                  >
-                    jackets
-                  </li>
-                </Link>
-                <Link
-                  onClick={() => linkHandler()}
-                  to={`/${gender}/clothes/outerwear/puffer-jackets`}
-                  className="link"
-                >
-                  <li
-                    className={
-                      subItem === "puffer-jackets"
-                        ? "list-in-list active-list"
-                        : "list-in-list"
-                    }
-                  >
-                    puffer jackets
-                  </li>
-                </Link>
-
-                {gender === "man" && (
-                  <Link
-                    onClick={() => linkHandler()}
-                    to={`/${gender}/clothes/outerwear/vests`}
-                    className="link"
-                  >
-                    <li
-                      className={
-                        subItem === "vests"
-                          ? "list-in-list active-list"
-                          : "list-in-list"
-                      }
-                    >
-                      vests
-                    </li>
-                  </Link>
-                )}
+                <SubLinkComponent
+                  gender={gender}
+                  subItem={subItem}
+                  category={"clothes"}
+                  item={"outerwear"}
+                  linkSubItem={"coats"}
+                  text={"Coats"}
+                />
+                <SubLinkComponent
+                  gender={gender}
+                  subItem={subItem}
+                  category={"clothes"}
+                  item={"outerwear"}
+                  linkSubItem={"jackets"}
+                  text={"Jackets"}
+                />
+                <SubLinkComponent
+                  gender={gender}
+                  subItem={subItem}
+                  category={"clothes"}
+                  item={"outerwear"}
+                  linkSubItem={"puffer-jackets"}
+                  text={"puffer jackets"}
+                />
+                <SubLinkComponent
+                  gender={gender}
+                  subItem={subItem}
+                  category={"clothes"}
+                  item={"outerwear"}
+                  linkSubItem={"vests"}
+                  text={"Vests"}
+                />
               </ul>
             ) : (
               ""
             )}
 
-            <Link
-              to={`/${gender}/clothes/sweaters`}
-              className="link"
-              onClick={() => linkHandler()}
-            >
-              <li className={item === "sweaters" ? "active-list" : ""}>
-                Jumpers, Cardigans
-              </li>
-            </Link>
-            <Link
-              to={`/${gender}/clothes/shirts`}
-              className="link"
-              onClick={() => linkHandler()}
-            >
-              <li className={item === "shirts" ? "active-list" : ""}>Shirts</li>
-            </Link>
-            <Link
-              to={`/${gender}/clothes/sweatshirts`}
-              className="link"
-              onClick={() => linkHandler()}
-            >
-              <li className={item === "sweatshirts" ? "active-list" : ""}>
-                Hoodies, sweatshirts
-              </li>
-            </Link>
-            <Link
-              to={`/${gender}/clothes/trousers`}
-              className="link"
-              onClick={() => linkHandler()}
-            >
-              <li className={item === "trousers" ? "active-list" : ""}>
-                Trousers
-              </li>
-            </Link>
-
-            <Link
-              to={`/${gender}/clothes/polos`}
-              className="link"
-              onClick={() => linkHandler()}
-            >
-              <li className={item === "polos" ? "active-list" : ""}>
-                Polo shirts
-              </li>
-            </Link>
-
-            <Link
-              to={`/${gender}/clothes/t-shirts`}
-              className="link"
-              onClick={() => linkHandler()}
-            >
-              <li className={item === "t-shirts" ? "active-list" : ""}>
-                T-shirts
-              </li>
-            </Link>
-            <Link
-              to={`/${gender}/clothes/jeans`}
-              className="link"
-              onClick={() => linkHandler()}
-            >
-              <li className={item === "jeans" ? "active-list" : ""}>Jeans</li>
-            </Link>
-            <Link
-              to={`/${gender}/clothes/blazers`}
-              className="link"
-              onClick={() => linkHandler()}
-            >
-              <li className={item === "blazers" ? "active-list" : ""}>
-                Blazers
-              </li>
-            </Link>
-
-            <Link
-              to={`/${gender}/clothes/suits`}
-              className="link"
-              onClick={() => linkHandler()}
-            >
-              <li className={item === "suits" ? "active-list" : ""}>Suits</li>
-            </Link>
-
-            <Link
-              to={`/${gender}/clothes/nightwear`}
-              className="link"
-              onClick={() => linkHandler()}
-            >
-              <li className={item === "nightwear" ? "active-list" : ""}>
-                Nightwear
-              </li>
-            </Link>
-
-            <Link
-              to={`/${gender}/clothes/underwear`}
-              className="link"
-              onClick={() => linkHandler()}
-            >
-              <li className={item === "underwear" ? "active-list" : ""}>
-                Underwear
-              </li>
-            </Link>
+            <LinkComponent
+              gender={gender}
+              category={"clothes"}
+              linkItem={"sweaters"}
+              item={item}
+              text={"Jumpers, Cardigans"}
+            />
+            <LinkComponent
+              gender={gender}
+              category={"clothes"}
+              linkItem={"shirts"}
+              item={item}
+              text={"Shirts"}
+            />
+            <LinkComponent
+              gender={gender}
+              category={"clothes"}
+              linkItem={"sweatshirts"}
+              item={item}
+              text={"Hoodies, sweatshirts"}
+            />
+            <LinkComponent
+              gender={gender}
+              category={"clothes"}
+              linkItem={"trousers"}
+              item={item}
+              text={"Trousers"}
+            />
+            <LinkComponent
+              gender={gender}
+              category={"clothes"}
+              linkItem={"polos"}
+              item={item}
+              text={"Polo shirts"}
+            />
+            <LinkComponent
+              gender={gender}
+              category={"clothes"}
+              linkItem={"t-shirts"}
+              item={item}
+              text={"T-shirts"}
+            />
+            <LinkComponent
+              gender={gender}
+              category={"clothes"}
+              linkItem={"jeans"}
+              item={item}
+              text={"Jeans"}
+            />
+            <LinkComponent
+              gender={gender}
+              category={"clothes"}
+              linkItem={"blazers"}
+              item={item}
+              text={"Blazers"}
+            />
+            <LinkComponent
+              gender={gender}
+              category={"clothes"}
+              linkItem={"suits"}
+              item={item}
+              text={"Suits"}
+            />
+            <LinkComponent
+              gender={gender}
+              category={"clothes"}
+              linkItem={"nightwear"}
+              item={item}
+              text={"Nightwear"}
+            />
+            <LinkComponent
+              gender={gender}
+              category={"clothes"}
+              linkItem={"underwear"}
+              item={item}
+              text={"Underwear"}
+            />
           </ul>
         ) : (
           ""
         )}
-        <Link
-          to={`/${gender}/accessories/bags`}
-          className="link"
-          onClick={() => linkHandler()}
-        >
-          <li
-            className={
-              category === "accessories" ? "category active-list" : "category"
-            }
-          >
-            Accessories
-          </li>
-        </Link>
-
+        <CategoryLinkComponent
+          gender={gender}
+          category={category}
+          item={"bags"}
+          linkCategory={"accessories"}
+          text={"Accessories"}
+        />
         {category === "accessories" ? (
           <ul>
-            <Link
-              to={`/${gender}/accessories/bags`}
-              className="link"
-              onClick={() => linkHandler()}
-            >
-              <li className={item === "bags" ? "active-list" : ""}>
-                Bags, toiletry bags
-              </li>
-            </Link>
-
-            <Link
-              to={`/${gender}/accessories/shoes`}
-              className="link"
-              onClick={() => linkHandler()}
-            >
-              <li className={item === "shoes" ? "active-list" : ""}>Shoes</li>
-            </Link>
-
-            <Link
-              to={`/${gender}/accessories/hats`}
-              className="link"
-              onClick={() => linkHandler()}
-            >
-              <li className={item === "hats" ? "active-list" : ""}>Hats</li>
-            </Link>
-            <Link
-              to={`/${gender}/accessories/scarves`}
-              className="link"
-              onClick={() => linkHandler()}
-            >
-              <li className={item === "scarves" ? "active-list" : ""}>
-                scarves
-              </li>
-            </Link>
-            <Link
-              to={`/${gender}/accessories/gloves`}
-              className="link"
-              onClick={() => linkHandler()}
-            >
-              <li className={item === "gloves" ? "active-list" : ""}>gloves</li>
-            </Link>
-
-            <Link
-              to={`/${gender}/accessories/socks`}
-              className="link"
-              onClick={() => linkHandler()}
-            >
-              <li className={item === "socks" ? "active-list" : ""}>Socks</li>
-            </Link>
+            <LinkComponent
+              gender={gender}
+              category={"accessories"}
+              linkItem={"bags"}
+              item={item}
+              text={"Bags, toiletry bags"}
+            />
+            <LinkComponent
+              gender={gender}
+              category={"accessories"}
+              linkItem={"shoes"}
+              item={item}
+              text={"Shoes"}
+            />
+            <LinkComponent
+              gender={gender}
+              category={"accessories"}
+              linkItem={"hats"}
+              item={item}
+              text={"Hats"}
+            />
+            <LinkComponent
+              gender={gender}
+              category={"accessories"}
+              linkItem={"scarves"}
+              item={item}
+              text={"Scarves"}
+            />
+            <LinkComponent
+              gender={gender}
+              category={"accessories"}
+              linkItem={"gloves"}
+              item={item}
+              text={"Gloves"}
+            />
+            <LinkComponent
+              gender={gender}
+              category={"accessories"}
+              linkItem={"socks"}
+              item={item}
+              text={"Socks"}
+            />
           </ul>
         ) : (
           ""
