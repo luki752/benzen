@@ -122,9 +122,12 @@ const ItemsComponent = () => {
         {AllItems.map((item) => (
           <Card
             key={item.id}
-            height={mv ? "30rem" : "20rem"}
-            width={mv ? "23%" : "50%"}
-            margin={mv ? "1.5rem 0.5rem" : "0.5rem 0"}
+            lgHeight={"25rem"}
+            smHeight={"18rem"}
+            smWidth={"48%"}
+            lgWidth={"24%"}
+            lgMargin={"1rem 0.3rem"}
+            smMargin={"0.5rem 0.1px"}
             id={item.id}
             gender={gender}
             category={item.category}
@@ -144,6 +147,33 @@ const ItemsComponentView = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    @media screen and (max-width: 1000px) {
+      flex-direction: column;
+    }
+    .gender-chose {
+      .sort-select {
+        @media screen and (max-width: 1000px) {
+          width: 20rem;
+          margin: 0.5rem 0;
+        }
+      }
+    }
+    .items-search {
+      .users-input {
+        @media screen and (max-width: 1000px) {
+          width: 20rem;
+          margin: 1rem 0;
+        }
+      }
+    }
+    .items-chose {
+      .sort-select {
+        @media screen and (max-width: 1000px) {
+          width: 20rem;
+          margin: 1rem 0;
+        }
+      }
+    }
   }
   .items-display {
     display: flex;

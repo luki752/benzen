@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 //styling
 import styled from "styled-components";
 //router
@@ -15,27 +15,12 @@ import ImageComponent from "../components/ImageComponent";
 import Carousel from "react-bootstrap/Carousel";
 
 const ManMainPage = () => {
-  //state
-  const [size, setSize] = useState([0, 0]);
-  const [mv, setMV] = useState(false);
   //dispatch
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loginAction(localStorage.getItem("userId")));
     dispatch(loadAllItems("man", "", "puffer-jackets"));
   }, [dispatch]);
-  //get width
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-  useEffect(() => {
-    setMV(window.matchMedia("(min-width: 1000px)").matches);
-  }, [size, mv]);
   //get data back
   const { AllItems, isLoading } = useSelector((state) => state.item);
   return (
@@ -84,9 +69,12 @@ const ManMainPage = () => {
                 key={cloth.id}
                 item={cloth}
                 id={cloth.id}
-                height={mv ? "25rem" : "18rem"}
-                width={mv ? "23%" : "48%"}
-                margin={mv ? "3rem 0.5rem" : "0.5rem 0.5"}
+                lgHeight={"25rem"}
+                smHeight={"18rem"}
+                smWidth={"48%"}
+                lgWidth={"23%"}
+                lgMargin={"3rem 0.5rem"}
+                smMargin={"0.5rem 0.5"}
                 gender={"man"}
               />
             ))}

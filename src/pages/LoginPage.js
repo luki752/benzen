@@ -112,40 +112,52 @@ const AccountPage = () => {
         setRegisterErrorMsg("Theres already an account with that email");
       } else {
         if (
-          registerEmailInput !== "" &&
-          registerEmailInput.includes("@") &&
-          registerPassword !== "" &&
-          registerName !== "" &&
-          registerSurname !== ""
+          /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+            registerEmailInput
+          )
         ) {
-          axios
-            .post("http://localhost:3000/users", {
-              name: registerName,
-              surname: registerSurname,
-              email: registerEmailInput,
-              password: sha512(registerPassword).toString(Base64),
-              accessibility: "customer",
-              favorites: [],
-              addresses: [],
-            })
-            .then((resp) => {
-              setRegisterSuccess(true);
-              setRegisterError(false);
-              setRegisterEmail("");
-              setRegisterName("");
-              setRegisterPassword("");
-              setRegisterEmail("");
-              dispatch(loginAction());
-            })
-            .catch((error) => {});
+          if (registerPassword.length >= 4) {
+            if (registerName !== "" && registerSurname !== "") {
+              axios
+                .post("http://localhost:3000/users", {
+                  name: registerName,
+                  surname: registerSurname,
+                  email: registerEmailInput,
+                  password: sha512(registerPassword).toString(Base64),
+                  accessibility: "customer",
+                  favorites: [],
+                  addresses: [],
+                })
+                .then((resp) => {
+                  setRegisterSuccess(true);
+                  setRegisterError(false);
+                  setRegisterEmail("");
+                  setRegisterName("");
+                  setRegisterSurname("");
+                  setRegisterPassword("");
+                  setRegisterEmail("");
+                  dispatch(loginAction());
+                })
+                .catch((error) => {});
+            } else {
+              setRegisterSuccess(false);
+              setRegisterError(true);
+              setRegisterErrorMsg("Inputs cant be empty");
+            }
+          } else {
+            setRegisterSuccess(false);
+            setRegisterError(true);
+            setRegisterErrorMsg("Password has to be at least 4 letters long");
+          }
         } else {
           setRegisterSuccess(false);
           setRegisterError(true);
-          setRegisterErrorMsg("Inputs cant be empty");
+          setRegisterErrorMsg("incorrect email");
         }
       }
     });
   };
+  console.log(registerPassword.length);
   return (
     <AccountPageComponent
       style={{

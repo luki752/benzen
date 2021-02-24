@@ -4,6 +4,7 @@ const initState = {
   AllItems: [],
   answer: [],
   sale: [],
+  favorites: [],
   isLoading: true,
 };
 
@@ -18,6 +19,11 @@ const itemsReducer = (state = initState, action) => {
       };
     case "FETCH_ITEM":
       return { ...state, item: action.payload.item, isLoading: false };
+    case "FETCH_FAVORITE":
+      return {
+        ...state,
+        favorites: [...state.favorites, action.payload.favorite],
+      };
     case "FETCH_ALL_ITEMS":
       return { ...state, AllItems: action.payload.AllItems, isLoading: false };
     case "FETCH_ANSWER":

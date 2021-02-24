@@ -3805,176 +3805,13 @@
       "surname": "Programista",
       "email": "admin@admin.com",
       "password": "x61Ey612Kl2gpFL56FT9weDnpSo4AV8j8+qx2AuTHdRyY036xxzTTrw10Wq3+4qQyB+XURPWx1ONxp3Y3pB37A==",
-      "addresses": [
-        {
-          "name": "Łukasz",
-          "surname": "Programista",
-          "phone": "123456789",
-          "houseNr": "5",
-          "street": "kwiatowa",
-          "city": "Urugwaj",
-          "postalCode": "24-560",
-          "id": 1
-        },
-        {
-          "name": "Jerzy ",
-          "surname": "fajowy",
-          "phone": "123456123",
-          "houseNr": "2",
-          "street": "1 stycznia",
-          "city": "Libiąż",
-          "postalCode": "32-700",
-          "id": 2
-        }
-      ],
+      "addresses": [],
       "accessibility": "headAdmin",
       "favorites": [
         {
-          "id": 13,
-          "name": "Elegant coat with wool",
-          "item": "coats",
-          "amount": 1000,
-          "price": 39.99,
-          "desc": "notch lapels, single-breasted button fastening, open front pockets, practical single vented back hem",
-          "discount": true,
-          "beforeDiscount": 79.99,
-          "material": [
-            {
-              "fabric": "wool",
-              "percentage": "50"
-            },
-            {
-              "fabric": "polyester",
-              "percentage": "42"
-            },
-            {
-              "fabric": "acrylic",
-              "percentage": "4"
-            },
-            {
-              "fabric": "polyamide",
-              "percentage": "2"
-            },
-            {
-              "fabric": "viscose",
-              "percentage": "2"
-            }
-          ],
-          "images": [
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-001_16.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-002_16.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-003_16.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-004_16.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-005_16.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW674-88X-040_17.jpg"
-            }
-          ],
-          "gender": "man"
-        },
-        {
-          "id": 28,
-          "name": "Coat with wool",
-          "item": "coats",
-          "amount": "1000",
-          "price": "49.99",
-          "desc": "Fitted box coat made of thick, soft jersey fabric with wool blend.",
-          "discount": true,
-          "beforeDiscount": "79.99",
-          "material": [
-            {
-              "id": 0,
-              "fabric": "polyester",
-              "percentage": "60"
-            },
-            {
-              "id": 1,
-              "fabric": "wool",
-              "percentage": "40"
-            }
-          ],
-          "images": [
-            {
-              "id": 0,
-              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-001_15.jpg"
-            },
-            {
-              "id": 1,
-              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-002_15.jpg"
-            },
-            {
-              "id": 2,
-              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-003_15.jpg"
-            },
-            {
-              "id": 3,
-              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-004_15.jpg"
-            },
-            {
-              "id": 4,
-              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-005_15.jpg"
-            },
-            {
-              "id": 5,
-              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-006_15.jpg"
-            },
-            {
-              "id": 6,
-              "img": "https://www.reserved.com/media/catalog/product/Y/W/YW675-08X-040_17.jpg"
-            }
-          ],
-          "gender": "man"
-        },
-        {
-          "id": 18,
-          "name": "Lightweight jumper with viscose blend",
-          "item": "sweaters",
-          "amount": 1000,
-          "price": 14.99,
-          "desc": "round neck with trimming",
-          "material": [
-            {
-              "fabric": "viscose",
-              "percentage": "70"
-            },
-            {
-              "fabric": "polyamide",
-              "percentage": "30"
-            }
-          ],
-          "images": [
-            {
-              "img": "https://www.reserved.com/media/catalog/product/0/9/0983C-99X-001_3.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/0/9/0983C-99X-002_3.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/0/9/0983C-99X-003_3.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/0/9/0983C-99X-040_1.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/0/9/0983C-99X-041_1.jpg"
-            }
-          ],
-          "gender": "woman"
-        },
-        {
-          "id": 3,
-          "name": "Cropped cardigan with V neck",
-          "item": "sweaters",
+          "id": 4,
+          "name": "Stripe organic cotton rich shirt",
+          "item": "shirts",
           "amount": 1000,
           "price": 19.99,
           "desc": "high round neck",
@@ -3990,166 +3827,19 @@
           ],
           "images": [
             {
-              "img": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-001_3.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU193-05X-002_1.jpg"
             },
             {
-              "img": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-002_3.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU193-05X-003_1.jpg"
             },
             {
-              "img": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-003_3.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU193-05X-004_1.jpg"
             },
             {
-              "img": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-040_1.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/1/8/1865C-08X-041_1.jpg"
+              "img": "https://www.reserved.com/media/catalog/product/Y/U/YU193-05X-040_4.jpg"
             }
           ],
           "gender": "woman"
-        },
-        {
-          "id": 19,
-          "name": "Quilted jacket with high neck",
-          "item": "puffer-jackets",
-          "amount": 1000,
-          "price": 29.99,
-          "desc": "low stand up collar with press stud fastening, zip fastening, side pockets with press studs, long sleeves",
-          "material": [
-            {
-              "fabric": "polyamide",
-              "percentage": "100"
-            }
-          ],
-          "images": [
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-001_12.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-002_12.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-003_12.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-004_12.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-005_12.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-006_12.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Z/I/ZI498-18X-040_12.jpg"
-            }
-          ],
-          "gender": "man"
-        },
-        {
-          "id": 14,
-          "name": "Quilted jacket with hood",
-          "item": "puffer-jackets",
-          "amount": 1000,
-          "price": 39.99,
-          "desc": "high collar with hood, front zip up fastening, zipped chest pocket, side pocket, with press stud fastening, sleeve and hem narrow ribbing, quilted lining on the inside",
-          "material": [
-            {
-              "fabric": "polyamide",
-              "percentage": "100"
-            }
-          ],
-          "images": [
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/K/XK344-99X-001_24.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/K/XK344-99X-002_24.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/K/XK344-99X-003_24.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/K/XK344-99X-004_24.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/K/XK344-99X-005_24.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/K/XK344-99X-006_24.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/X/K/XK344-99X-040_24.jpg"
-            }
-          ],
-          "gender": "man"
-        },
-        {
-          "id": 21,
-          "name": "Padded coat",
-          "item": "puffer-jackets",
-          "amount": 1000,
-          "price": 29.99,
-          "desc": "high stand up collar and hood, press stud fastening, two side pockets, insulation made of recycled fabric",
-          "discount": true,
-          "beforeDiscount": 49.99,
-          "material": [
-            {
-              "fabric": "polyester",
-              "percentage": "100"
-            }
-          ],
-          "images": [
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-001_14.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-002_14.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-003_14.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-004_14.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-005_14.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-006_14.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Y/T/YT857-05X-040_15.jpg"
-            }
-          ],
-          "gender": "woman"
-        },
-        {
-          "id": 27,
-          "name": "Gloves with buckle fastening",
-          "item": "gloves",
-          "amount": 999,
-          "price": 7.99,
-          "discount": true,
-          "beforeDiscount": 17.99,
-          "material": [
-            {
-              "fabric": "polyester",
-              "percentage": "97"
-            },
-            {
-              "fabric": "elastane",
-              "percentage": "3"
-            }
-          ],
-          "images": [
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Z/Z/ZZ556-90M-001_1.jpg"
-            },
-            {
-              "img": "https://www.reserved.com/media/catalog/product/Z/Z/ZZ556-90M-002_1.jpg"
-            }
-          ],
-          "gender": "man"
         }
       ],
       "id": 1
@@ -4206,6 +3896,16 @@
       "favorites": [],
       "addresses": [],
       "id": 5
+    },
+    {
+      "name": "luki",
+      "surname": "fajny",
+      "email": "lukicool@email.com",
+      "password": "87bFSOpS3enYiFPBLCQx/QCJOVDXIcftiGnYjq/6xRDqC68nU+Zfj1wxdG8uvhxU8bg9FU5wLNVes+D5/CXfPA==",
+      "accessibility": "customer",
+      "favorites": [],
+      "addresses": [],
+      "id": 6
     }
   ],
   "orders": [

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useLayoutEffect } from "react";
+import React, { useEffect, useState } from "react";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //actions
@@ -27,29 +27,15 @@ const ClothesPreviewPage = ({ gender }) => {
   //state
   const [smallView, setSmallView] = useState(false);
   const [sort, setSort] = useState("");
-  const [size, setSize] = useState([0, 0]);
-  const [mv, setMV] = useState(false);
-  const [cardWidth, setCardWidth] = useState();
-  const [cardHeight, setCardHeight] = useState();
+  const [cardLgWidth, setCardLgWidth] = useState("24%");
+  const [cardLgHeight, setCardLgHeight] = useState("32rem");
+  const [cardSmWidth, setCardSmWidth] = useState("48%");
+  const [cardSmHeight, setCardSmHeight] = useState("20rem");
   const [limit, setLimit] = useState(20);
   const location = useLocation();
   const item = location.pathname.split("/")[3];
   const subItem = location.pathname.split("/")[4];
   const category = location.pathname.split("/")[2];
-  //useEffects
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-  useEffect(() => {
-    setMV(window.matchMedia("(min-width: 1000px)").matches);
-    setCardWidth(mv ? "24%" : "48%");
-    setCardHeight(mv ? "30rem" : "20rem");
-  }, [size, mv]);
   //dispatch data
   const dispatch = useDispatch();
   useEffect(() => {
@@ -102,16 +88,20 @@ const ClothesPreviewPage = ({ gender }) => {
                 <ViewComfyIcon
                   className={smallView ? "view-icon" : "view-icon active-icon"}
                   onClick={() => {
-                    setCardWidth(mv ? "24%" : "48%");
-                    setCardHeight(mv ? "30rem" : "20rem");
+                    setCardSmWidth("48%");
+                    setCardLgWidth("24%");
+                    setCardLgHeight("30rem");
+                    setCardSmHeight("20rem");
                     setSmallView(false);
                   }}
                 />
                 <ViewColumnIcon
                   className={smallView ? "view-icon active-icon" : "view-icon"}
                   onClick={() => {
-                    setCardWidth(mv ? "32%" : "90%");
-                    setCardHeight(mv ? "40rem" : "24rem");
+                    setCardLgWidth("32%");
+                    setCardSmWidth("90%");
+                    setCardLgHeight("40rem");
+                    setCardSmHeight("24rem");
                     setSmallView(true);
                   }}
                 />
@@ -123,9 +113,12 @@ const ClothesPreviewPage = ({ gender }) => {
                   key={item.id}
                   item={item}
                   id={item.id}
-                  height={cardHeight}
-                  width={cardWidth}
-                  margin={mv ? "1.5rem 0.3rem" : "1rem 0.2rem"}
+                  lgHeight={cardLgHeight}
+                  smHeight={cardSmHeight}
+                  lgWidth={cardLgWidth}
+                  smWidth={cardSmWidth}
+                  lgMargin={"1.5rem 0.3rem"}
+                  smMargin={"1rem 0.2rem"}
                   gender={gender}
                 />
               ))}

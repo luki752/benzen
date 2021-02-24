@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 //styling
 import styled from "styled-components";
 //redux
@@ -15,27 +15,12 @@ import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
 
 const WomanMainPage = () => {
-  //state
-  const [size, setSize] = useState([0, 0]);
-  const [mv, setMV] = useState(false);
   //dispatch
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadAllItems("woman", "", "sweatshirts"));
     dispatch(loginAction(localStorage.getItem("userId")));
   }, [dispatch]);
-  //get width
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-  useEffect(() => {
-    setMV(window.matchMedia("(min-width: 1000px)").matches);
-  }, [size, mv]);
   //get data back
   const { AllItems, isLoading } = useSelector((state) => state.item);
   //handlers
@@ -62,9 +47,12 @@ const WomanMainPage = () => {
                 key={cloth.id}
                 id={cloth.id}
                 item={cloth}
-                height={mv ? "25rem" : "18rem"}
-                width={mv ? "23%" : "48%"}
-                margin={mv ? "3rem 0.5rem" : "0.5rem 0.5"}
+                lgHeight={"25rem"}
+                smHeight={"18rem"}
+                smWidth={"48%"}
+                lgWidth={"23%"}
+                lgMargin={"3rem 0.5rem"}
+                smMargin={"0.5rem 0.5"}
                 gender={"woman"}
               />
             ))}
@@ -90,9 +78,12 @@ const WomanMainPage = () => {
                 key={cloth.id}
                 id={cloth.id}
                 item={cloth}
-                height={mv ? "25rem" : "18rem"}
-                width={mv ? "23%" : "48%"}
-                margin={mv ? "3rem 0.5rem" : "0.5rem 0.5"}
+                lgHeight={"25rem"}
+                smHeight={"18rem"}
+                smWidth={"48%"}
+                lgWidth={"23%"}
+                lgMargin={"3rem 0.5rem"}
+                smMargin={"0.5rem 0.5"}
                 gender={"woman"}
               />
             ))}

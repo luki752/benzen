@@ -40,6 +40,17 @@ export const loadSpecificItem = (gender, id) => async (dispatch) => {
   });
 };
 
+export const loadFavorites = (gender, id) => async (dispatch) => {
+  //fetch data
+  const itemData = await axios.get(specificItemUrl(gender, id));
+  dispatch({
+    type: "FETCH_FAVORITE",
+    payload: {
+      favorite: itemData.data,
+    },
+  });
+};
+
 export const loadAllItems = (gender, search, item) => async (dispatch) => {
   dispatch({
     type: "LOADING_DETAIL",

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 //styling
 import styled from "styled-components";
 //components
@@ -9,21 +9,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { loginAction } from "../actions/loginAction";
 
 const FavoritesPage = () => {
-  //state
-  const [size, setSize] = useState([0, 0]);
-  const [mv, setMV] = useState(false);
-  //useEffects
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-  useEffect(() => {
-    setMV(window.matchMedia("(min-width: 1000px)").matches);
-  }, [size, mv]);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loginAction(localStorage.getItem("userId")));
@@ -47,9 +32,12 @@ const FavoritesPage = () => {
             ? user.favorites.map((item) => (
                 <Card
                   key={item.id}
-                  height={mv ? "30rem" : "20rem"}
-                  width={mv ? "23%" : "50%"}
-                  margin={mv ? "1.5rem 0.5rem" : "0.5rem 0"}
+                  lgHeight={"25rem"}
+                  smHeight={"18rem"}
+                  smWidth={"48%"}
+                  lgWidth={"24%"}
+                  lgMargin={"1rem 0.3rem"}
+                  smMargin={"0.5rem 0.1px"}
                   id={item.id}
                   gender={item.gender}
                   category={item.category}

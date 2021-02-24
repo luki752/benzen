@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 //styling
 import styled from "styled-components";
 //react
@@ -21,23 +21,9 @@ const SearchPage = () => {
   //state
   const { answer } = useSelector((state) => state.item);
   const [sort, setSort] = useState("");
-  const [size, setSize] = useState([0, 0]);
-  const [mv, setMV] = useState(false);
   const location = useLocation();
   const dispatch = useDispatch();
   const gender = location.pathname.split("/")[2];
-  //useEffects
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-  useEffect(() => {
-    setMV(window.matchMedia("(min-width: 1000px)").matches);
-  }, [size, mv]);
   const handleSort = (e) => {
     setSort(e.target.value);
   };
@@ -71,9 +57,12 @@ const SearchPage = () => {
           .map((item) => (
             <Card
               key={item.id}
-              height={mv ? "30rem" : "20rem"}
-              width={mv ? "23%" : "50%"}
-              margin={mv ? "1.5rem 0.5rem" : "0.5rem 0"}
+              lgHeight={"25rem"}
+              smHeight={"18rem"}
+              smWidth={"48%"}
+              lgWidth={"24%"}
+              lgMargin={"1rem 0.3rem"}
+              smMargin={"0.5rem 0.1px"}
               id={item.id}
               gender={gender}
               category={item.category}
@@ -106,7 +95,7 @@ const SearchPageComponent = styled.div`
   .items-display {
     width: 80%;
     display: Flex;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     @media screen and (max-width: 1200px) {
       width: 100%;

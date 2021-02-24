@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 //styling
 import styled from "styled-components";
 //icons
@@ -15,17 +15,42 @@ import { useSelector, useDispatch } from "react-redux";
 //actions
 import { loginAction } from "../actions/loginAction";
 
-const Card = ({ item, height, width, margin, gender, id, adminPanel }) => {
+const Card = ({
+  item,
+  lgHeight,
+  smHeight,
+  smWidth,
+  lgWidth,
+  smMargin,
+  lgMargin,
+  gender,
+  id,
+  adminPanel,
+}) => {
+  //state
   const dispatch = useDispatch();
-
+  const [size, setSize] = useState([0, 0]);
+  const [mv, setMV] = useState(false);
+  const [favorite, setFavorite] = useState(false);
+  //get width
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+  useEffect(() => {
+    setMV(window.matchMedia("(min-width: 1000px)").matches);
+  }, [size, mv]);
   //snack bar
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   useEffect(() => {
     dispatch(loginAction(localStorage.getItem("userId")));
   }, [dispatch]);
-  //state
+  //get data back
   const { user, isLogged } = useSelector((state) => state.login);
-  const [favorite, setFavorite] = useState(false);
 
   useEffect(() => {
     if (isLogged) {
@@ -96,7 +121,12 @@ const Card = ({ item, height, width, margin, gender, id, adminPanel }) => {
     }
   };
   return (
-    <CardComponent style={{ width: width, margin: margin }}>
+    <CardComponent
+      style={{
+        width: mv ? lgWidth : smWidth,
+        margin: mv ? lgMargin : smMargin,
+      }}
+    >
       {isLogged && (
         <FavoriteBorderIcon
           className="favoriteIcon"
@@ -114,7 +144,7 @@ const Card = ({ item, height, width, margin, gender, id, adminPanel }) => {
         <img
           src={item.images[0].img}
           alt={item.name}
-          style={{ height: height }}
+          style={{ height: mv ? lgHeight : smHeight }}
           onMouseOver={(e) => (e.currentTarget.src = `${item.images[1].img}`)}
           onMouseOut={(e) => (e.currentTarget.src = `${item.images[0].img}`)}
         />
