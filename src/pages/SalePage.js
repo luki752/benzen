@@ -6,7 +6,6 @@ import { useLocation, Link } from "react-router-dom";
 //action
 import { loadSale } from "../actions/itemsAction";
 import { loginAction } from "../actions/loginAction";
-import { setGoBack, setPreviousPage } from "../actions/scrollAction";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //components
@@ -32,10 +31,6 @@ const SalePage = () => {
     dispatch(loadSale(gender, category, sort));
     dispatch(loginAction(localStorage.getItem("userId")));
   }, [dispatch, gender, category, sort]);
-  useEffect(() => {
-    dispatch(setPreviousPage(location.pathname));
-    dispatch(setGoBack(true));
-  }, [dispatch]);
   useEffect(() => {
     axios
       .get(`http://localhost:3000/${gender}?discount=true`)

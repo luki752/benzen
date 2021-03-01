@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { changeCartPrice, setDiscount } from "../actions/cartActions";
 import { loginAction } from "../actions/loginAction";
 import { loadUsersOrders } from "../actions/ordersAction";
-import { setGoBack } from "../actions/scrollAction";
+
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //material ui
@@ -28,7 +28,6 @@ const CartPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loginAction(localStorage.getItem("userId")));
-    dispatch(setGoBack(false));
   }, [dispatch]);
   const { cart, cartPrice, discount } = useSelector((state) => state.cart);
   const { user, isLogged } = useSelector((state) => state.login);

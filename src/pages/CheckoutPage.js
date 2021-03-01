@@ -122,8 +122,19 @@ const CheckoutPage = () => {
     setAddressId(id);
   };
   const chooseButton = () => {
-    setChosenAddress(true);
-    setModal(false);
+    if (
+      newName !== "" &&
+      newSurname !== "" &&
+      newPhone !== "" &&
+      newPhone.length >= 9 &&
+      newCity !== "" &&
+      newStreet !== "" &&
+      newHouseNr !== "" &&
+      newPostalCode !== ""
+    ) {
+      setChosenAddress(true);
+      setModal(false);
+    }
   };
   const modalHandler = () => {
     setAddAddressModal(!addAddressModal);

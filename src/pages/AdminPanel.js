@@ -6,7 +6,7 @@ import { useLocation } from "react-router";
 import { Link, useHistory } from "react-router-dom";
 //actions
 import { loginAction, loadUsers } from "../actions/loginAction";
-import { setGoBack } from "../actions/scrollAction";
+
 import { loadOrders } from "../actions/ordersAction";
 //redux
 import { useDispatch, useSelector } from "react-redux";
@@ -30,7 +30,6 @@ const AdminPanel = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loginAction(localStorage.getItem("userId")));
-    dispatch(setGoBack(false));
   }, [dispatch]);
   //state
   const { orders } = useSelector((state) => state.orders);

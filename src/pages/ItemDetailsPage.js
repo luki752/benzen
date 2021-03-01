@@ -75,18 +75,16 @@ const ItemDetailsPage = () => {
   }, [size, mv]);
   //dispatch data
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(loadSpecificItem(gender, pathId));
-    dispatch(loadAllItems(gender));
-    dispatch(loginAction(localStorage.getItem("userId")));
-  }, [dispatch, gender, pathId]);
+
   //get data back
   const { item, isLoading, AllItems } = useSelector((state) => state.item);
   const { cart } = useSelector((state) => state.cart);
   const { user, isLogged } = useSelector((state) => state.login);
-  const { scrollPosition, previousPage, goBack } = useSelector(
-    (state) => state.scrollPosition
-  );
+  useEffect(() => {
+    dispatch(loadSpecificItem(gender, pathId));
+    dispatch(loadAllItems(gender, "", item.item));
+    dispatch(loginAction(localStorage.getItem("userId")));
+  }, [dispatch, gender, pathId, item.item]);
   useEffect(() => {
     setItemsName(item.name);
     setItemsPrice(item.price);
@@ -173,29 +171,13 @@ const ItemDetailsPage = () => {
       })
       .catch((error) => {});
   };
-  const goBackHandler = () => {
-    // history.push(previousPage);
-    // window.history.go(-1);
-    window.scrollTo(0, scrollPosition);
-    // history.goBack();
-    // window.location = previousPage;
-  };
   return (
     <>
       {!isLoading && item && (
         <ItemDetailsPageComponent>
           <div className="top-side">
             <div className="left-side">
-              <div className="button">
-                {goBack && (
-                  <button
-                    className="button-white"
-                    onClick={() => goBackHandler()}
-                  >
-                    <ArrowLeftIcon /> go back
-                  </button>
-                )}
-              </div>
+              <div className="button"></div>
               <div className="images">
                 {item.images && (
                   <div className="images-show">
@@ -537,22 +519,19 @@ const ItemDetailsPage = () => {
       <SimilarItems>
         {AllItems && (
           <>
-            {AllItems.filter((similar) => similar.item === item.item)
-              .filter((similar) => similar.id !== item.id)
-              .slice(0, 9)
-              .map((item) => (
-                <div className="card" key={item.id}>
-                  <Card
-                    key={item.id}
-                    height={mv ? "30rem" : "20rem"}
-                    width={mv ? "20rem" : "10rem"}
-                    id={item.id}
-                    gender={gender}
-                    category={item.category}
-                    item={item}
-                  />
-                </div>
-              ))}
+            {AllItems.slice(0, 9).map((item) => (
+              <div className="card" key={item.id}>
+                <Card
+                  key={item.id}
+                  height={mv ? "30rem" : "20rem"}
+                  width={mv ? "20rem" : "10rem"}
+                  id={item.id}
+                  gender={gender}
+                  category={item.category}
+                  item={item}
+                />
+              </div>
+            ))}
           </>
         )}
       </SimilarItems>

@@ -2,13 +2,8 @@ import React, { useEffect, useState } from "react";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //actions
-import { loadItems, loadAllItems } from "../actions/itemsAction";
+import { loadItems, loadAllItems, changeLimit } from "../actions/itemsAction";
 import { loginAction } from "../actions/loginAction";
-import {
-  getScrollPosition,
-  setPreviousPage,
-  setGoBack,
-} from "../actions/scrollAction";
 //styling
 import styled from "styled-components";
 //router
@@ -30,10 +25,8 @@ import { BottomScrollListener } from "react-bottom-scroll-listener";
 
 const ClothesPreviewPage = ({ gender }) => {
   //state
-  const [scrollPosition, setScrollPosition] = useState(0);
   const [smallView, setSmallView] = useState(false);
   const [sort, setSort] = useState("");
-  const [limit, setLimit] = useState(20);
   const location = useLocation();
   const item = location.pathname.split("/")[3];
   const subItem = location.pathname.split("/")[4];
@@ -43,33 +36,19 @@ const ClothesPreviewPage = ({ gender }) => {
   const [cardLgHeight, setCardLgHeight] = useState("32rem");
   const [cardSmWidth, setCardSmWidth] = useState("48%");
   const [cardSmHeight, setCardSmHeight] = useState("20rem");
+  const { limit } = useSelector((state) => state.item);
   //dispatch data
   const dispatch = useDispatch();
-  //dispatching
   useEffect(() => {
     dispatch(
       loadItems(gender, category, subItem ? subItem : item, sort, limit)
     );
+  }, [gender, category, item, sort, subItem, limit, dispatch]);
+
+  useEffect(() => {
     dispatch(loginAction(localStorage.getItem("userId")));
     dispatch(loadAllItems(gender, "", subItem ? subItem : item));
-  }, [dispatch, gender, category, item, sort, subItem, limit]);
-  //getting scroll position
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-  //dispatching
-  useEffect(() => {
-    dispatch(getScrollPosition(scrollPosition));
-  }, [scrollPosition, dispatch]);
-
-  useEffect(() => {
-    dispatch(setPreviousPage(location.pathname));
-    dispatch(setGoBack(true));
-  }, [dispatch, location.pathname]);
+  }, [dispatch, gender, subItem, item]);
   //get data back
   const { items, isLoading, AllItems } = useSelector((state) => state.item);
   //handlers
@@ -77,11 +56,7 @@ const ClothesPreviewPage = ({ gender }) => {
     setSort(event.target.value);
   };
   const handleLimit = () => {
-    setLimit(limit + 20);
-  };
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
+    dispatch(changeLimit(20));
   };
   return (
     <>
@@ -145,7 +120,7 @@ const ClothesPreviewPage = ({ gender }) => {
                   smHeight={cardSmHeight}
                   lgWidth={cardLgWidth}
                   smWidth={cardSmWidth}
-                  lgMargin={"1.5rem 0.3rem"}
+                  lgMargin={"1.5rem 0.2rem"}
                   smMargin={"1rem 0.2rem"}
                   gender={gender}
                 />
@@ -160,7 +135,7 @@ const ClothesPreviewPage = ({ gender }) => {
 
 const ClothesPreviewPageComponent = styled.div`
   width: 100%;
-  min-height: 90vw;
+  min-height: 100vh;
   display: flex;
   margin-top: 2rem;
   .left-side {

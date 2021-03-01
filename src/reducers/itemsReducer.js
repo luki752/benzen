@@ -5,6 +5,7 @@ const initState = {
   answer: [],
   sale: [],
   favorites: [],
+  limit: 20,
   isLoading: true,
 };
 
@@ -30,6 +31,8 @@ const itemsReducer = (state = initState, action) => {
       return { ...state, answer: action.payload.answer };
     case "FETCH_SALE":
       return { ...state, sale: action.payload.sale };
+    case "CHANGE_LIMIT":
+      return { ...state, limit: state.limit + action.payload.number };
     default:
       return { ...state };
   }

@@ -86,3 +86,12 @@ export const loadSale = (gender, item, sortOrder) => async (dispatch) => {
     },
   });
 };
+
+export const changeLimit = (number) => async (dispatch) => {
+  dispatch({
+    type: "CHANGE_LIMIT",
+    payload: {
+      number: number,
+    },
+  });
+};

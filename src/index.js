@@ -19,7 +19,6 @@ import CloseIcon from "@material-ui/icons/Close";
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(rootReducer, composeEnhancer(applyMiddleware(thunk)));
-
 const notistackRef = React.createRef();
 const onClickDismiss = (key) => () => {
   notistackRef.current.closeSnackbar(key);
