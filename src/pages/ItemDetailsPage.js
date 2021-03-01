@@ -177,70 +177,65 @@ const ItemDetailsPage = () => {
         <ItemDetailsPageComponent>
           <div className="top-side">
             <div className="left-side">
-              <div className="button"></div>
-              <div className="images">
-                {item.images && (
-                  <div className="images-show">
-                    {item.images.map((img, index) => (
-                      <img
-                        src={img.img}
-                        alt={index}
+              {item.images && (
+                <div className="images-show">
+                  {item.images.map((img, index) => (
+                    <img
+                      src={img.img}
+                      alt={index}
+                      key={index}
+                      onClick={(e) => setCurrentIndex(index)}
+                      className={index === currentIndex ? "active-image" : ""}
+                    />
+                  ))}
+                </div>
+              )}
+              {item.images && (
+                <div
+                  className="main-image"
+                  style={{
+                    backgroundImage: `url(${item.images[currentIndex].img})`,
+                  }}
+                  onClick={() => setModal(!modal)}
+                >
+                  <ArrowBackIosIcon
+                    className="arrows"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      currentIndex - 1 === -1
+                        ? setCurrentIndex(item.images.length - 1)
+                        : setCurrentIndex(
+                            (currentIndex - 1) % item.images.length
+                          );
+                    }}
+                  />
+                  <ArrowForwardIosIcon
+                    className="arrows"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setCurrentIndex((currentIndex + 1) % item.images.length);
+                    }}
+                  />
+                  <div
+                    className="image-count"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {activeImageHandler(item.images.length)}
+                    {dots.map((item, index) => (
+                      <div
                         key={index}
-                        onClick={(e) => setCurrentIndex(index)}
-                        className={index === currentIndex ? "active-image" : ""}
-                      />
+                        className={
+                          index === currentIndex ? "dot active-dot" : "dot"
+                        }
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setCurrentIndex(index);
+                        }}
+                      ></div>
                     ))}
                   </div>
-                )}
-                {item.images && (
-                  <div
-                    className="main-image"
-                    style={{
-                      backgroundImage: `url(${item.images[currentIndex].img})`,
-                    }}
-                    onClick={() => setModal(!modal)}
-                  >
-                    <ArrowBackIosIcon
-                      className="arrows"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        currentIndex - 1 === -1
-                          ? setCurrentIndex(item.images.length - 1)
-                          : setCurrentIndex(
-                              (currentIndex - 1) % item.images.length
-                            );
-                      }}
-                    />
-                    <ArrowForwardIosIcon
-                      className="arrows"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setCurrentIndex(
-                          (currentIndex + 1) % item.images.length
-                        );
-                      }}
-                    />
-                    <div
-                      className="image-count"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      {activeImageHandler(item.images.length)}
-                      {dots.map((item, index) => (
-                        <div
-                          key={index}
-                          className={
-                            index === currentIndex ? "dot active-dot" : "dot"
-                          }
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setCurrentIndex(index);
-                          }}
-                        ></div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
+                </div>
+              )}
             </div>
             <div className="right-side">
               {isLogged && (
@@ -595,29 +590,13 @@ const ItemDetailsPageComponent = styled.div`
       flex-direction: column;
     }
     .left-side {
-      position: relative;
       width: 50%;
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      flex-direction: column;
       @media screen and (max-width: 1000px) {
         width: 100%;
         justify-content: center;
-      }
-      .button {
-        width: 20rem;
-        .button-white {
-          width: 100%;
-          @media screen and (max-width: 1000px) {
-            background-color: black;
-            color: white;
-          }
-        }
-      }
-
-      .images {
-        display: flex;
       }
       .main-image {
         height: 70vh;
