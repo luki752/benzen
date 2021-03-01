@@ -67,7 +67,7 @@ const Card = ({
   const favoritesHandler = () => {
     if (favorite === false) {
       axios
-        .put(`http://localhost:3000/users/${user.id}/`, {
+        .put(`https://benzen-server.herokuapp.com/users/${user.id}/`, {
           name: user.name,
           surname: user.surname,
           email: user.email,
@@ -101,7 +101,7 @@ const Card = ({
     } else if (favorite === true) {
       if (user.favorites) {
         axios
-          .put(`http://localhost:3000/users/${user.id}/`, {
+          .put(`https://benzen-server.herokuapp.com/users/${user.id}/`, {
             name: user.name,
             surname: user.surname,
             email: user.email,

@@ -45,7 +45,7 @@ const User = () => {
   ) => {
     if (changeAccess !== "") {
       axios
-        .put(`http://localhost:3000/users/${id}/`, {
+        .put(`https://benzen-server.herokuapp.com/users/${id}/`, {
           name: name,
           surname: surname,
           email: email,

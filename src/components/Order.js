@@ -32,7 +32,7 @@ const Order = () => {
   const changeOrdersStatus = (id) => {
     if (orderStatus !== "") {
       axios
-        .put(`http://localhost:3000/orders/${id}/`, {
+        .put(`https://benzen-server.herokuapp.com/orders/${id}/`, {
           items: order.items,
           date: order.date,
           time: order.time,
