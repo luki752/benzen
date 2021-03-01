@@ -1,31 +1,31 @@
-export const itemsUrl = (gender, category, item, sortOrder, page) =>
-  `http://localhost:3000/${gender}?category=${category}&item=${item}&_sort=price&_order=${sortOrder}&_limit=${page} `;
+const appLink = `https://benzen-server.herokuapp.com`;
 
-export const specificItemUrl = (gender, id) =>
-  `http://localhost:3000/${gender}/${id}`;
+export const itemsUrl = (gender, category, item, sortOrder, page) =>
+  `${appLink}/${gender}?category=${category}&item=${item}&_sort=price&_order=${sortOrder}&_limit=${page} `;
+
+export const specificItemUrl = (gender, id) => `${appLink}/${gender}/${id}`;
 
 export const allItemsUrl = (gender, query, item) =>
-  `http://localhost:3000/${gender}?q=${query}&item=${item}`;
+  `${appLink}/${gender}?q=${query}&item=${item}`;
 
-export const allUsersUrl = () => `http://localhost:3000/users`;
+export const allUsersUrl = () => `${appLink}/users`;
 export const allUsersFilteredUrl = (accessibility, query, page) =>
-  `http://localhost:3000/users?accessibility=${accessibility}&q=${query}&_limit=20&_page=${page}`;
-export const specificUser = (id) => `http://localhost:3000/users/${id}`;
+  `${appLink}/users?accessibility=${accessibility}&q=${query}&_limit=20&_page=${page}`;
+export const specificUser = (id) => `${appLink}/users/${id}`;
 
-export const loginUrl = (email) => `http://localhost:3000/users?email=${email}`;
+export const loginUrl = (email) => `${appLink}/users?email=${email}`;
 
-export const registerUrl = (email) =>
-  `http://localhost:3000/users?email=${email}`;
+export const registerUrl = (email) => `${appLink}/users?email=${email}`;
 
 export const questionUrl = (gender, question) =>
-  `http://localhost:3000/${gender}?q=${question}`;
+  `${appLink}/${gender}?q=${question}`;
 
 export const discountUrl = (gender, item, sortOrder) =>
-  `http://localhost:3000/${gender}?item=${item}&discount=true&_sort=price&_order=${sortOrder}`;
+  `${appLink}/${gender}?item=${item}&discount=true&_sort=price&_order=${sortOrder}`;
 
 export const allOrders = (sortOrder, page) =>
-  `http://localhost:3000/orders?_sort=date&_order=${sortOrder}&_limit=20&_page=${page}`;
+  `${appLink}/orders?_sort=date&_order=${sortOrder}&_limit=20&_page=${page}`;
 
 export const usersOrders = (id) =>
-  `http://localhost:3000/orders?usersId=${id}&_sort=date&_order=desc`;
-export const specificOrder = (id) => `http://localhost:3000/orders/${id}`;
+  `${appLink}/orders?usersId=${id}&_sort=date&_order=desc`;
+export const specificOrder = (id) => `${appLink}/orders/${id}`;

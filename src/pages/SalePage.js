@@ -33,7 +33,7 @@ const SalePage = () => {
   }, [dispatch, gender, category, sort]);
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/${gender}?discount=true`)
+      .get(`https://benzen-server.herokuapp.com/${gender}?discount=true`)
       .then((res) => setItemList([...new Set(res.data.map((a) => a.item))]));
   }, [dispatch, gender]);
   //handlers

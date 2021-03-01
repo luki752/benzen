@@ -61,6 +61,7 @@ const ItemDetailsPage = () => {
   const [itemsDescription, setItemsDescription] = useState("");
   const [itemsAmount, setItemsAmount] = useState("");
   const [editMsg, setEditMsg] = useState("");
+  const appLink = `https://benzen-server.herokuapp.com`;
   //getting window size
   useLayoutEffect(() => {
     function updateSize() {
@@ -141,7 +142,7 @@ const ItemDetailsPage = () => {
       itemsDescription !== ""
     ) {
       axios
-        .put(`http://localhost:3000/${gender}/${item.id}/`, {
+        .put(`${appLink}/${gender}/${item.id}/`, {
           name: itemsName,
           beforeDiscount: itemsDiscount ? item.price : "",
           item: item.item,
@@ -165,7 +166,7 @@ const ItemDetailsPage = () => {
   };
   const deleteItemHandler = () => {
     axios
-      .delete(`http://localhost:3000/${gender}/${item.id}/`)
+      .delete(`${appLink}/${gender}/${item.id}/`)
       .then((resp) => {
         history.push(`/${gender}`);
       })

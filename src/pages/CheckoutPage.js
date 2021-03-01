@@ -60,6 +60,7 @@ const CheckoutPage = () => {
   //anonymous
   const [anonymousModal, setAnonymousModal] = useState(false);
   const [email, setEmail] = useState("");
+  const appLink = `https://benzen-server.herokuapp.com`;
   //useEffect
   useEffect(() => {
     dispatch(loginAction(localStorage.getItem("userId")));
@@ -156,7 +157,7 @@ const CheckoutPage = () => {
       newPostalCode !== ""
     ) {
       axios
-        .put(`http://localhost:3000/users/${user.id}/`, {
+        .put(`${appLink}/users/${user.id}/`, {
           name: user.name,
           surname: user.surname,
           email: user.email,
@@ -212,7 +213,7 @@ const CheckoutPage = () => {
           : location
       );
       axios
-        .put(`http://localhost:3000/users/${user.id}/`, {
+        .put(`${appLink}/users/${user.id}/`, {
           name: user.name,
           surname: user.surname,
           email: user.email,
@@ -233,7 +234,7 @@ const CheckoutPage = () => {
     if (cart.length !== 0 && chosenPayment) {
       cart.map((item) =>
         axios
-          .put(`http://localhost:3000/${item.gender}/${item.id}`, {
+          .put(`${appLink}/${item.gender}/${item.id}`, {
             name: item.name,
             item: item.item,
             amount: item.amount - item.cartAmount,
@@ -251,7 +252,7 @@ const CheckoutPage = () => {
       );
       let current = new Date();
       axios
-        .post("http://localhost:3000/orders", {
+        .post(`${appLink}/orders`, {
           items: cart,
           date: current.toLocaleDateString(),
           time: current.toLocaleTimeString(),

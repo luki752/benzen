@@ -62,6 +62,7 @@ const AccountPage = () => {
   }, [dispatch]);
   const { isLogged, user } = useSelector((state) => state.login);
   const [action, setAction] = useState("change");
+  const appLink = `https://benzen-server.herokuapp.com`;
 
   useEffect(() => {
     if (isLogged && user) {
@@ -78,7 +79,7 @@ const AccountPage = () => {
       usersEmail.includes("@")
     ) {
       axios
-        .put(`http://localhost:3000/users/${user.id}/`, {
+        .put(`${appLink}/users/${user.id}/`, {
           name: usersName,
           surname: usersSurname,
           email: usersEmail,
@@ -101,7 +102,7 @@ const AccountPage = () => {
       if (sha512(oldPassword).toString(Base64) === user.password) {
         if (newPassword === confirmNewPassword) {
           axios
-            .put(`http://localhost:3000/users/${user.id}/`, {
+            .put(`${appLink}/users/${user.id}/`, {
               name: user.name,
               surname: user.surname,
               email: user.email,
@@ -127,7 +128,7 @@ const AccountPage = () => {
   };
   const deleteAccountHandler = () => {
     axios
-      .delete(`http://localhost:3000/users/${user.id}/`)
+      .delete(`${appLink}/users/${user.id}/`)
       .then((resp) => {
         LogOutHandler();
       })
@@ -176,7 +177,7 @@ const AccountPage = () => {
           : location
       );
       axios
-        .put(`http://localhost:3000/users/${user.id}/`, {
+        .put(`${appLink}/users/${user.id}/`, {
           name: user.name,
           surname: user.surname,
           email: user.email,
@@ -226,7 +227,7 @@ const AccountPage = () => {
       usersPostalCode !== ""
     ) {
       axios
-        .put(`http://localhost:3000/users/${user.id}/`, {
+        .put(`${appLink}/users/${user.id}/`, {
           name: user.name,
           surname: user.surname,
           email: user.email,
@@ -268,7 +269,7 @@ const AccountPage = () => {
   };
   const deleteAddressHandler = (id) => {
     axios
-      .put(`http://localhost:3000/users/${user.id}/`, {
+      .put(`${appLink}/users/${user.id}/`, {
         name: user.name,
         surname: user.surname,
         email: user.email,

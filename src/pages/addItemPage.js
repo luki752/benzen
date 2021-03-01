@@ -84,7 +84,7 @@ const AddItemPage = () => {
       images.length !== 0
     ) {
       axios
-        .post(`http://localhost:3000/${gender}`, {
+        .post(`https://benzen-server.herokuapp.com/${gender}`, {
           name: name,
           item: item,
           amount: amount,

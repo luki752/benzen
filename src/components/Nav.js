@@ -48,12 +48,12 @@ const Nav = () => {
   //useEffect
   useEffect(() => {
     axios
-      .get("http://localhost:3000/woman?discount=true")
+      .get("https://benzen-server.herokuapp.com/woman?discount=true")
       .then((res) =>
         setWomenDiscountsList([...new Set(res.data.map((a) => a.item))])
       );
     axios
-      .get("http://localhost:3000/man?discount=true")
+      .get("https://benzen-server.herokuapp.com/man?discount=true")
       .then((res) =>
         setMenDiscountsList([...new Set(res.data.map((a) => a.item))])
       );

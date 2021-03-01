@@ -43,6 +43,7 @@ const AccountPage = () => {
   const [registerError, setRegisterError] = useState(false);
   const [registerErrorMsg, setRegisterErrorMsg] = useState("");
   const [registerSuccess, setRegisterSuccess] = useState(false);
+  const appLink = `https://benzen-server.herokuapp.com`;
   //location
   const location = useLocation();
   const dispatch = useDispatch();
@@ -74,7 +75,7 @@ const AccountPage = () => {
           res.data[0].password === sha512(loginPasswordInput).toString(Base64)
         ) {
           axios
-            .put(`http://localhost:3000/users/${res.data[0].id}/`, {
+            .put(`${appLink}/users/${res.data[0].id}/`, {
               name: res.data[0].name,
               surname: res.data[0].surname,
               email: res.data[0].email,
@@ -119,7 +120,7 @@ const AccountPage = () => {
           if (registerPassword.length >= 4) {
             if (registerName !== "" && registerSurname !== "") {
               axios
-                .post("http://localhost:3000/users", {
+                .post(`${appLink}/users`, {
                   name: registerName,
                   surname: registerSurname,
                   email: registerEmailInput,
