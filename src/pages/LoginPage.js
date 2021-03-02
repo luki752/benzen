@@ -158,7 +158,6 @@ const AccountPage = () => {
       }
     });
   };
-  console.log(registerPassword.length);
   return (
     <AccountPageComponent
       style={{

@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 //styling
 import styled from "styled-components";
-//motion
-import { motion } from "framer-motion";
 //material ui
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
@@ -19,7 +17,7 @@ import { Link, useHistory } from "react-router-dom";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 //actions
-import { loadSpecificItem, loadAllItems } from "../actions/itemsAction";
+import { loadSpecificItem } from "../actions/itemsAction";
 import { loginAction } from "../actions/loginAction";
 //router
 import { useLocation } from "react-router-dom";
@@ -29,20 +27,21 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import CloseIcon from "@material-ui/icons/Close";
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import EditIcon from "@material-ui/icons/Edit";
 import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
-
 //components
-import Card from "../components/Card";
 import SmallImage from "../components/SmallImage";
+import CheckoutModal from "../components/CheckoutModal";
+import FullImageModal from "../components/FullImageModal";
+import SimilarItems from "../components/SimilarItems";
 
 const ItemDetailsPage = () => {
   //state
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [modal, setModal] = useState(false);
   const [itemsSize, setItemsSize] = useState("");
   const [proceedError, setProceedError] = useState(false);
+  //modal
+  const [modal, setModal] = useState(false);
   const [checkoutModalOpen, setCheckoutModal] = useState(false);
   const dots = [];
   //location, id
@@ -79,12 +78,11 @@ const ItemDetailsPage = () => {
   const dispatch = useDispatch();
 
   //get data back
-  const { item, isLoading, AllItems } = useSelector((state) => state.item);
+  const { item, isLoading } = useSelector((state) => state.item);
   const { cart } = useSelector((state) => state.cart);
   const { user, isLogged } = useSelector((state) => state.login);
   useEffect(() => {
     dispatch(loadSpecificItem(gender, pathId));
-    dispatch(loadAllItems(gender, "", item.item));
     dispatch(loginAction(localStorage.getItem("userId")));
   }, [dispatch, gender, pathId, item.item]);
   useEffect(() => {
@@ -487,88 +485,31 @@ const ItemDetailsPage = () => {
               </Accordion>
             </div>
           </div>
-          <FullImageModal style={{ display: modal ? "flex" : "none" }}>
-            <CloseIcon
-              className="close-modal"
-              onClick={() => setModal(!modal)}
-            />
-            <ArrowBackIosIcon
-              className="arrows left-arrow"
-              onClick={() =>
-                currentIndex - 1 === -1
-                  ? setCurrentIndex(item.images.length - 1)
-                  : setCurrentIndex((currentIndex - 1) % item.images.length)
-              }
-            />
-            {item.images && (
-              <img src={item.images[currentIndex].img} alt={item.name} />
-            )}
-            <ArrowForwardIosIcon
-              className="arrows right-arrow"
-              onClick={() =>
-                setCurrentIndex((currentIndex + 1) % item.images.length)
-              }
-            />
-          </FullImageModal>
+          <FullImageModal
+            setCurrentIndex={setCurrentIndex}
+            currentIndex={currentIndex}
+            item={item}
+            itemsSize={itemsSize}
+            setModal={setModal}
+            modal={modal}
+          />
+
           <h1>Recommended</h1>
         </ItemDetailsPageComponent>
       )}
-      <SimilarItems>
-        {AllItems && (
-          <>
-            {AllItems.slice(0, 9).map((item) => (
-              <div className="card" key={item.id}>
-                <Card
-                  key={item.id}
-                  height={mv ? "30rem" : "20rem"}
-                  width={mv ? "20rem" : "10rem"}
-                  id={item.id}
-                  gender={gender}
-                  category={item.category}
-                  item={item}
-                />
-              </div>
-            ))}
-          </>
-        )}
-      </SimilarItems>
+      <SimilarItems
+        category={item.item}
+        gender={gender}
+        pathId={pathId}
+        id={item.id}
+        mv={mv}
+      />
       {item && (
         <CheckoutModal
-          onClick={() => setCheckoutModal(!checkoutModalOpen)}
-          style={{ display: checkoutModalOpen ? "flex" : "none" }}
-        >
-          <div className="modal">
-            <div className="header">
-              <CheckBoxIcon
-                className="success-icon"
-                style={{ color: "green" }}
-              />
-              <span>Product was added to your shopping cart</span>
-              <CloseIcon
-                className="close-icon"
-                onClick={() => setCheckoutModal(!checkoutModalOpen)}
-              />
-            </div>
-            {item.images && <img src={item.images[0].img} alt={item.name} />}
-            <span>
-              Size: <b>{itemsSize}</b>
-            </span>
-            <span>{item.price} GBP</span>
-            <div className="buttons">
-              <Link
-                to="/checkout/cart"
-                className="link"
-                onClick={() => window.scrollTo(0, 0)}
-              >
-                <button className="button-black">Go to your bag</button>
-              </Link>
-
-              <span onClick={() => setCheckoutModal(!checkoutModalOpen)}>
-                Continue Shopping
-              </span>
-            </div>
-          </div>
-        </CheckoutModal>
+          item={item}
+          setCheckoutModal={setCheckoutModal}
+          checkoutModalOpen={checkoutModalOpen}
+        />
       )}
     </>
   );
@@ -793,137 +734,5 @@ const ItemDetailsPageComponent = styled.div`
     }
   }
 `;
-const FullImageModal = styled.div`
-  width: 100%;
-  height: fit-content;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  img {
-    width: 80%;
-    z-index: 4;
-  }
-  .close-modal {
-    position: fixed;
-    right: 0;
-    top: 0;
-    margin: 1rem;
-    font-size: 2rem;
-    font-size: 3rem;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-  .arrows {
-    position: fixed;
-    margin-top: 25%;
-    font-size: 3rem;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-  .left-arrow {
-    left: 0;
-    margin-left: 2rem;
-  }
-  .right-arrow {
-    right: 0;
-    margin-right: 2rem;
-  }
-`;
-const SimilarItems = styled.div`
-  width: 90%;
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  margin-left: 10%;
-  @media screen and (max-width: 1000px) {
-    margin-left: 0rem;
-    width: 100%;
-  }
-  .card {
-    width: 21rem;
-    flex: 0 0 auto;
-    margin: 1.5rem 0;
-    border: none;
-    @media screen and (max-width: 1000px) {
-      margin: 0.5rem 0;
-      width: 11rem;
-    }
-  }
-  ::-webkit-scrollbar {
-    height: 10px;
-  }
-  ::-webkit-scrollbar-track {
-    background: white;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.6);
-  }
-`;
-const CheckoutModal = styled(motion.div)`
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.7);
-  width: 100%;
-  height: 160vh;
-  top: 0;
-  left: 0;
-  .modal {
-    margin-left: 35%;
-    margin-top: 5%;
-    background-color: white;
-    width: 28rem;
-    height: 85%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    @media screen and (max-width: 1000px) {
-      width: 100%;
-      margin: 0;
-    }
-    .header {
-      width: 100%;
-      display: flex;
-      align-items: Center;
-      justify-content: center;
-      .success-icon {
-        font-size: 2rem;
-        margin: 5px;
-      }
-      .close-icon {
-        font-size: 2rem;
-        margin: 5px;
-        &:hover {
-          cursor: pointer;
-        }
-      }
-    }
-    img {
-      height: 25rem;
-      width: 20rem;
-      margin: 1rem 0;
-    }
-    .buttons {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      button {
-        padding: 0.5rem;
-        width: 20rem;
-      }
-      span {
-        border-bottom: 1px solid black;
-        font-weight: bold;
-        &:hover {
-          cursor: pointer;
-        }
-      }
-    }
-  }
-`;
+
 export default ItemDetailsPage;

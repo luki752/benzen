@@ -50,7 +50,6 @@ const Order = () => {
         .catch((error) => {});
     }
   };
-  console.log(order);
   return (
     <OrdersComponent>
       {!isLoading && order.items && (
