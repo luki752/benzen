@@ -4,23 +4,23 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import GlobalStyles from "./components/GlobalStyles";
 //pages
-import Home from "./pages/Home";
 import AccountPage from "./pages/AccountPage";
+import AddItemPage from "./Pages/AddItemPage";
+import AdminPanel from "./pages/AdminPanel";
+import CartPage from "./pages/CartPage";
+import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import WomanMainPage from "./pages/WomanMainPage";
 import ManMainPage from "./pages/ManMainPage";
-import CartPage from "./pages/CartPage";
 import ManClothesPage from "./pages/ManClothesPage";
 import WomanClothesPage from "./pages/WomanClothesPage";
 import ItemDetailsPage from "./pages/ItemDetailsPage";
 import FavoritesPage from "./pages/FavoritesPage";
-import AddItemPage from "./Pages/addItemPage";
 import SearchPage from "./pages/SearchPage";
 import SalePage from "./pages/SalePage";
 import SaleMainPage from "./pages/SaleMainPage";
 import CheckoutPage from "./pages/CheckoutPage";
-import FinalizedOrderPage from "./Pages/finalizedOrderPage";
-import AdminPanel from "./pages/AdminPanel";
+import FinalizedOrderPage from "./Pages/FinalizedOrderPage";
 //router
 import { Route } from "react-router-dom";
 
