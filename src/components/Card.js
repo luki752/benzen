@@ -152,7 +152,7 @@ const Card = ({
         <div className="name">{item.name}</div>
       </Link>
       <div className="price">
-        {item.discount === true ? (
+        {item.discount === "true" || item.discount === true ? (
           <p>
             {item.price} GBP
             <span style={{ textDecoration: "line-through" }}>

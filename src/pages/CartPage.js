@@ -215,13 +215,23 @@ const CartPage = () => {
                         </div>
                         <div className="price">
                           <span
-                            style={{ color: item.discount ? "red" : "black" }}
+                            style={{
+                              color:
+                                item.discount === "true" ||
+                                item.discount === true
+                                  ? "red"
+                                  : "black",
+                            }}
                           >
                             {(item.cartAmount * item.price).toFixed(2)} GBP
                           </span>
                           <span
                             style={{
-                              display: item.discount ? "flex" : "none",
+                              display:
+                                item.discount === "true" ||
+                                item.discount === true
+                                  ? "flex"
+                                  : "none",
                               textDecoration: "line-through",
                             }}
                           >
@@ -242,7 +252,9 @@ const CartPage = () => {
                       </span>
                       <span
                         style={{
-                          display: cart.find((i) => i.discount === true)
+                          display: cart.find(
+                            (i) => i.discount === true || i.discount === "true"
+                          )
                             ? "block"
                             : "none",
                           textDecoration: "line-through",

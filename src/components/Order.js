@@ -118,14 +118,20 @@ const Order = () => {
                   <div className="right-item">
                     <span
                       style={{
-                        color: item.discount ? "red" : "black",
+                        color:
+                          item.discount === "true" || item.discount === true
+                            ? "red"
+                            : "black",
                       }}
                     >
                       {(item.price * item.cartAmount).toFixed(2)} GBP
                     </span>
                     <span
                       style={{
-                        display: item.discount ? "block" : "none",
+                        display:
+                          item.discount === "true" || item.discount === true
+                            ? "block"
+                            : "none",
                         textDecoration: "line-through",
                       }}
                     >

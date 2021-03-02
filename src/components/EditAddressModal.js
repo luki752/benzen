@@ -71,6 +71,7 @@ const EditAddressModal = ({
           password: user.password,
           favorites: user.favorites,
           addresses: newAddress,
+          accessibility: user.accessibility,
         })
         .then((resp) => {
           dispatch(loginAction(localStorage.getItem("userId")));

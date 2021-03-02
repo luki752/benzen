@@ -148,8 +148,8 @@ const AdminPanel = () => {
                   onChange={ordersSortHandler}
                   className="sort-select"
                 >
-                  <MenuItem value="asc">Sort date new to old</MenuItem>
-                  <MenuItem value="desc">Sort date old to new</MenuItem>
+                  <MenuItem value="desc">Sort date new to old</MenuItem>
+                  <MenuItem value="asc">Sort date old to new</MenuItem>
                 </Select>
               </FormControl>
             </div>

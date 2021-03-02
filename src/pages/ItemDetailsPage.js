@@ -274,11 +274,11 @@ const ItemDetailsPage = () => {
                 )}
                 <span className="name">{item.name}</span>
                 <span className="price">
-                  {item.discount ? (
+                  {item.discount === "true" || item.discount === true ? (
                     <>
                       <b
                         style={{
-                          color: item.discount ? "tomato" : "black",
+                          color: "tomato",
                         }}
                       >
                         {item.price} GBP

@@ -332,7 +332,7 @@ const CheckoutPage = () => {
                   </div>
                   <div className="item-size">
                     <span>Size: {item.size}</span>
-                    {item.discount ? (
+                    {item.discount === "true" || item.discount === true ? (
                       <span style={{ color: "red", fontWeight: "bold" }}>
                         {parseFloat(item.price * item.cartAmount).toFixed(2)}{" "}
                         GBP{" "}
@@ -342,7 +342,8 @@ const CheckoutPage = () => {
                             fontWeight: "normal",
                           }}
                         >
-                          {(item.price * item.beforeDiscount).toFixed(2)} GBP
+                          {(item.beforeDiscount * item.cartAmount).toFixed(2)}{" "}
+                          GBP
                         </b>
                       </span>
                     ) : (

@@ -28,7 +28,7 @@ const AddItemPage = () => {
   const [price, setPrice] = useState("");
   const [priceBeforeDiscount, setPriceBeforeDiscount] = useState("");
   const [description, setDescription] = useState("");
-  const { user } = useSelector((state) => state.login);
+  const { user, isLogged } = useSelector((state) => state.login);
   //materials
   const [materials, setMaterials] = useState([]);
   const [materialFabric, setMaterialFabric] = useState("");
@@ -109,7 +109,7 @@ const AddItemPage = () => {
           setPrice("");
           setMaterials([]);
           setImages([]);
-          dispatch(loginAction());
+          dispatch(loginAction(localStorage.getItem("userId")));
           window.scrollTo(0, 0);
         })
         .catch((error) => {});
@@ -125,7 +125,7 @@ const AddItemPage = () => {
           Go back to admins panel
         </button>
       </Link>
-      {user.email === "admin@admin.com" && (
+      {isLogged && user.email === "admin@admin.com" && (
         <div className="inputs">
           <div className="two-inputs">
             <div className="option">

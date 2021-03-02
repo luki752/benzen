@@ -27,8 +27,8 @@ export const discountUrl = (gender, item, sortOrder, limit) =>
   `${appLink}/${gender}?item=${item}&discount=true&_sort=price&_order=${sortOrder}&_limit=${limit}`;
 
 export const allOrders = (sortOrder, page) =>
-  `${appLink}/orders?_sort=date&_order=${sortOrder}&_limit=20&_page=${page}`;
+  `${appLink}/orders?_sort=id&_order=${sortOrder}&_limit=20&_page=${page}`;
 
 export const usersOrders = (id) =>
-  `${appLink}/orders?usersId=${id}&_sort=date&_order=desc`;
+  `${appLink}/orders?usersId=${id}&_sort=id&_order=desc`;
 export const specificOrder = (id) => `${appLink}/orders/${id}`;

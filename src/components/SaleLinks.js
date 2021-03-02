@@ -54,7 +54,12 @@ const SaleLinks = ({ gender, category, hamburger, setNavOpen, navOpen }) => {
               key={item}
               onClick={() => linkHandler()}
             >
-              <li className={category === item ? "active-list" : ""}>{item}</li>
+              <li
+                className={category === item ? "active-list" : ""}
+                style={{ color: category ? "black" : "red" }}
+              >
+                {item}
+              </li>
             </Link>
           ))}
         </ul>
@@ -68,7 +73,6 @@ const SaleLinksComponent = styled.div`
     list-style: none;
     padding: 0rem;
     li {
-      color: red;
       padding: 0.4rem 0rem;
       &:hover {
         text-decoration: underline;
