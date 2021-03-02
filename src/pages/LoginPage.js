@@ -67,6 +67,9 @@ const AccountPage = () => {
     setMV(window.matchMedia("(min-width: 1000px)").matches);
   }, [size]);
   //handlers
+  //function sends request to database and tries to find email that user has given,
+  //if it finds it then we try to match password related to that email with encrypted password input
+  //if it all matches we set a local storage id and dispatch login
   const loginHandler = (e) => {
     e.preventDefault();
     axios.get(loginUrl(loginEmailInput)).then((res) => {
@@ -104,6 +107,10 @@ const AccountPage = () => {
       }
     });
   };
+  //this function tests email input with regex so its a legit email
+  //then it checks if password length is greater than 4
+  //and then checks if name and surname aren't empty
+  //if all of above is true it registers a user in  data base
   const registerHandler = (e) => {
     e.preventDefault();
     axios.get(registerUrl(registerEmailInput)).then((res) => {

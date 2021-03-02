@@ -106,6 +106,9 @@ const CheckoutPage = () => {
     setModal(!addressModal);
     setEditModal(!editModal);
   };
+  //this function checks if cart isn't empty and payment has been chosen
+  //then if its true it decreases items amount
+  //then function posts new order to database
   const finalizeOrderHandler = () => {
     if (cart.length !== 0 && chosenPayment) {
       cart.map((item) =>

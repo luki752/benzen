@@ -27,6 +27,7 @@ const AnonymousAddressModal = ({
   setEmail,
   setChosenAddress,
 }) => {
+  //setting address
   const anonymousAddressHandler = () => {
     if (
       name !== "" &&

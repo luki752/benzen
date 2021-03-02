@@ -64,6 +64,7 @@ const Card = ({
     enqueueSnackbar(snackbarMessage, { variant: snackVariant });
     closeSnackbar(500);
   };
+  //this handler checks if favorite is false if so it adds this item to users favorite list, if favorite is true it filters the array
   const favoritesHandler = () => {
     if (favorite === false) {
       axios

@@ -30,6 +30,7 @@ const NewAddressModal = ({
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.login);
   //handlers
+  //this handler checks if inputs are empty if so it adds new address to user
   const addAddressHandler = () => {
     if (
       newName !== "" &&
@@ -48,6 +49,7 @@ const NewAddressModal = ({
           email: user.email,
           password: user.password,
           favorites: user.favorites,
+          accessibility: user.accessibility,
           addresses: [
             ...user.addresses,
             {

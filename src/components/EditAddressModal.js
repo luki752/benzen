@@ -38,6 +38,7 @@ const EditAddressModal = ({
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.login);
   //handlers
+  //this handler checks if inputs are empty if they aren't it searches users addresses to match passed to function id, then it edits this found address
   const editAddressHandler = (addressId) => {
     if (
       name !== "" &&

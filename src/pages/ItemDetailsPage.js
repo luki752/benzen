@@ -133,6 +133,7 @@ const ItemDetailsPage = () => {
   const discountHandler = (e) => {
     setItemsDiscount(e.target.value);
   };
+  //editing item
   const changeItemHandler = () => {
     if (
       itemsName !== "" &&
@@ -141,7 +142,7 @@ const ItemDetailsPage = () => {
       itemsDescription !== ""
     ) {
       axios
-        .put(`${appLink}/${gender}/${item.id}/`, {
+        .put(`${appLink}/${gender}/${item.id}`, {
           name: itemsName,
           beforeDiscount: itemsDiscount ? item.price : "",
           item: item.item,
@@ -165,7 +166,7 @@ const ItemDetailsPage = () => {
   };
   const deleteItemHandler = () => {
     axios
-      .delete(`${appLink}/${gender}/${item.id}/`)
+      .delete(`${appLink}/${gender}/${item.id}`)
       .then((resp) => {
         history.push(`/${gender}`);
       })

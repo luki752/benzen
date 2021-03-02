@@ -71,6 +71,7 @@ const AccountPage = () => {
   }, [dispatch, isLogged, user]);
   const { userOrders } = useSelector((state) => state.orders);
   //handlers
+  //changes name, surname, email for user
   const userAccountHandler = () => {
     if (
       usersName !== "" &&
@@ -97,6 +98,7 @@ const AccountPage = () => {
       setAccountErrorMsg("Inputs cant be empty");
     }
   };
+  //checks if inputs are empty, then it checks if password coded to sha512 matches user password then it checks if newPassword input matches  if so it changes user's password
   const passwordChangeHandler = () => {
     if (oldPassword !== "" && newPassword !== "" && confirmNewPassword !== "") {
       if (sha512(oldPassword).toString(Base64) === user.password) {
@@ -117,7 +119,7 @@ const AccountPage = () => {
             })
             .catch((error) => {});
         } else {
-          setPasswordErrorMsg("passwords dont match");
+          setPasswordErrorMsg("passwords don't match");
         }
       } else {
         setPasswordErrorMsg("wrong password");
@@ -134,6 +136,7 @@ const AccountPage = () => {
       })
       .catch((error) => {});
   };
+  //sets inputs value to users data
   useEffect(() => {
     if (isLogged) {
       setUsersName(user.name);
@@ -151,6 +154,8 @@ const AccountPage = () => {
       }
     }
   }, [user, isLogged]);
+
+  //edits address
   const addressHandler = () => {
     if (
       usersAddressName !== "" &&
@@ -195,6 +200,7 @@ const AccountPage = () => {
       setAddressMsg("Inputs cant be empty");
     }
   };
+  //adds address
   const newAddressHandler = () => {
     setNewAddressCheckbox(true);
     setAddressId(0);
@@ -267,6 +273,7 @@ const AccountPage = () => {
     localStorage.removeItem("userId");
     history.push("/customer/account/login");
   };
+  //deletes address
   const deleteAddressHandler = (id) => {
     axios
       .put(`${appLink}/users/${user.id}/`, {
