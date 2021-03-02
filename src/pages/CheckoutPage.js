@@ -283,15 +283,26 @@ const CheckoutPage = () => {
     }
   };
   const anonymousAddressHandler = () => {
-    setAnonymousModal(!anonymousModal);
-    setName(name);
-    setSurname(surname);
-    setCity(city);
-    setPostalCode(postalCode);
-    setStreet(street);
-    setPhone(phone);
-    setHouseNr(houseNr);
-    setChosenAddress(true);
+    if (
+      name !== "" &&
+      surname !== "" &&
+      phone !== "" &&
+      phone.length === 9 &&
+      houseNr !== "" &&
+      street !== "" &&
+      city !== "" &&
+      postalCode !== ""
+    ) {
+      setAnonymousModal(!anonymousModal);
+      setName(name);
+      setSurname(surname);
+      setCity(city);
+      setPostalCode(postalCode);
+      setStreet(street);
+      setPhone(phone);
+      setHouseNr(houseNr);
+      setChosenAddress(true);
+    }
   };
   return (
     <CheckoutPageComponents>
@@ -444,7 +455,7 @@ const CheckoutPage = () => {
         </button>
         <p>
           When you click Shop and Pay you will create your order. When you order
-          at reserved.com, you agree to our Terms and Conditions.
+          at benzen, you agree to our Terms and Conditions.
         </p>
         <div className="your-order">
           <Accordion className="accordion">
@@ -1194,6 +1205,10 @@ const AnonymousAddressModal = styled.div`
     width: 25%;
     justify-content: center;
     padding: 1rem;
+    @media screen and (max-width: 1000px) {
+      width: 100%;
+      margin: 0;
+    }
     .header {
       display: flex;
       justify-content: space-between;
