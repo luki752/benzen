@@ -1,7 +1,7 @@
 const appLink = `https://benzen-server.herokuapp.com`;
 
-export const itemsUrl = (gender, category, item, sortOrder, page) =>
-  `${appLink}/${gender}?category=${category}&item=${item}&_sort=price&_order=${sortOrder}&_limit=${page} `;
+export const itemsUrl = (gender, category, item, sortOrder, limit) =>
+  `${appLink}/${gender}?category=${category}&item=${item}&_sort=price&_order=${sortOrder}&_limit=${limit} `;
 
 export const specificItemUrl = (gender, id) => `${appLink}/${gender}/${id}`;
 
@@ -17,11 +17,14 @@ export const loginUrl = (email) => `${appLink}/users?email=${email}`;
 
 export const registerUrl = (email) => `${appLink}/users?email=${email}`;
 
-export const questionUrl = (gender, question) =>
+export const questionUrl = (gender, question, sortOrder, limit) =>
+  `${appLink}/${gender}?q=${question}&_sort=price&_order=${sortOrder}&_limit=${limit}`;
+
+export const fullQuestionLength = (gender, question) =>
   `${appLink}/${gender}?q=${question}`;
 
-export const discountUrl = (gender, item, sortOrder) =>
-  `${appLink}/${gender}?item=${item}&discount=true&_sort=price&_order=${sortOrder}`;
+export const discountUrl = (gender, item, sortOrder, limit) =>
+  `${appLink}/${gender}?item=${item}&discount=true&_sort=price&_order=${sortOrder}&_limit=${limit}`;
 
 export const allOrders = (sortOrder, page) =>
   `${appLink}/orders?_sort=date&_order=${sortOrder}&_limit=20&_page=${page}`;

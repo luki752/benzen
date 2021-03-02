@@ -4,7 +4,7 @@ import styled from "styled-components";
 //location
 import { useLocation } from "react-router-dom";
 //action
-import { loadSale } from "../actions/itemsAction";
+import { loadSale, changeSaleLimit } from "../actions/itemsAction";
 import { loginAction } from "../actions/loginAction";
 //redux
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Card from "../components/Card";
 import SimpleClothesHeader from "../components/SimpleClothesHeader";
 import SaleLinks from "../components/SaleLinks";
+//scroll bottom
+import { BottomScrollListener } from "react-bottom-scroll-listener";
 
 const SalePage = () => {
   const location = useLocation();
@@ -20,15 +22,20 @@ const SalePage = () => {
   const gender = location.pathname.split("/")[2];
   const category = location.pathname.split("/")[3];
   const { sale } = useSelector((state) => state.sale);
+  const { saleLimit } = useSelector((state) => state.item);
   //useEffects
   useEffect(() => {
-    dispatch(loadSale(gender, category, sort));
+    dispatch(loadSale(gender, category, sort, saleLimit));
     dispatch(loginAction(localStorage.getItem("userId")));
-  }, [dispatch, gender, category, sort]);
+  }, [dispatch, gender, category, sort, saleLimit]);
+  const handleLimit = () => {
+    dispatch(changeSaleLimit(20));
+  };
   return (
     <>
       {sale && (
         <SalePageComponent>
+          <BottomScrollListener onBottom={handleLimit} offset={700} />
           <div className="left-side">
             <SaleLinks gender={gender} category={category} />
           </div>

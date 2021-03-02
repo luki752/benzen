@@ -42,14 +42,14 @@ const Nav = () => {
   const history = useHistory();
 
   const manSearchHandler = () => {
-    dispatch(loadQuestion("man", manSearch));
+    dispatch(loadQuestion(manSearch));
     history.push("/answer/man");
     setNavOpen(false);
     SetManDropdown(false);
     setManSearch("");
   };
   const womanSearchHandler = () => {
-    dispatch(loadQuestion("woman", womanSearch));
+    dispatch(loadQuestion(womanSearch));
     history.push("/answer/woman");
     SetWomanDropdown(false);
     setWomanSearch("");
