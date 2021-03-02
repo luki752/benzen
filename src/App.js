@@ -14,12 +14,12 @@ import ManClothesPage from "./pages/ManClothesPage";
 import WomanClothesPage from "./pages/WomanClothesPage";
 import ItemDetailsPage from "./pages/ItemDetailsPage";
 import FavoritesPage from "./pages/FavoritesPage";
-import AddItemPage from "./pages/addItemPage";
+import AddItemPage from "./Pages/addItemPage";
 import SearchPage from "./pages/SearchPage";
 import SalePage from "./pages/SalePage";
 import SaleMainPage from "./pages/SaleMainPage";
 import CheckoutPage from "./pages/CheckoutPage";
-import FinalizedOrderPage from "./pages/FinalizedOrderPage";
+import FinalizedOrderPage from "./Pages/finalizedOrderPage";
 import AdminPanel from "./pages/AdminPanel";
 //router
 import { Route } from "react-router-dom";
