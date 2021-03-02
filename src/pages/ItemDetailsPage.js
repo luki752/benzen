@@ -35,6 +35,7 @@ import ArrowLeftIcon from "@material-ui/icons/ArrowLeft";
 
 //components
 import Card from "../components/Card";
+import SmallImage from "../components/SmallImage";
 
 const ItemDetailsPage = () => {
   //state
@@ -181,12 +182,12 @@ const ItemDetailsPage = () => {
               {item.images && (
                 <div className="images-show">
                   {item.images.map((img, index) => (
-                    <img
-                      src={img.img}
-                      alt={index}
+                    <SmallImage
+                      img={img}
+                      index={index}
                       key={index}
-                      onClick={(e) => setCurrentIndex(index)}
-                      className={index === currentIndex ? "active-image" : ""}
+                      setCurrentIndex={setCurrentIndex}
+                      currentIndex={currentIndex}
                     />
                   ))}
                 </div>
@@ -554,7 +555,11 @@ const ItemDetailsPage = () => {
             </span>
             <span>{item.price} GBP</span>
             <div className="buttons">
-              <Link to="/checkout/cart" className="link">
+              <Link
+                to="/checkout/cart"
+                className="link"
+                onClick={() => window.scrollTo(0, 0)}
+              >
                 <button className="button-black">Go to your bag</button>
               </Link>
 
@@ -575,7 +580,6 @@ const ItemDetailsPageComponent = styled.div`
   width: 100%;
   min-height: 70vh;
   margin: 1rem 0;
-
   h1 {
     margin-left: 10%;
     margin-top: 2rem;
@@ -609,7 +613,6 @@ const ItemDetailsPageComponent = styled.div`
         position: relative;
         @media screen and (max-width: 1000px) {
           pointer-events: none;
-          margin-top: 5rem;
         }
         &:hover {
           cursor: zoom-in;
@@ -670,18 +673,6 @@ const ItemDetailsPageComponent = styled.div`
         @media screen and (max-width: 1000px) {
           display: none;
         }
-        img {
-          height: 18vh;
-          width: 100%;
-          margin-bottom: 10px;
-          &:hover {
-            cursor: pointer;
-          }
-        }
-        .active-image {
-          filter: grayscale(100%);
-          border-bottom: 2px solid black;
-        }
       }
     }
     .right-side {
@@ -694,7 +685,6 @@ const ItemDetailsPageComponent = styled.div`
       .edit-item {
         display: flex;
         flex-direction: column;
-
         .input,
         .select {
           width: 15rem;
@@ -709,7 +699,7 @@ const ItemDetailsPageComponent = styled.div`
         top: 0;
         right: 0;
         margin: 0 2rem;
-        font-size: 2rem;
+        font-size: 1.5rem;
         &:hover {
           cursor: pointer;
         }
@@ -717,6 +707,10 @@ const ItemDetailsPageComponent = styled.div`
       .info {
         display: flex;
         flex-direction: column;
+        @media screen and (max-width: 1000px) {
+          margin-top: 2rem;
+          text-align: center;
+        }
         .name {
           font-size: 1rem;
         }
@@ -726,6 +720,9 @@ const ItemDetailsPageComponent = styled.div`
           display: flex;
           p {
             padding-left: 10px;
+          }
+          @media screen and (max-width: 1000px) {
+            justify-content: center;
           }
         }
         .error {
