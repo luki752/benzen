@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import GlobalStyles from "./components/GlobalStyles";
 //pages
 import AccountPage from "./pages/AccountPage";
-import AddItemPage from "./Pages/AddItemPage";
+import AddItemPage from "./pages/AddItemPage";
 import AdminPanel from "./pages/AdminPanel";
 import CartPage from "./pages/CartPage";
 import Home from "./pages/Home";
@@ -20,7 +20,7 @@ import SearchPage from "./pages/SearchPage";
 import SalePage from "./pages/SalePage";
 import SaleMainPage from "./pages/SaleMainPage";
 import CheckoutPage from "./pages/CheckoutPage";
-import FinalizedOrderPage from "./Pages/FinalizedOrderPage";
+import FinalizedOrderPage from "./pages/FinalizedOrderPage";
 //router
 import { Route } from "react-router-dom";
 
