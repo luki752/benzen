@@ -8,16 +8,12 @@ import { loginAction } from "../actions/loginAction";
 import styled from "styled-components";
 //router
 import { useLocation } from "react-router-dom";
-//material ui
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 //icons
 import ViewComfyIcon from "@material-ui/icons/ViewComfy";
 import ViewColumnIcon from "@material-ui/icons/ViewColumn";
 //components
 import Card from "../components/Card";
+import SortPrice from "../components/SortPrice";
 import WomanLinksComponent from "../components/WomanLinksComponent";
 import ManLinksComponent from "../components/ManLinksComponent";
 //scroll bottom
@@ -73,17 +69,7 @@ const ClothesPreviewPage = ({ gender }) => {
             </div>
             <div className="options-component">
               <div className="sort">
-                <FormControl>
-                  <InputLabel className="sort-label">Sort price </InputLabel>
-                  <Select
-                    value={sort}
-                    onChange={handleSort}
-                    className="sort-select"
-                  >
-                    <MenuItem value="asc">Sort price low to high</MenuItem>
-                    <MenuItem value="desc">Sort price high to low</MenuItem>
-                  </Select>
-                </FormControl>
+                <SortPrice sort={sort} handleSort={handleSort} />
               </div>
               <div className="display-info">
                 {AllItems.length}{" "}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 //styling
 import styled from "styled-components";
 //router
@@ -7,8 +7,6 @@ import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 //actions
 import { loadQuestion } from "../actions/itemsAction";
-//axios
-import axios from "axios";
 //material ui
 import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -26,9 +24,6 @@ import ManDropdown from "../components/ManDropdown";
 import LoginDropdown from "../components/LoginDropdown";
 import HamburgerMenu from "../components/HamburgerMenu";
 const Nav = () => {
-  //state
-  const [menDiscountsList, setMenDiscountsList] = useState([]);
-  const [womenDiscountsList, setWomenDiscountsList] = useState([]);
   //open dropdown
   const [navOpen, setNavOpen] = useState(false);
   const [manDropdownOpen, SetManDropdown] = useState(false);
@@ -45,19 +40,6 @@ const Nav = () => {
   const { cart } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const history = useHistory();
-  //useEffect
-  useEffect(() => {
-    axios
-      .get("https://benzen-server.herokuapp.com/woman?discount=true")
-      .then((res) =>
-        setWomenDiscountsList([...new Set(res.data.map((a) => a.item))])
-      );
-    axios
-      .get("https://benzen-server.herokuapp.com/man?discount=true")
-      .then((res) =>
-        setMenDiscountsList([...new Set(res.data.map((a) => a.item))])
-      );
-  }, [dispatch]);
 
   const manSearchHandler = () => {
     dispatch(loadQuestion("man", manSearch));
@@ -216,8 +198,6 @@ const Nav = () => {
         womanSearch={womanSearch}
         setWomanSearch={setWomanSearch}
         womanSearchHandler={womanSearchHandler}
-        menDiscountsList={menDiscountsList}
-        womenDiscountsList={womenDiscountsList}
       />
       <ManDropdown
         manDropdownOpen={manDropdownOpen}
@@ -243,8 +223,6 @@ const Nav = () => {
       <SaleDropdown
         saleDropdownOpen={saleDropdownOpen}
         setSaleDropdown={setSaleDropdown}
-        womenDiscountsList={womenDiscountsList}
-        menDiscountsList={menDiscountsList}
       />
     </NavComponent>
   );

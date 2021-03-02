@@ -1,15 +1,10 @@
 import React from "react";
 //styling
 import styled from "styled-components";
-//router
-import { Link } from "react-router-dom";
+//components
+import SaleLinks from "./SaleLinks";
 
-const SaleDropdown = ({
-  saleDropdownOpen,
-  setSaleDropdown,
-  menDiscountsList,
-  womenDiscountsList,
-}) => {
+const SaleDropdown = ({ saleDropdownOpen, setSaleDropdown }) => {
   return (
     <SaleDropdownComponent
       style={{ display: saleDropdownOpen ? "flex" : "none" }}
@@ -21,29 +16,11 @@ const SaleDropdown = ({
       >
         <ul>
           <li className="list-header">Women</li>
-          {womenDiscountsList.map((item) => (
-            <Link
-              to={`/sale/woman/${item}`}
-              className="link"
-              style={{ color: "red" }}
-              key={item}
-            >
-              <li>{item}</li>
-            </Link>
-          ))}
+          <SaleLinks gender={"woman"} />
         </ul>
         <ul>
           <li className="list-header">Men</li>
-          {menDiscountsList.map((item) => (
-            <Link
-              to={`/sale/man/${item}`}
-              className="link"
-              style={{ color: "red" }}
-              key={item}
-            >
-              <li>{item}</li>
-            </Link>
-          ))}
+          <SaleLinks gender={"man"} />
         </ul>
       </div>
     </SaleDropdownComponent>
@@ -74,28 +51,16 @@ const SaleDropdownComponent = styled.div`
     border: none;
     justify-content: Center;
     color: red;
-    ul {
-      padding: 3rem;
-      font-size: 1rem;
-      font-weight: bold;
-      @media screen and (max-width: 1200px) {
-        padding: 1rem;
+    ul{
+      list-style:none;
+      margin-top:1rem;
+      li{
+      margin:0rem 2rem;
       }
-      li {
-        list-style: none;
-        padding: 0.4rem 0rem;
-        font-size: 0.8rem;
-        &:first-letter {
-          text-transform: upperCase;
-        }
-        &:hover {
-          text-decoration: underline;
-          cursor: pointer;
-        }
-      }
+    }
       .list-header {
         font-size: 1rem;
-        padding-bottom: 1rem;
+        padding: 1rem 0rem;
         text-transform: upperCase;
         &:hover {
           text-decoration: none;

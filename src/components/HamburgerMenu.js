@@ -13,12 +13,12 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import CloseIcon from "@material-ui/icons/Close";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import SearchIcon from "@material-ui/icons/Search";
+//components
+import SaleLinks from "./SaleLinks";
 
 const HamburgerMenu = ({
   navOpen,
   setNavOpen,
-  menDiscountsList,
-  womenDiscountsList,
   manSearch,
   setManSearch,
   manSearchHandler,
@@ -53,16 +53,12 @@ const HamburgerMenu = ({
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <h1 style={{ color: "red" }}>Men</h1>
               </AccordionSummary>
-              {menDiscountsList.map((item) => (
-                <Link to={`/sale/man/${item}`} className="link" key={item}>
-                  <AccordionDetails
-                    onClick={() => linkHandler()}
-                    style={{ color: "red" }}
-                  >
-                    {item}
-                  </AccordionDetails>
-                </Link>
-              ))}
+              <SaleLinks
+                gender={"man"}
+                hamburger
+                setNavOpen={setNavOpen}
+                navOpen={navOpen}
+              />
             </Accordion>
             <AccordionDetails></AccordionDetails>
           </AccordionDetails>
@@ -72,16 +68,12 @@ const HamburgerMenu = ({
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <h1>Women</h1>
               </AccordionSummary>
-              {womenDiscountsList.map((item) => (
-                <Link to={`/sale/woman/${item}`} className="link" key={item}>
-                  <AccordionDetails
-                    onClick={() => linkHandler()}
-                    style={{ color: "red" }}
-                  >
-                    {item}
-                  </AccordionDetails>
-                </Link>
-              ))}
+              <SaleLinks
+                gender={"woman"}
+                hamburger
+                setNavOpen={setNavOpen}
+                navOpen={navOpen}
+              />
             </Accordion>
             <AccordionDetails></AccordionDetails>
           </AccordionDetails>

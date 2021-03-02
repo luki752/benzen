@@ -5,17 +5,13 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 //
 import { useLocation } from "react-router-dom";
-//material ui
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 //components
 import Card from "../components/Card";
 //actions
 import { loginAction } from "../actions/loginAction";
 //redux
 import { useDispatch } from "react-redux";
+import SimpleClothesHeader from "../components/SimpleClothesHeader";
 
 const SearchPage = () => {
   //state
@@ -24,26 +20,16 @@ const SearchPage = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const gender = location.pathname.split("/")[2];
-  const handleSort = (e) => {
-    setSort(e.target.value);
-  };
   useEffect(() => {
     dispatch(loginAction(localStorage.getItem("userId")));
   }, [dispatch]);
   return (
     <SearchPageComponent>
-      <div className="header">
-        <div className="sort">
-          <FormControl>
-            <InputLabel className="sort-label">Sort by price</InputLabel>
-            <Select value={sort} onChange={handleSort} className="sort-select">
-              <MenuItem value="asc">Sort price low to high</MenuItem>
-              <MenuItem value="desc">Sort price high to low </MenuItem>
-            </Select>
-          </FormControl>
-        </div>
-        <div className="list-length">{answer.length} results</div>
-      </div>
+      <SimpleClothesHeader
+        sort={sort}
+        setSort={setSort}
+        length={answer.length}
+      />
       <div className="items-display">
         {answer
           .sort((a, b) => {
@@ -83,15 +69,6 @@ const SearchPageComponent = styled.div`
   align-items: center;
   min-height: 50vh;
   margin-top: 2rem;
-  .header {
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    align-items: Center;
-    .sort-select {
-      width: 15rem;
-    }
-  }
   .items-display {
     width: 80%;
     display: Flex;
