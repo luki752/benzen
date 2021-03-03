@@ -689,7 +689,7 @@ const LoggedInComponent = styled.div`
     @media screen and (max-width: 1000px) {
       width: 100%;
       align-items: flex-start;
-      margin: 0rem 1rem;
+      margin: 0rem 0.5rem;
     }
     .active {
       font-weight: bold;
@@ -716,7 +716,7 @@ const LoggedInComponent = styled.div`
 
     @media screen and (max-width: 1000px) {
       width: 100%;
-      margin: 0rem 1rem;
+      margin: 0rem 0.5rem;
     }
     .infoComponent {
       display: flex;
@@ -823,9 +823,12 @@ const LoggedInComponent = styled.div`
       }
       .button-white {
         @media screen and (max-width: 1000px) {
+          display: flex;
+          text-transform: upperCase;
+          justify-content: center;
           width: 100%;
           background-color: black;
-          margin: 0;
+          margin: 1rem 0;
           padding: 0;
           font-size: 1.5rem;
           color: White;
@@ -839,6 +842,7 @@ const LoggedInComponent = styled.div`
       margin: 2rem 0rem;
       @media screen and (max-width: 1000px) {
         margin: 1rem 0;
+        width: 90%;
       }
     }
     .no-orders {

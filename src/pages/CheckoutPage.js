@@ -469,21 +469,22 @@ const CheckoutPageComponents = styled.div`
           padding: 1rem;
           @media screen and (max-width: 1000px) {
             width: 100%;
-            font-size: 0.6rem;
+            font-size: 0.7rem;
+            padding: 0.5rem;
           }
 
           img {
             height: 5rem;
             width: 6rem;
             @media screen and (max-width: 1000px) {
-              height: 2rem;
-              width: 3rem;
+              height: 3rem;
+              width: 4rem;
             }
           }
           span {
             padding: 0 1rem;
             @media screen and (max-width: 1000px) {
-              padding: 0 0.5rem;
+              padding: 0 0.2rem;
             }
           }
           .left-info {
@@ -530,7 +531,8 @@ const CheckoutPageComponents = styled.div`
         padding: 1rem;
         @media screen and (max-width: 1000px) {
           width: 100%;
-          font-size: 0.6rem;
+          font-size: 0.7rem;
+          padding: 0.5rem;
         }
         &:hover {
           border: 1px solid rgba(0, 0, 0, 0.6);
@@ -540,8 +542,8 @@ const CheckoutPageComponents = styled.div`
           height: 5rem;
           width: 6rem;
           @media screen and (max-width: 1000px) {
-            height: 2rem;
-            width: 3rem;
+            height: 3rem;
+            width: 4rem;
           }
         }
         span {

@@ -233,6 +233,9 @@ const NavComponent = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  @media screen and (max-width: 1000px) {
+    height: 3.5rem;
+  }
   .nav-left-menu {
     ul {
       display: flex;
@@ -317,7 +320,7 @@ const NavComponent = styled.div`
             cursor: pointer;
           }
           @media screen and (max-width: 1000px) {
-            font-size: 1.5rem;
+            font-size: 1.7rem;
           }
         }
       }

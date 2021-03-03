@@ -57,6 +57,7 @@ const ItemDetailsPage = () => {
   const [editMode, setEditMode] = useState(false);
   const [itemsName, setItemsName] = useState("");
   const [itemsPrice, setItemsPrice] = useState("");
+  const [itemsPriceBeforeDiscount, setItemsPriceBeforeDiscount] = useState("");
   const [itemsDiscount, setItemsDiscount] = useState("");
   const [itemsDescription, setItemsDescription] = useState("");
   const [itemsAmount, setItemsAmount] = useState("");
@@ -88,6 +89,7 @@ const ItemDetailsPage = () => {
   useEffect(() => {
     setItemsName(item.name);
     setItemsPrice(item.price);
+    setItemsPriceBeforeDiscount(item.beforeDiscount);
     setItemsDiscount(item.discount ? true : false);
     setItemsDescription(item.desc);
     setItemsAmount(item.amount);
@@ -135,20 +137,15 @@ const ItemDetailsPage = () => {
   };
   //editing item
   const changeItemHandler = () => {
-    if (
-      itemsName !== "" &&
-      itemsPrice !== "" &&
-      itemsDiscount !== "" &&
-      itemsDescription !== ""
-    ) {
+    if (itemsName !== "" && itemsPrice !== "" && itemsDiscount !== "") {
       axios
         .put(`${appLink}/${gender}/${item.id}`, {
           name: itemsName,
-          beforeDiscount: itemsDiscount ? item.price : "",
+          beforeDiscount: parseFloat(itemsPriceBeforeDiscount),
           item: item.item,
           amount: itemsAmount,
           category: item.category,
-          discount: parseFloat(itemsDiscount),
+          discount: itemsDiscount,
           price: parseFloat(itemsPrice),
           desc: itemsDescription,
           material: item.material,
@@ -377,6 +374,21 @@ const ItemDetailsPage = () => {
                         onChange={(e) => setItemsPrice(e.target.value)}
                       />
                     </span>
+                    {itemsDiscount === "true" || itemsDiscount === true ? (
+                      <span>
+                        <TextField
+                          label="price before discount"
+                          value={itemsPriceBeforeDiscount}
+                          className="input"
+                          type="number"
+                          onChange={(e) =>
+                            setItemsPriceBeforeDiscount(e.target.value)
+                          }
+                        />
+                      </span>
+                    ) : (
+                      ""
+                    )}
                     <span>
                       <FormControl variant="outlined" className="select">
                         <InputLabel>Discount</InputLabel>
