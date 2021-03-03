@@ -307,6 +307,8 @@ const AddItemPage = () => {
               <TextField
                 className="input"
                 type="number"
+                min="1"
+                max="100"
                 value={materialPercentage}
                 onChange={(e) => setMaterialPercentage(e.target.value)}
                 onKeyDown={(e) => (e.key === "Enter" ? materialHandler() : "")}
@@ -319,7 +321,7 @@ const AddItemPage = () => {
               </button>
             </div>
             {materials.map((material) => (
-              <div className="material">
+              <div className="material" key={material.name}>
                 <span>
                   {" "}
                   Fabric:{material.fabric}, Percentage:{material.percentage}
@@ -355,7 +357,7 @@ const AddItemPage = () => {
             </div>
             <div className="images-display">
               {images.map((image) => (
-                <div className="image">
+                <div className="image" key={image.url}>
                   <span>{image.img}</span>
                   <span
                     className="image-remove"

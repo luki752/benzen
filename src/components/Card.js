@@ -205,6 +205,7 @@ const CardComponent = styled.div`
     font-size: 0.8rem;
     @media screen and (max-width: 1000px) {
       font-size: 0.6rem;
+      height: 1.3rem;
     }
   }
   .favoriteIcon {

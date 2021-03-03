@@ -44,15 +44,14 @@ const Home = () => {
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src="https://www.reserved.com/media/SHARED/stronywizerunkowe/reserved/home/content/img/sliders/desktop/baner-full-newin-ona-1900x950px-040121.jpg"
+                src="https://www.reserved.com/media/SHARED/stronywizerunkowe/reserved/home/content/img/sliders/desktop/baner-full-koszule-men-1900x950px-240221.jpg"
                 alt="Third slide"
               />
               <Carousel.Caption>
-                <h3>It's cold outside</h3>
-                <p>get a jacket</p>
+                <h3>wide range of shirts</h3>
                 <div className="buttons">
-                  <Link to="/women/clothes/jackets" className="link">
-                    <button className="button-white">for her</button>
+                  <Link to="/man/clothes/shirts" className="link">
+                    <button className="button-white">for him</button>
                   </Link>
                 </div>
               </Carousel.Caption>
@@ -60,15 +59,15 @@ const Home = () => {
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src="https://www.reserved.com/media/SHARED/stronywizerunkowe/reserved/home/content/img/sliders/desktop/baner-full-athleisure-on-1900x950px-220121.jpg"
+                src="https://www.reserved.com/media/SHARED/stronywizerunkowe/reserved/home/content/img/sliders/desktop/baner-full-lookbook-ladies-1900x950px-020321.jpg"
                 alt="Third slide"
               />
               <Carousel.Caption>
-                <h3>need warm clothes?</h3>
+                <h3>spring is coming</h3>
                 <p>see our offer</p>
                 <div className="buttons">
-                  <Link to="/man/clothes/outerwear/coats" className="link">
-                    <button className="button-white">for him</button>
+                  <Link to="/woman/clothes/dresses" className="link">
+                    <button className="button-white">for her</button>
                   </Link>
                 </div>
               </Carousel.Caption>

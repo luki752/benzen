@@ -41,6 +41,9 @@ const LoginDropdown = ({ loginDropdownOpen, setLoginDropdown, mv }) => {
             <Link to="/customer/account/orders" className="link">
               <span>orders</span>
             </Link>
+            <Link to="/customer/account/address" className="link">
+              <span>address data</span>
+            </Link>
             <Link to="/customer/account/info" className="link">
               <span>account info</span>
             </Link>
@@ -129,7 +132,7 @@ const LoginDropdownComponent = styled.div`
     flex-direction: column;
     justify-content: center;
     span {
-      padding: 1rem 0rem;
+      margin: 1rem 0rem;
       font-weight: bold;
       &:hover {
         color: rgba(0, 0, 0, 0.6);

@@ -233,7 +233,7 @@ const AccountPage = () => {
       usersPostalCode !== ""
     ) {
       axios
-        .put(`${appLink}/users/${user.id}/`, {
+        .put(`https://benzen-server.herokuapp.com/users/${user.id}/`, {
           name: user.name,
           surname: user.surname,
           email: user.email,
