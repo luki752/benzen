@@ -8,6 +8,8 @@ import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 //icons
 import SearchIcon from "@material-ui/icons/Search";
+//components
+import { ManClothesLinks, ManAccessoriesLinks } from "./Links";
 
 const ManDropdown = ({
   manDropdownOpen,
@@ -30,60 +32,19 @@ const ManDropdown = ({
           <Link to="/man/clothes/outerwear/coats" className="link">
             <li>Coats, jackets, puffer jackets</li>
           </Link>
-          <Link to="/man/clothes/sweaters" className="link">
-            <li>Jumpers, Cardigans</li>
-          </Link>
-          <Link to="/man/clothes/shirts" className="link">
-            <li>Shirts</li>
-          </Link>
-          <Link to="/man/clothes/sweatshirts" className="link">
-            <li>Hoodies, sweatshirts</li>
-          </Link>
-          <Link to="/man/clothes/trousers" className="link">
-            <li>Trousers</li>
-          </Link>
-          <Link to="/man/clothes/polos" className="link">
-            <li>Polo shirts</li>
-          </Link>
-          <Link to="/man/clothes/t-shirts" className="link">
-            <li>T-shirts</li>
-          </Link>
-          <Link to="/man/clothes/jeans" className="link">
-            <li>Jeans</li>
-          </Link>
-          <Link to="/man/clothes/blazers" className="link">
-            <li>Blazers</li>
-          </Link>
-          <Link to="/man/clothes/suits" className="link">
-            <li>Suits</li>
-          </Link>
-          <Link to="/man/clothes/nightwear" className="link">
-            <li>Nightwear</li>
-          </Link>
-          <Link to="/man/clothes/underwear" className="link">
-            <li>Underwear</li>
-          </Link>
+          {ManClothesLinks.map((item) => (
+            <Link to={item.path} className="link" key={item.title}>
+              <li>{item.title}</li>
+            </Link>
+          ))}
         </ul>
         <ul>
           <li className="list-header">Accessories</li>
-          <Link to="/man/accessories/shoes" className="link">
-            <li>Shoes</li>
-          </Link>
-          <Link to="/man/accessories/bags" className="link">
-            <li>Bags, toiletry bags</li>
-          </Link>
-          <Link to="/man/accessories/hats" className="link">
-            <li>Hats</li>
-          </Link>
-          <Link to="/man/accessories/scarves" className="link">
-            <li>Scarves</li>
-          </Link>
-          <Link to="/man/accessories/gloves" className="link">
-            <li>Gloves</li>
-          </Link>
-          <Link to="/man/accessories/socks" className="link">
-            <li>Socks</li>
-          </Link>
+          {ManAccessoriesLinks.map((accessory) => (
+            <Link to={accessory.path} className="link" key={accessory.title}>
+              <li>{accessory.title}</li>
+            </Link>
+          ))}
         </ul>
         <ul>
           <li>

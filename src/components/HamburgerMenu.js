@@ -15,6 +15,15 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import SearchIcon from "@material-ui/icons/Search";
 //components
 import SaleLinks from "./SaleLinks";
+import {
+  ManClothesLinks,
+  ManAccessoriesLinks,
+  ManClothesSubLinks,
+  WomanClothesLinks,
+  WomanClothesSubLinks,
+  WomanShoesLinks,
+  WomanAccessoriesLinks,
+} from "./Links";
 
 const HamburgerMenu = ({
   navOpen,
@@ -50,9 +59,11 @@ const HamburgerMenu = ({
           <AccordionDetails>
             {/* men sale */}
             <Accordion className="accordion-within">
+              {/* header */}
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <h1 style={{ color: "red" }}>Men</h1>
               </AccordionSummary>
+              {/* links */}
               <SaleLinks
                 gender={"man"}
                 hamburger
@@ -60,14 +71,15 @@ const HamburgerMenu = ({
                 navOpen={navOpen}
               />
             </Accordion>
-            <AccordionDetails></AccordionDetails>
           </AccordionDetails>
           {/* women sale */}
           <AccordionDetails>
             <Accordion className="accordion-within" style={{ color: "red" }}>
+              {/* header */}
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <h1>Women</h1>
               </AccordionSummary>
+              {/* links */}
               <SaleLinks
                 gender={"woman"}
                 hamburger
@@ -75,14 +87,15 @@ const HamburgerMenu = ({
                 navOpen={navOpen}
               />
             </Accordion>
-            <AccordionDetails></AccordionDetails>
           </AccordionDetails>
         </Accordion>
         <Accordion className="one-accordion">
+          {/* header */}
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <h1>Man</h1>
           </AccordionSummary>
           <AccordionDetails>
+            {/* text field  */}
             <TextField
               label="search"
               value={manSearch}
@@ -104,123 +117,44 @@ const HamburgerMenu = ({
           {/* accordion within main accordion */}
           <AccordionDetails>
             <Accordion className="accordion-within">
+              {/* header  */}
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <h1>Clothes</h1>
               </AccordionSummary>
-              <Link to="/man/clothes/outerwear/coats" className="link">
-                <AccordionDetails onClick={() => linkHandler()}>
-                  Coats
-                </AccordionDetails>
-              </Link>
-              <Link to="/man/clothes/outerwear/jackets" className="link">
-                <AccordionDetails onClick={() => linkHandler()}>
-                  jackets
-                </AccordionDetails>
-              </Link>
-              <Link to="/man/clothes/outerwear/puffer-jackets" className="link">
-                <AccordionDetails onClick={() => linkHandler()}>
-                  puffer jackets
-                </AccordionDetails>
-              </Link>
-              <Link to="/man/clothes/outerwear/vests" className="link">
-                <AccordionDetails onClick={() => linkHandler()}>
-                  vests
-                </AccordionDetails>
-              </Link>
-              <Link to="/man/clothes/sweaters" className="link">
-                <AccordionDetails onClick={() => linkHandler()}>
-                  Jumpers, Cardigans
-                </AccordionDetails>
-              </Link>
-              <Link to="/man/clothes/shirts" className="link">
-                <AccordionDetails onClick={() => linkHandler()}>
-                  Shirts
-                </AccordionDetails>
-              </Link>
-              <Link to="/man/clothes/sweatshirts" className="link">
-                <AccordionDetails onClick={() => linkHandler()}>
-                  Hoodies, sweatshirts
-                </AccordionDetails>
-              </Link>
-              <Link to="/man/clothes/trousers" className="link">
-                <AccordionDetails onClick={() => linkHandler()}>
-                  Trousers
-                </AccordionDetails>
-              </Link>
-              <Link to="/man/clothes/polos" className="link">
-                <AccordionDetails onClick={() => linkHandler()}>
-                  Polo shirts
-                </AccordionDetails>
-              </Link>
-              <Link to="/man/clothes/t-shirts" className="link">
-                <AccordionDetails onClick={() => linkHandler()}>
-                  T-shirts
-                </AccordionDetails>
-              </Link>
-              <Link to="/man/clothes/jeans" className="link">
-                <AccordionDetails onClick={() => linkHandler()}>
-                  Jeans
-                </AccordionDetails>
-              </Link>
-              <Link to="/man/clothes/blazers" className="link">
-                <AccordionDetails onClick={() => linkHandler()}>
-                  Blazers
-                </AccordionDetails>
-              </Link>
-              <Link to="/man/clothes/suits" className="link">
-                <AccordionDetails onClick={() => linkHandler()}>
-                  Suits
-                </AccordionDetails>
-              </Link>
-              <Link to="/man/clothes/nightwear" className="link">
-                <AccordionDetails onClick={() => linkHandler()}>
-                  Nightwear
-                </AccordionDetails>
-              </Link>
-              <Link to="/man/clothes/underwear" className="link">
-                <AccordionDetails onClick={() => linkHandler()}>
-                  Underwear
-                </AccordionDetails>
-              </Link>
+              {/* man clothes subLinks */}
+              {ManClothesSubLinks.map((subItem) => (
+                <Link to={subItem.path} className="link" key={subItem.path}>
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    {subItem.title}
+                  </AccordionDetails>
+                </Link>
+              ))}
+              {/* man clothes links */}
+              {ManClothesLinks.map((item) => (
+                <Link to={item.path} className="link" key={item.path}>
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    {item.title}
+                  </AccordionDetails>
+                </Link>
+              ))}
             </Accordion>
           </AccordionDetails>
 
           {/* accordion within main accordion */}
           <AccordionDetails>
             <Accordion className="accordion-within">
+              {/* header  */}
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <h1>Accessories</h1>
               </AccordionSummary>
-              <Link to="/man/accessories/shoes" className="link">
-                <AccordionDetails onClick={() => linkHandler()}>
-                  Shoes
-                </AccordionDetails>
-              </Link>
-              <Link to="/man/accessories/bags" className="link">
-                <AccordionDetails onClick={() => linkHandler()}>
-                  Bags, toiletry bags
-                </AccordionDetails>
-              </Link>
-              <Link to="/man/accessories/hats" className="link">
-                <AccordionDetails onClick={() => linkHandler()}>
-                  Hats
-                </AccordionDetails>
-              </Link>
-              <Link to="/man/accessories/scarves" className="link">
-                <AccordionDetails onClick={() => linkHandler()}>
-                  scarves
-                </AccordionDetails>
-              </Link>
-              <Link to="/man/accessories/gloves" className="link">
-                <AccordionDetails onClick={() => linkHandler()}>
-                  gloves
-                </AccordionDetails>
-              </Link>
-              <Link to="/man/accessories/socks" className="link">
-                <AccordionDetails onClick={() => linkHandler()}>
-                  Socks
-                </AccordionDetails>
-              </Link>
+              {/* man accessories link  */}
+              {ManAccessoriesLinks.map((accessory) => (
+                <Link to={accessory.path} className="link" key={accessory.path}>
+                  <AccordionDetails onClick={() => linkHandler()}>
+                    {accessory.title}
+                  </AccordionDetails>
+                </Link>
+              ))}
             </Accordion>
           </AccordionDetails>
         </Accordion>
@@ -228,11 +162,13 @@ const HamburgerMenu = ({
         {/* Whole accordion */}
         <Accordion className="one-accordion">
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            {/* header  */}
             <Link to="/woman" className="link">
               <h1>Woman</h1>
             </Link>
           </AccordionSummary>
           <AccordionDetails>
+            {/* text input  */}
             <TextField
               label="search"
               className="accordion-input"
@@ -258,127 +194,26 @@ const HamburgerMenu = ({
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <h1>Clothes</h1>
               </AccordionSummary>
-              <Link
-                to="/woman/clothes/outerwear/coats"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>Coats</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/clothes/outerwear/jackets"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>jackets</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/clothes/outerwear/puffer-jackets"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>puffer jackets</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/clothes/outerwear/biker-jackets"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>biker jackets</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/clothes/outerwear/coats"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>
-                  Coats, jackets, puffer jackets
-                </AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/clothes/dresses"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>dresses, jumpsuits</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/clothes/sweaters"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>Jumpers, Cardigans</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/clothes/shirts"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>Shirts</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/clothes/blouses"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>Blouses</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/clothes/sweatshirts"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>Hoodies, sweatshirts</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/clothes/trousers"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>Trousers</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/clothes/skirts"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>Skirts</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/clothes/t-shirts"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>T-shirts, tops</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/clothes/jeans"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>Jeans</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/clothes/blazers"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>Blazers</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/clothes/nightwear"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>Nightwear</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/clothes/lingerie"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>lingerie</AccordionDetails>
-              </Link>
+              {WomanClothesSubLinks.map((item) => (
+                <Link
+                  to={item.path}
+                  className="link"
+                  key={item.path}
+                  onClick={() => linkHandler()}
+                >
+                  <AccordionDetails>{item.title}</AccordionDetails>
+                </Link>
+              ))}
+              {WomanClothesLinks.map((item) => (
+                <Link
+                  to={item.path}
+                  className="link"
+                  onClick={() => linkHandler()}
+                  key={item.path}
+                >
+                  <AccordionDetails>{item.title}</AccordionDetails>
+                </Link>
+              ))}
             </Accordion>
           </AccordionDetails>
 
@@ -388,41 +223,16 @@ const HamburgerMenu = ({
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <h1>Shoes</h1>
               </AccordionSummary>
-              <Link
-                to="/woman/shoes/boots"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>Boots</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/shoes/heels"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>Heels</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/shoes/flats"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>Flats</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/shoes/leather"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>Leather</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/shoes/sneakers"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>Sneakers</AccordionDetails>
-              </Link>
+              {WomanShoesLinks.map((shoe) => (
+                <Link
+                  to={shoe.path}
+                  className="link"
+                  onClick={() => linkHandler()}
+                  key={shoe.path}
+                >
+                  <AccordionDetails>{shoe.title}</AccordionDetails>
+                </Link>
+              ))}
             </Accordion>
           </AccordionDetails>
 
@@ -432,34 +242,16 @@ const HamburgerMenu = ({
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 <h1>Accessories</h1>
               </AccordionSummary>
-              <Link
-                to="/woman/accessories/bags"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>Bags, toiletry bags</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/accessories/hats"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>Hats</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/accessories/scarves"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>scarves</AccordionDetails>
-              </Link>
-              <Link
-                to="/woman/accessories/gloves"
-                className="link"
-                onClick={() => linkHandler()}
-              >
-                <AccordionDetails>gloves</AccordionDetails>
-              </Link>
+              {WomanAccessoriesLinks.map((accessory) => (
+                <Link
+                  to={accessory.path}
+                  className="link"
+                  onClick={() => linkHandler()}
+                  key={accessory.path}
+                >
+                  <AccordionDetails>{accessory.title}</AccordionDetails>
+                </Link>
+              ))}
             </Accordion>
           </AccordionDetails>
         </Accordion>

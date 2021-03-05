@@ -7,10 +7,17 @@ import styled from "styled-components";
 import LinkComponent from "../components/LinkComponent";
 import CategoryLinkComponent from "./CategoryLinkComponent";
 import SubLinkComponent from "./SubLinkComponent";
+//components
+import {
+  WomanClothesLinks,
+  WomanClothesSubLinks,
+  WomanAccessoriesLinks,
+  WomanShoesLinks,
+} from "./Links";
 
 const WomanLinksComponent = ({ gender }) => {
   const location = useLocation();
-  const item = location.pathname.split("/")[3];
+  const pathItem = location.pathname.split("/")[3];
   const subItem = location.pathname.split("/")[4];
   const category = location.pathname.split("/")[2];
   //handlers
@@ -34,132 +41,37 @@ const WomanLinksComponent = ({ gender }) => {
               className="link"
               onClick={() => linkHandler()}
             >
-              <li className={item === "outerwear" ? "active-list" : ""}>
+              <li className={pathItem === "outerwear" ? "active-list" : ""}>
                 Coats, jackets, puffer jackets
               </li>
             </Link>
-            {item === "outerwear" ? (
+            {pathItem === "outerwear" ? (
               <ul>
-                <SubLinkComponent
-                  gender={gender}
-                  subItem={subItem}
-                  category={"clothes"}
-                  item={"outerwear"}
-                  linkSubItem={"coats"}
-                  text={"Coats"}
-                />
-                <SubLinkComponent
-                  gender={gender}
-                  subItem={subItem}
-                  category={"clothes"}
-                  item={"outerwear"}
-                  linkSubItem={"biker-jackets"}
-                  text={"Biker-jackets"}
-                />
-                <SubLinkComponent
-                  gender={gender}
-                  subItem={subItem}
-                  category={"clothes"}
-                  item={"outerwear"}
-                  linkSubItem={"jackets"}
-                  text={"Jackets"}
-                />
-                <SubLinkComponent
-                  gender={gender}
-                  subItem={subItem}
-                  category={"clothes"}
-                  item={"outerwear"}
-                  linkSubItem={"puffer-jackets"}
-                  text={"Puffer jackets"}
-                />
+                {WomanClothesSubLinks.map((item) => (
+                  <SubLinkComponent
+                    gender={gender}
+                    subItem={subItem}
+                    category={"clothes"}
+                    item={item.item}
+                    linkSubItem={item.subItem}
+                    text={item.title}
+                    key={item.path}
+                  />
+                ))}
               </ul>
             ) : (
               ""
             )}
-            <LinkComponent
-              gender={gender}
-              category={"clothes"}
-              linkItem={"sweaters"}
-              item={item}
-              text={"Jumpers, Cardigans"}
-            />
-            <LinkComponent
-              gender={gender}
-              category={"clothes"}
-              linkItem={"dresses"}
-              item={item}
-              text={"Dresses"}
-            />
-            <LinkComponent
-              gender={gender}
-              category={"clothes"}
-              linkItem={"skirts"}
-              item={item}
-              text={"Skirts"}
-            />
-            <LinkComponent
-              gender={gender}
-              category={"clothes"}
-              linkItem={"blouses"}
-              item={item}
-              text={"Blouses"}
-            />
-            <LinkComponent
-              gender={gender}
-              category={"clothes"}
-              linkItem={"shirts"}
-              item={item}
-              text={"Shirts"}
-            />
-            <LinkComponent
-              gender={gender}
-              category={"clothes"}
-              linkItem={"sweatshirts"}
-              item={item}
-              text={"Hoodies, sweatshirts"}
-            />
-            <LinkComponent
-              gender={gender}
-              category={"clothes"}
-              linkItem={"trousers"}
-              item={item}
-              text={"Trousers"}
-            />
-            <LinkComponent
-              gender={gender}
-              category={"clothes"}
-              linkItem={"t-shirts"}
-              item={item}
-              text={"T-shirts"}
-            />
-            <LinkComponent
-              gender={gender}
-              category={"clothes"}
-              linkItem={"jeans"}
-              item={item}
-              text={"Jeans"}
-            />
-            <LinkComponent
-              gender={gender}
-              category={"clothes"}
-              linkItem={"blazers"}
-              item={item}
-              text={"Blazers"}
-            />
-            <LinkComponent
-              gender={gender}
-              category={"clothes"}
-              linkItem={"nightwear"}
-              item={item}
-              text={"Nightwear"}
-            />
-            <LinkComponent
-              gender={gender}
-              category={"clothes"}
-              linkItem={"lingerie"}
-              item={item}
-              text={"Lingerie"}
-            />
+            {WomanClothesLinks.map((item) => (
+              <LinkComponent
+                gender={gender}
+                category={"clothes"}
+                linkItem={item.item}
+                item={pathItem}
+                text={item.title}
+                key={item.path}
+              />
+            ))}
           </ul>
         ) : (
           ""
@@ -174,34 +86,16 @@ const WomanLinksComponent = ({ gender }) => {
 
         {category === "accessories" ? (
           <ul>
-            <LinkComponent
-              gender={gender}
-              category={"accessories"}
-              linkItem={"bags"}
-              item={item}
-              text={"Bags, toiletry bags"}
-            />
-            <LinkComponent
-              gender={gender}
-              category={"accessories"}
-              linkItem={"hats"}
-              item={item}
-              text={"Hats"}
-            />
-            <LinkComponent
-              gender={gender}
-              category={"accessories"}
-              linkItem={"scarves"}
-              item={item}
-              text={"Scarves"}
-            />
-            <LinkComponent
-              gender={gender}
-              category={"accessories"}
-              linkItem={"gloves"}
-              item={item}
-              text={"Gloves"}
-            />
+            {WomanAccessoriesLinks.map((accessory) => (
+              <LinkComponent
+                gender={gender}
+                category={"accessories"}
+                linkItem={accessory.item}
+                item={pathItem}
+                text={accessory.title}
+                key={accessory.path}
+              />
+            ))}
           </ul>
         ) : (
           ""
@@ -216,41 +110,16 @@ const WomanLinksComponent = ({ gender }) => {
 
         {category === "shoes" ? (
           <ul>
-            <LinkComponent
-              gender={gender}
-              category={"shoes"}
-              linkItem={"boots"}
-              item={item}
-              text={"Boots"}
-            />
-            <LinkComponent
-              gender={gender}
-              category={"shoes"}
-              linkItem={"heels"}
-              item={item}
-              text={"Heels"}
-            />
-            <LinkComponent
-              gender={gender}
-              category={"shoes"}
-              linkItem={"flats"}
-              item={item}
-              text={"Flats"}
-            />
-            <LinkComponent
-              gender={gender}
-              category={"shoes"}
-              linkItem={"leather"}
-              item={item}
-              text={"Leather"}
-            />
-            <LinkComponent
-              gender={gender}
-              category={"shoes"}
-              linkItem={"sneakers"}
-              item={item}
-              text={"Sneakers"}
-            />
+            {WomanShoesLinks.map((shoe) => (
+              <LinkComponent
+                gender={gender}
+                category={"shoes"}
+                linkItem={shoe.item}
+                item={pathItem}
+                text={shoe.title}
+                key={shoe.path}
+              />
+            ))}
           </ul>
         ) : (
           ""

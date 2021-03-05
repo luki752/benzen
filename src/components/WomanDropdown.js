@@ -8,6 +8,13 @@ import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 //icons
 import SearchIcon from "@material-ui/icons/Search";
+//components
+import {
+  WomanClothesLinks,
+  WomanClothesSubLinks,
+  WomanAccessoriesLinks,
+  WomanShoesLinks,
+} from "./Links";
 
 const WomanDropdown = ({
   womanDropdownOpen,
@@ -27,78 +34,32 @@ const WomanDropdown = ({
       >
         <ul>
           <li className="list-header">Clothes</li>
-          <Link to="/woman/clothes/outerwear/coats" className="link">
-            <li>Coats, jackets, puffer jackets</li>
-          </Link>
-          <Link to="/woman/clothes/dresses" className="link">
-            <li>Dresses, jumpsuits</li>
-          </Link>
-          <Link to="/woman/clothes/sweaters" className="link">
-            <li>Jumpers, Cardigans</li>
-          </Link>
-          <Link to="/woman/clothes/shirts" className="link">
-            <li>Shirts</li>
-          </Link>
-          <Link to="/woman/clothes/blouses" className="link">
-            <li>Blouses</li>
-          </Link>
-          <Link to="/woman/clothes/sweatshirts" className="link">
-            <li>Hoodies, sweatshirts</li>
-          </Link>
-          <Link to="/woman/clothes/trousers" className="link">
-            <li>Trousers</li>
-          </Link>
-          <Link to="/woman/clothes/skirts" className="link">
-            <li>Skirts</li>
-          </Link>
-          <Link to="/woman/clothes/t-shirts" className="link">
-            <li>T-shirts, tops</li>
-          </Link>
-          <Link to="/woman/clothes/jeans" className="link">
-            <li>Jeans</li>
-          </Link>
-          <Link to="/woman/clothes/blazers" className="link">
-            <li>Blazers</li>
-          </Link>
-          <Link to="/woman/clothes/nightwear" className="link">
-            <li>Nightwear</li>
-          </Link>
-          <Link to="/woman/clothes/lingerie" className="link">
-            <li>Lingerie</li>
-          </Link>
+          {WomanClothesSubLinks.map((item) => (
+            <Link to={item.path} className="link" key={item.path}>
+              <li>{item.title}</li>
+            </Link>
+          ))}
+          {WomanClothesLinks.map((item) => (
+            <Link to={item.path} className="link" key={item.path}>
+              <li>{item.title}</li>
+            </Link>
+          ))}
         </ul>
         <ul>
           <li className="list-header">Shoes</li>
-          <Link to="/woman/shoes/boots" className="link">
-            <li>Boots</li>
-          </Link>
-          <Link to="/woman/shoes/heels" className="link">
-            <li>Heels</li>
-          </Link>
-          <Link to="/woman/shoes/flats" className="link">
-            <li>Flats</li>
-          </Link>
-          <Link to="/woman/shoes/leather" className="link">
-            <li>Leather</li>
-          </Link>
-          <Link to="/woman/shoes/sneakers" className="link">
-            <li>Sneakers</li>
-          </Link>
+          {WomanShoesLinks.map((shoe) => (
+            <Link to={shoe.path} className="link" key={shoe.path}>
+              <li>{shoe.title}</li>
+            </Link>
+          ))}
         </ul>
         <ul>
           <li className="list-header">Accessories</li>
-          <Link to="/woman/accessories/bags" className="link">
-            <li>Bags, toiletry bags</li>
-          </Link>
-          <Link to="/woman/accessories/hats" className="link">
-            <li>Hats</li>
-          </Link>
-          <Link to="/woman/accessories/scarves" className="link">
-            <li>Scarves</li>
-          </Link>
-          <Link to="/woman/accessories/gloves" className="link">
-            <li>Gloves</li>
-          </Link>
+          {WomanAccessoriesLinks.map((accessory) => (
+            <Link to={accessory.path} className="link" key={accessory.path}>
+              <li>{accessory.title}</li>
+            </Link>
+          ))}
         </ul>
         <ul>
           <li>
